@@ -56,5 +56,21 @@
 		"generic": "Algo salió mal. Inténtalo de nuevo.",
 		"tooLarge": "Este archivo es muy grande. El límite es {limit}.",
 		"unreadableFile": "No se pudo leer este archivo. Puede estar dañado. Prueba con otro."
+	},
+	"landing": {
+		"emptyClear": "Borrar búsqueda",
+		"emptyTitle": "Ninguna herramienta coincide. Prueba otra palabra.",
+		"heroSub": "Herramientas gratis para imágenes, texto, video y más. Todo funciona en tu navegador.",
+		"heroTitle": "Cada herramienta que necesitas. Gratis, rápida, privada.",
+		"metaDescription": "Herramientas online gratis que funcionan por completo en tu navegador: convierte imágenes, dales formato a textos, calcula préstamos y más. Sin registro, tus archivos nunca salen de tu dispositivo.",
+		"metaTitle": "Toolify: Herramientas Online Gratis para Imágenes, Texto, Video y Más",
+		"searchLabel": "Buscar herramientas",
+		"searchPlaceholder": "Busca herramientas, prueba png a jpg",
+		"why1line": "Cada herramienta es gratis sin límites.",
+		"why1title": "Gratis para siempre",
+		"why2line": "Tus archivos nunca salen de tu navegador.",
+		"why2title": "Privado por diseño",
+		"why3line": "Abre una herramienta y empieza. Nada que instalar.",
+		"why3title": "Sin registro"
 	}
 }

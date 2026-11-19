@@ -56,5 +56,21 @@
 		"generic": "Something went wrong. Try again.",
 		"tooLarge": "This file is too big. The limit is {limit}.",
 		"unreadableFile": "Could not read this file. It may be corrupted. Try another file."
+	},
+	"landing": {
+		"emptyClear": "Clear search",
+		"emptyTitle": "No tool matches. Try another keyword.",
+		"heroSub": "Free tools for images, text, video, and more. Everything runs in your browser.",
+		"heroTitle": "Every tool you need. Free, fast, private.",
+		"metaDescription": "Free online tools that run fully in your browser: convert images, format text, calculate loans, and more. No signup, files never leave your device.",
+		"metaTitle": "Toolify: Free Online Tools for Images, Text, Video and More",
+		"searchLabel": "Search tools",
+		"searchPlaceholder": "Search tools, try png to jpg",
+		"why1line": "Every tool is free with no limits.",
+		"why1title": "Free forever",
+		"why2line": "Files never leave your browser.",
+		"why2title": "Private by design",
+		"why3line": "Open a tool and start. Nothing to install.",
+		"why3title": "No signup"
 	}
 }

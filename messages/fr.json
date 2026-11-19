@@ -24,7 +24,7 @@
 		"languages": "Langues",
 		"legal": "Mentions légales",
 		"privacy": "Confidentialité",
-		"privacyLine": "Vos fichiers ne quittent jamais votre navigateur.",
+		"privacyLine": "Tes fichiers ne quittent jamais ton navigateur.",
 		"terms": "Conditions"
 	},
 	"common": {
@@ -40,7 +40,7 @@
 		"download": "Télécharger",
 		"downloadAll": "Tout télécharger",
 		"dropHint": "Dépose des fichiers ici ou",
-		"filesNeverLeave": "Vos fichiers ne quittent jamais votre navigateur.",
+		"filesNeverLeave": "Tes fichiers ne quittent jamais ton navigateur.",
 		"generate": "Générer",
 		"remove": "Retirer",
 		"retry": "Réessayer"
@@ -56,5 +56,21 @@
 		"generic": "Un problème est survenu. Réessaie.",
 		"tooLarge": "Ce fichier est trop gros. La limite est de {limit}.",
 		"unreadableFile": "Impossible de lire ce fichier. Il est peut-être corrompu. Essaie un autre fichier."
+	},
+	"landing": {
+		"emptyClear": "Effacer la recherche",
+		"emptyTitle": "Aucun outil ne correspond. Essaie un autre mot.",
+		"heroSub": "Des outils gratuits pour les images, le texte, la vidéo et plus. Tout tourne dans ton navigateur.",
+		"heroTitle": "Chaque outil qu'il te faut. Gratuit, rapide, privé.",
+		"metaDescription": "Des outils en ligne gratuits qui tournent entièrement dans ton navigateur: convertir des images, mettre en forme du texte, calculer un prêt et plus. Sans inscription, tes fichiers ne quittent jamais ton appareil.",
+		"metaTitle": "Toolify: Outils En Ligne Gratuits pour Images, Texte, Vidéo et Plus",
+		"searchLabel": "Rechercher un outil",
+		"searchPlaceholder": "Recherche un outil, essaie png vers jpg",
+		"why1line": "Chaque outil est gratuit sans limites.",
+		"why1title": "Gratuit pour toujours",
+		"why2line": "Tes fichiers ne quittent jamais ton navigateur.",
+		"why2title": "Privé par conception",
+		"why3line": "Ouvre un outil et commence. Rien à installer.",
+		"why3title": "Sans inscription"
 	}
 }

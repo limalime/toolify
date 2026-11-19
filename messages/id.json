@@ -56,5 +56,21 @@
 		"generic": "Terjadi kesalahan. Coba lagi.",
 		"tooLarge": "File ini terlalu besar. Batasnya {limit}.",
 		"unreadableFile": "File tidak bisa dibaca. Mungkin rusak. Coba file lain."
+	},
+	"landing": {
+		"emptyClear": "Hapus pencarian",
+		"emptyTitle": "Tidak ada alat yang cocok. Coba kata kunci lain.",
+		"heroSub": "Alat gratis untuk gambar, teks, video, dan lainnya. Semuanya berjalan di browser Anda.",
+		"heroTitle": "Semua alat yang Anda butuhkan. Gratis, cepat, privat.",
+		"metaDescription": "Alat online gratis yang berjalan sepenuhnya di browser: konversi gambar, format teks, hitung pinjaman, dan lainnya. Tanpa daftar, file tidak pernah meninggalkan perangkat Anda.",
+		"metaTitle": "Toolify: Alat Online Gratis untuk Gambar, Teks, Video, dan Lainnya",
+		"searchLabel": "Cari alat",
+		"searchPlaceholder": "Cari alat, coba png ke jpg",
+		"why1line": "Semua alat gratis tanpa batas.",
+		"why1title": "Gratis selamanya",
+		"why2line": "File tidak pernah meninggalkan browser Anda.",
+		"why2title": "Privat sejak awal",
+		"why3line": "Buka alat dan langsung pakai. Tanpa instal.",
+		"why3title": "Tanpa daftar"
 	}
 }

@@ -1,29 +1,53 @@
 import { expect, test } from "@playwright/test";
 
-const LOCALES: Array<{ code: string; path: string; privacyLine: string }> = [
-	{ code: "en", path: "/", privacyLine: "Files never leave your browser." },
+const LOCALES: Array<{
+	code: string;
+	path: string;
+	privacyLine: string;
+	heroTitle: string;
+}> = [
+	{
+		code: "en",
+		path: "/",
+		privacyLine: "Files never leave your browser.",
+		heroTitle: "Every tool you need. Free, fast, private.",
+	},
 	{
 		code: "id",
 		path: "/id",
 		privacyLine: "File tidak pernah meninggalkan browser Anda.",
+		heroTitle: "Semua alat yang Anda butuhkan. Gratis, cepat, privat.",
 	},
 	{
 		code: "es",
 		path: "/es",
 		privacyLine: "Tus archivos nunca salen de tu navegador.",
+		heroTitle: "Cada herramienta que necesitas. Gratis, rápida, privada.",
 	},
 	{
 		code: "ja",
 		path: "/ja",
 		privacyLine: "ファイルがブラウザの外に出ることはありません。",
+		heroTitle: "必要なツールが全部ある。無料、高速、プライベート。",
 	},
-	{ code: "zh", path: "/zh", privacyLine: "文件永远不会离开您的浏览器。" },
+	{
+		code: "zh",
+		path: "/zh",
+		privacyLine: "文件永远不会离开您的浏览器。",
+		heroTitle: "你需要的工具全都有，免费、快速、私密。",
+	},
 	{
 		code: "fr",
 		path: "/fr",
-		privacyLine: "Vos fichiers ne quittent jamais votre navigateur.",
+		privacyLine: "Tes fichiers ne quittent jamais ton navigateur.",
+		heroTitle: "Chaque outil qu'il te faut. Gratuit, rapide, privé.",
 	},
-	{ code: "ar", path: "/ar", privacyLine: "لا تغادر ملفاتك متصفحك أبدا." },
+	{
+		code: "ar",
+		path: "/ar",
+		privacyLine: "لا تغادر ملفاتك متصفحك أبدا.",
+		heroTitle: "كل أداة تحتاجها. مجاني وسريع وخاص.",
+	},
 ];
 
 for (const locale of LOCALES) {
@@ -32,6 +56,9 @@ for (const locale of LOCALES) {
 		expect(response?.ok()).toBe(true);
 		await expect(page.locator("html")).toHaveAttribute("lang", locale.code);
 		await expect(page.locator("header")).toBeVisible();
+		await expect(page.getByRole("heading", { level: 1 })).toContainText(
+			locale.heroTitle,
+		);
 		await expect(page.locator("footer.border-t")).toContainText(
 			locale.privacyLine,
 		);

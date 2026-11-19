@@ -56,5 +56,21 @@
 		"generic": "出错了，请重试。",
 		"tooLarge": "文件太大，上限为{limit}。",
 		"unreadableFile": "无法读取此文件，可能已损坏，请换一个文件试试。"
+	},
+	"landing": {
+		"emptyClear": "清除搜索",
+		"emptyTitle": "没有匹配的工具，换个关键词试试。",
+		"heroSub": "免费的图片、文本、视频等工具，全部在浏览器中运行。",
+		"heroTitle": "你需要的工具全都有，免费、快速、私密。",
+		"metaDescription": "完全在浏览器中运行的免费在线工具: 图片转换、文本格式化、贷款计算等。无需注册，文件永远不会离开您的设备。",
+		"metaTitle": "Toolify: 免费在线工具，图片文本视频全都有",
+		"searchLabel": "搜索工具",
+		"searchPlaceholder": "搜索工具，试试 png 转 jpg",
+		"why1line": "所有工具免费且不限量。",
+		"why1title": "永远免费",
+		"why2line": "文件永远不会离开您的浏览器。",
+		"why2title": "生来私密",
+		"why3line": "打开即用，无需安装。",
+		"why3title": "无需注册"
 	}
 }
