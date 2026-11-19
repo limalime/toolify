@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
 	faqPageJsonLd,
 	organizationJsonLd,
+	toJsonLd,
 	webApplicationJsonLd,
 	websiteJsonLd,
 } from "./jsonld";
@@ -68,6 +69,13 @@ describe("page metadata", () => {
 });
 
 describe("jsonld", () => {
+	it("serializes safely for script tags", () => {
+		expect(toJsonLd({ text: "a < b </script>" })).toBe(
+			'{"text":"a \\u003c b \\u003c/script>"}',
+		);
+		expect(JSON.parse(toJsonLd({ text: "a < b" }))).toEqual({ text: "a < b" });
+	});
+
 	it("emits a valid website block", () => {
 		const block = websiteJsonLd({ description: "Free tools.", locale: "en" });
 		expect(JSON.parse(JSON.stringify(block))["@type"]).toBe("WebSite");

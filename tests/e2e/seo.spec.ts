@@ -88,8 +88,8 @@ test("landing embeds website and organization json-ld", async ({ page }) => {
 	await expect(blocks).toHaveCount(2);
 	const types = [];
 	for (let index = 0; index < 2; index++) {
-		const text = await blocks.nth(index).innerText();
-		types.push((JSON.parse(text) as { "@type": string })["@type"]);
+		const text = await blocks.nth(index).textContent();
+		types.push((JSON.parse(text ?? "") as { "@type": string })["@type"]);
 	}
 	expect(types.sort()).toEqual(["Organization", "WebSite"]);
 });

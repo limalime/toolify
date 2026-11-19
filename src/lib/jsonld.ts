@@ -5,6 +5,12 @@ export interface FaqEntry {
 	answer: string;
 }
 
+// serialize for a script tag. escaping < keeps a literal </script> inside
+// an answer from breaking out of the block.
+export function toJsonLd(data: unknown): string {
+	return JSON.stringify(data).replace(/</g, "\\u003c");
+}
+
 export function websiteJsonLd({
 	description,
 	locale,

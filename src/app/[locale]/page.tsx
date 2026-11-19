@@ -4,7 +4,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import ToolMenu from "@/components/landing/tool-menu";
 import { routing } from "@/i18n/routing";
-import { organizationJsonLd, websiteJsonLd } from "@/lib/jsonld";
+import { organizationJsonLd, toJsonLd, websiteJsonLd } from "@/lib/jsonld";
 import { resolveMenuTools } from "@/lib/menu";
 import { pageMetadata } from "@/lib/seo";
 
@@ -40,14 +40,8 @@ export default async function LandingPage({
 
 	return (
 		<div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-16">
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
-			/>
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
-			/>
+			<script type="application/ld+json">{toJsonLd(website)}</script>
+			<script type="application/ld+json">{toJsonLd(organization)}</script>
 			<section className="flex flex-col gap-3">
 				<h1 className="font-display text-display">{t("heroTitle")}</h1>
 				<p className="max-w-prose text-body text-text-2">{t("heroSub")}</p>
