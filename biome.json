@@ -1,0 +1,40 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.6.8/schema.json",
+	"files": {
+		"includes": [
+			"**",
+			"!.next",
+			"!.open-next",
+			"!.wrangler",
+			"!coverage",
+			"!test-results",
+			"!playwright-report",
+			"!cloudflare-env.d.ts",
+			"!next-env.d.ts"
+		]
+	},
+	"vcs": {
+		"enabled": false,
+		"useIgnoreFile": false
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"preset": "recommended"
+		}
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double"
+		}
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	}
+}
