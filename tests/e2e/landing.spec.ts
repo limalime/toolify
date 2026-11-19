@@ -9,7 +9,9 @@ test("hero shows the headline, subcopy, and search", async ({ page }) => {
 		"Every tool you need. Free, fast, private.",
 	);
 	await expect(page.getByPlaceholder(/search tools/i)).toBeVisible();
-	await expect(page.getByRole("searchbox", { name: /search tools/i })).toBeVisible();
+	await expect(
+		page.getByRole("searchbox", { name: /search tools/i }),
+	).toBeVisible();
 });
 
 test("why block shows three promises", async ({ page }) => {

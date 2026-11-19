@@ -52,6 +52,11 @@
 	"faq": {
 		"title": "Preguntas frecuentes"
 	},
+	"notfound": {
+		"explanation": "Esa dirección no existe. Busca una herramienta o vuelve al inicio.",
+		"home": "Volver al inicio",
+		"title": "Página no encontrada"
+	},
 	"errors": {
 		"generic": "Algo salió mal. Inténtalo de nuevo.",
 		"tooLarge": "Este archivo es muy grande. El límite es {limit}.",

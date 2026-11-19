@@ -52,6 +52,11 @@
 	"faq": {
 		"title": "Questions fréquentes"
 	},
+	"notfound": {
+		"explanation": "Cette adresse n'existe pas. Cherche un outil ou retourne à l'accueil.",
+		"home": "Retour à l'accueil",
+		"title": "Page introuvable"
+	},
 	"errors": {
 		"generic": "Un problème est survenu. Réessaie.",
 		"tooLarge": "Ce fichier est trop gros. La limite est de {limit}.",

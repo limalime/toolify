@@ -52,6 +52,11 @@
 	"faq": {
 		"title": "Frequently asked questions"
 	},
+	"notfound": {
+		"explanation": "That address does not exist. Search the tools or head back home.",
+		"home": "Back to homepage",
+		"title": "Page not found"
+	},
 	"errors": {
 		"generic": "Something went wrong. Try again.",
 		"tooLarge": "This file is too big. The limit is {limit}.",

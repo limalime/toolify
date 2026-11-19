@@ -52,6 +52,11 @@
 	"faq": {
 		"title": "常见问题"
 	},
+	"notfound": {
+		"explanation": "该地址不存在，搜索工具或返回首页。",
+		"home": "返回首页",
+		"title": "找不到页面"
+	},
 	"errors": {
 		"generic": "出错了，请重试。",
 		"tooLarge": "文件太大，上限为{limit}。",

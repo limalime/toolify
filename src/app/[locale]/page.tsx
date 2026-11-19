@@ -1,34 +1,53 @@
 import type { Metadata } from "next";
-import { getMessages, getTranslations } from "next-intl/server";
-import ToolMenu, { type MenuTool } from "@/components/landing/tool-menu";
-import { TOOLS } from "@/lib/tools";
+import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import ToolMenu from "@/components/landing/tool-menu";
+import { routing } from "@/i18n/routing";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/jsonld";
+import { resolveMenuTools } from "@/lib/menu";
+import { pageMetadata } from "@/lib/seo";
 
-export async function generateMetadata(): Promise<Metadata> {
-	const t = await getTranslations("landing");
-	return {
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+	const { locale } = await params;
+	if (!hasLocale(routing.locales, locale)) {
+		notFound();
+	}
+	const t = await getTranslations({ locale, namespace: "landing" });
+	return pageMetadata({
+		locale,
+		path: "/",
 		title: t("metaTitle"),
 		description: t("metaDescription"),
-	};
+		absoluteTitle: true,
+	});
 }
 
-type ToolMessages = Record<string, { name: string; tagline: string }>;
-
-export default async function LandingPage() {
+export default async function LandingPage({
+	params,
+}: {
+	params: Promise<{ locale: string }>;
+}) {
+	const { locale } = await params;
 	const t = await getTranslations("landing");
-	const tc = await getTranslations("categories");
-	const messages = await getMessages();
-	const toolMessages = ((messages as Record<string, unknown>).tools ??
-		{}) as ToolMessages;
-
-	const tools: MenuTool[] = TOOLS.map((tool) => ({
-		...tool,
-		name: toolMessages[tool.slug]?.name ?? tool.slug,
-		tagline: toolMessages[tool.slug]?.tagline ?? "",
-		categoryLabel: tc(tool.category),
-	}));
+	const tools = await resolveMenuTools();
+	const website = websiteJsonLd({ description: t("metaDescription"), locale });
+	const organization = organizationJsonLd();
 
 	return (
 		<div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-16">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
+			/>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
+			/>
 			<section className="flex flex-col gap-3">
 				<h1 className="font-display text-display">{t("heroTitle")}</h1>
 				<p className="max-w-prose text-body text-text-2">{t("heroSub")}</p>

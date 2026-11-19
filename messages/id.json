@@ -52,6 +52,11 @@
 	"faq": {
 		"title": "Pertanyaan umum"
 	},
+	"notfound": {
+		"explanation": "Alamat itu tidak ada. Cari alat atau kembali ke beranda.",
+		"home": "Kembali ke beranda",
+		"title": "Halaman tidak ditemukan"
+	},
 	"errors": {
 		"generic": "Terjadi kesalahan. Coba lagi.",
 		"tooLarge": "File ini terlalu besar. Batasnya {limit}.",
