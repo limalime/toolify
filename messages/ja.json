@@ -1,0 +1,37 @@
+{
+	"header": {
+		"categoriesNav": "カテゴリー",
+		"closeMenu": "メニューを閉じる",
+		"home": "Toolify ホーム",
+		"language": "言語",
+		"languages": "言語",
+		"menu": "メニュー",
+		"openMenu": "メニューを開く",
+		"search": "ツールを検索"
+	},
+	"categories": {
+		"audio": "音声",
+		"finance": "金融",
+		"gambar": "画像",
+		"lainnya": "その他",
+		"pdfUtilities": "PDFとユーティリティ",
+		"text": "テキスト",
+		"video": "動画"
+	},
+	"footer": {
+		"about": "Toolifyについて",
+		"contact": "お問い合わせ",
+		"languages": "言語",
+		"legal": "リーガル",
+		"privacy": "プライバシー",
+		"privacyLine": "ファイルがブラウザの外に出ることはありません。",
+		"terms": "利用規約"
+	},
+	"common": {
+		"browse": "クリックして選択",
+		"converting": "{name}を変換中",
+		"download": "ダウンロード",
+		"dropHint": "ここにファイルをドロップまたは",
+		"retry": "再試行"
+	}
+}

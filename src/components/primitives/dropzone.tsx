@@ -6,8 +6,10 @@ import { cn } from "@/lib/utils";
 
 export interface DropzoneProps {
 	accept?: string;
+	browseLabel: string;
 	className?: string;
 	disabled?: boolean;
+	hint: string;
 	multiple?: boolean;
 	onFiles: (files: File[]) => void;
 }
@@ -16,8 +18,10 @@ export interface DropzoneProps {
 // surface. the whole box is a label so click and keyboard both reach the input.
 export default function Dropzone({
 	accept,
+	browseLabel,
 	className,
 	disabled = false,
+	hint,
 	multiple = false,
 	onFiles,
 }: DropzoneProps) {
@@ -70,9 +74,9 @@ export default function Dropzone({
 			>
 				<UploadCloud aria-hidden="true" className="size-8 text-blue-500" />
 				<p className="text-body text-text-2">
-					Drop files here or{" "}
+					{hint}{" "}
 					<span className="text-blue-500 underline underline-offset-4">
-						click to browse
+						{browseLabel}
 					</span>
 				</p>
 			</label>

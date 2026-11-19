@@ -20,9 +20,16 @@ export interface FileRow {
 	status: FileRowStatus;
 }
 
+export interface FileListLabels {
+	converting: (name: string) => string;
+	download: string;
+	retry: string;
+}
+
 export interface FileListProps {
 	className?: string;
 	files: FileRow[];
+	labels: FileListLabels;
 	onRetry?: (id: string) => void;
 }
 
@@ -34,7 +41,12 @@ const STATUS_ICON = {
 } as const;
 
 // one row per file with its own status, rows divide with the border token.
-export default function FileList({ className, files, onRetry }: FileListProps) {
+export default function FileList({
+	className,
+	files,
+	labels,
+	onRetry,
+}: FileListProps) {
 	return (
 		<ul
 			className={cn("w-full divide-y divide-border", className)}
@@ -65,7 +77,7 @@ export default function FileList({ className, files, onRetry }: FileListProps) {
 							</p>
 							{file.status === "processing" ? (
 								<ProgressRoot
-									aria-label={`Converting ${file.name}`}
+									aria-label={labels.converting(file.name)}
 									className="mt-2 gap-0"
 									value={file.progress ?? null}
 								>
@@ -86,7 +98,7 @@ export default function FileList({ className, files, onRetry }: FileListProps) {
 								variant="secondary"
 							>
 								<a download={file.name} href={file.downloadUrl}>
-									Download
+									{labels.download}
 								</a>
 							</SmoothButton>
 						) : null}
@@ -97,7 +109,7 @@ export default function FileList({ className, files, onRetry }: FileListProps) {
 								size="sm"
 								variant="secondary"
 							>
-								Retry
+								{labels.retry}
 							</SmoothButton>
 						) : null}
 					</li>

@@ -1,0 +1,37 @@
+{
+	"header": {
+		"categoriesNav": "Kategori",
+		"closeMenu": "Tutup menu",
+		"home": "Beranda Toolify",
+		"language": "Bahasa",
+		"languages": "Bahasa",
+		"menu": "Menu",
+		"openMenu": "Buka menu",
+		"search": "Cari alat"
+	},
+	"categories": {
+		"audio": "Audio",
+		"finance": "Keuangan",
+		"gambar": "Gambar",
+		"lainnya": "Lainnya",
+		"pdfUtilities": "PDF dan Utilitas",
+		"text": "Teks",
+		"video": "Video"
+	},
+	"footer": {
+		"about": "Tentang",
+		"contact": "Kontak",
+		"languages": "Bahasa",
+		"legal": "Legal",
+		"privacy": "Privasi",
+		"privacyLine": "File tidak pernah meninggalkan browser Anda.",
+		"terms": "Ketentuan"
+	},
+	"common": {
+		"browse": "klik untuk mencari",
+		"converting": "Mengonversi {name}",
+		"download": "Unduh",
+		"dropHint": "Taruh file di sini atau",
+		"retry": "Coba lagi"
+	}
+}

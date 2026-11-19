@@ -1,0 +1,37 @@
+{
+	"header": {
+		"categoriesNav": "الفئات",
+		"closeMenu": "إغلاق القائمة",
+		"home": "Toolify الرئيسية",
+		"language": "اللغة",
+		"languages": "اللغات",
+		"menu": "القائمة",
+		"openMenu": "فتح القائمة",
+		"search": "ابحث عن أداة"
+	},
+	"categories": {
+		"audio": "صوت",
+		"finance": "مالية",
+		"gambar": "صور",
+		"lainnya": "أخرى",
+		"pdfUtilities": "PDF وأدوات",
+		"text": "نصوص",
+		"video": "فيديو"
+	},
+	"footer": {
+		"about": "حول",
+		"contact": "اتصل بنا",
+		"languages": "اللغات",
+		"legal": "قانوني",
+		"privacy": "الخصوصية",
+		"privacyLine": "لا تغادر ملفاتك متصفحك أبدا.",
+		"terms": "الشروط"
+	},
+	"common": {
+		"browse": "انقر للتصفح",
+		"converting": "جارٍ تحويل {name}",
+		"download": "تنزيل",
+		"dropHint": "أفلت الملفات هنا أو",
+		"retry": "إعادة المحاولة"
+	}
+}

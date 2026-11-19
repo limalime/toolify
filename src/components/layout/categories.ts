@@ -1,11 +1,13 @@
 // tool categories for the navbar. hrefs point at landing anchors,
 // the menu that owns them lands with the landing page.
 export const CATEGORIES = [
-	{ href: "/#gambar", label: "Gambar" },
-	{ href: "/#text", label: "Text" },
-	{ href: "/#video", label: "Video" },
-	{ href: "/#audio", label: "Audio" },
-	{ href: "/#lainnya", label: "Lainnya" },
-	{ href: "/#finance", label: "Finance" },
-	{ href: "/#pdf-utilities", label: "PDF and Utilities" },
+	{ href: "/#gambar", key: "gambar" },
+	{ href: "/#text", key: "text" },
+	{ href: "/#video", key: "video" },
+	{ href: "/#audio", key: "audio" },
+	{ href: "/#lainnya", key: "lainnya" },
+	{ href: "/#finance", key: "finance" },
+	{ href: "/#pdf-utilities", key: "pdfUtilities" },
 ] as const;
+
+export type CategoryKey = (typeof CATEGORIES)[number]["key"];

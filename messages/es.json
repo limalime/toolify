@@ -1,0 +1,37 @@
+{
+	"header": {
+		"categoriesNav": "Categorías",
+		"closeMenu": "Cerrar menú",
+		"home": "Inicio de Toolify",
+		"language": "Idioma",
+		"languages": "Idiomas",
+		"menu": "Menú",
+		"openMenu": "Abrir menú",
+		"search": "Buscar herramientas"
+	},
+	"categories": {
+		"audio": "Audio",
+		"finance": "Finanzas",
+		"gambar": "Imágenes",
+		"lainnya": "Otros",
+		"pdfUtilities": "PDF y utilidades",
+		"text": "Texto",
+		"video": "Video"
+	},
+	"footer": {
+		"about": "Acerca de",
+		"contact": "Contacto",
+		"languages": "Idiomas",
+		"legal": "Legal",
+		"privacy": "Privacidad",
+		"privacyLine": "Tus archivos nunca salen de tu navegador.",
+		"terms": "Términos"
+	},
+	"common": {
+		"browse": "haz clic para buscar",
+		"converting": "Convirtiendo {name}",
+		"download": "Descargar",
+		"dropHint": "Suelta archivos aquí o",
+		"retry": "Reintentar"
+	}
+}

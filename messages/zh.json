@@ -1,0 +1,37 @@
+{
+	"header": {
+		"categoriesNav": "分类",
+		"closeMenu": "关闭菜单",
+		"home": "Toolify 首页",
+		"language": "语言",
+		"languages": "语言",
+		"menu": "菜单",
+		"openMenu": "打开菜单",
+		"search": "搜索工具"
+	},
+	"categories": {
+		"audio": "音频",
+		"finance": "金融",
+		"gambar": "图片",
+		"lainnya": "其他",
+		"pdfUtilities": "PDF和实用工具",
+		"text": "文本",
+		"video": "视频"
+	},
+	"footer": {
+		"about": "关于",
+		"contact": "联系我们",
+		"languages": "语言",
+		"legal": "法律",
+		"privacy": "隐私",
+		"privacyLine": "文件永远不会离开您的浏览器。",
+		"terms": "条款"
+	},
+	"common": {
+		"browse": "点击选择",
+		"converting": "正在转换{name}",
+		"download": "下载",
+		"dropHint": "将文件拖到此处或",
+		"retry": "重试"
+	}
+}

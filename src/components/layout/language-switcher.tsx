@@ -2,8 +2,9 @@
 
 import { Menu } from "@base-ui/react/menu";
 import { Check, ChevronDown, Languages } from "lucide-react";
-import { usePathname } from "next/navigation";
-import { LOCALES, type LocaleCode, localizedPath } from "@/lib/locales";
+import { useLocale, useTranslations } from "next-intl";
+import { usePathname } from "@/i18n/navigation";
+import { LOCALES, localizedPath } from "@/lib/locales";
 import { cn } from "@/lib/utils";
 
 const ITEM_CLASS =
@@ -13,19 +14,15 @@ const ITEM_CLASS =
 // every item is a real link to the same page in that locale.
 export default function LanguageSwitcher({ id }: { id?: string }) {
 	const pathname = usePathname();
-	const current: LocaleCode =
-		LOCALES.find(
-			(locale) =>
-				pathname === `/${locale.code}` ||
-				pathname.startsWith(`/${locale.code}/`),
-		)?.code ?? "en";
+	const current = useLocale();
+	const t = useTranslations("header");
 	const currentName =
 		LOCALES.find((locale) => locale.code === current)?.name ?? "English";
 
 	return (
 		<Menu.Root>
 			<Menu.Trigger
-				aria-label="Language"
+				aria-label={t("language")}
 				className="inline-flex h-11 cursor-pointer items-center gap-1.5 border border-transparent px-3 text-small text-text-2 outline-none hover:text-text focus-visible:border-blue-500"
 				id={id}
 				render={
@@ -44,7 +41,7 @@ export default function LanguageSwitcher({ id }: { id?: string }) {
 					sideOffset={4}
 				>
 					<Menu.Popup className="overlay-surface max-h-[var(--available-height)] min-w-44 origin-top overflow-y-auto border bg-popover p-1 text-popover-foreground transition-opacity duration-150 data-starting-style:opacity-0 motion-reduce:transition-none">
-						<Menu.Group aria-label="Languages">
+						<Menu.Group aria-label={t("languages")}>
 							{LOCALES.map((locale) => {
 								const active = locale.code === current;
 								return (

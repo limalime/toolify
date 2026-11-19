@@ -1,0 +1,37 @@
+{
+	"header": {
+		"categoriesNav": "Categories",
+		"closeMenu": "Close menu",
+		"home": "Toolify home",
+		"language": "Language",
+		"languages": "Languages",
+		"menu": "Menu",
+		"openMenu": "Open menu",
+		"search": "Search tools"
+	},
+	"categories": {
+		"audio": "Audio",
+		"finance": "Finance",
+		"gambar": "Gambar",
+		"lainnya": "Lainnya",
+		"pdfUtilities": "PDF and Utilities",
+		"text": "Text",
+		"video": "Video"
+	},
+	"footer": {
+		"about": "About",
+		"contact": "Contact",
+		"languages": "Languages",
+		"legal": "Legal",
+		"privacy": "Privacy",
+		"privacyLine": "Files never leave your browser.",
+		"terms": "Terms"
+	},
+	"common": {
+		"browse": "click to browse",
+		"converting": "Converting {name}",
+		"download": "Download",
+		"dropHint": "Drop files here or",
+		"retry": "Retry"
+	}
+}

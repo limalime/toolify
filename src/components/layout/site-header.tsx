@@ -1,16 +1,20 @@
 import { Search } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { CATEGORIES } from "@/components/layout/categories";
 import LanguageSwitcher from "@/components/layout/language-switcher";
 import MobileMenu from "@/components/layout/mobile-menu";
+import { Link } from "@/i18n/navigation";
 
-export default function SiteHeader() {
+export default async function SiteHeader() {
+	const t = await getTranslations("header");
+	const tc = await getTranslations("categories");
+
 	return (
 		<header className="border-b border-border bg-bg">
 			<div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-4 px-4">
 				<Link
-					aria-label="Toolify home"
+					aria-label={t("home")}
 					className="flex shrink-0 items-center gap-2 outline-none focus-visible:border-blue-500"
 					href="/"
 				>
@@ -31,7 +35,7 @@ export default function SiteHeader() {
 					/>
 				</Link>
 				<nav
-					aria-label="Categories"
+					aria-label={t("categoriesNav")}
 					className="hidden items-center gap-5 lg:flex"
 				>
 					{CATEGORIES.map((category) => (
@@ -40,13 +44,13 @@ export default function SiteHeader() {
 							href={category.href}
 							key={category.href}
 						>
-							{category.label}
+							{tc(category.key)}
 						</Link>
 					))}
 				</nav>
 				<div className="ms-auto flex items-center gap-1">
 					<Link
-						aria-label="Search tools"
+						aria-label={t("search")}
 						className="inline-flex size-11 items-center justify-center text-text-2 outline-none hover:text-text focus-visible:border-blue-500"
 						href="/#search"
 					>

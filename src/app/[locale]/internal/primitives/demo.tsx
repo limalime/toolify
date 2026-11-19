@@ -425,6 +425,8 @@ export default function PrimitivesDemo() {
 
 			<Section id="dropzone" title="Dropzone">
 				<Dropzone
+					browseLabel="click to browse"
+					hint="Drop files here or"
 					multiple
 					onFiles={(files) => setPicked(files.map((file) => file.name))}
 				/>
@@ -465,6 +467,11 @@ export default function PrimitivesDemo() {
 						},
 					]}
 					onRetry={(id) => notify.info(`Retry queued for row ${id}`)}
+					labels={{
+						converting: (name) => `Converting ${name}`,
+						download: "Download",
+						retry: "Retry",
+					}}
 				/>
 			</Section>
 
