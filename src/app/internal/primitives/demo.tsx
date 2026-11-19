@@ -6,7 +6,6 @@ import Dropzone from "@/components/primitives/dropzone";
 import FileList from "@/components/primitives/file-list";
 import Loading from "@/components/primitives/loading";
 import { notify } from "@/components/primitives/notify";
-import AppToaster from "@/components/primitives/toaster";
 import {
 	AccordionHeader,
 	AccordionItem,
@@ -110,7 +109,6 @@ export default function PrimitivesDemo() {
 
 	return (
 		<div className="mx-auto flex w-full max-w-4xl flex-col gap-12 px-4 py-8">
-			<AppToaster />
 			<div>
 				<h1>Primitives</h1>
 				<p className="text-body text-text-2">

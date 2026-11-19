@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import SiteFooter from "@/components/layout/site-footer";
+import SiteHeader from "@/components/layout/site-header";
+import AppToaster from "@/components/primitives/toaster";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -16,7 +19,12 @@ export default function RootLayout({
 			<head>
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
 			</head>
-			<body className="antialiased">{children}</body>
+			<body className="flex min-h-screen flex-col antialiased">
+				<SiteHeader />
+				<main className="flex-1">{children}</main>
+				<SiteFooter />
+				<AppToaster />
+			</body>
 		</html>
 	);
 }
