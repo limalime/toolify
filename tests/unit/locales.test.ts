@@ -40,4 +40,16 @@ describe("locale parity", () => {
 			flattenKeys({ a: "A", nested: { b: "B", deep: { c: "C" } } }),
 		).toEqual(new Set(["a", "nested.b", "nested.deep.c"]));
 	});
+
+	it("pins array lengths so sections cannot drift", () => {
+		expect(flattenKeys({ list: ["a", "b"] })).toEqual(
+			new Set(["list.length:2"]),
+		);
+		expect(
+			checkKeySets({
+				en: { sections: [{ h: "A" }, { h: "B" }] },
+				id: { sections: [{ h: "A" }] },
+			}),
+		).toEqual(["id: missing sections.length:2", "id: extra sections.length:1"]);
+	});
 });

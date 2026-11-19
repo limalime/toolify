@@ -4,12 +4,17 @@ import { fileURLToPath } from "node:url";
 
 // every locale must carry exactly the key set of english. anything less
 // renders a visible key path instead of a sentence, anything more is dead.
+// arrays also pin their length, so no locale silently drops a section.
 export function flattenKeys(value, prefix = "") {
 	const keys = new Set();
-	if (value && typeof value === "object" && !Array.isArray(value)) {
+	if (Array.isArray(value)) {
+		keys.add(`${prefix}.length:${value.length}`);
+		return keys;
+	}
+	if (value && typeof value === "object") {
 		for (const [name, child] of Object.entries(value)) {
 			const path = prefix ? `${prefix}.${name}` : name;
-			if (child && typeof child === "object" && !Array.isArray(child)) {
+			if (child && typeof child === "object") {
 				for (const key of flattenKeys(child, path)) {
 					keys.add(key);
 				}
