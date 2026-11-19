@@ -29,9 +29,32 @@
 	},
 	"common": {
 		"browse": "clique pour parcourir",
+		"cancel": "Annuler",
+		"clear": "Effacer",
+		"compress": "Compresser",
+		"convert": "Convertir",
 		"converting": "Conversion de {name}",
+		"copied": "Copié",
+		"copy": "Copier",
+		"copyAll": "Tout copier",
 		"download": "Télécharger",
+		"downloadAll": "Tout télécharger",
 		"dropHint": "Dépose des fichiers ici ou",
+		"filesNeverLeave": "Vos fichiers ne quittent jamais votre navigateur.",
+		"generate": "Générer",
+		"remove": "Retirer",
 		"retry": "Réessayer"
+	},
+	"howto": {
+		"step": "Étape {n}",
+		"title": "Mode d'emploi"
+	},
+	"faq": {
+		"title": "Questions fréquentes"
+	},
+	"errors": {
+		"generic": "Un problème est survenu. Réessaie.",
+		"tooLarge": "Ce fichier est trop gros. La limite est de {limit}.",
+		"unreadableFile": "Impossible de lire ce fichier. Il est peut-être corrompu. Essaie un autre fichier."
 	}
 }

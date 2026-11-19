@@ -29,9 +29,32 @@
 	},
 	"common": {
 		"browse": "klik untuk mencari",
+		"cancel": "Batal",
+		"clear": "Hapus",
+		"compress": "Kompres",
+		"convert": "Konversi",
 		"converting": "Mengonversi {name}",
+		"copied": "Tersalin",
+		"copy": "Salin",
+		"copyAll": "Salin semua",
 		"download": "Unduh",
+		"downloadAll": "Unduh semua",
 		"dropHint": "Taruh file di sini atau",
+		"filesNeverLeave": "File tidak pernah meninggalkan browser Anda.",
+		"generate": "Buat",
+		"remove": "Hapus",
 		"retry": "Coba lagi"
+	},
+	"howto": {
+		"step": "Langkah {n}",
+		"title": "Cara pakai"
+	},
+	"faq": {
+		"title": "Pertanyaan umum"
+	},
+	"errors": {
+		"generic": "Terjadi kesalahan. Coba lagi.",
+		"tooLarge": "File ini terlalu besar. Batasnya {limit}.",
+		"unreadableFile": "File tidak bisa dibaca. Mungkin rusak. Coba file lain."
 	}
 }

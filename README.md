@@ -65,6 +65,8 @@ For local Worker development, copy `.dev.vars.example` to `.dev.vars`.
 - `src/components/smoothui` holds installed components, never delete from here
 - `src/components/primitives` holds Toolify controls built on those components
 - `src/lib` holds shared helpers such as formatting
+- `messages` holds one translation file per locale, checked for parity
+- `scripts/check-locales.mjs` fails the build when a locale misses a key
 - `public/assets` holds the logo, wordmark, and fonts
 - `tests/unit` holds Vitest tests
 - `tests/e2e` holds Playwright tests

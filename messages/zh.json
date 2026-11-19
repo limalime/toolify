@@ -29,9 +29,32 @@
 	},
 	"common": {
 		"browse": "点击选择",
+		"cancel": "取消",
+		"clear": "清除",
+		"compress": "压缩",
+		"convert": "转换",
 		"converting": "正在转换{name}",
+		"copied": "已复制",
+		"copy": "复制",
+		"copyAll": "全部复制",
 		"download": "下载",
+		"downloadAll": "全部下载",
 		"dropHint": "将文件拖到此处或",
+		"filesNeverLeave": "文件永远不会离开您的浏览器。",
+		"generate": "生成",
+		"remove": "删除",
 		"retry": "重试"
+	},
+	"howto": {
+		"step": "第{n}步",
+		"title": "使用方法"
+	},
+	"faq": {
+		"title": "常见问题"
+	},
+	"errors": {
+		"generic": "出错了，请重试。",
+		"tooLarge": "文件太大，上限为{limit}。",
+		"unreadableFile": "无法读取此文件，可能已损坏，请换一个文件试试。"
 	}
 }

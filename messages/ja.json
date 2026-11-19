@@ -29,9 +29,32 @@
 	},
 	"common": {
 		"browse": "クリックして選択",
+		"cancel": "キャンセル",
+		"clear": "クリア",
+		"compress": "圧縮",
+		"convert": "変換",
 		"converting": "{name}を変換中",
+		"copied": "コピーしました",
+		"copy": "コピー",
+		"copyAll": "すべてコピー",
 		"download": "ダウンロード",
+		"downloadAll": "すべてダウンロード",
 		"dropHint": "ここにファイルをドロップまたは",
+		"filesNeverLeave": "ファイルがブラウザの外に出ることはありません。",
+		"generate": "生成",
+		"remove": "削除",
 		"retry": "再試行"
+	},
+	"howto": {
+		"step": "ステップ{n}",
+		"title": "使い方"
+	},
+	"faq": {
+		"title": "よくある質問"
+	},
+	"errors": {
+		"generic": "問題が発生しました。もう一度お試しください。",
+		"tooLarge": "このファイルは大きすぎます。上限は{limit}です。",
+		"unreadableFile": "このファイルを読み取れませんでした。破損している可能性があります。別のファイルをお試しください。"
 	}
 }

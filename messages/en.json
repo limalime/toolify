@@ -29,9 +29,32 @@
 	},
 	"common": {
 		"browse": "click to browse",
+		"cancel": "Cancel",
+		"clear": "Clear",
+		"compress": "Compress",
+		"convert": "Convert",
 		"converting": "Converting {name}",
+		"copied": "Copied",
+		"copy": "Copy",
+		"copyAll": "Copy all",
 		"download": "Download",
+		"downloadAll": "Download all",
 		"dropHint": "Drop files here or",
+		"filesNeverLeave": "Files never leave your browser.",
+		"generate": "Generate",
+		"remove": "Remove",
 		"retry": "Retry"
+	},
+	"howto": {
+		"step": "Step {n}",
+		"title": "How to use"
+	},
+	"faq": {
+		"title": "Frequently asked questions"
+	},
+	"errors": {
+		"generic": "Something went wrong. Try again.",
+		"tooLarge": "This file is too big. The limit is {limit}.",
+		"unreadableFile": "Could not read this file. It may be corrupted. Try another file."
 	}
 }

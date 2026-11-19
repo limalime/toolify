@@ -29,9 +29,32 @@
 	},
 	"common": {
 		"browse": "انقر للتصفح",
+		"cancel": "إلغاء",
+		"clear": "مسح",
+		"compress": "ضغط",
+		"convert": "تحويل",
 		"converting": "جارٍ تحويل {name}",
+		"copied": "تم النسخ",
+		"copy": "نسخ",
+		"copyAll": "نسخ الكل",
 		"download": "تنزيل",
+		"downloadAll": "تنزيل الكل",
 		"dropHint": "أفلت الملفات هنا أو",
+		"filesNeverLeave": "لا تغادر ملفاتك متصفحك أبدا.",
+		"generate": "إنشاء",
+		"remove": "إزالة",
 		"retry": "إعادة المحاولة"
+	},
+	"howto": {
+		"step": "الخطوة {n}",
+		"title": "كيفية الاستخدام"
+	},
+	"faq": {
+		"title": "الأسئلة الشائعة"
+	},
+	"errors": {
+		"generic": "حدث خطأ ما. حاول مجددا.",
+		"tooLarge": "هذا الملف كبير جدا. الحد هو {limit}.",
+		"unreadableFile": "تعذر قراءة هذا الملف. قد يكون تالفا. جرب ملفا آخر."
 	}
 }
