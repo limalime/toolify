@@ -57,6 +57,117 @@
 		"home": "Back to homepage",
 		"title": "Page not found"
 	},
+	"about": {
+		"body": [
+			"Every tool on Toolify runs fully in your browser. There is no upload step, no queue, and no account. Your files stay on your device from start to finish.",
+			"Toolify is a small independent project. It stays free with no limits: open a tool, use it, and leave. If a tool ever stops working, the contact page is the fastest way to report it.",
+			"New tools ship when they are ready and tested. Nothing here is a demo, a trial, or a teaser for a paid plan."
+		],
+		"h1": "About Toolify",
+		"lead": "One site with many small tools for images, text, video, audio, finance, PDFs, and everyday jobs.",
+		"metaDescription": "Toolify is a free toolbox that runs fully in your browser. No signup, no uploads, your files never leave your device.",
+		"title": "About"
+	},
+	"contact": {
+		"email": "Email",
+		"emailPlaceholder": "ada@example.com",
+		"errorEmail": "Enter an address like name@example.com.",
+		"errorRequired": "Fill in every field.",
+		"errorUnavailable": "The contact form is unavailable right now. Try again later.",
+		"errorUpstream": "The message could not be delivered. Try again later.",
+		"h1": "Contact",
+		"lead": "Questions, broken tools, and ideas are welcome. Messages go straight to the maker.",
+		"message": "Message",
+		"messagePlaceholder": "The PNG converter fails on my file…",
+		"metaDescription": "Contact Toolify: report a broken tool, ask a question, or suggest a tool.",
+		"name": "Name",
+		"namePlaceholder": "Ada",
+		"send": "Send message",
+		"sending": "Sending…",
+		"successLine": "Thanks for writing in. Expect a reply within a few days.",
+		"successTitle": "Message sent",
+		"title": "Contact"
+	},
+	"privacy": {
+		"h1": "Privacy Policy",
+		"lead": "Short version: your files never leave your browser, Toolify has no accounts, and analytics never sees your files.",
+		"metaDescription": "Toolify privacy policy: your files never leave your browser. How analytics, consent, and contact messages work.",
+		"sections": [
+			{
+				"body": [
+					"Every tool runs locally in your browser with JavaScript. Files you open are processed in memory on your own device and are never uploaded to any server.",
+					"Because nothing is uploaded, there is nothing to breach, subpoena, or leak from a Toolify server. There is no Toolify server holding your files."
+				],
+				"h": "Files stay on your device"
+			},
+			{
+				"body": [
+					"Toolify uses Google Analytics 4 to count page views and tool uses, and Microsoft Clarity for heatmaps and session replays. Analytics events never carry file contents, file names, or file hashes.",
+					"The mnemonic generator pages run with analytics fully disabled. Never use a generated mnemonic for a real wallet."
+				],
+				"h": "Analytics"
+			},
+			{
+				"body": [
+					"Visitors in the European Economic Area see a consent banner. No analytics cookie fires before you accept, following Google Consent Mode v2. Declining keeps every tool working exactly the same."
+				],
+				"h": "Consent"
+			},
+			{
+				"body": [
+					"If you write through the contact form, your name, email, and message travel to the maker so the message can be answered. They are used only for the reply and never sold or shared."
+				],
+				"h": "Contact messages"
+			},
+			{
+				"body": [
+					"Use any tool without an account. Block analytics with your browser settings or an ad blocker and everything still works. To ask about or delete a contact message, write through the contact page."
+				],
+				"h": "Your choices"
+			}
+		],
+		"title": "Privacy Policy"
+	},
+	"terms": {
+		"h1": "Terms of Service",
+		"lead": "Plain rules for a free toolbox. Using any tool means you accept these terms.",
+		"metaDescription": "Toolify terms of service: free browser tools provided as is, fair use rules, and limits of liability.",
+		"sections": [
+			{
+				"body": [
+					"Toolify provides free online tools that run in your browser. No account is needed and no feature sits behind a paywall.",
+					"Tools and pages may change or retire over time. Availability is best effort."
+				],
+				"h": "The service"
+			},
+			{
+				"body": [
+					"Use the tools for lawful work. Do not abuse the site, attack it, or use it to process content you have no right to process.",
+					"Automated scraping that harms availability for others is not welcome."
+				],
+				"h": "Fair use"
+			},
+			{
+				"body": [
+					"The tools are provided as is, without warranty of any kind. Conversions and calculations can contain mistakes: double check results that matter, especially money and wallet operations."
+				],
+				"h": "No warranty"
+			},
+			{
+				"body": [
+					"To the maximum extent the law allows, Toolify is not liable for any loss from using the tools, including lost files, wrong results, or missed transactions. Your files never leave your browser, so keep your own backups."
+				],
+				"h": "Liability"
+			},
+			{
+				"body": [
+					"These terms may change as the site grows. Continued use after a change means acceptance. Questions about these terms go through the contact page."
+				],
+				"h": "Changes"
+			}
+		],
+		"title": "Terms of Service"
+	},
 	"errors": {
 		"generic": "Something went wrong. Try again.",
 		"tooLarge": "This file is too big. The limit is {limit}.",

@@ -1,0 +1,21 @@
+{
+	"name": "Toolify",
+	"short_name": "Toolify",
+	"description": "Free online tools that run fully in your browser.",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#0A0E14",
+	"theme_color": "#0A0E14",
+	"icons": [
+		{
+			"src": "/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "/apple-touch-icon.png",
+			"sizes": "180x180",
+			"type": "image/png"
+		}
+	]
+}

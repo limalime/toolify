@@ -36,6 +36,7 @@ export async function generateMetadata({
 			icon: "/favicon.ico",
 			apple: "/apple-touch-icon.png",
 		},
+		manifest: "/site.webmanifest",
 		openGraph: {
 			siteName: SITE_NAME,
 			type: "website",

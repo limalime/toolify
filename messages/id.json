@@ -57,6 +57,117 @@
 		"home": "Kembali ke beranda",
 		"title": "Halaman tidak ditemukan"
 	},
+	"about": {
+		"body": [
+			"Setiap alat di Toolify berjalan sepenuhnya di browser Anda. Tanpa unggahan, tanpa antre, tanpa akun. File Anda tetap di perangkat dari awal sampai akhir.",
+			"Toolify adalah proyek independen kecil. Gratis tanpa batas: buka alat, pakai, selesai. Jika ada alat yang rusak, halaman kontak adalah cara tercepat melaporkannya.",
+			"Alat baru rilis setelah siap dan teruji. Tidak ada demo, masa trial, atau umpan paket berbayar."
+		],
+		"h1": "Tentang Toolify",
+		"lead": "Satu situs berisi banyak alat kecil untuk gambar, teks, video, audio, keuangan, PDF, dan pekerjaan sehari-hari.",
+		"metaDescription": "Toolify adalah kotak alat gratis yang berjalan sepenuhnya di browser. Tanpa daftar, tanpa unggah, file Anda tidak pernah meninggalkan perangkat.",
+		"title": "Tentang"
+	},
+	"contact": {
+		"email": "Email",
+		"emailPlaceholder": "ada@example.com",
+		"errorEmail": "Masukkan alamat seperti nama@example.com.",
+		"errorRequired": "Isi semua kolom.",
+		"errorUnavailable": "Formulir kontak sedang tidak tersedia. Coba lagi nanti.",
+		"errorUpstream": "Pesan gagal terkirim. Coba lagi nanti.",
+		"h1": "Kontak",
+		"lead": "Pertanyaan, alat rusak, dan ide selalu diterima. Pesan langsung sampai ke pembuatnya.",
+		"message": "Pesan",
+		"messagePlaceholder": "Konverter PNG gagal untuk file saya…",
+		"metaDescription": "Hubungi Toolify: laporkan alat rusak, bertanya, atau usulkan alat.",
+		"name": "Nama",
+		"namePlaceholder": "Ada",
+		"send": "Kirim pesan",
+		"sending": "Mengirim…",
+		"successLine": "Terima kasih sudah menulis. Balasan biasanya dalam beberapa hari.",
+		"successTitle": "Pesan terkirim",
+		"title": "Kontak"
+	},
+	"privacy": {
+		"h1": "Kebijakan Privasi",
+		"lead": "Versi singkat: file Anda tidak pernah meninggalkan browser, Toolify tanpa akun, dan analitik tidak pernah melihat file Anda.",
+		"metaDescription": "Kebijakan privasi Toolify: file Anda tidak pernah meninggalkan browser. Cara kerja analitik, persetujuan, dan pesan kontak.",
+		"sections": [
+			{
+				"body": [
+					"Setiap alat berjalan lokal di browser Anda dengan JavaScript. File yang dibuka diproses di memori perangkat sendiri dan tidak pernah diunggah ke server mana pun.",
+					"Karena tidak ada yang diunggah, tidak ada yang bisa bocor atau disalahgunakan dari server Toolify. Tidak ada server Toolify yang menyimpan file Anda."
+				],
+				"h": "File tetap di perangkat Anda"
+			},
+			{
+				"body": [
+					"Toolify memakai Google Analytics 4 untuk menghitung kunjungan dan pemakaian alat, serta Microsoft Clarity untuk heatmap dan rekaman sesi. Event analitik tidak pernah membawa isi, nama, atau hash file.",
+					"Halaman generator mnemonik berjalan dengan analitik dimatikan total. Jangan pernah memakai mnemonik buatan untuk dompet sungguhan."
+				],
+				"h": "Analitik"
+			},
+			{
+				"body": [
+					"Pengunjung di Kawasan Ekonomi Eropa melihat spanduk persetujuan. Tidak ada cookie analitik sebelum Anda setuju, mengikuti Google Consent Mode v2. Menolak tidak mengubah cara kerja alat."
+				],
+				"h": "Persetujuan"
+			},
+			{
+				"body": [
+					"Jika Anda menulis lewat formulir kontak, nama, email, dan pesan diteruskan ke pembuat agar bisa dibalas. Dipakai hanya untuk balasan, tidak pernah dijual atau dibagikan."
+				],
+				"h": "Pesan kontak"
+			},
+			{
+				"body": [
+					"Pakai alat apa pun tanpa akun. Blokir analitik lewat pengaturan browser atau pemblokir iklan dan semuanya tetap jalan. Untuk menanyakan atau menghapus pesan kontak, tulis lewat halaman kontak."
+				],
+				"h": "Pilihan Anda"
+			}
+		],
+		"title": "Kebijakan Privasi"
+	},
+	"terms": {
+		"h1": "Ketentuan Layanan",
+		"lead": "Aturan sederhana untuk kotak alat gratis. Memakai alat berarti Anda menerima ketentuan ini.",
+		"metaDescription": "Ketentuan layanan Toolify: alat browser gratis apa adanya, aturan pakai wajar, dan batas tanggung jawab.",
+		"sections": [
+			{
+				"body": [
+					"Toolify menyediakan alat online gratis yang berjalan di browser. Tanpa akun dan tanpa fitur berbayar.",
+					"Alat dan halaman bisa berubah atau pensiun seiring waktu. Ketersediaan bersifat upaya terbaik."
+				],
+				"h": "Layanan"
+			},
+			{
+				"body": [
+					"Pakai alat untuk pekerjaan yang sah. Jangan menyalahgunakan situs, menyerangnya, atau memproses konten yang bukan hak Anda.",
+					"Scraping otomatis yang mengganggu ketersediaan untuk orang lain tidak diterima."
+				],
+				"h": "Pakai wajar"
+			},
+			{
+				"body": [
+					"Alat disediakan apa adanya, tanpa garansi apa pun. Konversi dan hitungan bisa salah: periksa ulang hasil yang penting, terutama uang dan dompet."
+				],
+				"h": "Tanpa garansi"
+			},
+			{
+				"body": [
+					"Sejauh hukum mengizinkan, Toolify tidak bertanggung jawab atas kerugian dari pemakaian alat, termasuk file hilang, hasil salah, atau transaksi terlewat. File tidak pernah meninggalkan browser, jadi simpan cadangan sendiri."
+				],
+				"h": "Tanggung jawab"
+			},
+			{
+				"body": [
+					"Ketentuan ini bisa berubah seiring situs berkembang. Terus memakai berarti menerima. Pertanyaan soal ketentuan lewat halaman kontak."
+				],
+				"h": "Perubahan"
+			}
+		],
+		"title": "Ketentuan Layanan"
+	},
 	"errors": {
 		"generic": "Terjadi kesalahan. Coba lagi.",
 		"tooLarge": "File ini terlalu besar. Batasnya {limit}.",

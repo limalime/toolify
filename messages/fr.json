@@ -57,6 +57,117 @@
 		"home": "Retour à l'accueil",
 		"title": "Page introuvable"
 	},
+	"about": {
+		"body": [
+			"Chaque outil Toolify tourne entièrement dans ton navigateur. Ni envoi, ni file d'attente, ni compte. Tes fichiers restent sur ton appareil du début à la fin.",
+			"Toolify est un petit projet indépendant. Gratuit sans limites: ouvre un outil, sers-t-en, c'est tout. Si un outil casse, la page contact est le plus rapide pour le signaler.",
+			"Les nouveaux outils sortent quand ils sont prêts et testés. Ici ni démo, ni essai, ni appât pour un plan payant."
+		],
+		"h1": "À propos de Toolify",
+		"lead": "Un site, plein de petits outils pour les images, le texte, la vidéo, l'audio, la finance, les PDF et le quotidien.",
+		"metaDescription": "Toolify est une boîte à outils gratuite qui tourne entièrement dans ton navigateur. Sans inscription, sans envois, tes fichiers ne quittent jamais ton appareil.",
+		"title": "À propos"
+	},
+	"contact": {
+		"email": "E-mail",
+		"emailPlaceholder": "ada@example.com",
+		"errorEmail": "Saisis une adresse comme nom@example.com.",
+		"errorRequired": "Remplis tous les champs.",
+		"errorUnavailable": "Le formulaire est indisponible pour le moment. Réessaie plus tard.",
+		"errorUpstream": "Le message n'a pas pu être livré. Réessaie plus tard.",
+		"h1": "Contact",
+		"lead": "Questions, outils cassés et idées bienvenus. Les messages arrivent direct chez le créateur.",
+		"message": "Message",
+		"messagePlaceholder": "Le convertisseur PNG échoue sur mon fichier…",
+		"metaDescription": "Contacter Toolify: signaler un outil cassé, poser une question ou suggérer un outil.",
+		"name": "Nom",
+		"namePlaceholder": "Ada",
+		"send": "Envoyer",
+		"sending": "Envoi…",
+		"successLine": "Merci pour ton message. Réponse sous quelques jours en général.",
+		"successTitle": "Message envoyé",
+		"title": "Contact"
+	},
+	"privacy": {
+		"h1": "Politique de Confidentialité",
+		"lead": "En bref: tes fichiers ne quittent jamais ton navigateur, Toolify n'a pas de comptes et l'analytique ne voit jamais tes fichiers.",
+		"metaDescription": "Politique de confidentialité de Toolify: tes fichiers ne quittent jamais ton navigateur. Fonctionnement de l'analytique, du consentement et des messages.",
+		"sections": [
+			{
+				"body": [
+					"Chaque outil tourne localement dans ton navigateur en JavaScript. Les fichiers ouverts sont traités dans la mémoire de ton propre appareil et ne sont jamais envoyés sur un serveur.",
+					"Comme rien n'est envoyé, rien ne peut fuiter depuis un serveur Toolify. Aucun serveur Toolify ne garde tes fichiers."
+				],
+				"h": "Tes fichiers restent sur ton appareil"
+			},
+			{
+				"body": [
+					"Toolify utilise Google Analytics 4 pour compter visites et usages, et Microsoft Clarity pour les cartes de chaleur et relectures. Les événements ne portent jamais contenus, noms ni condensés de fichiers.",
+					"Les pages du générateur mnémonique tournent avec l'analytique totalement coupée. N'utilise jamais une phrase générée pour un vrai portefeuille."
+				],
+				"h": "Analytique"
+			},
+			{
+				"body": [
+					"Les visiteurs de l'Espace économique européen voient une bannière de consentement. Aucun cookie analytique avant acceptation, selon Google Consent Mode v2. Refuser ne change rien."
+				],
+				"h": "Consentement"
+			},
+			{
+				"body": [
+					"Si tu écris via le formulaire, ton nom, ton e-mail et ton message parviennent au créateur pour te répondre. Servant uniquement à la réponse, jamais vendus ni partagés."
+				],
+				"h": "Messages de contact"
+			},
+			{
+				"body": [
+					"Utilise chaque outil sans compte. Bloque l'analytique via ton navigateur ou un bloqueur, tout continue de marcher. Pour questionner ou effacer un message, écris via la page contact."
+				],
+				"h": "Tes choix"
+			}
+		],
+		"title": "Politique de Confidentialité"
+	},
+	"terms": {
+		"h1": "Conditions d'Utilisation",
+		"lead": "Des règles simples pour une boîte gratuite. Utiliser un outil, c'est accepter ces conditions.",
+		"metaDescription": "Conditions de Toolify: outils navigateur gratuits tels quels, règles d'usage raisonnable et limites de responsabilité.",
+		"sections": [
+			{
+				"body": [
+					"Toolify offre des outils en ligne gratuits qui tournent dans ton navigateur. Ni comptes ni fonctions payantes.",
+					"Outils et pages peuvent changer ou disparaître avec le temps. Disponibilité au mieux."
+				],
+				"h": "Le service"
+			},
+			{
+				"body": [
+					"Sers-t-en pour un travail licite. Ni abus, ni attaques, ni traitement de contenus sans droits.",
+					"Le grattage automatisé qui nuit aux autres n'est pas le bienvenu."
+				],
+				"h": "Usage raisonnable"
+			},
+			{
+				"body": [
+					"Les outils sont fournis tels quels, sans aucune garantie. Conversions et calculs peuvent se tromper: revérifie les résultats qui comptent, surtout argent et portefeuilles."
+				],
+				"h": "Sans garantie"
+			},
+			{
+				"body": [
+					"Dans la limite permise par la loi, Toolify ne répond d'aucune perte liée à l'usage: fichiers perdus, mauvais résultats, transactions manquées. Tes fichiers ne quittent jamais ton navigateur: garde tes sauvegardes."
+				],
+				"h": "Responsabilité"
+			},
+			{
+				"body": [
+					"Ces conditions peuvent évoluer avec le site. Continuer vaut acceptation. Questions via la page contact."
+				],
+				"h": "Changements"
+			}
+		],
+		"title": "Conditions d'Utilisation"
+	},
 	"errors": {
 		"generic": "Un problème est survenu. Réessaie.",
 		"tooLarge": "Ce fichier est trop gros. La limite est de {limit}.",
