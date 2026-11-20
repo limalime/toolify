@@ -21,7 +21,15 @@ export default async function SiteHeader() {
 				>
 					<Image
 						alt="Toolify"
-						className="h-6 w-auto brightness-0 sm:h-7 dark:brightness-100"
+						className="size-8 w-auto sm:hidden"
+						height={1080}
+						priority
+						src="/assets/logo-blue-square-1080.png"
+						width={1080}
+					/>
+					<Image
+						alt="Toolify"
+						className="hidden h-7 w-auto brightness-0 sm:block dark:brightness-100"
 						height={57}
 						priority
 						src="/assets/wordmark-white-700.png"

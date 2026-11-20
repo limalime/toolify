@@ -12,7 +12,6 @@ const LEGAL = [
 
 export default async function SiteFooter() {
 	const t = await getTranslations("footer");
-	const year = new Date().getFullYear();
 
 	return (
 		<footer className="relative overflow-hidden border-t border-border bg-bg">
@@ -49,11 +48,10 @@ export default async function SiteFooter() {
 						alt="Toolify"
 						className="relative h-auto w-full brightness-0 dark:brightness-100"
 						height={200}
-						src="/assets/wordmark-white-700.png"
+						src="/assets/wordmark-700.png"
 						width={700}
 					/>
 				</div>
-				<p className="text-caption text-text-3">© {year} Toolify</p>
 			</div>
 		</footer>
 	);

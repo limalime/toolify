@@ -17,6 +17,24 @@ test("header shows the brand, search, and language switcher", async ({
 	await expect(header.getByRole("button", { name: "Language" })).toBeVisible();
 });
 
+test("brand shows the mark on mobile and the wordmark on desktop", async ({
+	page,
+	isMobile,
+}) => {
+	const brand = page
+		.locator("header")
+		.getByRole("link", { name: "Toolify home" });
+	const mark = brand.locator('img[src*="logo-blue-square"]');
+	const wordmark = brand.locator('img[src*="wordmark-white"]');
+	if (isMobile) {
+		await expect(mark).toBeVisible();
+		await expect(wordmark).toBeHidden();
+	} else {
+		await expect(mark).toBeHidden();
+		await expect(wordmark).toBeVisible();
+	}
+});
+
 test("desktop shows category links and hides the hamburger", async ({
 	page,
 	isMobile,
@@ -167,7 +185,10 @@ test("footer links legal pages and languages over a wordmark", async ({
 		await expect(languages.getByRole("link", { name })).toBeVisible();
 	}
 	await expect(footer.getByRole("img", { name: "Toolify" })).toBeVisible();
-	await expect(footer).toContainText("©");
+	await expect(footer.getByRole("img", { name: "Toolify" })).toHaveAttribute(
+		"src",
+		/wordmark-700\.png/,
+	);
 	await expect(footer).not.toContainText("Files never leave your browser.");
 });
 
