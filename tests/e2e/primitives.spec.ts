@@ -191,6 +191,37 @@ test("rounded-lg corners on every control", async ({ page }) => {
 	}
 });
 
+test("component titles use the display face", async ({ page }) => {
+	const faces = await page.evaluate(() => {
+		const read = (selector: string) => {
+			const node = document.querySelector(selector);
+			return node instanceof HTMLElement
+				? getComputedStyle(node).fontFamily
+				: "missing";
+		};
+		return {
+			accordion: read("[data-slot='accordion-trigger']"),
+			alert: read("[data-slot='alert-title']"),
+			h1: read("h1"),
+			h2: read("h2"),
+		};
+	});
+	for (const [slot, face] of Object.entries(faces)) {
+		expect(`${slot}: ${face}`).toContain("CalSans");
+	}
+	await page.getByRole("button", { name: "Fire success" }).click();
+	await expect(page.locator("[data-slot='toast']")).toBeVisible();
+	const toastFace = await page
+		.locator("[data-slot='toast-title']")
+		.evaluate((node) => getComputedStyle(node).fontFamily);
+	expect(toastFace).toContain("CalSans");
+	await page.getByRole("button", { name: "Open dialog" }).click();
+	const dialogFace = await page
+		.locator("[data-slot='dialog-title']")
+		.evaluate((node) => getComputedStyle(node).fontFamily);
+	expect(dialogFace).toContain("CalSans");
+});
+
 test.describe("reduced motion", () => {
 	test.use({ reducedMotion: "reduce" });
 

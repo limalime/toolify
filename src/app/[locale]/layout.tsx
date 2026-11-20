@@ -73,10 +73,13 @@ export default async function LocaleLayout({
 	const dir = LOCALES.find((entry) => entry.code === locale)?.dir ?? "ltr";
 
 	return (
-		<html dir={dir} lang={locale} suppressHydrationWarning>
-			<body
-				className={`${inter.variable} flex min-h-screen flex-col antialiased`}
-			>
+		<html
+			dir={dir}
+			lang={locale}
+			suppressHydrationWarning
+			className={inter.variable}
+		>
+			<body className="flex min-h-screen flex-col antialiased">
 				<NextIntlClientProvider>
 					<ThemeProvider
 						attribute="class"

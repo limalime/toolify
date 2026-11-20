@@ -189,6 +189,18 @@ test("footer links legal pages and languages over a wordmark", async ({
 		"src",
 		/wordmark-700\.png/,
 	);
+	const sunk = await page.evaluate(() => {
+		const bar = document.querySelector("footer.border-t");
+		const mark = document.querySelector("footer.border-t img");
+		if (!(bar instanceof HTMLElement) || !(mark instanceof HTMLElement)) {
+			return false;
+		}
+		return (
+			mark.getBoundingClientRect().bottom >=
+			bar.getBoundingClientRect().bottom - 2
+		);
+	});
+	expect(sunk).toBe(true);
 	await expect(footer).not.toContainText("Files never leave your browser.");
 });
 

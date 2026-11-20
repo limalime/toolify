@@ -85,7 +85,7 @@ export default function ToolMenu({
 						id={CATEGORY_ANCHORS[group.category]}
 						key={group.category}
 					>
-						<h2 className="font-sans eyebrow text-caption text-text-3">
+						<h2 className="eyebrow text-caption text-text-3">
 							{group.tools[0]?.categoryLabel}
 						</h2>
 						<div className="mt-3 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">

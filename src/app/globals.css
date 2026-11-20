@@ -311,6 +311,15 @@
 	border-radius: 4px;
 }
 
+/* component titles render in the display face, like all headings */
+[data-slot="dialog-title"],
+[data-slot="alert-dialog-title"],
+[data-slot="alert-title"],
+[data-slot="toast-title"],
+[data-slot="accordion-trigger"] {
+	font-family: "CalSans", var(--font-inter), system-ui, sans-serif;
+}
+
 /* menu rows stay thumb reachable */
 [role="option"],
 [role="menuitem"],

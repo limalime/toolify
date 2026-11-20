@@ -19,7 +19,7 @@ export default async function SiteFooter() {
 				aria-hidden="true"
 				className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/60 to-transparent"
 			/>
-			<div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pt-10 pb-6">
+			<div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pt-10">
 				<div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
 					<nav
 						aria-label={t("legal")}
@@ -39,7 +39,7 @@ export default async function SiteFooter() {
 						<InlineLocaleList />
 					</nav>
 				</div>
-				<div className="relative">
+				<div className="relative -mb-8">
 					<div
 						aria-hidden="true"
 						className="pointer-events-none absolute inset-x-0 -top-16 bottom-0 bg-[radial-gradient(ellipse_60%_100%_at_50%_100%,rgba(27,86,253,0.22),transparent_70%)]"

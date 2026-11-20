@@ -355,7 +355,7 @@ export default function PrimitivesDemo() {
 				<ProgressRoot value={65}>
 					<div className="flex items-center justify-between gap-2">
 						<ProgressLabel>Converting vacation.mp4</ProgressLabel>
-						<ProgressValue />
+						<ProgressValue className="font-display" />
 					</div>
 					<ProgressTrack className="bg-surface-2" size="sm">
 						<ProgressIndicator />
