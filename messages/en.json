@@ -44,7 +44,11 @@
 		"filesNeverLeave": "Files never leave your browser.",
 		"generate": "Generate",
 		"remove": "Remove",
-		"retry": "Retry"
+		"retry": "Retry",
+		"home": "Home",
+		"relatedTools": "Related tools",
+		"batchOf": "{done} of {total}",
+		"needFiles": "Add files to start."
 	},
 	"howto": {
 		"step": "Step {n}",
@@ -172,7 +176,8 @@
 	"errors": {
 		"generic": "Something went wrong. Try again.",
 		"tooLarge": "This file is too big. The limit is {limit}.",
-		"unreadableFile": "Could not read this file. It may be corrupted. Try another file."
+		"unreadableFile": "Could not read this file. It may be corrupted. Try another file.",
+		"unsupported": "Only PNG, JPG, WEBP, and AVIF files work here."
 	},
 	"landing": {
 		"emptyClear": "Clear search",
@@ -189,5 +194,229 @@
 		"why2title": "Private by design",
 		"why3line": "Open a tool and start. Nothing to install.",
 		"why3title": "No signup"
+	},
+	"tools": {
+		"image-converter": {
+			"name": "Image Converter",
+			"tagline": "Convert between PNG, JPG, WEBP, and more.",
+			"title": "Free Online Image Converter: PNG, JPG, WEBP, AVIF, ICO, PDF and SVG",
+			"description": "Convert images between PNG, JPG, WEBP, AVIF, ICO, PDF, and SVG free in your browser. Batch convert with quality control. Files never leave your device.",
+			"h1": "Free Online Image Converter",
+			"sub": "Convert one image or a whole batch. Pick a format, tune the quality, download.",
+			"options": {
+				"format": "Output format",
+				"quality": "Quality",
+				"background": "Background",
+				"bgNote": "Background applies to JPG, ICO, PDF, and SVG outputs.",
+				"inputNote": "HEIC, AI, and PDF files open automatically.",
+				"svgNote": "SVG output embeds the image. For true vector tracing, try PNG to SVG."
+			},
+			"steps": [
+				{
+					"title": "Drop your files",
+					"line": "Add one image or a whole batch to convert."
+				},
+				{
+					"title": "Pick a format",
+					"line": "Choose the output format, quality, and background."
+				},
+				{
+					"title": "Download",
+					"line": "Save files one by one or all at once."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Which formats can I convert from?",
+					"a": "PNG, JPG, WEBP, AVIF, ICO, PDF, SVG, HEIC, and AI files all open. HEIC decodes in your browser and AI files read through their PDF compatible portion."
+				},
+				{
+					"q": "Will converting reduce quality?",
+					"a": "Lossy formats like JPG, WEBP, and AVIF follow your quality slider. PNG output stays lossless no matter the slider."
+				},
+				{
+					"q": "Do my images get uploaded?",
+					"a": "No. Conversion runs fully in your browser and your files never leave your device."
+				}
+			]
+		},
+		"compress-image": {
+			"name": "Image Compressor",
+			"tagline": "Shrink file sizes with quality control.",
+			"title": "Free Online Image Compressor",
+			"description": "Compress PNG, JPG, and WEBP images free in your browser. Set quality or a target size and compare before and after. Files never leave your device.",
+			"h1": "Free Online Image Compressor",
+			"sub": "Smaller files, same look. Set a quality or a target size and compare.",
+			"options": {
+				"quality": "Quality",
+				"targetSize": "Target size (optional)",
+				"targetPlaceholder": "e.g. 500 KB",
+				"before": "Before",
+				"after": "After",
+				"formatKept": "Output keeps the input format.",
+				"targetInvalid": "Enter a size like 500 KB."
+			},
+			"steps": [
+				{
+					"title": "Add images",
+					"line": "Drop one image or a batch to shrink."
+				},
+				{
+					"title": "Set quality or size",
+					"line": "Lower the quality or type a target size."
+				},
+				{
+					"title": "Download",
+					"line": "Compare before and after, then save."
+				}
+			],
+			"faqs": [
+				{
+					"q": "How does the target size work?",
+					"a": "The compressor re-encodes at lower quality until the file fits your target or hits the lowest usable quality."
+				},
+				{
+					"q": "Does compression hurt quality?",
+					"a": "Lower quality means smaller files with visible loss past a point. PNG stays lossless and only sheds metadata weight."
+				},
+				{
+					"q": "Why is my PNG barely smaller?",
+					"a": "Lossless PNG has a floor. Convert to JPG or WEBP for much smaller files."
+				}
+			]
+		},
+		"resize-image": {
+			"name": "Image Resizer",
+			"tagline": "Resize by pixels or percent.",
+			"title": "Free Online Image Resizer",
+			"description": "Resize images by pixels or percent free in your browser, with optional aspect lock. Files never leave your device.",
+			"h1": "Free Online Image Resizer",
+			"sub": "Exact pixels or a quick percent. Lock the ratio and go.",
+			"options": {
+				"unitPixels": "Pixels",
+				"unitPercent": "Percent",
+				"width": "Width",
+				"height": "Height",
+				"keepRatio": "Keep aspect ratio",
+				"apply": "Resize image"
+			},
+			"steps": [
+				{
+					"title": "Add an image",
+					"line": "Drop the image to resize."
+				},
+				{
+					"title": "Set the size",
+					"line": "Type pixels or a percent, with the ratio locked or free."
+				},
+				{
+					"title": "Download",
+					"line": "Save the resized image."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Does resizing lose quality?",
+					"a": "Shrinking is safe. Enlarging stretches existing pixels, so huge upscales soften. The upscale tool rebuilds detail instead."
+				},
+				{
+					"q": "What does keep aspect ratio do?",
+					"a": "It locks width to height, so typing one side computes the other and nothing stretches."
+				},
+				{
+					"q": "Which format comes out?",
+					"a": "The same format as your input, resized with a high quality filter."
+				}
+			]
+		},
+		"crop-image": {
+			"name": "Image Cropper",
+			"tagline": "Crop with drag and presets.",
+			"title": "Free Online Image Cropper",
+			"description": "Crop images free in your browser. Drag a region or pick an aspect preset. Files never leave your device.",
+			"h1": "Free Online Image Cropper",
+			"sub": "Drag a region, snap a preset, download the crop.",
+			"options": {
+				"aspect": "Aspect ratio",
+				"free": "Free",
+				"apply": "Crop image"
+			},
+			"steps": [
+				{
+					"title": "Add an image",
+					"line": "Drop the image to crop."
+				},
+				{
+					"title": "Select a region",
+					"line": "Drag on the preview or pick a preset ratio."
+				},
+				{
+					"title": "Download",
+					"line": "Save exactly the selected region."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Can I crop to an exact size?",
+					"a": "Drag freely or lock a ratio preset, then resize the result to exact pixels with the resizer."
+				},
+				{
+					"q": "Does cropping reduce quality?",
+					"a": "No. Cropping keeps original pixels untouched, it only trims the edges."
+				},
+				{
+					"q": "My selection snaps oddly, why?",
+					"a": "A ratio preset is active. Switch back to Free for any shape."
+				}
+			]
+		},
+		"watermark-image": {
+			"name": "Image Watermark",
+			"tagline": "Stamp text or images on photos.",
+			"title": "Free Online Image Watermark Tool",
+			"description": "Watermark images with text or a logo free in your browser. Nine positions plus opacity control. Files never leave your device.",
+			"h1": "Free Online Image Watermark Tool",
+			"sub": "Stamp your name or logo. Place it, fade it, download.",
+			"options": {
+				"modeText": "Text",
+				"modeImage": "Image",
+				"text": "Watermark text",
+				"textPlaceholder": "© Your Name",
+				"fontSize": "Size",
+				"imageLabel": "Watermark image",
+				"browseImage": "Choose image",
+				"position": "Position",
+				"opacity": "Opacity",
+				"apply": "Apply watermark"
+			},
+			"steps": [
+				{
+					"title": "Add an image",
+					"line": "Drop the photo to stamp."
+				},
+				{
+					"title": "Design the mark",
+					"line": "Type text or add a logo, then place it and set opacity."
+				},
+				{
+					"title": "Download",
+					"line": "Save the watermarked image."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Where can the mark sit?",
+					"a": "Anywhere: nine anchor positions from top left to bottom right."
+				},
+				{
+					"q": "Will the text stay readable?",
+					"a": "Text renders white with a soft dark edge so it reads on light and dark photos."
+				},
+				{
+					"q": "Which format comes out?",
+					"a": "The same format as your input, with the mark baked in."
+				}
+			]
+		}
 	}
 }

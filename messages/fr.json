@@ -44,7 +44,11 @@
 		"filesNeverLeave": "Tes fichiers ne quittent jamais ton navigateur.",
 		"generate": "Générer",
 		"remove": "Retirer",
-		"retry": "Réessayer"
+		"retry": "Réessayer",
+		"home": "Accueil",
+		"relatedTools": "Outils liés",
+		"batchOf": "{done} sur {total}",
+		"needFiles": "Ajoute des fichiers d'abord."
 	},
 	"howto": {
 		"step": "Étape {n}",
@@ -172,7 +176,8 @@
 	"errors": {
 		"generic": "Un problème est survenu. Réessaie.",
 		"tooLarge": "Ce fichier est trop gros. La limite est de {limit}.",
-		"unreadableFile": "Impossible de lire ce fichier. Il est peut-être corrompu. Essaie un autre fichier."
+		"unreadableFile": "Impossible de lire ce fichier. Il est peut-être corrompu. Essaie un autre fichier.",
+		"unsupported": "Ici seuls PNG, JPG, WEBP et AVIF passent."
 	},
 	"landing": {
 		"emptyClear": "Effacer la recherche",
@@ -189,5 +194,229 @@
 		"why2title": "Privé par conception",
 		"why3line": "Ouvre un outil et commence. Rien à installer.",
 		"why3title": "Sans inscription"
+	},
+	"tools": {
+		"image-converter": {
+			"name": "Convertisseur d'Images",
+			"tagline": "Convertis PNG, JPG, WEBP et plus.",
+			"title": "Convertisseur d'Images en Ligne Gratuit: PNG, JPG, WEBP, AVIF, ICO, PDF et SVG",
+			"description": "Convertis PNG, JPG, WEBP, AVIF, ICO, PDF et SVG gratuitement dans ton navigateur. Conversion par lots avec contrôle qualité. Tes fichiers ne quittent jamais ton appareil.",
+			"h1": "Convertisseur d'Images en Ligne Gratuit",
+			"sub": "Convertis une image ou tout un lot. Choisis un format, règle la qualité, télécharge.",
+			"options": {
+				"format": "Format de sortie",
+				"quality": "Qualité",
+				"background": "Fond",
+				"bgNote": "Le fond s'applique aux sorties JPG, ICO, PDF et SVG.",
+				"inputNote": "Les fichiers HEIC, AI et PDF s'ouvrent automatiquement.",
+				"svgNote": "La sortie SVG incorpore l'image. Pour un vrai vectoriel, essaie PNG vers SVG."
+			},
+			"steps": [
+				{
+					"title": "Dépose tes fichiers",
+					"line": "Ajoute une image ou tout un lot à convertir."
+				},
+				{
+					"title": "Choisis un format",
+					"line": "Sélectionne le format, la qualité et le fond."
+				},
+				{
+					"title": "Télécharge",
+					"line": "Enregistre un par un ou tout ensemble."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Depuis quels formats convertir?",
+					"a": "PNG, JPG, WEBP, AVIF, ICO, PDF, SVG, HEIC et AI s'ouvrent. HEIC se décode dans ton navigateur et les AI se lisent via leur partie compatible PDF."
+				},
+				{
+					"q": "La conversion baisse la qualité?",
+					"a": "Les formats avec perte comme JPG, WEBP et AVIF suivent ton curseur. La sortie PNG reste sans perte."
+				},
+				{
+					"q": "Mes images sont envoyées?",
+					"a": "Non. Tout tourne dans ton navigateur et tes fichiers ne quittent jamais ton appareil."
+				}
+			]
+		},
+		"compress-image": {
+			"name": "Compresseur d'Images",
+			"tagline": "Allège les fichiers avec contrôle qualité.",
+			"title": "Compresseur d'Images en Ligne Gratuit",
+			"description": "Compresse PNG, JPG et WEBP gratuitement dans ton navigateur. Fixe une qualité ou une taille cible et compare avant après. Tes fichiers ne quittent jamais ton appareil.",
+			"h1": "Compresseur d'Images en Ligne Gratuit",
+			"sub": "Des fichiers plus légers, même rendu. Fixe qualité ou taille puis compare.",
+			"options": {
+				"quality": "Qualité",
+				"targetSize": "Taille cible (optionnel)",
+				"targetPlaceholder": "ex. 500 Ko",
+				"before": "Avant",
+				"after": "Après",
+				"formatKept": "La sortie garde le format d'entrée.",
+				"targetInvalid": "Saisis une taille comme 500 Ko."
+			},
+			"steps": [
+				{
+					"title": "Ajoute des images",
+					"line": "Dépose une image ou un lot à alléger."
+				},
+				{
+					"title": "Fixe qualité ou taille",
+					"line": "Baisse la qualité ou tape une taille cible."
+				},
+				{
+					"title": "Télécharge",
+					"line": "Compare avant après puis enregistre."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Comment marche la taille cible?",
+					"a": "Le compresseur réencode en baissant la qualité jusqu'à tenir la cible ou atteindre le plancher utile."
+				},
+				{
+					"q": "La compression abîme la qualité?",
+					"a": "Moins de qualité, moins de poids, avec pertes visibles passé un point. Le PNG reste sans perte et perd juste du poids de métadonnées."
+				},
+				{
+					"q": "Pourquoi mon PNG bouge à peine?",
+					"a": "Le PNG sans perte a un plancher. Convertis en JPG ou WEBP pour des fichiers bien plus légers."
+				}
+			]
+		},
+		"resize-image": {
+			"name": "Redimensionneur d'Image",
+			"tagline": "Change la taille en pixels ou pourcent.",
+			"title": "Redimensionneur d'Image en Ligne Gratuit",
+			"description": "Change la taille en pixels ou pourcent gratuitement dans ton navigateur, verrou de proportions en option. Tes fichiers ne quittent jamais ton appareil.",
+			"h1": "Redimensionneur d'Image en Ligne Gratuit",
+			"sub": "Pixels exacts ou pourcent rapide. Verrouille le ratio et go.",
+			"options": {
+				"unitPixels": "Pixels",
+				"unitPercent": "Pourcent",
+				"width": "Largeur",
+				"height": "Hauteur",
+				"keepRatio": "Garder les proportions",
+				"apply": "Redimensionner"
+			},
+			"steps": [
+				{
+					"title": "Ajoute une image",
+					"line": "Dépose l'image à redimensionner."
+				},
+				{
+					"title": "Fixe la taille",
+					"line": "Tape pixels ou pourcent, ratio libre ou verrouillé."
+				},
+				{
+					"title": "Télécharge",
+					"line": "Enregistre l'image redimensionnée."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Redimensionner perd en qualité?",
+					"a": "Réduire est sûr. Agrandir étire les pixels et adoucit en grand. L'outil d'amélioration reconstruit le détail."
+				},
+				{
+					"q": "Garder les proportions fait quoi?",
+					"a": "Ça verrouille largeur sur hauteur: tu tapes un côté, l'autre se calcule, rien ne s'étire."
+				},
+				{
+					"q": "Quel format en sortie?",
+					"a": "Le même qu'en entrée, redimensionné avec un filtre haute qualité."
+				}
+			]
+		},
+		"crop-image": {
+			"name": "Rogneur d'Image",
+			"tagline": "Rogne au glisser-déposer avec presets.",
+			"title": "Rogneur d'Image en Ligne Gratuit",
+			"description": "Rogne des images gratuitement dans ton navigateur. Glisse une zone ou choisis un preset de ratio. Tes fichiers ne quittent jamais ton appareil.",
+			"h1": "Rogneur d'Image en Ligne Gratuit",
+			"sub": "Glisse une zone, cale un preset, télécharge le rognage.",
+			"options": {
+				"aspect": "Ratio",
+				"free": "Libre",
+				"apply": "Rogner l'image"
+			},
+			"steps": [
+				{
+					"title": "Ajoute une image",
+					"line": "Dépose l'image à rogner."
+				},
+				{
+					"title": "Choisis une zone",
+					"line": "Glisse sur l'aperçu ou prends un preset."
+				},
+				{
+					"title": "Télécharge",
+					"line": "Enregistre exactement la zone choisie."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Rogner à une taille exacte?",
+					"a": "Glisse libre ou cale un preset, puis redimensionne au pixel près."
+				},
+				{
+					"q": "Rogner baisse la qualité?",
+					"a": "Non. Le rognage garde les pixels intacts, il coupe juste les bords."
+				},
+				{
+					"q": "Ma sélection s'accroche bizarrement?",
+					"a": "Un preset est actif. Repasse en Libre pour toute forme."
+				}
+			]
+		},
+		"watermark-image": {
+			"name": "Filigrane Image",
+			"tagline": "Signe tes photos, texte ou logo.",
+			"title": "Filigrane pour Image en Ligne Gratuit",
+			"description": "Signe tes images d'un texte ou d'un logo gratuitement dans ton navigateur. Neuf positions plus contrôle d'opacité. Tes fichiers ne quittent jamais ton appareil.",
+			"h1": "Filigrane pour Image en Ligne Gratuit",
+			"sub": "Signe de ton nom ou logo. Place, estompe, télécharge.",
+			"options": {
+				"modeText": "Texte",
+				"modeImage": "Image",
+				"text": "Texte du filigrane",
+				"textPlaceholder": "© Ton Nom",
+				"fontSize": "Taille",
+				"imageLabel": "Logo du filigrane",
+				"browseImage": "Choisir une image",
+				"position": "Position",
+				"opacity": "Opacité",
+				"apply": "Appliquer"
+			},
+			"steps": [
+				{
+					"title": "Ajoute une image",
+					"line": "Dépose la photo à signer."
+				},
+				{
+					"title": "Dessine la marque",
+					"line": "Tape un texte ou ajoute un logo, place et règle l'opacité."
+				},
+				{
+					"title": "Télécharge",
+					"line": "Enregistre l'image signée."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Où placer la marque?",
+					"a": "Où tu veux: neuf ancres du haut gauche au bas droite."
+				},
+				{
+					"q": "Le texte reste lisible?",
+					"a": "Texte blanc à contour sombre doux, lisible sur photos claires et sombres."
+				},
+				{
+					"q": "Quel format en sortie?",
+					"a": "Le même qu'en entrée, marque intégrée."
+				}
+			]
+		}
 	}
 }

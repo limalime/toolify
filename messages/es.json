@@ -44,7 +44,11 @@
 		"filesNeverLeave": "Tus archivos nunca salen de tu navegador.",
 		"generate": "Generar",
 		"remove": "Quitar",
-		"retry": "Reintentar"
+		"retry": "Reintentar",
+		"home": "Inicio",
+		"relatedTools": "Herramientas relacionadas",
+		"batchOf": "{done} de {total}",
+		"needFiles": "Añade archivos primero."
 	},
 	"howto": {
 		"step": "Paso {n}",
@@ -172,7 +176,8 @@
 	"errors": {
 		"generic": "Algo salió mal. Inténtalo de nuevo.",
 		"tooLarge": "Este archivo es muy grande. El límite es {limit}.",
-		"unreadableFile": "No se pudo leer este archivo. Puede estar dañado. Prueba con otro."
+		"unreadableFile": "No se pudo leer este archivo. Puede estar dañado. Prueba con otro.",
+		"unsupported": "Aquí solo funcionan PNG, JPG, WEBP y AVIF."
 	},
 	"landing": {
 		"emptyClear": "Borrar búsqueda",
@@ -189,5 +194,229 @@
 		"why2title": "Privado por diseño",
 		"why3line": "Abre una herramienta y empieza. Nada que instalar.",
 		"why3title": "Sin registro"
+	},
+	"tools": {
+		"image-converter": {
+			"name": "Convertidor de Imágenes",
+			"tagline": "Convierte entre PNG, JPG, WEBP y más.",
+			"title": "Convertidor de Imágenes Online Gratis: PNG, JPG, WEBP, AVIF, ICO, PDF y SVG",
+			"description": "Convierte imágenes entre PNG, JPG, WEBP, AVIF, ICO, PDF y SVG gratis en tu navegador. Conversión por lotes con control de calidad. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Convertidor de Imágenes Online Gratis",
+			"sub": "Convierte una imagen o un lote entero. Elige formato, ajusta calidad, descarga.",
+			"options": {
+				"format": "Formato de salida",
+				"quality": "Calidad",
+				"background": "Fondo",
+				"bgNote": "El fondo aplica a salidas JPG, ICO, PDF y SVG.",
+				"inputNote": "Los archivos HEIC, AI y PDF se abren automáticamente.",
+				"svgNote": "La salida SVG incrusta la imagen. Para vectores reales, prueba PNG a SVG."
+			},
+			"steps": [
+				{
+					"title": "Suelta tus archivos",
+					"line": "Añade una imagen o un lote para convertir."
+				},
+				{
+					"title": "Elige un formato",
+					"line": "Escoge formato de salida, calidad y fondo."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda uno por uno o todo junto."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Desde qué formatos convierto?",
+					"a": "PNG, JPG, WEBP, AVIF, ICO, PDF, SVG, HEIC y AI se abren. HEIC se decodifica en tu navegador y los AI se leen por su parte compatible con PDF."
+				},
+				{
+					"q": "¿Convertir baja la calidad?",
+					"a": "Los formatos con pérdida como JPG, WEBP y AVIF siguen tu deslizador. La salida PNG se mantiene sin pérdida."
+				},
+				{
+					"q": "¿Mis imágenes se suben?",
+					"a": "No. La conversión corre entera en tu navegador y tus archivos nunca salen de tu dispositivo."
+				}
+			]
+		},
+		"compress-image": {
+			"name": "Compresor de Imágenes",
+			"tagline": "Reduce pesos con control de calidad.",
+			"title": "Compresor de Imágenes Online Gratis",
+			"description": "Comprime imágenes PNG, JPG y WEBP gratis en tu navegador. Fija calidad o tamaño objetivo y compara antes y después. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Compresor de Imágenes Online Gratis",
+			"sub": "Archivos más chicos, igual aspecto. Fija calidad o tamaño y compara.",
+			"options": {
+				"quality": "Calidad",
+				"targetSize": "Tamaño objetivo (opcional)",
+				"targetPlaceholder": "p. ej. 500 KB",
+				"before": "Antes",
+				"after": "Después",
+				"formatKept": "La salida conserva el formato de entrada.",
+				"targetInvalid": "Escribe un tamaño como 500 KB."
+			},
+			"steps": [
+				{
+					"title": "Añade imágenes",
+					"line": "Suelta una imagen o un lote para encoger."
+				},
+				{
+					"title": "Fija calidad o tamaño",
+					"line": "Baja la calidad o escribe un tamaño objetivo."
+				},
+				{
+					"title": "Descarga",
+					"line": "Compara antes y después, luego guarda."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Cómo funciona el tamaño objetivo?",
+					"a": "El compresor recodifica a menor calidad hasta encajar en tu objetivo o llegar a la mínima usable."
+				},
+				{
+					"q": "¿Comprimir daña la calidad?",
+					"a": "Menos calidad es menos peso con pérdida visible pasado un punto. PNG se queda sin pérdida y solo suelta peso de metadatos."
+				},
+				{
+					"q": "¿Por qué mi PNG apenas baja?",
+					"a": "El PNG sin pérdida tiene un piso. Convierte a JPG o WEBP para archivos mucho menores."
+				}
+			]
+		},
+		"resize-image": {
+			"name": "Redimensionar Imágenes",
+			"tagline": "Cambia tamaño por píxeles o por ciento.",
+			"title": "Redimensionar Imágenes Online Gratis",
+			"description": "Cambia el tamaño por píxeles o por ciento gratis en tu navegador, con bloqueo de aspecto opcional. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Redimensionar Imágenes Online Gratis",
+			"sub": "Píxeles exactos o un por ciento rápido. Bloquea la proporción y listo.",
+			"options": {
+				"unitPixels": "Píxeles",
+				"unitPercent": "Por ciento",
+				"width": "Ancho",
+				"height": "Alto",
+				"keepRatio": "Mantener proporción",
+				"apply": "Redimensionar"
+			},
+			"steps": [
+				{
+					"title": "Añade una imagen",
+					"line": "Suelta la imagen a redimensionar."
+				},
+				{
+					"title": "Fija el tamaño",
+					"line": "Escribe píxeles o por ciento, con proporción libre o fija."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda la imagen redimensionada."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Redimensionar pierde calidad?",
+					"a": "Encoger es seguro. Agrandar estira píxeles y suaviza en grande. La herramienta de ampliar reconstruye detalle."
+				},
+				{
+					"q": "¿Qué hace mantener proporción?",
+					"a": "Bloquea ancho contra alto: escribes un lado y el otro se calcula, nada se estira."
+				},
+				{
+					"q": "¿Qué formato sale?",
+					"a": "El mismo de tu entrada, redimensionado con un filtro de alta calidad."
+				}
+			]
+		},
+		"crop-image": {
+			"name": "Recortar Imágenes",
+			"tagline": "Recorta arrastrando y con presets.",
+			"title": "Recortar Imágenes Online Gratis",
+			"description": "Recorta imágenes gratis en tu navegador. Arrastra una región o elige un preset de aspecto. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Recortar Imágenes Online Gratis",
+			"sub": "Arrastra una región, fija un preset, descarga el recorte.",
+			"options": {
+				"aspect": "Relación de aspecto",
+				"free": "Libre",
+				"apply": "Recortar imagen"
+			},
+			"steps": [
+				{
+					"title": "Añade una imagen",
+					"line": "Suelta la imagen a recortar."
+				},
+				{
+					"title": "Elige una región",
+					"line": "Arrastra en la vista previa o elige un preset."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda exactamente la región elegida."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Puedo recortar a un tamaño exacto?",
+					"a": "Arrastra libre o fija un preset, luego redimensiona el resultado a píxeles exactos."
+				},
+				{
+					"q": "¿Recortar baja la calidad?",
+					"a": "No. El recorte deja los píxeles intactos, solo quita bordes."
+				},
+				{
+					"q": "¿Por qué salta mi selección?",
+					"a": "Hay un preset activo. Vuelve a Libre para cualquier forma."
+				}
+			]
+		},
+		"watermark-image": {
+			"name": "Marca de Agua",
+			"tagline": "Firma fotos con texto o logos.",
+			"title": "Marca de Agua Online Gratis para Imágenes",
+			"description": "Firma imágenes con texto o logo gratis en tu navegador. Nueve posiciones más control de opacidad. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Marca de Agua Online Gratis",
+			"sub": "Firma con tu nombre o logo. Colócala, atenúala, descarga.",
+			"options": {
+				"modeText": "Texto",
+				"modeImage": "Imagen",
+				"text": "Texto de marca",
+				"textPlaceholder": "© Tu Nombre",
+				"fontSize": "Tamaño",
+				"imageLabel": "Logo de marca",
+				"browseImage": "Elegir imagen",
+				"position": "Posición",
+				"opacity": "Opacidad",
+				"apply": "Aplicar marca"
+			},
+			"steps": [
+				{
+					"title": "Añade una imagen",
+					"line": "Suelta la foto a firmar."
+				},
+				{
+					"title": "Diseña la marca",
+					"line": "Escribe texto o añade un logo, colócalo y ajusta opacidad."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda la imagen firmada."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Dónde puede ir la marca?",
+					"a": "Donde sea: nueve anclas desde arriba izquierda hasta abajo derecha."
+				},
+				{
+					"q": "¿El texto se lee bien?",
+					"a": "El texto sale blanco con un borde oscuro suave que se lee en fotos claras y oscuras."
+				},
+				{
+					"q": "¿Qué formato sale?",
+					"a": "El mismo de tu entrada, con la marca integrada."
+				}
+			]
+		}
 	}
 }

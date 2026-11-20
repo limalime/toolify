@@ -1,8 +1,22 @@
-import { type LucideIcon, Wrench } from "lucide-react";
+import {
+	Crop,
+	FileImage,
+	type LucideIcon,
+	Minimize2,
+	Scaling,
+	Stamp,
+	Wrench,
+} from "lucide-react";
 
 // one icon per tool family, registered by the phase that ships the tool.
 // unknown names fall back to the wrench so a missing icon stays visible.
-export const TOOL_ICONS: Record<string, LucideIcon> = {};
+export const TOOL_ICONS: Record<string, LucideIcon> = {
+	converter: FileImage,
+	compress: Minimize2,
+	resize: Scaling,
+	crop: Crop,
+	watermark: Stamp,
+};
 
 export default function ToolIcon({
 	name,

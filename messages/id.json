@@ -44,7 +44,11 @@
 		"filesNeverLeave": "File tidak pernah meninggalkan browser Anda.",
 		"generate": "Buat",
 		"remove": "Hapus",
-		"retry": "Coba lagi"
+		"retry": "Coba lagi",
+		"home": "Beranda",
+		"relatedTools": "Alat terkait",
+		"batchOf": "{done} dari {total}",
+		"needFiles": "Tambahkan file dulu."
 	},
 	"howto": {
 		"step": "Langkah {n}",
@@ -172,7 +176,8 @@
 	"errors": {
 		"generic": "Terjadi kesalahan. Coba lagi.",
 		"tooLarge": "File ini terlalu besar. Batasnya {limit}.",
-		"unreadableFile": "File tidak bisa dibaca. Mungkin rusak. Coba file lain."
+		"unreadableFile": "File tidak bisa dibaca. Mungkin rusak. Coba file lain.",
+		"unsupported": "Hanya file PNG, JPG, WEBP, dan AVIF yang bisa di sini."
 	},
 	"landing": {
 		"emptyClear": "Hapus pencarian",
@@ -189,5 +194,229 @@
 		"why2title": "Privat sejak awal",
 		"why3line": "Buka alat dan langsung pakai. Tanpa instal.",
 		"why3title": "Tanpa daftar"
+	},
+	"tools": {
+		"image-converter": {
+			"name": "Konverter Gambar",
+			"tagline": "Konversi PNG, JPG, WEBP, dan lainnya.",
+			"title": "Konverter Gambar Online Gratis: PNG, JPG, WEBP, AVIF, ICO, PDF dan SVG",
+			"description": "Konversi gambar PNG, JPG, WEBP, AVIF, ICO, PDF, dan SVG gratis di browser. Konversi banyak file sekaligus dengan kontrol kualitas. File tidak pernah meninggalkan perangkat.",
+			"h1": "Konverter Gambar Online Gratis",
+			"sub": "Konversi satu gambar atau banyak sekaligus. Pilih format, atur kualitas, unduh.",
+			"options": {
+				"format": "Format output",
+				"quality": "Kualitas",
+				"background": "Latar",
+				"bgNote": "Latar berlaku untuk output JPG, ICO, PDF, dan SVG.",
+				"inputNote": "File HEIC, AI, dan PDF terbuka otomatis.",
+				"svgNote": "Output SVG menyematkan gambar. Untuk vektor sejati, coba PNG ke SVG."
+			},
+			"steps": [
+				{
+					"title": "Taruh file Anda",
+					"line": "Tambahkan satu gambar atau banyak sekaligus."
+				},
+				{
+					"title": "Pilih format",
+					"line": "Pilih format output, kualitas, dan latar."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan satu per satu atau sekaligus."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Format apa saja yang bisa dikonversi?",
+					"a": "File PNG, JPG, WEBP, AVIF, ICO, PDF, SVG, HEIC, dan AI semua bisa dibuka. HEIC didekode di browser dan file AI dibaca lewat bagian yang kompatibel PDF."
+				},
+				{
+					"q": "Apakah konversi menurunkan kualitas?",
+					"a": "Format lossy seperti JPG, WEBP, dan AVIF mengikuti slider kualitas. Output PNG tetap lossless apa pun slidernya."
+				},
+				{
+					"q": "Apakah gambar saya diunggah?",
+					"a": "Tidak. Konversi berjalan penuh di browser dan file tidak pernah meninggalkan perangkat."
+				}
+			]
+		},
+		"compress-image": {
+			"name": "Kompres Gambar",
+			"tagline": "Perkecil ukuran file dengan kontrol kualitas.",
+			"title": "Kompres Gambar Online Gratis",
+			"description": "Kompres gambar PNG, JPG, dan WEBP gratis di browser. Atur kualitas atau target ukuran dan bandingkan sebelum dan sesudah. File tidak pernah meninggalkan perangkat.",
+			"h1": "Kompres Gambar Online Gratis",
+			"sub": "File lebih kecil, tampilan tetap. Atur kualitas atau target ukuran dan bandingkan.",
+			"options": {
+				"quality": "Kualitas",
+				"targetSize": "Target ukuran (opsional)",
+				"targetPlaceholder": "mis. 500 KB",
+				"before": "Sebelum",
+				"after": "Sesudah",
+				"formatKept": "Output mengikuti format input.",
+				"targetInvalid": "Masukkan ukuran seperti 500 KB."
+			},
+			"steps": [
+				{
+					"title": "Tambahkan gambar",
+					"line": "Taruh satu gambar atau banyak untuk diperkecil."
+				},
+				{
+					"title": "Atur kualitas atau ukuran",
+					"line": "Turunkan kualitas atau ketik target ukuran."
+				},
+				{
+					"title": "Unduh",
+					"line": "Bandingkan sebelum dan sesudah, lalu simpan."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Bagaimana cara kerja target ukuran?",
+					"a": "Kompresor mengenkode ulang dengan kualitas lebih rendah sampai file muat di target atau sampai kualitas terendah yang masih layak."
+				},
+				{
+					"q": "Apakah kompresi merusak kualitas?",
+					"a": "Kualitas lebih rendah berarti file lebih kecil dengan penurunan yang terlihat di titik tertentu. PNG tetap lossless dan hanya memangkas bobot metadata."
+				},
+				{
+					"q": "Kenapa PNG saya nyaris tidak mengecil?",
+					"a": "PNG lossless ada batasnya. Konversi ke JPG atau WEBP untuk file jauh lebih kecil."
+				}
+			]
+		},
+		"resize-image": {
+			"name": "Ubah Ukuran Gambar",
+			"tagline": "Ubah ukuran per piksel atau persen.",
+			"title": "Ubah Ukuran Gambar Online Gratis",
+			"description": "Ubah ukuran gambar per piksel atau persen gratis di browser, dengan kunci aspek opsional. File tidak pernah meninggalkan perangkat.",
+			"h1": "Ubah Ukuran Gambar Online Gratis",
+			"sub": "Piksel pas atau persen cepat. Kunci rasio lalu jalan.",
+			"options": {
+				"unitPixels": "Piksel",
+				"unitPercent": "Persen",
+				"width": "Lebar",
+				"height": "Tinggi",
+				"keepRatio": "Kunci rasio aspek",
+				"apply": "Ubah ukuran"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan gambar",
+					"line": "Taruh gambar yang akan diubah."
+				},
+				{
+					"title": "Atur ukuran",
+					"line": "Ketik piksel atau persen, dengan rasio terkunci atau bebas."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan gambar hasil ubahan."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah resize menghilangkan kualitas?",
+					"a": "Memperkecil aman. Memperbesar merenggangkan piksel, jadi perbesaran besar melunak. Alat upscale membangun ulang detail."
+				},
+				{
+					"q": "Apa fungsi kunci rasio aspek?",
+					"a": "Mengunci lebar ke tinggi, jadi mengetik satu sisi menghitung sisi lain dan tidak ada yang melar."
+				},
+				{
+					"q": "Format apa yang keluar?",
+					"a": "Sama seperti input, diubah dengan filter kualitas tinggi."
+				}
+			]
+		},
+		"crop-image": {
+			"name": "Potong Gambar",
+			"tagline": "Potong dengan seret dan preset.",
+			"title": "Potong Gambar Online Gratis",
+			"description": "Potong gambar gratis di browser. Seret area atau pilih preset aspek. File tidak pernah meninggalkan perangkat.",
+			"h1": "Potong Gambar Online Gratis",
+			"sub": "Seret area, kunci preset, unduh potongan.",
+			"options": {
+				"aspect": "Rasio aspek",
+				"free": "Bebas",
+				"apply": "Potong gambar"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan gambar",
+					"line": "Taruh gambar yang akan dipotong."
+				},
+				{
+					"title": "Pilih area",
+					"line": "Seret di pratinjau atau pilih preset rasio."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan tepat area terpilih."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Bisakah potong ke ukuran pas?",
+					"a": "Seret bebas atau kunci preset rasio, lalu ubah hasilnya ke piksel pas dengan resizer."
+				},
+				{
+					"q": "Apakah crop mengurangi kualitas?",
+					"a": "Tidak. Crop menjaga piksel asli utuh, hanya memangkas tepi."
+				},
+				{
+					"q": "Seleksi saya melompat aneh, kenapa?",
+					"a": "Preset rasio sedang aktif. Kembali ke Bebas untuk bentuk apa pun."
+				}
+			]
+		},
+		"watermark-image": {
+			"name": "Watermark Gambar",
+			"tagline": "Cap teks atau gambar di foto.",
+			"title": "Alat Watermark Gambar Online Gratis",
+			"description": "Beri watermark gambar dengan teks atau logo gratis di browser. Sembilan posisi plus kontrol opacity. File tidak pernah meninggalkan perangkat.",
+			"h1": "Alat Watermark Gambar Online Gratis",
+			"sub": "Cap nama atau logo. Atur posisi, atur pudar, unduh.",
+			"options": {
+				"modeText": "Teks",
+				"modeImage": "Gambar",
+				"text": "Teks watermark",
+				"textPlaceholder": "© Nama Anda",
+				"fontSize": "Ukuran",
+				"imageLabel": "Gambar watermark",
+				"browseImage": "Pilih gambar",
+				"position": "Posisi",
+				"opacity": "Opacity",
+				"apply": "Terapkan watermark"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan gambar",
+					"line": "Taruh foto yang akan dicap."
+				},
+				{
+					"title": "Rancang cap",
+					"line": "Ketik teks atau tambah logo, lalu atur posisi dan opacity."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan gambar berwatermark."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Di mana cap bisa ditaruh?",
+					"a": "Di mana saja: sembilan titik jangkar dari kiri atas sampai kanan bawah."
+				},
+				{
+					"q": "Apakah teks tetap terbaca?",
+					"a": "Teks tampil putih dengan tepi gelap lembut sehingga terbaca di foto terang dan gelap."
+				},
+				{
+					"q": "Format apa yang keluar?",
+					"a": "Sama seperti input, dengan cap menyatu."
+				}
+			]
+		}
 	}
 }

@@ -12,6 +12,7 @@ export type FileRowStatus = "queued" | "processing" | "done" | "failed";
 
 export interface FileRow {
 	downloadUrl?: string;
+	downloadName?: string;
 	error?: string;
 	id: string;
 	name: string;
@@ -97,7 +98,10 @@ export default function FileList({
 								size="sm"
 								variant="secondary"
 							>
-								<a download={file.name} href={file.downloadUrl}>
+								<a
+									download={file.downloadName ?? file.name}
+									href={file.downloadUrl}
+								>
 									{labels.download}
 								</a>
 							</SmoothButton>

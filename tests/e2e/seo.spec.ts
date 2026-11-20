@@ -119,6 +119,7 @@ test("per-locale sitemap lists every page with alternates", async ({
 	expect(response.ok()).toBe(true);
 	const body = await response.text();
 	expect(body).toContain("<loc>https://toolify.bond/id</loc>");
+	expect(body).toContain("<loc>https://toolify.bond/id/image-converter</loc>");
 	expect(body).toContain('hreflang="en"');
 	expect(body).toContain('hreflang="x-default"');
 	expect(body).not.toContain("/internal/");

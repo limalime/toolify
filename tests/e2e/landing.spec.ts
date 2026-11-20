@@ -37,6 +37,17 @@ test("menu carries no placeholder cards", async ({ page }) => {
 	await expect(page.locator("body")).not.toContainText(/coming soon/i);
 });
 
+test("menu cards link to working tool pages", async ({ page }) => {
+	await expect(
+		page.locator("[data-tool-card='image-converter']"),
+	).toBeVisible();
+	await page.locator("[data-tool-card='image-converter']").click();
+	await expect(page).toHaveURL(/\/image-converter\/?$/);
+	await expect(page.getByRole("heading", { level: 1 })).toContainText(
+		"Free Online Image Converter",
+	);
+});
+
 test("every card links to a page that answers 200", async ({
 	page,
 	request,

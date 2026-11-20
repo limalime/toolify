@@ -11,3 +11,9 @@ export const CATEGORIES = [
 ] as const;
 
 export type CategoryKey = (typeof CATEGORIES)[number]["key"];
+
+export function categoryHref(key: CategoryKey): string {
+	return (
+		CATEGORIES.find((category) => category.key === key)?.href ?? "/#gambar"
+	);
+}

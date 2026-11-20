@@ -10,6 +10,7 @@ const REQUIRED_TOOL_KEYS = [
 	"title",
 	"description",
 	"h1",
+	"sub",
 ] as const;
 
 function readMessages(): Record<string, Record<string, unknown>> {
@@ -54,6 +55,25 @@ describe("tool registry", () => {
 				expect(entry, `${tool.slug} in ${locale}`).toBeDefined();
 				for (const key of REQUIRED_TOOL_KEYS) {
 					expect(entry?.[key], `${tool.slug}.${key} in ${locale}`).toBeTruthy();
+				}
+				const steps = entry?.steps as
+					| Array<{ title?: string; line?: string }>
+					| undefined;
+				expect(steps, `${tool.slug}.steps in ${locale}`).toHaveLength(3);
+				for (const [index, step] of (steps ?? []).entries()) {
+					expect(
+						step?.title,
+						`${tool.slug}.steps[${index}].title`,
+					).toBeTruthy();
+					expect(step?.line, `${tool.slug}.steps[${index}].line`).toBeTruthy();
+				}
+				const faqs = entry?.faqs as
+					| Array<{ q?: string; a?: string }>
+					| undefined;
+				expect(faqs, `${tool.slug}.faqs in ${locale}`).toHaveLength(3);
+				for (const [index, faq] of (faqs ?? []).entries()) {
+					expect(faq?.q, `${tool.slug}.faqs[${index}].q`).toBeTruthy();
+					expect(faq?.a, `${tool.slug}.faqs[${index}].a`).toBeTruthy();
 				}
 			}
 		}

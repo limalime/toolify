@@ -2,11 +2,10 @@
 
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
-import ToolIcon from "@/components/landing/tool-icon";
+import ToolCard from "@/components/landing/tool-card";
 import Empty from "@/components/smoothui/empty";
 import Input from "@/components/smoothui/input";
 import SmoothButton from "@/components/smoothui/smooth-button";
-import { Link } from "@/i18n/navigation";
 import { inputClass } from "@/lib/control-classes";
 import { CATEGORY_ANCHORS, type ToolEntry, toolsByCategory } from "@/lib/tools";
 import { cn } from "@/lib/utils";
@@ -90,20 +89,7 @@ export default function ToolMenu({
 						</h2>
 						<div className="mt-3 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
 							{group.tools.map((tool) => (
-								<Link
-									className="flex min-h-44 flex-col gap-3 rounded-lg border border-border bg-surface p-5 transition-[border-color,box-shadow,transform] duration-150 ease-out outline-none hover:border-blue-500 hover:shadow-glow focus-visible:border-blue-500 active:translate-y-px motion-reduce:transition-none md:p-6"
-									data-tool-card={tool.slug}
-									href={`/${tool.slug}`}
-									key={tool.slug}
-								>
-									<ToolIcon className="size-6 text-blue-500" name={tool.icon} />
-									<span className="flex flex-col gap-1">
-										<span className="font-display text-h3">{tool.name}</span>
-										<span className="text-small text-text-2">
-											{tool.tagline}
-										</span>
-									</span>
-								</Link>
+								<ToolCard key={tool.slug} tool={tool} />
 							))}
 						</div>
 					</section>

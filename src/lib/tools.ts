@@ -10,7 +10,13 @@ export interface ToolEntry {
 // here, registering its icon, adding tools.{slug} messages in all seven
 // locales, and shipping its page. the registry guard test fails
 // otherwise, so the menu only ever lists working tools.
-export const TOOLS: ToolEntry[] = [];
+export const TOOLS: ToolEntry[] = [
+	{ slug: "image-converter", category: "gambar", icon: "converter" },
+	{ slug: "compress-image", category: "gambar", icon: "compress" },
+	{ slug: "resize-image", category: "gambar", icon: "resize" },
+	{ slug: "crop-image", category: "gambar", icon: "crop" },
+	{ slug: "watermark-image", category: "gambar", icon: "watermark" },
+];
 
 export const CATEGORY_ORDER: CategoryKey[] = [
 	"gambar",
