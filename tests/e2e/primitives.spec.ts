@@ -156,14 +156,13 @@ test("loading pairs the logo with a status line", async ({ page }) => {
 	await expect(loading).toContainText("Converting 3 of 5 files");
 });
 
-test("sharp corners on every control", async ({ page }) => {
+test("rounded-lg corners on every control", async ({ page }) => {
 	await page.getByRole("button", { name: "Fire success" }).click();
 	await expect(page.locator("[data-slot='toast']")).toBeVisible();
 	const radius = await page.evaluate(() => {
 		const slots = [
 			"switch",
 			"switch-thumb",
-			"checkbox",
 			"radio-group-item",
 			"slider-thumb",
 			"progress-track",
@@ -179,10 +178,16 @@ test("sharp corners on every control", async ({ page }) => {
 					? getComputedStyle(node).borderRadius
 					: "missing";
 		}
+		const box = document.querySelector("[data-slot='checkbox']");
+		result.checkbox =
+			box instanceof HTMLElement
+				? getComputedStyle(box).borderRadius
+				: "missing";
 		return result;
 	});
 	for (const [slot, value] of Object.entries(radius)) {
-		expect(`${slot}: ${value}`).toBe(`${slot}: 0px`);
+		const expected = slot === "checkbox" ? "4px" : "8px";
+		expect(`${slot}: ${value}`).toBe(`${slot}: ${expected}`);
 	}
 });
 

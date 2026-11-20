@@ -24,11 +24,11 @@ test("desktop shows category links and hides the hamburger", async ({
 	test.skip(!!isMobile, "desktop layout only");
 	const header = page.locator("header");
 	for (const label of [
-		"Gambar",
+		"Image",
 		"Text",
 		"Video",
 		"Audio",
-		"Lainnya",
+		"Other",
 		"Finance",
 		"PDF and Utilities",
 	]) {
@@ -43,7 +43,7 @@ test("mobile hides category links and shows the hamburger", async ({
 }) => {
 	test.skip(!isMobile, "mobile layout only");
 	const header = page.locator("header");
-	await expect(header.getByRole("link", { name: "Gambar" })).toBeHidden();
+	await expect(header.getByRole("link", { name: "Image" })).toBeHidden();
 	await expect(header.getByRole("button", { name: "Open menu" })).toBeVisible();
 });
 
@@ -52,7 +52,13 @@ test("hamburger opens a slide-over menu that closes", async ({
 	isMobile,
 }) => {
 	test.skip(!isMobile, "mobile layout only");
-	await page.getByRole("button", { name: "Open menu" }).click();
+	const trigger = page.getByRole("button", { name: "Open menu" });
+	await expect(trigger).toHaveAttribute("aria-expanded", "false");
+	await trigger.click();
+	// the open dialog marks the background inert, so reach the morphed
+	// trigger by css while the menu owns the accessible tree.
+	const hiddenTrigger = page.locator('header button[aria-label="Open menu"]');
+	await expect(hiddenTrigger).toHaveAttribute("aria-expanded", "true");
 	const dialog = page.getByRole("dialog", { name: "Menu" });
 	await expect(dialog).toBeVisible();
 	await expect(dialog.getByRole("link", { name: "Finance" })).toBeVisible();
@@ -65,6 +71,7 @@ test("hamburger opens a slide-over menu that closes", async ({
 	expect(overflow).toBeLessThanOrEqual(1);
 	await page.getByRole("button", { name: "Close menu" }).click();
 	await expect(dialog).toBeHidden({ timeout: 3000 });
+	await expect(trigger).toHaveAttribute("aria-expanded", "false");
 });
 
 test("menu links reach every category anchor", async ({ page, isMobile }) => {
@@ -108,6 +115,13 @@ test("language switcher lists seven locales with same-page links", async ({
 	await expect(menu.locator("a[href='/'][aria-current='true']")).toContainText(
 		"English",
 	);
+	const trigger = page
+		.locator("header")
+		.getByRole("button", { name: "Language" });
+	await expect(trigger).toHaveAttribute("aria-expanded", "true");
+	await expect(trigger.locator("svg").last()).toHaveClass(/rotate-180/);
+	await page.keyboard.press("Escape");
+	await expect(trigger).toHaveAttribute("aria-expanded", "false");
 });
 
 test("switcher keeps the page when switching locale", async ({ page }) => {
@@ -125,7 +139,7 @@ test("switcher keeps the page when switching locale", async ({ page }) => {
 	).toContainText("English");
 });
 
-test("footer links legal pages, languages, and the privacy line", async ({
+test("footer links legal pages and languages over a wordmark", async ({
 	page,
 }) => {
 	const footer = page.locator("footer.border-t");
@@ -152,7 +166,9 @@ test("footer links legal pages, languages, and the privacy line", async ({
 	]) {
 		await expect(languages.getByRole("link", { name })).toBeVisible();
 	}
-	await expect(footer).toContainText("Files never leave your browser.");
+	await expect(footer.getByRole("img", { name: "Toolify" })).toBeVisible();
+	await expect(footer).toContainText("©");
+	await expect(footer).not.toContainText("Files never leave your browser.");
 });
 
 test("page fits the viewport width", async ({ page }) => {

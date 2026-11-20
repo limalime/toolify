@@ -65,7 +65,7 @@ export default function Dropzone({
 		>
 			<label
 				className={cn(
-					"flex min-h-44 w-full cursor-pointer flex-col items-center justify-center gap-3 border border-dashed border-blue-500 bg-surface px-6 py-10 text-center has-focus-visible:outline-2 has-focus-visible:outline-blue-500 has-focus-visible:outline-offset-2",
+					"flex min-h-44 w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-lg border border-dashed border-blue-500 bg-surface px-6 py-10 text-center has-focus-visible:outline-2 has-focus-visible:outline-blue-500 has-focus-visible:outline-offset-2",
 					dragging && "border-solid bg-surface-2",
 					disabled && "cursor-not-allowed opacity-50",
 					className,

@@ -7,7 +7,9 @@
 		"languages": "اللغات",
 		"menu": "القائمة",
 		"openMenu": "فتح القائمة",
-		"search": "ابحث عن أداة"
+		"search": "ابحث عن أداة",
+		"themeToLight": "التبديل إلى المظهر الفاتح",
+		"themeToDark": "التبديل إلى المظهر الداكن"
 	},
 	"categories": {
 		"audio": "صوت",
@@ -24,7 +26,6 @@
 		"languages": "اللغات",
 		"legal": "قانوني",
 		"privacy": "الخصوصية",
-		"privacyLine": "لا تغادر ملفاتك متصفحك أبدا.",
 		"terms": "الشروط"
 	},
 	"common": {

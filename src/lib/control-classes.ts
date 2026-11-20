@@ -12,23 +12,26 @@ export const checkboxClass =
 
 export const radioClass = "border-border";
 
-export const switchClass = "rounded-none";
-
 export const tabActiveClass = "min-h-11 data-active:text-blue-500";
 
 export const accordionClass = "divide-border border-border bg-surface";
 
 export const skeletonClass = "bg-surface-2";
 
-export const alertSuccessClass = "border-success/30 bg-success/10 text-success";
+export const alertSuccessClass =
+	"border-success/30 bg-success/10 text-green-ink";
 
-export const alertWarningClass = "border-warning/30 bg-warning/10 text-warning";
+export const alertWarningClass =
+	"border-warning/30 bg-warning/10 text-amber-ink";
+
+export const alertDestructiveClass =
+	"border-destructive/30 bg-destructive/10 text-destructive-ink";
 
 export const badgeFreeClass =
 	"eyebrow border-transparent bg-blue-500/12 text-blue-500";
 
 export const badgeNewClass =
-	"eyebrow border-transparent bg-success/15 text-success";
+	"eyebrow border-transparent bg-success/15 text-green-ink";
 
 export const badgeWarningClass =
-	"eyebrow border-transparent bg-warning/15 text-warning";
+	"eyebrow border-transparent bg-warning/15 text-amber-ink";

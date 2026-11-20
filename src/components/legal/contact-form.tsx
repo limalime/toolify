@@ -6,7 +6,7 @@ import Alert from "@/components/smoothui/alert";
 import Field, { FieldControl, FieldLabel } from "@/components/smoothui/field";
 import SmoothButton from "@/components/smoothui/smooth-button";
 import Textarea from "@/components/smoothui/textarea";
-import { inputClass } from "@/lib/control-classes";
+import { alertDestructiveClass, inputClass } from "@/lib/control-classes";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -117,13 +117,15 @@ export default function ContactForm() {
 				</p>
 			) : null}
 			{status.kind === "error" ? (
-				<Alert title={status.message} variant="destructive" />
+				<Alert
+					className={alertDestructiveClass}
+					title={status.message}
+					variant="destructive"
+				/>
 			) : null}
 			<div>
 				<SmoothButton
-					color="blue"
 					size="lg"
-					variant="solid"
 					loading={status.kind === "sending"}
 					type="submit"
 					className="w-full sm:w-auto"

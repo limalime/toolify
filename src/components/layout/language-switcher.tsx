@@ -3,6 +3,7 @@
 import { Menu } from "@base-ui/react/menu";
 import { Check, ChevronDown, Languages } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { useState } from "react";
 import { usePathname } from "@/i18n/navigation";
 import { LOCALES, localizedPath } from "@/lib/locales";
 import { cn } from "@/lib/utils";
@@ -16,20 +17,24 @@ export default function LanguageSwitcher({ id }: { id?: string }) {
 	const pathname = usePathname();
 	const current = useLocale();
 	const t = useTranslations("header");
+	const [open, setOpen] = useState(false);
 	const currentName =
 		LOCALES.find((locale) => locale.code === current)?.name ?? "English";
 
 	return (
-		<Menu.Root>
+		<Menu.Root onOpenChange={setOpen}>
 			<Menu.Trigger
 				aria-label={t("language")}
 				className="inline-flex h-11 cursor-pointer items-center gap-1.5 border border-transparent px-3 text-small text-text-2 outline-none hover:text-text focus-visible:border-blue-500"
 				id={id}
 				render={
-					<button type="button">
+					<button type="button" aria-expanded={open}>
 						<Languages aria-hidden="true" className="size-4" />
 						<span className="hidden sm:inline">{currentName}</span>
-						<ChevronDown aria-hidden="true" className="size-4" />
+						<ChevronDown
+							aria-hidden="true"
+							className={`size-4 transition-transform duration-200 ease-out motion-reduce:transition-none ${open ? "rotate-180" : ""}`}
+						/>
 					</button>
 				}
 			/>

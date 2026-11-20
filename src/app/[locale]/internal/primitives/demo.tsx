@@ -48,6 +48,7 @@ import {
 import Toggle from "@/components/smoothui/toggle";
 import {
 	accordionClass,
+	alertDestructiveClass,
 	alertSuccessClass,
 	alertWarningClass,
 	badgeFreeClass,
@@ -58,7 +59,6 @@ import {
 	radioClass,
 	selectTriggerClass,
 	skeletonClass,
-	switchClass,
 	tabActiveClass,
 } from "@/lib/control-classes";
 import { cn } from "@/lib/utils";
@@ -147,6 +147,7 @@ export default function PrimitivesDemo() {
 
 			<Section id="buttons" title="Buttons">
 				<div className="flex flex-wrap items-center gap-3">
+					<SmoothButton size="lg">Candy default</SmoothButton>
 					<SmoothButton color="blue" size="lg" variant="solid">
 						Convert
 					</SmoothButton>
@@ -244,7 +245,7 @@ export default function PrimitivesDemo() {
 				<div className="flex flex-col gap-4">
 					{/* biome-ignore lint/a11y/noLabelWithoutControl: wrapping label, the switch renders a labelable button */}
 					<label className="flex cursor-pointer items-center gap-3 text-small text-text">
-						<Switch className={switchClass} defaultChecked />
+						<Switch defaultChecked />
 						Keep aspect ratio
 					</label>
 					{/* biome-ignore lint/a11y/noLabelWithoutControl: wrapping label, the checkbox renders a labelable button */}
@@ -403,7 +404,11 @@ export default function PrimitivesDemo() {
 					>
 						Files over 100 MB take a while.
 					</Alert>
-					<Alert title="Conversion failed" variant="destructive">
+					<Alert
+						className={alertDestructiveClass}
+						title="Conversion failed"
+						variant="destructive"
+					>
 						<div className="flex flex-col items-start gap-2">
 							<span>Could not read this file. It may be corrupted.</span>
 							<SmoothButton size="sm" variant="secondary">

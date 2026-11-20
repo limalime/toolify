@@ -66,6 +66,15 @@ test("contact validates before sending", async ({ page }) => {
 	).toBeVisible();
 });
 
+test("contact send button uses the candy default", async ({ page }) => {
+	await page.goto("/contact");
+	const send = page.getByRole("button", { name: "Send message" });
+	const background = await send.evaluate(
+		(node) => getComputedStyle(node).backgroundImage,
+	);
+	expect(background).toContain("linear-gradient");
+});
+
 test("contact without delivery answers honestly", async ({ page }) => {
 	await page.goto("/contact");
 	await page.getByLabel("Name").fill("Ada");

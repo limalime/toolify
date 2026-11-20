@@ -91,7 +91,7 @@ export default function ToolMenu({
 						<div className="mt-3 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
 							{group.tools.map((tool) => (
 								<Link
-									className="flex min-h-44 flex-col gap-3 border border-border bg-surface p-5 transition-[border-color,box-shadow,transform] duration-150 ease-out outline-none hover:border-blue-500 hover:shadow-glow focus-visible:border-blue-500 active:translate-y-px motion-reduce:transition-none md:p-6"
+									className="flex min-h-44 flex-col gap-3 rounded-lg border border-border bg-surface p-5 transition-[border-color,box-shadow,transform] duration-150 ease-out outline-none hover:border-blue-500 hover:shadow-glow focus-visible:border-blue-500 active:translate-y-px motion-reduce:transition-none md:p-6"
 									data-tool-card={tool.slug}
 									href={`/${tool.slug}`}
 									key={tool.slug}

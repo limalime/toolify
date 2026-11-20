@@ -1,14 +1,22 @@
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import "../globals.css";
+import { ThemeProvider } from "next-themes";
 import SiteFooter from "@/components/layout/site-footer";
 import SiteHeader from "@/components/layout/site-header";
 import AppToaster from "@/components/primitives/toaster";
 import { routing } from "@/i18n/routing";
 import { LOCALES } from "@/lib/locales";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+
+const inter = Inter({
+	subsets: ["latin", "latin-ext"],
+	variable: "--font-inter",
+	display: "swap",
+});
 
 export const viewport: Viewport = {
 	themeColor: "#0A0E14",
@@ -65,13 +73,21 @@ export default async function LocaleLayout({
 	const dir = LOCALES.find((entry) => entry.code === locale)?.dir ?? "ltr";
 
 	return (
-		<html dir={dir} lang={locale}>
-			<body className="flex min-h-screen flex-col antialiased">
+		<html dir={dir} lang={locale} suppressHydrationWarning>
+			<body
+				className={`${inter.variable} flex min-h-screen flex-col antialiased`}
+			>
 				<NextIntlClientProvider>
-					<SiteHeader />
-					<main className="flex-1">{children}</main>
-					<SiteFooter />
-					<AppToaster />
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="dark"
+						enableSystem={false}
+					>
+						<SiteHeader />
+						<main className="flex-1">{children}</main>
+						<SiteFooter />
+						<AppToaster />
+					</ThemeProvider>
 				</NextIntlClientProvider>
 			</body>
 		</html>

@@ -7,7 +7,9 @@
 		"languages": "言語",
 		"menu": "メニュー",
 		"openMenu": "メニューを開く",
-		"search": "ツールを検索"
+		"search": "ツールを検索",
+		"themeToLight": "ライトテーマに切替",
+		"themeToDark": "ダークテーマに切替"
 	},
 	"categories": {
 		"audio": "音声",
@@ -24,7 +26,6 @@
 		"languages": "言語",
 		"legal": "リーガル",
 		"privacy": "プライバシー",
-		"privacyLine": "ファイルがブラウザの外に出ることはありません。",
 		"terms": "利用規約"
 	},
 	"common": {

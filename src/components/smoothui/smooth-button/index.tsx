@@ -34,9 +34,10 @@ const smoothButtonVariants = cva(
 	"relative inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap font-medium outline-none ring-offset-background transition-[transform,background-color,border-color,color,box-shadow] duration-150 ease-out focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-solid focus-visible:outline-offset-2 active:scale-[0.97] disabled:pointer-events-none disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none disabled:ring-1 disabled:ring-foreground/20 motion-reduce:transition-none motion-reduce:active:scale-100 [&_svg]:pointer-events-none [&_svg]:shrink-0",
 	{
 		defaultVariants: {
+			color: "blue",
 			shape: "default",
 			size: "default",
-			variant: "default",
+			variant: "candy",
 		},
 		variants: {
 			color: {

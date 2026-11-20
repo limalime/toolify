@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { CATEGORIES } from "@/components/layout/categories";
 import LanguageSwitcher from "@/components/layout/language-switcher";
 import MobileMenu from "@/components/layout/mobile-menu";
+import ThemeToggle from "@/components/layout/theme-toggle";
 import { Link } from "@/i18n/navigation";
 
 export default async function SiteHeader() {
@@ -15,19 +16,12 @@ export default async function SiteHeader() {
 			<div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-4 px-4">
 				<Link
 					aria-label={t("home")}
-					className="flex shrink-0 items-center gap-2 outline-none focus-visible:border-blue-500"
+					className="flex shrink-0 items-center outline-none focus-visible:border-blue-500"
 					href="/"
 				>
 					<Image
 						alt="Toolify"
-						height={32}
-						priority
-						src="/assets/logo-blue-square-1080.png"
-						width={32}
-					/>
-					<Image
-						alt="Toolify"
-						className="hidden h-5 w-auto sm:block"
+						className="h-6 w-auto brightness-0 sm:h-7 dark:brightness-100"
 						height={57}
 						priority
 						src="/assets/wordmark-white-700.png"
@@ -56,6 +50,7 @@ export default async function SiteHeader() {
 					>
 						<Search aria-hidden="true" className="size-5" />
 					</Link>
+					<ThemeToggle />
 					<LanguageSwitcher id="site-language" />
 					<MobileMenu />
 				</div>

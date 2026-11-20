@@ -7,7 +7,9 @@
 		"languages": "语言",
 		"menu": "菜单",
 		"openMenu": "打开菜单",
-		"search": "搜索工具"
+		"search": "搜索工具",
+		"themeToLight": "切换到浅色主题",
+		"themeToDark": "切换到深色主题"
 	},
 	"categories": {
 		"audio": "音频",
@@ -24,7 +26,6 @@
 		"languages": "语言",
 		"legal": "法律",
 		"privacy": "隐私",
-		"privacyLine": "文件永远不会离开您的浏览器。",
 		"terms": "条款"
 	},
 	"common": {

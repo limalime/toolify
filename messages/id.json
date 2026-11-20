@@ -7,7 +7,9 @@
 		"languages": "Bahasa",
 		"menu": "Menu",
 		"openMenu": "Buka menu",
-		"search": "Cari alat"
+		"search": "Cari alat",
+		"themeToLight": "Ganti ke tema terang",
+		"themeToDark": "Ganti ke tema gelap"
 	},
 	"categories": {
 		"audio": "Audio",
@@ -24,7 +26,6 @@
 		"languages": "Bahasa",
 		"legal": "Legal",
 		"privacy": "Privasi",
-		"privacyLine": "File tidak pernah meninggalkan browser Anda.",
 		"terms": "Ketentuan"
 	},
 	"common": {

@@ -7,7 +7,9 @@
 		"languages": "Idiomas",
 		"menu": "Menú",
 		"openMenu": "Abrir menú",
-		"search": "Buscar herramientas"
+		"search": "Buscar herramientas",
+		"themeToLight": "Cambiar a tema claro",
+		"themeToDark": "Cambiar a tema oscuro"
 	},
 	"categories": {
 		"audio": "Audio",
@@ -24,7 +26,6 @@
 		"languages": "Idiomas",
 		"legal": "Legal",
 		"privacy": "Privacidad",
-		"privacyLine": "Tus archivos nunca salen de tu navegador.",
 		"terms": "Términos"
 	},
 	"common": {

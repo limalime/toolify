@@ -9,7 +9,6 @@ const assets = [
 	"public/assets/wordmark-700.png",
 	"public/assets/wordmark-white-700.png",
 	"public/assets/fonts/CalSans.ttf",
-	"public/assets/fonts/SFPro.otf",
 ];
 
 describe("brand assets", () => {

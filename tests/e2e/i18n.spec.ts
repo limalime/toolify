@@ -3,49 +3,49 @@ import { expect, test } from "@playwright/test";
 const LOCALES: Array<{
 	code: string;
 	path: string;
-	privacyLine: string;
+	footerAbout: string;
 	heroTitle: string;
 }> = [
 	{
 		code: "en",
 		path: "/",
-		privacyLine: "Files never leave your browser.",
+		footerAbout: "About",
 		heroTitle: "Every tool you need. Free, fast, private.",
 	},
 	{
 		code: "id",
 		path: "/id",
-		privacyLine: "File tidak pernah meninggalkan browser Anda.",
+		footerAbout: "Tentang",
 		heroTitle: "Semua alat yang Anda butuhkan. Gratis, cepat, privat.",
 	},
 	{
 		code: "es",
 		path: "/es",
-		privacyLine: "Tus archivos nunca salen de tu navegador.",
+		footerAbout: "Acerca de",
 		heroTitle: "Cada herramienta que necesitas. Gratis, rápida, privada.",
 	},
 	{
 		code: "ja",
 		path: "/ja",
-		privacyLine: "ファイルがブラウザの外に出ることはありません。",
+		footerAbout: "Toolifyについて",
 		heroTitle: "必要なツールが全部ある。無料、高速、プライベート。",
 	},
 	{
 		code: "zh",
 		path: "/zh",
-		privacyLine: "文件永远不会离开您的浏览器。",
+		footerAbout: "关于",
 		heroTitle: "你需要的工具全都有，免费、快速、私密。",
 	},
 	{
 		code: "fr",
 		path: "/fr",
-		privacyLine: "Tes fichiers ne quittent jamais ton navigateur.",
+		footerAbout: "À propos",
 		heroTitle: "Chaque outil qu'il te faut. Gratuit, rapide, privé.",
 	},
 	{
 		code: "ar",
 		path: "/ar",
-		privacyLine: "لا تغادر ملفاتك متصفحك أبدا.",
+		footerAbout: "حول",
 		heroTitle: "كل أداة تحتاجها. مجاني وسريع وخاص.",
 	},
 ];
@@ -60,7 +60,7 @@ for (const locale of LOCALES) {
 			locale.heroTitle,
 		);
 		await expect(page.locator("footer.border-t")).toContainText(
-			locale.privacyLine,
+			locale.footerAbout,
 		);
 		const overflow = await page.evaluate(
 			() =>

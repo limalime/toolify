@@ -7,13 +7,15 @@
 		"languages": "Languages",
 		"menu": "Menu",
 		"openMenu": "Open menu",
-		"search": "Search tools"
+		"search": "Search tools",
+		"themeToLight": "Switch to light theme",
+		"themeToDark": "Switch to dark theme"
 	},
 	"categories": {
 		"audio": "Audio",
 		"finance": "Finance",
-		"gambar": "Gambar",
-		"lainnya": "Lainnya",
+		"gambar": "Image",
+		"lainnya": "Other",
 		"pdfUtilities": "PDF and Utilities",
 		"text": "Text",
 		"video": "Video"
@@ -24,7 +26,6 @@
 		"languages": "Languages",
 		"legal": "Legal",
 		"privacy": "Privacy",
-		"privacyLine": "Files never leave your browser.",
 		"terms": "Terms"
 	},
 	"common": {

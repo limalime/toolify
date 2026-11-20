@@ -15,14 +15,16 @@ test("homepage loads with brand fonts", async ({ page }) => {
 		};
 		return {
 			calsans: await loaded("CalSans"),
-			sfpro: await loaded("SFPro"),
+			interLoaded: Array.from(document.fonts).some(
+				(face) => face.family.includes("Inter") && face.status === "loaded",
+			),
 			bodyFont: getComputedStyle(document.body).fontFamily,
 		};
 	});
 
 	expect(fonts.calsans).toBe(true);
-	expect(fonts.sfpro).toBe(true);
-	expect(fonts.bodyFont).toContain("SFPro");
+	expect(fonts.interLoaded).toBe(true);
+	expect(fonts.bodyFont).toContain("Inter");
 });
 
 test("logo asset serves as png", async ({ page }) => {
