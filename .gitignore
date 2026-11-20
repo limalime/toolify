@@ -50,3 +50,6 @@ next-env.d.ts
 
 
 !.dev.vars.example
+
+# local R2 staging dir (large binaries, never commit)
+r2-upload/
