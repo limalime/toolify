@@ -417,6 +417,144 @@
 					"a": "The same format as your input, with the mark baked in."
 				}
 			]
+		},
+		"enhance-image": {
+			"name": "Image Enhancer",
+			"tagline": "Tune light, color, and sharpness.",
+			"title": "Free Online Image Enhancer",
+			"description": "Enhance photos in your browser with brightness, contrast, saturation, and sharpness controls. Plain pixel math, no AI claims, files never leave your device.",
+			"h1": "Free Online Image Enhancer",
+			"sub": "Four honest sliders. What you see is the math, nothing invented.",
+			"options": {
+				"brightness": "Brightness",
+				"contrast": "Contrast",
+				"saturation": "Saturation",
+				"sharpness": "Sharpness",
+				"apply": "Enhance image",
+				"reset": "Reset"
+			},
+			"steps": [
+				{
+					"title": "Add a photo",
+					"line": "Drop the photo to enhance."
+				},
+				{
+					"title": "Move the sliders",
+					"line": "The preview updates live as you tune each slider."
+				},
+				{
+					"title": "Download",
+					"line": "Save the enhanced image at full size."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Is this AI enhancement?",
+					"a": "No. Four classic adjustments run on your pixels. Nothing is invented or upscaled, so the result always stays true to the photo."
+				},
+				{
+					"q": "Can it fix a blurry photo?",
+					"a": "Sharpness lifts edges but cannot recover lost detail. For small images that need real detail, try the upscaler instead."
+				},
+				{
+					"q": "Which format comes out?",
+					"a": "The same format as your input, at the same size."
+				}
+			]
+		},
+		"remove-background": {
+			"name": "Background Remover",
+			"tagline": "Cut out the subject, keep the rest transparent.",
+			"title": "Free Online Background Remover",
+			"description": "Remove image backgrounds free in your browser with an on-device AI model. The first run downloads the model once, then it stays cached. Files never leave your device.",
+			"h1": "Free Online Background Remover",
+			"sub": "One download, then cutouts in seconds. The model lives in your browser cache.",
+			"options": {
+				"model": "Model",
+				"fast": "Fast",
+				"quality": "Quality",
+				"apply": "Remove background",
+				"downloading": "Downloading model",
+				"working": "Cutting out",
+				"cached": "Model cached in your browser",
+				"usedWebgpu": "Ran on WebGPU",
+				"usedCpu": "Ran on CPU"
+			},
+			"steps": [
+				{
+					"title": "Add an image",
+					"line": "Drop the photo to cut out."
+				},
+				{
+					"title": "Pick a model",
+					"line": "Fast downloads 44 MB and quality 88 MB. Each downloads once, then stays cached."
+				},
+				{
+					"title": "Download",
+					"line": "Save the cutout as a transparent PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Why is the first run slow?",
+					"a": "Your browser downloads the AI model and the math engine first. Later runs reuse the cache and start at once."
+				},
+				{
+					"q": "Fast or quality?",
+					"a": "Fast is smaller and fine for simple subjects. Quality keeps hair and soft edges cleaner."
+				},
+				{
+					"q": "Where do my photos go?",
+					"a": "Nowhere. The model runs on your device, so your images never leave the browser."
+				}
+			]
+		},
+		"upscale-image": {
+			"name": "Image Upscaler",
+			"tagline": "Enlarge photos 2x or 4x with AI.",
+			"title": "Free Online Image Upscaler",
+			"description": "Upscale images 2x or 4x in your browser with Real-ESRGAN. Tiled processing with progress, WebGPU when your browser offers it. Files never leave your device.",
+			"h1": "Free Online Image Upscaler",
+			"sub": "Real detail rebuilt by a small model, tile by tile, with progress.",
+			"options": {
+				"scale": "Scale",
+				"scale2": "2x",
+				"scale4": "4x",
+				"apply": "Upscale image",
+				"downloading": "Downloading model",
+				"working": "Upscaling",
+				"limitNote": "Input limit: 2048 px per side and 4 megapixels.",
+				"usedWebgpu": "Ran on WebGPU",
+				"usedCpu": "Ran on CPU"
+			},
+			"steps": [
+				{
+					"title": "Add an image",
+					"line": "Drop a small or medium image to enlarge."
+				},
+				{
+					"title": "Pick a scale",
+					"line": "Choose 2x or 4x, then start. Progress shows per tile."
+				},
+				{
+					"title": "Download",
+					"line": "Save the enlarged image."
+				}
+			],
+			"faqs": [
+				{
+					"q": "2x or 4x, what is the difference?",
+					"a": "4x runs the model at full size. 2x runs the same 4x pass and downsamples it cleanly, which is faster to save and share."
+				},
+				{
+					"q": "How long does it take?",
+					"a": "Seconds per megapixel on WebGPU, longer on CPU. The progress bar shows each tile as it finishes."
+				},
+				{
+					"q": "Why the input limit?",
+					"a": "A 4x upscale multiplies pixels by sixteen. The cap keeps memory safe on phones and laptops."
+				}
+			]
 		}
 	}
 }

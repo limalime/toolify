@@ -417,6 +417,144 @@
 					"a": "Sama seperti input, dengan cap menyatu."
 				}
 			]
+		},
+		"enhance-image": {
+			"name": "Penyempurna Gambar",
+			"tagline": "Atur cahaya, warna, dan ketajaman.",
+			"title": "Penyempurna Gambar Online Gratis",
+			"description": "Sempurnakan foto di browser dengan kontrol kecerahan, kontras, saturasi, dan ketajaman. Matematika piksel biasa, tanpa klaim AI, file tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Penyempurna Gambar Online Gratis",
+			"sub": "Empat slider yang jujur. Yang Anda lihat adalah hasil hitungan, bukan rekayasa.",
+			"options": {
+				"brightness": "Kecerahan",
+				"contrast": "Kontras",
+				"saturation": "Saturasi",
+				"sharpness": "Ketajaman",
+				"apply": "Sempurnakan gambar",
+				"reset": "Atur ulang"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan foto",
+					"line": "Jatuhkan foto yang ingin disempurnakan."
+				},
+				{
+					"title": "Geser slider",
+					"line": "Pratinjau diperbarui langsung saat Anda mengatur tiap slider."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan gambar yang disempurnakan dalam ukuran penuh."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah ini penyempurnaan AI?",
+					"a": "Bukan. Empat penyesuaian klasik berjalan pada piksel Anda. Tidak ada yang direkayasa, jadi hasilnya selalu setia pada foto."
+				},
+				{
+					"q": "Bisakah memperbaiki foto buram?",
+					"a": "Ketajaman mengangkat tepi tetapi tidak bisa mengembalikan detail yang hilang. Untuk gambar kecil, coba alat upscale sebagai gantinya."
+				},
+				{
+					"q": "Format apa yang dihasilkan?",
+					"a": "Format yang sama dengan masukan, dalam ukuran yang sama."
+				}
+			]
+		},
+		"remove-background": {
+			"name": "Penghapus Latar",
+			"tagline": "Potong subjek, jadikan sisanya transparan.",
+			"title": "Penghapus Latar Foto Online Gratis",
+			"description": "Hapus latar foto gratis di browser dengan model AI di perangkat. Unduhan pertama mengunduh model sekali, lalu tersimpan di cache. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Penghapus Latar Foto Online Gratis",
+			"sub": "Sekali unduh, lalu potong dalam hitungan detik. Model tersimpan di cache browser Anda.",
+			"options": {
+				"model": "Model",
+				"fast": "Cepat",
+				"quality": "Berkualitas",
+				"apply": "Hapus latar",
+				"downloading": "Mengunduh model",
+				"working": "Memotong",
+				"cached": "Model tersimpan di browser",
+				"usedWebgpu": "Berjalan di WebGPU",
+				"usedCpu": "Berjalan di CPU"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan gambar",
+					"line": "Jatuhkan foto yang ingin dipotong."
+				},
+				{
+					"title": "Pilih model",
+					"line": "Cepat mengunduh 44 MB dan berkualitas 88 MB. Masing-masing diunduh sekali, lalu tersimpan."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan hasil potongan sebagai PNG transparan."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Mengapa jalan pertama lambat?",
+					"a": "Browser mengunduh model AI dan mesin hitungnya dulu. Jalan berikutnya memakai cache dan langsung mulai."
+				},
+				{
+					"q": "Cepat atau berkualitas?",
+					"a": "Cepat lebih kecil dan cukup untuk subjek sederhana. Berkualitas menjaga rambut dan tepi lembut lebih rapi."
+				},
+				{
+					"q": "Ke mana foto saya pergi?",
+					"a": "Tidak ke mana-mana. Model berjalan di perangkat Anda, jadi gambar tidak pernah meninggalkan browser."
+				}
+			]
+		},
+		"upscale-image": {
+			"name": "Peningkat Gambar",
+			"tagline": "Perbesar foto 2x atau 4x dengan AI.",
+			"title": "Peningkat Gambar Online Gratis",
+			"description": "Perbesar gambar 2x atau 4x di browser dengan Real-ESRGAN. Proses per ubin dengan progres, WebGPU jika browser mendukung. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Peningkat Gambar Online Gratis",
+			"sub": "Detail asli dibangun ulang oleh model kecil, ubin demi ubin, dengan progres.",
+			"options": {
+				"scale": "Skala",
+				"scale2": "2x",
+				"scale4": "4x",
+				"apply": "Perbesar gambar",
+				"downloading": "Mengunduh model",
+				"working": "Memperbesar",
+				"limitNote": "Batas masukan: 2048 px per sisi dan 4 megapiksel.",
+				"usedWebgpu": "Berjalan di WebGPU",
+				"usedCpu": "Berjalan di CPU"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan gambar",
+					"line": "Jatuhkan gambar kecil atau sedang untuk diperbesar."
+				},
+				{
+					"title": "Pilih skala",
+					"line": "Pilih 2x atau 4x, lalu mulai. Progres tampil per ubin."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan gambar yang diperbesar."
+				}
+			],
+			"faqs": [
+				{
+					"q": "2x atau 4x, apa bedanya?",
+					"a": "4x menjalankan model dalam ukuran penuh. 2x menjalankan pass 4x yang sama lalu mengecilkannya dengan rapi, lebih cepat disimpan dan dibagikan."
+				},
+				{
+					"q": "Berapa lama waktunya?",
+					"a": "Hitungan detik per megapiksel di WebGPU, lebih lama di CPU. Bilah progres menampilkan tiap ubin yang selesai."
+				},
+				{
+					"q": "Mengapa ada batas masukan?",
+					"a": "Upscale 4x melipatgandakan piksel enam belas kali. Batas ini menjaga memori aman di ponsel dan laptop."
+				}
+			]
 		}
 	}
 }

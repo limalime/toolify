@@ -11,7 +11,8 @@
 			"!playwright-report",
 			"!cloudflare-env.d.ts",
 			"!next-env.d.ts",
-			"!public"
+			"!public",
+			"!r2-upload"
 		]
 	},
 	"vcs": {

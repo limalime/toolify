@@ -417,6 +417,144 @@
 					"a": "Le même qu'en entrée, marque intégrée."
 				}
 			]
+		},
+		"enhance-image": {
+			"name": "Améliorateur d'image",
+			"tagline": "Réglez lumière, couleur et netteté.",
+			"title": "Améliorateur d'image en ligne gratuit",
+			"description": "Améliorez vos photos dans le navigateur avec les réglages de luminosité, contraste, saturation et netteté. Simple calcul de pixels, sans promesse IA, vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Améliorateur d'image en ligne gratuit",
+			"sub": "Quatre curseurs honnêtes. Ce que vous voyez est le calcul, rien d'inventé.",
+			"options": {
+				"brightness": "Luminosité",
+				"contrast": "Contraste",
+				"saturation": "Saturation",
+				"sharpness": "Netteté",
+				"apply": "Améliorer l'image",
+				"reset": "Réinitialiser"
+			},
+			"steps": [
+				{
+					"title": "Ajoutez une photo",
+					"line": "Déposez la photo à améliorer."
+				},
+				{
+					"title": "Bougez les curseurs",
+					"line": "L'aperçu se met à jour pendant chaque réglage."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Enregistrez l'image améliorée en pleine taille."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Est-ce une amélioration IA ?",
+					"a": "Non. Quatre réglages classiques travaillent vos pixels. Rien n'est inventé, le résultat reste fidèle à la photo."
+				},
+				{
+					"q": "Peut-elle réparer une photo floue ?",
+					"a": "La netteté relève les contours mais ne retrouve pas le détail perdu. Pour les petites images, essayez l'agrandisseur."
+				},
+				{
+					"q": "Quel format en sortie ?",
+					"a": "Le même format que l'entrée, à la même taille."
+				}
+			]
+		},
+		"remove-background": {
+			"name": "Suppresseur de fond",
+			"tagline": "Détourez le sujet, gardez le reste transparent.",
+			"title": "Suppresseur de fond en ligne gratuit",
+			"description": "Supprimez les fonds gratuitement dans le navigateur avec un modèle IA sur votre appareil. Le premier passage télécharge le modèle une fois, puis il reste en cache. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Suppresseur de fond en ligne gratuit",
+			"sub": "Un téléchargement, puis des découpes en quelques secondes. Le modèle vit dans le cache du navigateur.",
+			"options": {
+				"model": "Modèle",
+				"fast": "Rapide",
+				"quality": "Qualité",
+				"apply": "Supprimer le fond",
+				"downloading": "Téléchargement du modèle",
+				"working": "Découpe en cours",
+				"cached": "Modèle en cache dans le navigateur",
+				"usedWebgpu": "Exécuté sur WebGPU",
+				"usedCpu": "Exécuté sur CPU"
+			},
+			"steps": [
+				{
+					"title": "Ajoutez une image",
+					"line": "Déposez la photo à détourer."
+				},
+				{
+					"title": "Choisissez un modèle",
+					"line": "Rapide télécharge 44 Mo et qualité 88 Mo. Chacun se télécharge une fois, puis reste en cache."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Enregistrez la découpe en PNG transparent."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Pourquoi le premier passage est lent ?",
+					"a": "Votre navigateur télécharge d'abord le modèle IA et son moteur. Ensuite il utilise le cache et démarre aussitôt."
+				},
+				{
+					"q": "Rapide ou qualité ?",
+					"a": "Rapide est plus léger et suffit pour les sujets simples. Qualité garde mieux les cheveux et les bords doux."
+				},
+				{
+					"q": "Où vont mes photos ?",
+					"a": "Nulle part. Le modèle tourne sur votre appareil, vos images ne quittent jamais le navigateur."
+				}
+			]
+		},
+		"upscale-image": {
+			"name": "Agrandisseur d'image",
+			"tagline": "Agrandissez les photos 2x ou 4x avec l'IA.",
+			"title": "Agrandisseur d'image en ligne gratuit",
+			"description": "Agrandissez les images 2x ou 4x dans le navigateur avec Real-ESRGAN. Traitement par tuiles avec progression, WebGPU quand le navigateur l'offre. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Agrandisseur d'image en ligne gratuit",
+			"sub": "Du vrai détail reconstruit par un petit modèle, tuile par tuile, avec progression.",
+			"options": {
+				"scale": "Échelle",
+				"scale2": "2x",
+				"scale4": "4x",
+				"apply": "Agrandir l'image",
+				"downloading": "Téléchargement du modèle",
+				"working": "Agrandissement",
+				"limitNote": "Limite d'entrée : 2048 px par côté et 4 mégapixels.",
+				"usedWebgpu": "Exécuté sur WebGPU",
+				"usedCpu": "Exécuté sur CPU"
+			},
+			"steps": [
+				{
+					"title": "Ajoutez une image",
+					"line": "Déposez une image petite ou moyenne à agrandir."
+				},
+				{
+					"title": "Choisissez une échelle",
+					"line": "Choisissez 2x ou 4x, puis lancez. La progression s'affiche par tuile."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Enregistrez l'image agrandie."
+				}
+			],
+			"faqs": [
+				{
+					"q": "2x ou 4x, quelle différence ?",
+					"a": "4x fait tourner le modèle en pleine taille. 2x fait le même passage 4x puis le réduit proprement, plus vite à enregistrer et partager."
+				},
+				{
+					"q": "Combien de temps ?",
+					"a": "Quelques secondes par mégapixel sur WebGPU, plus sur CPU. La barre montre chaque tuile terminée."
+				},
+				{
+					"q": "Pourquoi une limite ?",
+					"a": "Agrandir 4x multiplie les pixels par seize. Le plafond protège la mémoire des téléphones et portables."
+				}
+			]
 		}
 	}
 }

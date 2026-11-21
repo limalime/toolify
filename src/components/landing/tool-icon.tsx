@@ -1,9 +1,12 @@
 import {
 	Crop,
+	Eraser,
 	FileImage,
 	type LucideIcon,
+	Maximize2,
 	Minimize2,
 	Scaling,
+	SlidersHorizontal,
 	Stamp,
 	Wrench,
 } from "lucide-react";
@@ -16,6 +19,9 @@ export const TOOL_ICONS: Record<string, LucideIcon> = {
 	resize: Scaling,
 	crop: Crop,
 	watermark: Stamp,
+	enhance: SlidersHorizontal,
+	background: Eraser,
+	upscale: Maximize2,
 };
 
 export default function ToolIcon({

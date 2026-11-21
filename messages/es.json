@@ -417,6 +417,144 @@
 					"a": "El mismo de tu entrada, con la marca integrada."
 				}
 			]
+		},
+		"enhance-image": {
+			"name": "Mejorador de imágenes",
+			"tagline": "Ajusta luz, color y nitidez.",
+			"title": "Mejorador de imágenes online gratis",
+			"description": "Mejora fotos en tu navegador con controles de brillo, contraste, saturación y nitidez. Matemática de píxeles simple, sin promesas de IA, tus archivos nunca salen de tu dispositivo.",
+			"h1": "Mejorador de imágenes online gratis",
+			"sub": "Cuatro controles honestos. Lo que ves es el cálculo, nada inventado.",
+			"options": {
+				"brightness": "Brillo",
+				"contrast": "Contraste",
+				"saturation": "Saturación",
+				"sharpness": "Nitidez",
+				"apply": "Mejorar imagen",
+				"reset": "Restablecer"
+			},
+			"steps": [
+				{
+					"title": "Añade una foto",
+					"line": "Suelta la foto que quieres mejorar."
+				},
+				{
+					"title": "Mueve los controles",
+					"line": "La vista previa se actualiza al mover cada control."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda la imagen mejorada a tamaño completo."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Es mejora con IA?",
+					"a": "No. Cuatro ajustes clásicos trabajan sobre tus píxeles. Nada se inventa, así que el resultado siempre respeta la foto."
+				},
+				{
+					"q": "¿Puede arreglar una foto borrosa?",
+					"a": "La nitidez realza bordes pero no recupera detalle perdido. Para imágenes pequeñas prueba mejor el ampliador."
+				},
+				{
+					"q": "¿Qué formato sale?",
+					"a": "El mismo formato de entrada, al mismo tamaño."
+				}
+			]
+		},
+		"remove-background": {
+			"name": "Quita fondos",
+			"tagline": "Recorta el sujeto, deja el resto transparente.",
+			"title": "Quita fondos online gratis",
+			"description": "Elimina fondos gratis en tu navegador con un modelo de IA en tu dispositivo. La primera vez descarga el modelo una vez, luego queda en caché. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Quita fondos online gratis",
+			"sub": "Una descarga y recortes en segundos. El modelo vive en la caché del navegador.",
+			"options": {
+				"model": "Modelo",
+				"fast": "Rápido",
+				"quality": "Calidad",
+				"apply": "Quitar fondo",
+				"downloading": "Descargando modelo",
+				"working": "Recortando",
+				"cached": "Modelo en caché del navegador",
+				"usedWebgpu": "Se ejecutó en WebGPU",
+				"usedCpu": "Se ejecutó en CPU"
+			},
+			"steps": [
+				{
+					"title": "Añade una imagen",
+					"line": "Suelta la foto que quieres recortar."
+				},
+				{
+					"title": "Elige un modelo",
+					"line": "Rápido descarga 44 MB y calidad 88 MB. Cada uno se descarga una vez y queda en caché."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda el recorte como PNG transparente."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Por qué la primera vez tarda?",
+					"a": "Tu navegador descarga primero el modelo de IA y su motor. Luego usa la caché y empieza al instante."
+				},
+				{
+					"q": "¿Rápido o calidad?",
+					"a": "Rápido es más pequeño y basta para sujetos simples. Calidad conserva mejor el pelo y los bordes suaves."
+				},
+				{
+					"q": "¿Adónde van mis fotos?",
+					"a": "A ningún lado. El modelo corre en tu dispositivo, tus imágenes nunca salen del navegador."
+				}
+			]
+		},
+		"upscale-image": {
+			"name": "Ampliador de imágenes",
+			"tagline": "Amplía fotos 2x o 4x con IA.",
+			"title": "Ampliador de imágenes online gratis",
+			"description": "Amplía imágenes 2x o 4x en tu navegador con Real-ESRGAN. Procesado por bloques con progreso, WebGPU cuando el navegador lo ofrece. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Ampliador de imágenes online gratis",
+			"sub": "Detalle real reconstruido por un modelo pequeño, bloque a bloque, con progreso.",
+			"options": {
+				"scale": "Escala",
+				"scale2": "2x",
+				"scale4": "4x",
+				"apply": "Ampliar imagen",
+				"downloading": "Descargando modelo",
+				"working": "Ampliando",
+				"limitNote": "Límite de entrada: 2048 px por lado y 4 megapíxeles.",
+				"usedWebgpu": "Se ejecutó en WebGPU",
+				"usedCpu": "Se ejecutó en CPU"
+			},
+			"steps": [
+				{
+					"title": "Añade una imagen",
+					"line": "Suelta una imagen pequeña o mediana para ampliar."
+				},
+				{
+					"title": "Elige una escala",
+					"line": "Elige 2x o 4x y empieza. El progreso se muestra por bloque."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda la imagen ampliada."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿2x o 4x, qué diferencia hay?",
+					"a": "4x ejecuta el modelo a tamaño completo. 2x ejecuta el mismo pase 4x y lo reduce con limpieza, más rápido de guardar y compartir."
+				},
+				{
+					"q": "¿Cuánto tarda?",
+					"a": "Segundos por megapíxel en WebGPU, más en CPU. La barra muestra cada bloque terminado."
+				},
+				{
+					"q": "¿Por qué hay un límite?",
+					"a": "Ampliar 4x multiplica los píxeles por dieciséis. El límite protege la memoria en móviles y portátiles."
+				}
+			]
 		}
 	}
 }

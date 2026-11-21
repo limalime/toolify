@@ -1,6 +1,12 @@
 import * as Comlink from "comlink";
+import {
+	adjustPixel,
+	type EnhanceOptions,
+	sharpenPlane,
+} from "@/lib/images/enhance";
 import { buildIco, parseIco, pickPngEntry } from "@/lib/images/ico";
 import { embedRasterSvg, ensureSvgSize, svgSize } from "@/lib/images/svg";
+import { tileGrid } from "@/lib/images/tiles";
 
 export type OutputFormat =
 	| "png"
@@ -388,12 +394,291 @@ export async function compositeImage(
 	return context.getImageData(0, 0, canvas.width, canvas.height);
 }
 
+// plain pixel math, no model. brightness and contrast and saturation in
+// one pass, sharpness as a 3x3 second pass. alpha is never touched.
+export async function adjustImage(
+	image: ImageData,
+	width: number,
+	height: number,
+	options: EnhanceOptions,
+): Promise<ImageData> {
+	const out = new ImageData(width, height);
+	const source = image.data;
+	const target = out.data;
+	for (let index = 0; index < source.length; index += 4) {
+		const [red, green, blue] = adjustPixel(
+			source[index] as number,
+			source[index + 1] as number,
+			source[index + 2] as number,
+			options,
+		);
+		target[index] = red;
+		target[index + 1] = green;
+		target[index + 2] = blue;
+		target[index + 3] = source[index + 3] as number;
+	}
+	if (options.sharpness !== 0) {
+		target.set(sharpenPlane(target, width, height, options.sharpness));
+	}
+	return out;
+}
+
+export interface BgRemovalOptions {
+	publicPath: string;
+	model: "isnet_quint8" | "isnet_fp16";
+	device: "cpu" | "gpu";
+}
+
+export type BgRemovalProgress = (
+	stage: "download" | "inference",
+	current: number,
+	total: number,
+) => void;
+
+// isnet segmentation through imgly, model and wasm stream from R2.
+export async function removeBackgroundImage(
+	bytes: ArrayBuffer,
+	mime: string,
+	options: BgRemovalOptions,
+	onProgress?: BgRemovalProgress,
+): Promise<EncodedImage> {
+	const { removeBackground } = await import("@imgly/background-removal");
+	const blob = await removeBackground(new Blob([bytes], { type: mime }), {
+		publicPath: options.publicPath,
+		model: options.model,
+		device: options.device,
+		output: { format: "image/png", quality: 1 },
+		progress: (key: string, current: number, total: number) => {
+			onProgress?.(
+				key.startsWith("fetch:") ? "download" : "inference",
+				current,
+				total,
+			);
+		},
+	});
+	return {
+		bytes: await blob.arrayBuffer(),
+		mime: "image/png",
+		extension: "png",
+	};
+}
+
+export interface UpscaleOptions {
+	modelUrl: string;
+	wasmBase: string;
+	scale: 2 | 4;
+}
+
+export type UpscaleProgress = (
+	stage: "download" | "upscale",
+	current: number,
+	total: number,
+) => void;
+
+export interface UpscaledImage {
+	image: ImageData;
+	width: number;
+	height: number;
+	device: "webgpu" | "wasm";
+}
+
+const UPSCALE_TILE = 256;
+const UPSCALE_OVERLAP = 16;
+const MODEL_SCALE = 4;
+
+async function fetchWithProgress(
+	url: string,
+	onProgress?: UpscaleProgress,
+): Promise<ArrayBuffer> {
+	const response = await fetch(url);
+	if (!response.ok || !response.body) {
+		throw new Error(`model download failed (${response.status})`);
+	}
+	const total = Number(response.headers.get("content-length") ?? 0);
+	const reader = response.body.getReader();
+	const chunks: Uint8Array[] = [];
+	let received = 0;
+	for (;;) {
+		const { done, value } = await reader.read();
+		if (done) {
+			break;
+		}
+		chunks.push(value);
+		received += value.byteLength;
+		onProgress?.("download", received, total);
+	}
+	const merged = new Uint8Array(received);
+	let offset = 0;
+	for (const chunk of chunks) {
+		merged.set(chunk, offset);
+		offset += chunk.byteLength;
+	}
+	return merged.buffer as ArrayBuffer;
+}
+
+async function detectWebGpu(): Promise<boolean> {
+	const gpu = (globalThis.navigator as unknown as { gpu?: unknown } | undefined)
+		?.gpu as { requestAdapter(): Promise<unknown> } | undefined;
+	if (!gpu) {
+		return false;
+	}
+	try {
+		return (await gpu.requestAdapter()) !== null;
+	} catch {
+		return false;
+	}
+}
+
+function tileToTensor(tile: ImageData): Float32Array {
+	const plane = tile.width * tile.height;
+	const tensor = new Float32Array(plane * 3);
+	const data = tile.data;
+	for (let index = 0; index < plane; index++) {
+		tensor[index] = (data[index * 4] as number) / 255;
+		tensor[index + plane] = (data[index * 4 + 1] as number) / 255;
+		tensor[index + plane * 2] = (data[index * 4 + 2] as number) / 255;
+	}
+	return tensor;
+}
+
+// realesr x4 tiled, rgb through the model and alpha through smooth canvas
+// scaling. webgpu when the browser offers it, wasm otherwise, and the
+// caller is told which one ran.
+export async function upscaleImage(
+	image: ImageData,
+	options: UpscaleOptions,
+	onProgress?: UpscaleProgress,
+): Promise<UpscaledImage> {
+	const ort = await import("onnxruntime-web");
+	const webgpu = await detectWebGpu();
+	const suffix = webgpu ? ".jsep" : "";
+	ort.env.wasm.wasmPaths = {
+		mjs: `${options.wasmBase}/ort-wasm-simd-threaded${suffix}.mjs`,
+		wasm: `${options.wasmBase}/ort-wasm-simd-threaded${suffix}.wasm`,
+	};
+	const isolated =
+		typeof crossOriginIsolated !== "undefined" && crossOriginIsolated;
+	ort.env.wasm.numThreads = isolated
+		? Math.max(1, Math.min(4, globalThis.navigator?.hardwareConcurrency ?? 4))
+		: 1;
+	const model = await fetchWithProgress(options.modelUrl, onProgress);
+	let session: Awaited<ReturnType<typeof ort.InferenceSession.create>>;
+	let device: "webgpu" | "wasm" = webgpu ? "webgpu" : "wasm";
+	try {
+		session = await ort.InferenceSession.create(model, {
+			executionProviders: [device],
+		});
+	} catch (unknown) {
+		if (!webgpu) {
+			throw unknown;
+		}
+		session = await ort.InferenceSession.create(model, {
+			executionProviders: ["wasm"],
+		});
+		device = "wasm";
+	}
+	const outWidth = image.width * MODEL_SCALE;
+	const outHeight = image.height * MODEL_SCALE;
+	const out = new ImageData(outWidth, outHeight);
+	const tiles = tileGrid(
+		image.width,
+		image.height,
+		UPSCALE_TILE,
+		UPSCALE_OVERLAP,
+		MODEL_SCALE,
+	);
+	let done = 0;
+	for (const tile of tiles) {
+		const canvas = new OffscreenCanvas(image.width, image.height);
+		const context = canvas.getContext("2d");
+		if (!context) {
+			throw new Error("canvas unavailable");
+		}
+		context.putImageData(image, 0, 0);
+		const piece = context.getImageData(tile.x, tile.y, tile.width, tile.height);
+		const input = new ort.Tensor("float32", tileToTensor(piece), [
+			1,
+			3,
+			piece.height,
+			piece.width,
+		]);
+		const feeds: Record<string, typeof input> = {};
+		feeds[session.inputNames[0] as string] = input;
+		const results = await session.run(feeds);
+		const output = results[session.outputNames[0] as string];
+		if (!output) {
+			throw new Error("upscale produced no output");
+		}
+		const data = output.data as Float32Array;
+		const plane = tile.width * MODEL_SCALE * (tile.height * MODEL_SCALE);
+		const keepX = Math.round((tile.outX / MODEL_SCALE - tile.x) * MODEL_SCALE);
+		const keepY = Math.round((tile.outY / MODEL_SCALE - tile.y) * MODEL_SCALE);
+		for (let y = 0; y < tile.outHeight; y++) {
+			for (let x = 0; x < tile.outWidth; x++) {
+				const sx = keepX + x;
+				const sy = keepY + y;
+				const source = sy * tile.width * MODEL_SCALE + sx;
+				const target = ((tile.outY + y) * outWidth + (tile.outX + x)) * 4;
+				out.data[target] =
+					Math.max(0, Math.min(1, data[source] as number)) * 255;
+				out.data[target + 1] =
+					Math.max(0, Math.min(1, data[source + plane] as number)) * 255;
+				out.data[target + 2] =
+					Math.max(0, Math.min(1, data[source + plane * 2] as number)) * 255;
+				out.data[target + 3] = 255;
+			}
+		}
+		done += 1;
+		onProgress?.("upscale", done, tiles.length);
+	}
+	await session.release?.();
+	const alpha = new OffscreenCanvas(image.width, image.height);
+	const alphaContext = alpha.getContext("2d");
+	if (!alphaContext) {
+		throw new Error("canvas unavailable");
+	}
+	alphaContext.putImageData(image, 0, 0);
+	const scaled = new OffscreenCanvas(outWidth, outHeight);
+	const scaledContext = scaled.getContext("2d", { willReadFrequently: true });
+	if (!scaledContext) {
+		throw new Error("canvas unavailable");
+	}
+	scaledContext.imageSmoothingEnabled = true;
+	scaledContext.drawImage(alpha, 0, 0, outWidth, outHeight);
+	const alphaData = scaledContext.getImageData(0, 0, outWidth, outHeight).data;
+	for (let index = 0; index < outWidth * outHeight; index++) {
+		out.data[index * 4 + 3] = alphaData[index * 4 + 3] as number;
+	}
+	if (options.scale === MODEL_SCALE) {
+		return { image: out, width: outWidth, height: outHeight, device };
+	}
+	const half = new OffscreenCanvas(image.width * 2, image.height * 2);
+	const halfContext = half.getContext("2d");
+	if (!halfContext) {
+		throw new Error("canvas unavailable");
+	}
+	const full = new OffscreenCanvas(outWidth, outHeight);
+	const fullContext = full.getContext("2d");
+	if (!fullContext) {
+		throw new Error("canvas unavailable");
+	}
+	fullContext.putImageData(out, 0, 0);
+	halfContext.imageSmoothingEnabled = true;
+	halfContext.imageSmoothingQuality = "high";
+	halfContext.drawImage(full, 0, 0, half.width, half.height);
+	const down = halfContext.getImageData(0, 0, half.width, half.height);
+	return { image: down, width: half.width, height: half.height, device };
+}
+
 export const api = {
 	decodeInput,
 	encodeImage,
 	resizeImage,
 	cropImage,
 	compositeImage,
+	adjustImage,
+	removeBackgroundImage,
+	upscaleImage,
 };
 
 Comlink.expose(api);

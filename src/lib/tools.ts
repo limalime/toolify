@@ -16,6 +16,9 @@ export const TOOLS: ToolEntry[] = [
 	{ slug: "resize-image", category: "gambar", icon: "resize" },
 	{ slug: "crop-image", category: "gambar", icon: "crop" },
 	{ slug: "watermark-image", category: "gambar", icon: "watermark" },
+	{ slug: "enhance-image", category: "gambar", icon: "enhance" },
+	{ slug: "remove-background", category: "gambar", icon: "background" },
+	{ slug: "upscale-image", category: "gambar", icon: "upscale" },
 ];
 
 export const CATEGORY_ORDER: CategoryKey[] = [
