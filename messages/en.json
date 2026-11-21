@@ -555,6 +555,95 @@
 					"a": "A 4x upscale multiplies pixels by sixteen. The cap keeps memory safe on phones and laptops."
 				}
 			]
+		},
+		"meme-generator": {
+			"name": "Meme Generator",
+			"tagline": "Top text, bottom text, instant classic.",
+			"title": "Free Online Meme Generator",
+			"description": "Make memes in your browser with top and bottom captions. Live preview, font size control, one download. Files never leave your device.",
+			"h1": "Free Online Meme Generator",
+			"sub": "Type the joke, see it live, download the meme.",
+			"options": {
+				"top": "Top text",
+				"topPlaceholder": "Top caption",
+				"bottom": "Bottom text",
+				"bottomPlaceholder": "Bottom caption",
+				"fontSize": "Font size",
+				"download": "Download meme"
+			},
+			"steps": [
+				{
+					"title": "Add an image",
+					"line": "Drop the meme template."
+				},
+				{
+					"title": "Write captions",
+					"line": "Type top and bottom text, watch the preview."
+				},
+				{
+					"title": "Download",
+					"line": "Save the meme as PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Which format downloads?",
+					"a": "PNG at the original image size."
+				},
+				{
+					"q": "Can I use one caption only?",
+					"a": "Yes, leave either box empty."
+				},
+				{
+					"q": "Whose images can I meme?",
+					"a": "Use images you own or that allow reuse."
+				}
+			]
+		},
+		"png-to-svg": {
+			"name": "PNG to SVG",
+			"tagline": "Trace pixels into real vectors.",
+			"title": "Free Online PNG to SVG Tracer",
+			"description": "Convert PNG to SVG by tracing real vector paths in your browser with vtracer. Best for logos and icons, not photos. Files never leave your device.",
+			"h1": "Free Online PNG to SVG Tracer",
+			"sub": "True tracing, not an embedded image. Logos in, vectors out.",
+			"options": {
+				"colors": "Colors",
+				"smoothing": "Smoothing",
+				"apply": "Trace to SVG",
+				"bestNote": "Best for logos and icons, not photos.",
+				"limitNote": "Large images trace at 1024 px. Vectors scale perfectly anyway.",
+				"photoWarning": "Huge output for a detailed image. Fewer colors trace cleaner.",
+				"resultSize": "SVG size"
+			},
+			"steps": [
+				{
+					"title": "Add an image",
+					"line": "Drop a logo or icon."
+				},
+				{
+					"title": "Tune and trace",
+					"line": "Pick colors and smoothing, then trace."
+				},
+				{
+					"title": "Download",
+					"line": "Save the SVG vectors."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Is this real vectorization?",
+					"a": "Yes. The vtracer library traces edges into paths instead of embedding the image inside the SVG."
+				},
+				{
+					"q": "Why do photos trace badly?",
+					"a": "Photos hold thousands of tones, so the output grows huge and rough. This tool is for flat graphics."
+				},
+				{
+					"q": "What settings for clean logos?",
+					"a": "Medium colors and medium smoothing suit most logos."
+				}
+			]
 		}
 	}
 }

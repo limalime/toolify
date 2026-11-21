@@ -555,6 +555,95 @@
 					"a": "Ampliar 4x multiplica los píxeles por dieciséis. El límite protege la memoria en móviles y portátiles."
 				}
 			]
+		},
+		"meme-generator": {
+			"name": "Generador de memes",
+			"tagline": "Texto arriba, texto abajo, clásico instantáneo.",
+			"title": "Generador de memes online gratis",
+			"description": "Crea memes en tu navegador con textos superior e inferior. Vista previa en vivo, control de tamaño y una descarga. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Generador de memes online gratis",
+			"sub": "Escribe el chiste, míralo en vivo, descarga el meme.",
+			"options": {
+				"top": "Texto superior",
+				"topPlaceholder": "Texto de arriba",
+				"bottom": "Texto inferior",
+				"bottomPlaceholder": "Texto de abajo",
+				"fontSize": "Tamaño de letra",
+				"download": "Descargar meme"
+			},
+			"steps": [
+				{
+					"title": "Añade una imagen",
+					"line": "Suelta la plantilla del meme."
+				},
+				{
+					"title": "Escribe los textos",
+					"line": "Escribe arriba y abajo, mira la vista previa."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda el meme como PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué formato se descarga?",
+					"a": "PNG al tamaño de la imagen original."
+				},
+				{
+					"q": "¿Puedo usar un solo texto?",
+					"a": "Sí, deja vacía una de las casillas."
+				},
+				{
+					"q": "¿Qué imágenes puedo usar?",
+					"a": "Usa imágenes tuyas o que permitan la reutilización."
+				}
+			]
+		},
+		"png-to-svg": {
+			"name": "PNG a SVG",
+			"tagline": "Traza píxeles en vectores reales.",
+			"title": "Trazador PNG a SVG online gratis",
+			"description": "Convierte PNG a SVG trazando vectores reales en tu navegador con vtracer. Ideal para logos e iconos, no para fotos. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Trazador PNG a SVG online gratis",
+			"sub": "Trazado real, no una imagen incrustada. Logos dentro, vectores fuera.",
+			"options": {
+				"colors": "Colores",
+				"smoothing": "Suavizado",
+				"apply": "Trazar a SVG",
+				"bestNote": "Ideal para logos e iconos, no para fotos.",
+				"limitNote": "Las imágenes grandes se trazan a 1024 px. Los vectores escalan perfectos igual.",
+				"photoWarning": "Salida enorme para una imagen detallada. Menos colores trazan más limpio.",
+				"resultSize": "Tamaño del SVG"
+			},
+			"steps": [
+				{
+					"title": "Añade una imagen",
+					"line": "Suelta un logo o icono."
+				},
+				{
+					"title": "Ajusta y traza",
+					"line": "Elige colores y suavizado, luego traza."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda los vectores SVG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Es vectorización real?",
+					"a": "Sí. La librería vtracer traza bordes en trazados, no incrusta la imagen en el SVG."
+				},
+				{
+					"q": "¿Por qué las fotos trazan mal?",
+					"a": "Las fotos tienen miles de tonos y la salida sale enorme y áspera. Esta herramienta es para gráficos planos."
+				},
+				{
+					"q": "¿Ajustes para logos limpios?",
+					"a": "Colores y suavizado medios sirven para casi todos los logos."
+				}
+			]
 		}
 	}
 }

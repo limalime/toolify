@@ -80,6 +80,7 @@ export default function CropImageTool() {
 		height: 0.8,
 	});
 	const [preset, setPreset] = useState<string>("free");
+	const [loading, setLoading] = useState(false);
 	const [running, setRunning] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const [result, setResult] = useState<Result | null>(null);
@@ -122,6 +123,7 @@ export default function CropImageTool() {
 			return;
 		}
 		setFile(picked);
+		setLoading(true);
 		try {
 			const worker = await imageWorker();
 			const image = await worker.decodeInput(
@@ -143,6 +145,8 @@ export default function CropImageTool() {
 				console.error(unknown);
 			}
 			setError(te("unreadableFile"));
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -353,6 +357,7 @@ export default function CropImageTool() {
 				</div>
 				<SmoothButton
 					className="w-full"
+					disabled={running || loading}
 					loading={running}
 					onClick={apply}
 					size="lg"

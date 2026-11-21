@@ -19,6 +19,8 @@ export const TOOLS: ToolEntry[] = [
 	{ slug: "enhance-image", category: "gambar", icon: "enhance" },
 	{ slug: "remove-background", category: "gambar", icon: "background" },
 	{ slug: "upscale-image", category: "gambar", icon: "upscale" },
+	{ slug: "meme-generator", category: "gambar", icon: "meme" },
+	{ slug: "png-to-svg", category: "gambar", icon: "trace" },
 ];
 
 export const CATEGORY_ORDER: CategoryKey[] = [

@@ -45,7 +45,7 @@ export function signatureOf(bytes: Uint8Array): Signature | "unknown" {
 	if (text.startsWith("%PDF")) {
 		return "pdf";
 	}
-	if (new TextDecoder().decode(bytes.slice(0, 64)).includes("<svg")) {
+	if (new TextDecoder().decode(bytes.slice(0, 512)).includes("<svg")) {
 		return "svg";
 	}
 	if (text.startsWith("PK")) {

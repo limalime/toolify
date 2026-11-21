@@ -555,6 +555,95 @@
 					"a": "Agrandir 4x multiplie les pixels par seize. Le plafond protège la mémoire des téléphones et portables."
 				}
 			]
+		},
+		"meme-generator": {
+			"name": "Générateur de mèmes",
+			"tagline": "Texte en haut, texte en bas, classique instantané.",
+			"title": "Générateur de mèmes en ligne gratuit",
+			"description": "Créez des mèmes dans le navigateur avec des légendes en haut et en bas. Aperçu en direct, taille de police réglable, un téléchargement. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Générateur de mèmes en ligne gratuit",
+			"sub": "Tapez la blague, voyez-la en direct, téléchargez le mème.",
+			"options": {
+				"top": "Texte du haut",
+				"topPlaceholder": "Légende du haut",
+				"bottom": "Texte du bas",
+				"bottomPlaceholder": "Légende du bas",
+				"fontSize": "Taille de police",
+				"download": "Télécharger le mème"
+			},
+			"steps": [
+				{
+					"title": "Ajoutez une image",
+					"line": "Déposez le modèle du mème."
+				},
+				{
+					"title": "Écrivez les légendes",
+					"line": "Tapez en haut et en bas, regardez l'aperçu."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Enregistrez le mème en PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Quel format en sortie ?",
+					"a": "PNG à la taille de l'image d'origine."
+				},
+				{
+					"q": "Une seule légende possible ?",
+					"a": "Oui, laissez une case vide."
+				},
+				{
+					"q": "Quelles images utiliser ?",
+					"a": "Utilisez vos images ou des images réutilisables."
+				}
+			]
+		},
+		"png-to-svg": {
+			"name": "PNG vers SVG",
+			"tagline": "Tracez les pixels en vrais vecteurs.",
+			"title": "Traceur PNG vers SVG en ligne gratuit",
+			"description": "Convertissez PNG en SVG en traçant de vrais vecteurs dans le navigateur avec vtracer. Idéal pour logos et icônes, pas pour photos. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Traceur PNG vers SVG en ligne gratuit",
+			"sub": "Vrai traçage, pas une image incrustée. Logos dedans, vecteurs dehors.",
+			"options": {
+				"colors": "Couleurs",
+				"smoothing": "Lissage",
+				"apply": "Tracer en SVG",
+				"bestNote": "Idéal pour logos et icônes, pas pour photos.",
+				"limitNote": "Les grandes images se tracent à 1024 px. Les vecteurs restent nets à toute taille.",
+				"photoWarning": "Sortie énorme pour une image détaillée. Moins de couleurs tracent plus net.",
+				"resultSize": "Taille du SVG"
+			},
+			"steps": [
+				{
+					"title": "Ajoutez une image",
+					"line": "Déposez un logo ou une icône."
+				},
+				{
+					"title": "Réglez et tracez",
+					"line": "Choisissez couleurs et lissage, puis tracez."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Enregistrez les vecteurs SVG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Vraie vectorisation ?",
+					"a": "Oui. La librairie vtracer trace les contours en chemins, elle n'incruste pas l'image."
+				},
+				{
+					"q": "Pourquoi les photos tracent mal ?",
+					"a": "Les photos ont des milliers de tons, la sortie est énorme et rugueuse. Cet outil est pour les graphiques plats."
+				},
+				{
+					"q": "Réglages pour un logo net ?",
+					"a": "Couleurs et lissage moyens conviennent à presque tous les logos."
+				}
+			]
 		}
 	}
 }

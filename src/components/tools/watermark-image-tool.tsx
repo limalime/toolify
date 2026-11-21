@@ -73,6 +73,7 @@ export default function WatermarkImageTool() {
 	const [text, setText] = useState("© Toolify");
 	const [fontSize, setFontSize] = useState(48);
 	const [markFile, setMarkFile] = useState<File | null>(null);
+	const [loading, setLoading] = useState(false);
 	const [position, setPosition] = useState<WatermarkPosition>(8);
 	const [opacity, setOpacity] = useState(70);
 	const [running, setRunning] = useState(false);
@@ -114,6 +115,7 @@ export default function WatermarkImageTool() {
 			return;
 		}
 		setFile(picked);
+		setLoading(true);
 		try {
 			const worker = await imageWorker();
 			const image = await worker.decodeInput(
@@ -131,6 +133,8 @@ export default function WatermarkImageTool() {
 				console.error(unknown);
 			}
 			setError(te("unreadableFile"));
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -384,6 +388,7 @@ export default function WatermarkImageTool() {
 				</div>
 				<SmoothButton
 					className="w-full"
+					disabled={running || loading}
 					loading={running}
 					onClick={apply}
 					size="lg"

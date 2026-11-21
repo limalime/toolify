@@ -56,6 +56,7 @@ export default function EnhanceImageTool() {
 	const [file, setFile] = useState<File | null>(null);
 	const [options, setOptions] = useState<EnhanceOptions>(NEUTRAL_ENHANCE);
 	const [preview, setPreview] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const [running, setRunning] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const [result, setResult] = useState<Result | null>(null);
@@ -105,12 +106,12 @@ export default function EnhanceImageTool() {
 		timer.current = setTimeout(() => drawPreview(next), 120);
 	};
 
+	// drawPreview is stable worker plumbing, preview gates the canvas mount.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: preview-only trigger by design
 	useEffect(() => {
 		if (preview) {
 			drawPreview(optionsRef.current);
 		}
-		// drawPreview is stable worker plumbing, preview gates the canvas mount.
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [preview]);
 
 	const reset = () => {
@@ -147,6 +148,7 @@ export default function EnhanceImageTool() {
 			return;
 		}
 		setFile(picked);
+		setLoading(true);
 		try {
 			const worker = await imageWorker();
 			const image = await worker.decodeInput(
@@ -180,6 +182,8 @@ export default function EnhanceImageTool() {
 				console.error(unknown);
 			}
 			setError(te("unreadableFile"));
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -313,6 +317,7 @@ export default function EnhanceImageTool() {
 					</SmoothButton>
 					<SmoothButton
 						className="w-full"
+						disabled={running || loading}
 						loading={running}
 						onClick={apply}
 						size="lg"

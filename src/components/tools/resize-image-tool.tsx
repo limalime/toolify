@@ -71,6 +71,7 @@ export default function ResizeImageTool() {
 	const [height, setHeight] = useState("");
 	const [percent, setPercent] = useState(100);
 	const [keepRatio, setKeepRatio] = useState(true);
+	const [loading, setLoading] = useState(false);
 	const [running, setRunning] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const [result, setResult] = useState<Result | null>(null);
@@ -110,6 +111,7 @@ export default function ResizeImageTool() {
 			return;
 		}
 		setFile(picked);
+		setLoading(true);
 		try {
 			const worker = await imageWorker();
 			const image = await worker.decodeInput(
@@ -130,6 +132,8 @@ export default function ResizeImageTool() {
 				console.error(unknown);
 			}
 			setError(te("unreadableFile"));
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -348,6 +352,7 @@ export default function ResizeImageTool() {
 				</label>
 				<SmoothButton
 					className="w-full"
+					disabled={running || loading}
 					loading={running}
 					onClick={apply}
 					size="lg"

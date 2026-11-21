@@ -1,5 +1,6 @@
 import {
 	Crop,
+	Drama,
 	Eraser,
 	FileImage,
 	type LucideIcon,
@@ -7,6 +8,7 @@ import {
 	Minimize2,
 	Scaling,
 	SlidersHorizontal,
+	Spline,
 	Stamp,
 	Wrench,
 } from "lucide-react";
@@ -22,6 +24,8 @@ export const TOOL_ICONS: Record<string, LucideIcon> = {
 	enhance: SlidersHorizontal,
 	background: Eraser,
 	upscale: Maximize2,
+	meme: Drama,
+	trace: Spline,
 };
 
 export default function ToolIcon({

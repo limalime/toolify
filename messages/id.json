@@ -555,6 +555,95 @@
 					"a": "Upscale 4x melipatgandakan piksel enam belas kali. Batas ini menjaga memori aman di ponsel dan laptop."
 				}
 			]
+		},
+		"meme-generator": {
+			"name": "Pembuat Meme",
+			"tagline": "Teks atas, teks bawah, langsung klasik.",
+			"title": "Pembuat Meme Online Gratis",
+			"description": "Buat meme di browser dengan teks atas dan bawah. Pratinjau langsung, kontrol ukuran font, sekali unduh. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Pembuat Meme Online Gratis",
+			"sub": "Ketik leluconnya, lihat langsung, unduh memenya.",
+			"options": {
+				"top": "Teks atas",
+				"topPlaceholder": "Keterangan atas",
+				"bottom": "Teks bawah",
+				"bottomPlaceholder": "Keterangan bawah",
+				"fontSize": "Ukuran font",
+				"download": "Unduh meme"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan gambar",
+					"line": "Jatuhkan templat meme."
+				},
+				{
+					"title": "Tulis keterangan",
+					"line": "Ketik teks atas dan bawah, lihat pratinjaunya."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan meme sebagai PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Format apa yang diunduh?",
+					"a": "PNG dalam ukuran gambar asli."
+				},
+				{
+					"q": "Bisakah hanya satu keterangan?",
+					"a": "Bisa, kosongkan salah satu kotak."
+				},
+				{
+					"q": "Gambar siapa yang boleh jadi meme?",
+					"a": "Gunakan gambar milik Anda atau yang boleh dipakai ulang."
+				}
+			]
+		},
+		"png-to-svg": {
+			"name": "PNG ke SVG",
+			"tagline": "Jejaki piksel menjadi vektor asli.",
+			"title": "Pengejak PNG ke SVG Online Gratis",
+			"description": "Ubah PNG ke SVG dengan menjejak jalur vektor asli di browser memakai vtracer. Terbaik untuk logo dan ikon, bukan foto. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Pengejak PNG ke SVG Online Gratis",
+			"sub": "Penjejakan sejati, bukan gambar tempelan. Logo masuk, vektor keluar.",
+			"options": {
+				"colors": "Warna",
+				"smoothing": "Penghalusan",
+				"apply": "Jejak ke SVG",
+				"bestNote": "Terbaik untuk logo dan ikon, bukan foto.",
+				"limitNote": "Gambar besar dijejak pada 1024 px. Vektor tetap tajam di segala ukuran.",
+				"photoWarning": "Keluaran besar untuk gambar detail. Warna lebih sedikit menjejak lebih bersih.",
+				"resultSize": "Ukuran SVG"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan gambar",
+					"line": "Jatuhkan logo atau ikon."
+				},
+				{
+					"title": "Atur dan jejak",
+					"line": "Pilih warna dan penghalusan, lalu jejak."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan vektor SVG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah ini vektorisasi asli?",
+					"a": "Ya. Pustaka vtracer menjejak tepi menjadi jalur, bukan menempelkan gambar di dalam SVG."
+				},
+				{
+					"q": "Mengapa foto dijejak buruk?",
+					"a": "Foto punya ribuan rona sehingga keluarannya besar dan kasar. Alat ini untuk grafis datar."
+				},
+				{
+					"q": "Pengaturan untuk logo bersih?",
+					"a": "Warna sedang dan penghalusan sedang cocok untuk kebanyakan logo."
+				}
+			]
 		}
 	}
 }

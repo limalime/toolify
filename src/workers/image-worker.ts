@@ -32,6 +32,12 @@ export interface EncodedImage {
 const BITMAP_INPUTS = new Set(["png", "jpg", "jpeg", "webp", "avif"]);
 const MAX_RASTER_EDGE = 4096;
 
+// boot check so a worker that never comes up fails fast instead of
+// hanging every tool call behind it forever.
+export async function ping(): Promise<string> {
+	return "pong";
+}
+
 function extensionOf(filename: string): string {
 	const dot = filename.lastIndexOf(".");
 	return dot >= 0 ? filename.slice(dot + 1).toLowerCase() : "";
@@ -670,7 +676,66 @@ export async function upscaleImage(
 	return { image: down, width: half.width, height: half.height, device };
 }
 
+export interface TraceOptions {
+	colors: number;
+	corner: number;
+	speckle: number;
+}
+
+interface VtracerModule {
+	default(init: { module_or_path: string }): Promise<unknown>;
+	trace_rgba(
+		pixels: Uint8Array,
+		width: number,
+		height: number,
+		colorPrecision: number,
+		cornerThreshold: number,
+		filterSpeckle: number,
+	): string;
+}
+
+let vtracerModule: VtracerModule | null = null;
+
+async function ensureVtracer(): Promise<VtracerModule> {
+	if (!vtracerModule) {
+		// blob import keeps the bundler out: the glue never resolves at
+		// build time, and init gets an explicit wasm url.
+		const source = await (await fetch("/vtracer/vtracer.js")).text();
+		const url = URL.createObjectURL(
+			new Blob([source], { type: "text/javascript" }),
+		);
+		try {
+			const module = (await import(
+				/* webpackIgnore: true */ url
+			)) as VtracerModule;
+			await module.default({ module_or_path: "/vtracer/vtracer_bg.wasm" });
+			vtracerModule = module;
+		} finally {
+			URL.revokeObjectURL(url);
+		}
+	}
+	return vtracerModule;
+}
+
+// real vector tracing through the rust wasm build, loaded outside the
+// js bundler so its bytes never touch the app bundle.
+export async function tracePng(
+	image: ImageData,
+	options: TraceOptions,
+): Promise<string> {
+	const api = await ensureVtracer();
+	return api.trace_rgba(
+		new Uint8Array(image.data),
+		image.width,
+		image.height,
+		options.colors,
+		options.corner,
+		options.speckle,
+	);
+}
+
 export const api = {
+	ping,
 	decodeInput,
 	encodeImage,
 	resizeImage,
@@ -679,6 +744,7 @@ export const api = {
 	adjustImage,
 	removeBackgroundImage,
 	upscaleImage,
+	tracePng,
 };
 
 Comlink.expose(api);
