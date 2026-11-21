@@ -866,6 +866,188 @@
 					"a": "Bisa, asal dicetak jelas dengan ukuran cukup."
 				}
 			]
+		},
+		"case-converter": {
+			"name": "Pengubah Huruf",
+			"tagline": "Tujuh gaya huruf dari satu teks.",
+			"title": "Pengubah Huruf Online Gratis",
+			"description": "Ubah teks ke huruf besar, kecil, judul, kalimat, camel, snake, dan kebab gratis di browser. Salin hasil apa pun sekali klik.",
+			"h1": "Pengubah Huruf Online Gratis",
+			"sub": "Satu teks masuk, tujuh gaya keluar. Klik untuk salin.",
+			"options": {
+				"text": "Teks",
+				"hint": "Ketik di atas untuk melihat semua gaya.",
+				"styles": {
+					"upper": "HURUF BESAR",
+					"lower": "huruf kecil",
+					"title": "Huruf Judul",
+					"sentence": "Huruf kalimat",
+					"camel": "camelCase",
+					"snake": "snake_case",
+					"kebab": "kebab-case"
+				}
+			},
+			"steps": [
+				{
+					"title": "Ketik teks",
+					"line": "Tulis atau tempel teks."
+				},
+				{
+					"title": "Lihat gaya",
+					"line": "Semua gaya tampil sekaligus."
+				},
+				{
+					"title": "Klik untuk salin",
+					"line": "Klik kartu untuk menyalinnya."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apa beda kebab dan snake?",
+					"a": "Kebab memakai strip, snake memakai garis bawah."
+				},
+				{
+					"q": "Apakah title case akurat?",
+					"a": "Aturannya sederhana: tiap kata dikapitalkan."
+				},
+				{
+					"q": "Apakah teks diunggah?",
+					"a": "Tidak. Semua berjalan di perangkat Anda."
+				}
+			]
+		},
+		"word-counter": {
+			"name": "Penghitung Kata",
+			"tagline": "Kata, karakter, dan waktu baca.",
+			"title": "Penghitung Kata Online Gratis",
+			"description": "Hitung kata, karakter, kalimat, dan paragraf gratis di browser dengan waktu baca langsung. Semua tetap di perangkat Anda.",
+			"h1": "Penghitung Kata Online Gratis",
+			"sub": "Hitungan langsung saat mengetik, plus waktu baca.",
+			"options": {
+				"text": "Teks",
+				"characters": "Karakter",
+				"charactersNoSpaces": "Tanpa spasi",
+				"words": "Kata",
+				"sentences": "Kalimat",
+				"paragraphs": "Paragraf",
+				"readingTime": "Waktu baca"
+			},
+			"steps": [
+				{
+					"title": "Ketik atau tempel",
+					"line": "Masukkan teks Anda."
+				},
+				{
+					"title": "Baca hitungan",
+					"line": "Semua angka tampil langsung."
+				},
+				{
+					"title": "Terus menulis",
+					"line": "Hitungan ikut setiap ketikan."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Bagaimana waktu baca dihitung?",
+					"a": "200 kata per menit, dibulatkan."
+				},
+				{
+					"q": "Apa yang dihitung sebagai kata?",
+					"a": "Potongan teks yang dipisah spasi."
+				},
+				{
+					"q": "Apakah emoji dihitung?",
+					"a": "Ya, satu emoji satu karakter."
+				}
+			]
+		},
+		"base64-url-encoder": {
+			"name": "Encoder Base64 dan URL",
+			"tagline": "Encode dan decode Base64 dan URL.",
+			"title": "Encoder Base64 dan URL Online Gratis",
+			"description": "Encode dan decode string Base64 dan URL gratis di browser, aman unicode. Salin hasil sekali klik. Tidak ada yang diunggah.",
+			"h1": "Encoder Base64 dan URL Online Gratis",
+			"sub": "Pilih format dan arah, dapatkan hasilnya.",
+			"options": {
+				"format": "Format",
+				"formatBase64": "Base64",
+				"formatUrl": "URL",
+				"direction": "Arah",
+				"encode": "Encode",
+				"decode": "Decode",
+				"input": "Masukan",
+				"output": "Keluaran",
+				"invalid": "Ini bukan masukan tersandi yang valid.",
+				"needText": "Ketik sesuatu dulu."
+			},
+			"steps": [
+				{
+					"title": "Pilih format dan arah",
+					"line": "Tentukan apa yang dikerjakan."
+				},
+				{
+					"title": "Ketik masukan",
+					"line": "Masukkan teks atau kode."
+				},
+				{
+					"title": "Salin keluaran",
+					"line": "Salin hasil dengan sekali klik."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah Base64 itu enkripsi?",
+					"a": "Bukan. Ini penyandian yang mudah dibalik."
+				},
+				{
+					"q": "Mengapa decode gagal?",
+					"a": "Masukan tidak valid. Periksa kembali kodenya."
+				},
+				{
+					"q": "Apakah emoji didukung?",
+					"a": "Ya, aman unicode penuh."
+				}
+			]
+		},
+		"hash-generator": {
+			"name": "Generator Hash",
+			"tagline": "Hash MD5 dan SHA, dihitung lokal.",
+			"title": "Generator Hash Online Gratis",
+			"description": "Buat hash MD5, SHA-1, SHA-256, dan SHA-512 gratis di browser. Dihitung di perangkat Anda, tidak diunggah. Salin hash apa pun sekali klik.",
+			"h1": "Generator Hash Online Gratis",
+			"sub": "Satu teks masuk, empat hash keluar. Dihitung lokal.",
+			"options": {
+				"text": "Teks",
+				"localNote": "Hash dihitung di perangkat Anda. Tidak ada yang diunggah."
+			},
+			"steps": [
+				{
+					"title": "Ketik teks",
+					"line": "Masukkan teks yang dihitung."
+				},
+				{
+					"title": "Baca hash",
+					"line": "Keempat hash tampil sekaligus."
+				},
+				{
+					"title": "Salin hash",
+					"line": "Salin yang dibutuhkan sekali klik."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Hash apa untuk kata sandi?",
+					"a": "Tidak satu pun sendirian. Kata sandi butuh bcrypt atau argon2."
+				},
+				{
+					"q": "Mengapa MD5 ada?",
+					"a": "Untuk checksum dan sistem lama, bukan keamanan."
+				},
+				{
+					"q": "Apakah hash bisa dibalik?",
+					"a": "Tidak. Hash itu satu arah."
+				}
+			]
 		}
 	}
 }

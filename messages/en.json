@@ -866,6 +866,188 @@
 					"a": "Yes, printed clearly at a decent size."
 				}
 			]
+		},
+		"case-converter": {
+			"name": "Case Converter",
+			"tagline": "Seven cases from one text.",
+			"title": "Free Online Case Converter",
+			"description": "Convert text between upper, lower, title, sentence, camel, snake, and kebab case free in your browser. Copy any result with one click.",
+			"h1": "Free Online Case Converter",
+			"sub": "One text in, seven cases out. Click to copy.",
+			"options": {
+				"text": "Text",
+				"hint": "Type above to see every case.",
+				"styles": {
+					"upper": "UPPERCASE",
+					"lower": "lowercase",
+					"title": "Title Case",
+					"sentence": "Sentence case",
+					"camel": "camelCase",
+					"snake": "snake_case",
+					"kebab": "kebab-case"
+				}
+			},
+			"steps": [
+				{
+					"title": "Type text",
+					"line": "Write or paste your text."
+				},
+				{
+					"title": "Browse cases",
+					"line": "See every case at once."
+				},
+				{
+					"title": "Click to copy",
+					"line": "Click a card to copy it."
+				}
+			],
+			"faqs": [
+				{
+					"q": "What is kebab vs snake?",
+					"a": "Kebab uses hyphens, snake uses underscores."
+				},
+				{
+					"q": "Does title case handle names?",
+					"a": "Its rules are simple: every word capitalized."
+				},
+				{
+					"q": "Is my text uploaded?",
+					"a": "No. Everything runs on your device."
+				}
+			]
+		},
+		"word-counter": {
+			"name": "Word Counter",
+			"tagline": "Words, characters, and reading time.",
+			"title": "Free Online Word Counter",
+			"description": "Count words, characters, sentences, and paragraphs free in your browser with live reading time. Everything stays on your device.",
+			"h1": "Free Online Word Counter",
+			"sub": "Live counts as you type, plus reading time.",
+			"options": {
+				"text": "Text",
+				"characters": "Characters",
+				"charactersNoSpaces": "Without spaces",
+				"words": "Words",
+				"sentences": "Sentences",
+				"paragraphs": "Paragraphs",
+				"readingTime": "Reading time"
+			},
+			"steps": [
+				{
+					"title": "Type or paste",
+					"line": "Put your text in."
+				},
+				{
+					"title": "Read counts",
+					"line": "Every number updates live."
+				},
+				{
+					"title": "Keep writing",
+					"line": "Counts follow each keystroke."
+				}
+			],
+			"faqs": [
+				{
+					"q": "How is reading time computed?",
+					"a": "200 words per minute, rounded."
+				},
+				{
+					"q": "What counts as a word?",
+					"a": "Chunks of text separated by whitespace."
+				},
+				{
+					"q": "Do emoji count?",
+					"a": "Yes, one emoji is one character."
+				}
+			]
+		},
+		"base64-url-encoder": {
+			"name": "Base64 and URL Encoder",
+			"tagline": "Encode and decode Base64 and URLs.",
+			"title": "Free Online Base64 and URL Encoder",
+			"description": "Encode and decode Base64 and URL strings free in your browser, unicode safe. Copy results with one click. Nothing is uploaded.",
+			"h1": "Free Online Base64 and URL Encoder",
+			"sub": "Pick a format and a direction, get the result.",
+			"options": {
+				"format": "Format",
+				"formatBase64": "Base64",
+				"formatUrl": "URL",
+				"direction": "Direction",
+				"encode": "Encode",
+				"decode": "Decode",
+				"input": "Input",
+				"output": "Output",
+				"invalid": "This is not valid encoded input.",
+				"needText": "Type something first."
+			},
+			"steps": [
+				{
+					"title": "Pick format and direction",
+					"line": "Decide what to do."
+				},
+				{
+					"title": "Type the input",
+					"line": "Enter text or code."
+				},
+				{
+					"title": "Copy the output",
+					"line": "Copy the result with one click."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Is Base64 encryption?",
+					"a": "No. Encoding that is easy to reverse."
+				},
+				{
+					"q": "Why did decode fail?",
+					"a": "The input is not valid. Check the code again."
+				},
+				{
+					"q": "Does it handle emoji?",
+					"a": "Yes, fully unicode safe."
+				}
+			]
+		},
+		"hash-generator": {
+			"name": "Hash Generator",
+			"tagline": "MD5 and SHA hashes, computed locally.",
+			"title": "Free Online Hash Generator",
+			"description": "Generate MD5, SHA-1, SHA-256, and SHA-512 hashes free in your browser. Computed on your device, never uploaded. Copy any hash with one click.",
+			"h1": "Free Online Hash Generator",
+			"sub": "One text in, four hashes out. Computed locally.",
+			"options": {
+				"text": "Text",
+				"localNote": "Hashes compute on your device. Nothing is uploaded."
+			},
+			"steps": [
+				{
+					"title": "Type text",
+					"line": "Enter the text to hash."
+				},
+				{
+					"title": "Read hashes",
+					"line": "All four at once."
+				},
+				{
+					"title": "Copy any hash",
+					"line": "Copy the one you need with one click."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Which hash for passwords?",
+					"a": "None alone. Passwords need bcrypt or argon2."
+				},
+				{
+					"q": "Why is MD5 here?",
+					"a": "For checksums and legacy systems, not security."
+				},
+				{
+					"q": "Are hashes reversible?",
+					"a": "No. Hashes go one way."
+				}
+			]
 		}
 	}
 }

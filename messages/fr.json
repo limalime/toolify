@@ -866,6 +866,188 @@
 					"a": "Oui, imprimé net et assez grand."
 				}
 			]
+		},
+		"case-converter": {
+			"name": "Convertisseur de casse",
+			"tagline": "Sept casses depuis un texte.",
+			"title": "Convertisseur de casse en ligne gratuit",
+			"description": "Convertissez entre majuscules, minuscules, titre, phrase, camel, snake et kebab gratis dans le navigateur. Copiez chaque résultat en un clic.",
+			"h1": "Convertisseur de casse en ligne gratuit",
+			"sub": "Un texte dedans, sept casses dehors. Cliquez pour copier.",
+			"options": {
+				"text": "Texte",
+				"hint": "Écrivez ci-dessus pour voir toutes les casses.",
+				"styles": {
+					"upper": "MAJUSCULES",
+					"lower": "minuscules",
+					"title": "Casse Titre",
+					"sentence": "Casse phrase",
+					"camel": "camelCase",
+					"snake": "snake_case",
+					"kebab": "kebab-case"
+				}
+			},
+			"steps": [
+				{
+					"title": "Tapez du texte",
+					"line": "Écrivez ou collez du texte."
+				},
+				{
+					"title": "Parcourez",
+					"line": "Toutes les casses à la fois."
+				},
+				{
+					"title": "Cliquez pour copier",
+					"line": "Cliquez une carte pour la copier."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Kebab ou snake ?",
+					"a": "Kebab met des traits d'union, snake des soulignés."
+				},
+				{
+					"q": "Le titre est-il exact ?",
+					"a": "Règles simples : chaque mot capitalisé."
+				},
+				{
+					"q": "Mon texte part-il ?",
+					"a": "Non. Tout tourne sur votre appareil."
+				}
+			]
+		},
+		"word-counter": {
+			"name": "Compteur de mots",
+			"tagline": "Mots, caractères et temps de lecture.",
+			"title": "Compteur de mots en ligne gratuit",
+			"description": "Comptez mots, caractères, phrases et paragraphes gratis dans le navigateur avec le temps de lecture en direct. Tout reste sur votre appareil.",
+			"h1": "Compteur de mots en ligne gratuit",
+			"sub": "Comptes en direct à la frappe, plus temps de lecture.",
+			"options": {
+				"text": "Texte",
+				"characters": "Caractères",
+				"charactersNoSpaces": "Sans espaces",
+				"words": "Mots",
+				"sentences": "Phrases",
+				"paragraphs": "Paragraphes",
+				"readingTime": "Temps de lecture"
+			},
+			"steps": [
+				{
+					"title": "Tapez ou collez",
+					"line": "Mettez votre texte."
+				},
+				{
+					"title": "Lisez les comptes",
+					"line": "Tous les chiffres en direct."
+				},
+				{
+					"title": "Continuez",
+					"line": "Les comptes suivent chaque touche."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Comment la lecture est calculée ?",
+					"a": "200 mots par minute, arrondi."
+				},
+				{
+					"q": "C'est quoi un mot ?",
+					"a": "Un bloc de texte entre espaces."
+				},
+				{
+					"q": "Les emoji comptent ?",
+					"a": "Oui, un emoji vaut un caractère."
+				}
+			]
+		},
+		"base64-url-encoder": {
+			"name": "Encodeur Base64 et URL",
+			"tagline": "Encode et décode Base64 et URLs.",
+			"title": "Encodeur Base64 et URL en ligne gratuit",
+			"description": "Encodez et décodez Base64 et URLs gratis dans le navigateur, sans souci d'unicode. Copiez en un clic. Rien n'est envoyé.",
+			"h1": "Encodeur Base64 et URL en ligne gratuit",
+			"sub": "Choisissez format et sens, prenez le résultat.",
+			"options": {
+				"format": "Format",
+				"formatBase64": "Base64",
+				"formatUrl": "URL",
+				"direction": "Sens",
+				"encode": "Encoder",
+				"decode": "Décoder",
+				"input": "Entrée",
+				"output": "Sortie",
+				"invalid": "Ceci n'est pas une entrée codée valide.",
+				"needText": "Écrivez quelque chose d'abord."
+			},
+			"steps": [
+				{
+					"title": "Choisissez format et sens",
+					"line": "Définissez quoi faire."
+				},
+				{
+					"title": "Tapez l'entrée",
+					"line": "Mettez le texte ou le code."
+				},
+				{
+					"title": "Copiez la sortie",
+					"line": "Copiez le résultat en un clic."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Base64, du chiffrement ?",
+					"a": "Non. Un codage facile à inverser."
+				},
+				{
+					"q": "Pourquoi le décodage rate ?",
+					"a": "L'entrée est invalide. Revoyez le code."
+				},
+				{
+					"q": "Et les emoji ?",
+					"a": "Oui, unicode complet et sûr."
+				}
+			]
+		},
+		"hash-generator": {
+			"name": "Générateur de hash",
+			"tagline": "MD5 et SHA calculés en local.",
+			"title": "Générateur de hash en ligne gratuit",
+			"description": "Générez des MD5, SHA-1, SHA-256 et SHA-512 gratis dans le navigateur. Calculés sur votre appareil, jamais envoyés. Copiez chaque hash en un clic.",
+			"h1": "Générateur de hash en ligne gratuit",
+			"sub": "Un texte dedans, quatre hashs dehors. En local.",
+			"options": {
+				"text": "Texte",
+				"localNote": "Les hashs se calculent sur votre appareil. Rien n'est envoyé."
+			},
+			"steps": [
+				{
+					"title": "Tapez du texte",
+					"line": "Mettez le texte à hasher."
+				},
+				{
+					"title": "Lisez les hashs",
+					"line": "Les quatre à la fois."
+				},
+				{
+					"title": "Copiez le hash",
+					"line": "Copiez celui voulu en un clic."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Quel hash pour mots de passe ?",
+					"a": "Aucun seul. Il faut bcrypt ou argon2."
+				},
+				{
+					"q": "Pourquoi garder MD5 ?",
+					"a": "Pour checksums et vieux systèmes, pas la sécurité."
+				},
+				{
+					"q": "Un hash s'inverse ?",
+					"a": "Non. Sens unique."
+				}
+			]
 		}
 	}
 }

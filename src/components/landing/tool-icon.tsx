@@ -1,10 +1,13 @@
 import {
 	Barcode,
+	Binary,
 	CaseSensitive,
+	CaseUpper,
 	Crop,
 	Drama,
 	Eraser,
 	FileImage,
+	Hash,
 	type LucideIcon,
 	Maximize2,
 	Minimize2,
@@ -14,6 +17,7 @@ import {
 	Spline,
 	Stamp,
 	Terminal,
+	WholeWord,
 	Wrench,
 } from "lucide-react";
 
@@ -34,6 +38,10 @@ export const TOOL_ICONS: Record<string, LucideIcon> = {
 	barcode: Barcode,
 	ascii: Terminal,
 	font: CaseSensitive,
+	case: CaseUpper,
+	count: WholeWord,
+	codec: Binary,
+	hash: Hash,
 };
 
 export default function ToolIcon({

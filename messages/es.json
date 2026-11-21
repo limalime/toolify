@@ -866,6 +866,188 @@
 					"a": "Sí, impresos con claridad y buen tamaño."
 				}
 			]
+		},
+		"case-converter": {
+			"name": "Convertidor de mayúsculas",
+			"tagline": "Siete estilos desde un texto.",
+			"title": "Convertidor de mayúsculas online gratis",
+			"description": "Convierte texto entre mayúsculas, minúsculas, título, oración, camel, snake y kebab gratis en tu navegador. Copia cada resultado con un clic.",
+			"h1": "Convertidor de mayúsculas online gratis",
+			"sub": "Un texto dentro, siete estilos fuera. Clic para copiar.",
+			"options": {
+				"text": "Texto",
+				"hint": "Escribe arriba para ver todos los estilos.",
+				"styles": {
+					"upper": "MAYÚSCULAS",
+					"lower": "minúsculas",
+					"title": "Tipo Título",
+					"sentence": "Tipo oración",
+					"camel": "camelCase",
+					"snake": "snake_case",
+					"kebab": "kebab-case"
+				}
+			},
+			"steps": [
+				{
+					"title": "Escribe texto",
+					"line": "Escribe o pega tu texto."
+				},
+				{
+					"title": "Mira estilos",
+					"line": "Todos los estilos a la vez."
+				},
+				{
+					"title": "Clic para copiar",
+					"line": "Pulsa una tarjeta para copiarla."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Kebab o snake?",
+					"a": "Kebab usa guiones, snake usa guiones bajos."
+				},
+				{
+					"q": "¿El título es exacto?",
+					"a": "Reglas simples: cada palabra capitalizada."
+				},
+				{
+					"q": "¿Mi texto se sube?",
+					"a": "No. Todo corre en tu dispositivo."
+				}
+			]
+		},
+		"word-counter": {
+			"name": "Contador de palabras",
+			"tagline": "Palabras, caracteres y tiempo de lectura.",
+			"title": "Contador de palabras online gratis",
+			"description": "Cuenta palabras, caracteres, oraciones y párrafos gratis en tu navegador con tiempo de lectura en vivo. Todo queda en tu dispositivo.",
+			"h1": "Contador de palabras online gratis",
+			"sub": "Conteos en vivo al escribir, más tiempo de lectura.",
+			"options": {
+				"text": "Texto",
+				"characters": "Caracteres",
+				"charactersNoSpaces": "Sin espacios",
+				"words": "Palabras",
+				"sentences": "Oraciones",
+				"paragraphs": "Párrafos",
+				"readingTime": "Tiempo de lectura"
+			},
+			"steps": [
+				{
+					"title": "Escribe o pega",
+					"line": "Pon tu texto."
+				},
+				{
+					"title": "Lee los conteos",
+					"line": "Todos los números en vivo."
+				},
+				{
+					"title": "Sigue escribiendo",
+					"line": "Los conteos siguen cada tecla."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Cómo se calcula la lectura?",
+					"a": "200 palabras por minuto, redondeado."
+				},
+				{
+					"q": "¿Qué cuenta como palabra?",
+					"a": "Trozos de texto separados por espacios."
+				},
+				{
+					"q": "¿Los emoji cuentan?",
+					"a": "Sí, un emoji es un carácter."
+				}
+			]
+		},
+		"base64-url-encoder": {
+			"name": "Codificador Base64 y URL",
+			"tagline": "Codifica y decodifica Base64 y URLs.",
+			"title": "Codificador Base64 y URL online gratis",
+			"description": "Codifica y decodifica Base64 y URLs gratis en tu navegador, seguro con unicode. Copia con un clic. Nada se sube.",
+			"h1": "Codificador Base64 y URL online gratis",
+			"sub": "Elige formato y dirección, toma el resultado.",
+			"options": {
+				"format": "Formato",
+				"formatBase64": "Base64",
+				"formatUrl": "URL",
+				"direction": "Dirección",
+				"encode": "Codificar",
+				"decode": "Decodificar",
+				"input": "Entrada",
+				"output": "Salida",
+				"invalid": "Esto no es una entrada codificada válida.",
+				"needText": "Escribe algo primero."
+			},
+			"steps": [
+				{
+					"title": "Elige formato y dirección",
+					"line": "Define qué hacer."
+				},
+				{
+					"title": "Escribe la entrada",
+					"line": "Pon el texto o el código."
+				},
+				{
+					"title": "Copia la salida",
+					"line": "Copia el resultado con un clic."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Base64 es cifrado?",
+					"a": "No. Es codificación fácil de revertir."
+				},
+				{
+					"q": "¿Por qué falla el decode?",
+					"a": "La entrada no es válida. Revisa el código."
+				},
+				{
+					"q": "¿Soporta emoji?",
+					"a": "Sí, unicode completo y seguro."
+				}
+			]
+		},
+		"hash-generator": {
+			"name": "Generador de hash",
+			"tagline": "Hashes MD5 y SHA, calculados en local.",
+			"title": "Generador de hash online gratis",
+			"description": "Genera hashes MD5, SHA-1, SHA-256 y SHA-512 gratis en tu navegador. Calculados en tu dispositivo, nunca subidos. Copia cada hash con un clic.",
+			"h1": "Generador de hash online gratis",
+			"sub": "Un texto dentro, cuatro hashes fuera. En local.",
+			"options": {
+				"text": "Texto",
+				"localNote": "Los hashes se calculan en tu dispositivo. Nada se sube."
+			},
+			"steps": [
+				{
+					"title": "Escribe texto",
+					"line": "Pon el texto a hashear."
+				},
+				{
+					"title": "Lee los hashes",
+					"line": "Los cuatro a la vez."
+				},
+				{
+					"title": "Copia el hash",
+					"line": "Copia el que necesites con un clic."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué hash para contraseñas?",
+					"a": "Ninguno solo. Las contraseñas piden bcrypt o argon2."
+				},
+				{
+					"q": "¿Por qué sigue MD5?",
+					"a": "Para checksums y sistemas viejos, no para seguridad."
+				},
+				{
+					"q": "¿Un hash se revierte?",
+					"a": "No. El hash va en un sentido."
+				}
+			]
 		}
 	}
 }

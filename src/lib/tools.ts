@@ -25,6 +25,10 @@ export const TOOLS: ToolEntry[] = [
 	{ slug: "ascii-art", category: "text", icon: "ascii" },
 	{ slug: "ascii-fonts", category: "text", icon: "font" },
 	{ slug: "barcode-generator", category: "text", icon: "barcode" },
+	{ slug: "case-converter", category: "text", icon: "case" },
+	{ slug: "word-counter", category: "text", icon: "count" },
+	{ slug: "base64-url-encoder", category: "text", icon: "codec" },
+	{ slug: "hash-generator", category: "text", icon: "hash" },
 ];
 
 export const CATEGORY_ORDER: CategoryKey[] = [
