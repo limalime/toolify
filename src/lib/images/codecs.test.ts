@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
+import { parseTargetSize } from "@/lib/size";
 import { needsBackground, OUTPUT_META, stemOf, usesQuality } from "./formats";
 import { buildIco, parseIco, pickPngEntry } from "./ico";
-import { parseTargetSize } from "./size";
 import { embedRasterSvg, ensureSvgSize, svgSize } from "./svg";
 import { unzipFiles, zipFiles } from "./zip";
 

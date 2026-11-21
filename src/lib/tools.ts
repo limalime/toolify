@@ -33,6 +33,11 @@ export const TOOLS: ToolEntry[] = [
 	{ slug: "online-ide", category: "text", icon: "code" },
 	{ slug: "online-notes", category: "text", icon: "notes" },
 	{ slug: "text-encodings", category: "text", icon: "digits" },
+	{ slug: "mp4-to-mp3", category: "video", icon: "audio" },
+	{ slug: "video-to-gif", category: "video", icon: "gif" },
+	{ slug: "video-converter", category: "video", icon: "videofile" },
+	{ slug: "compress-video", category: "video", icon: "shrink" },
+	{ slug: "crop-video", category: "video", icon: "frame" },
 ];
 
 export const CATEGORY_ORDER: CategoryKey[] = [

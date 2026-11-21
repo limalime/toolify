@@ -3,6 +3,7 @@ import type { Page } from "@playwright/test";
 
 const TYPES: Record<string, string> = {
 	".wasm": "application/wasm",
+	".js": "text/javascript",
 	".mjs": "text/javascript",
 	".json": "application/json",
 	".onnx": "application/octet-stream",
@@ -26,6 +27,7 @@ export async function routeR2(
 		await route.fulfill({
 			body: readFileSync(`r2-upload/${key}`),
 			contentType: TYPES[ext] ?? "application/octet-stream",
+			headers: { "Access-Control-Allow-Origin": "*" },
 		});
 	});
 }

@@ -6,6 +6,7 @@ export const FIXTURES = {
 	logo: "tests/fixtures/logo.png",
 	heic: "tests/fixtures/sample.heic",
 	ai: "tests/fixtures/sample.ai",
+	video: "tests/fixtures/sample.mp4",
 };
 
 export type Signature =
@@ -16,7 +17,12 @@ export type Signature =
 	| "ico"
 	| "pdf"
 	| "svg"
-	| "zip";
+	| "zip"
+	| "mp3"
+	| "gif"
+	| "mp4"
+	| "mov"
+	| "webm";
 
 const startsWith = (bytes: Uint8Array, head: number[]): boolean =>
 	head.every((byte, index) => bytes[index] === byte);
@@ -36,8 +42,27 @@ export function signatureOf(bytes: Uint8Array): Signature | "unknown" {
 	) {
 		return "webp";
 	}
-	if (new TextDecoder().decode(bytes.slice(4, 12)).startsWith("ftyp")) {
-		return "avif";
+	if (new TextDecoder().decode(bytes.slice(4, 8)) === "ftyp") {
+		const brand = new TextDecoder().decode(bytes.slice(8, 12));
+		if (brand === "qt  ") {
+			return "mov";
+		}
+		if (brand.startsWith("avif") || brand.startsWith("avis")) {
+			return "avif";
+		}
+		return "mp4";
+	}
+	if (startsWith(bytes, [0x1a, 0x45, 0xdf, 0xa3])) {
+		return "webm";
+	}
+	if (
+		text.startsWith("ID3") ||
+		(bytes[0] === 0xff && ((bytes[1] as number) & 0xe0) === 0xe0)
+	) {
+		return "mp3";
+	}
+	if (text.startsWith("GIF87a") || text.startsWith("GIF89a")) {
+		return "gif";
 	}
 	if (startsWith(bytes, [0x00, 0x00, 0x01, 0x00])) {
 		return "ico";
@@ -89,4 +114,36 @@ export async function imageDims(
 			image.src = url;
 		});
 	}, Array.from(bytes));
+}
+
+// proves a media file actually plays, reporting duration and picture size.
+export async function mediaProbe(
+	page: Page,
+	bytes: Uint8Array,
+	mime: string,
+): Promise<{ duration: number; width: number; height: number }> {
+	return page.evaluate(
+		({ raw, type }) => {
+			const data = Uint8Array.from(raw);
+			const url = URL.createObjectURL(new Blob([data], { type }));
+			return new Promise<{ duration: number; width: number; height: number }>(
+				(resolve, reject) => {
+					const element = document.createElement("video");
+					element.muted = true;
+					element.preload = "metadata";
+					element.onloadedmetadata = () => {
+						URL.revokeObjectURL(url);
+						resolve({
+							duration: element.duration,
+							width: element.videoWidth,
+							height: element.videoHeight,
+						});
+					};
+					element.onerror = () => reject(new Error("could not play media"));
+					element.src = url;
+				},
+			);
+		},
+		{ raw: Array.from(bytes), type: mime },
+	);
 }

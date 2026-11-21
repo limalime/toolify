@@ -48,7 +48,11 @@
 		"home": "Accueil",
 		"relatedTools": "Outils liés",
 		"batchOf": "{done} sur {total}",
-		"needFiles": "Ajoute des fichiers d'abord."
+		"needFiles": "Ajoute des fichiers d'abord.",
+		"coreMt": "Moteur multithread",
+		"coreSt": "Moteur de compatibilité (monothread)",
+		"loadingVideoEngine": "Chargement du moteur vidéo…",
+		"engineFailed": "Moteur vidéo injoignable. Vérifiez la connexion et réessayez."
 	},
 	"howto": {
 		"step": "Étape {n}",
@@ -1237,6 +1241,220 @@
 				{
 					"q": "Quoi d'inversible ?",
 					"a": "Hashs et sommes non, codages oui."
+				}
+			]
+		},
+		"mp4-to-mp3": {
+			"name": "MP4 vers MP3",
+			"tagline": "Tirez le son de la vidéo.",
+			"title": "Convertisseur MP4 vers MP3 en ligne gratuit",
+			"description": "Extrayez le MP3 des vidéos gratis dans le navigateur avec ffmpeg. Bitrate au choix, barre de progrès, note moteur honnête. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Convertisseur MP4 vers MP3 en ligne gratuit",
+			"sub": "Choisissez un bitrate, prenez le son.",
+			"options": {
+				"bitrate": "Bitrate",
+				"apply": "Extraire MP3"
+			},
+			"steps": [
+				{
+					"title": "Ajoutez une vidéo",
+					"line": "Déposez la vidéo à peler."
+				},
+				{
+					"title": "Choisissez un bitrate",
+					"line": "Haut sonne mieux et pèse plus."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Gardez l'audio MP3."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Quel bitrate ?",
+					"a": "128k pour la voix, 192k et plus pour la musique."
+				},
+				{
+					"q": "La vidéo perd-elle ?",
+					"a": "Il ne reste rien. Seul l'audio survit."
+				},
+				{
+					"q": "Pourquoi si lent d'abord ?",
+					"a": "Le navigateur prend le moteur de 30 Mo une fois, puis le garde."
+				}
+			]
+		},
+		"video-to-gif": {
+			"name": "Vidéo vers GIF",
+			"tagline": "Des clips courts en GIF.",
+			"title": "Convertisseur vidéo vers GIF en ligne gratuit",
+			"description": "Passez de courtes vidéos en GIF gratis dans le navigateur. Images et taille au choix, plafond 30 secondes, palette soignée. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Convertisseur vidéo vers GIF en ligne gratuit",
+			"sub": "Plafond 30 secondes, réglez images et taille.",
+			"options": {
+				"fps": "Images",
+				"width": "Largeur",
+				"apply": "Faire le GIF",
+				"limitNote": "Plafond d'entrée : 30 secondes."
+			},
+			"steps": [
+				{
+					"title": "Ajoutez une vidéo",
+					"line": "Déposez moins de 30 secondes."
+				},
+				{
+					"title": "Réglez images et taille",
+					"line": "Moins égale plus léger."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Gardez le GIF."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Pourquoi 30 secondes ?",
+					"a": "Les GIF gonflent vite. Le plafond les garde partageables."
+				},
+				{
+					"q": "Images ou taille ?",
+					"a": "Les deux allègent. Baissez images pour le geste, taille pour le fin."
+				},
+				{
+					"q": "Pourquoi mon GIF pèse lourd ?",
+					"a": "Long, large ou remuant, ça explose. Coupez la source."
+				}
+			]
+		},
+		"video-converter": {
+			"name": "Convertisseur vidéo",
+			"tagline": "MP4, WebM et MOV.",
+			"title": "Convertisseur vidéo en ligne gratuit",
+			"description": "Convertissez entre MP4, WebM et MOV gratis dans le navigateur avec ffmpeg. Barre de progrès et note moteur honnête. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Convertisseur vidéo en ligne gratuit",
+			"sub": "Choisissez un format, convertissez, partez.",
+			"options": {
+				"format": "Format",
+				"apply": "Convertir la vidéo"
+			},
+			"steps": [
+				{
+					"title": "Ajoutez une vidéo",
+					"line": "Déposez la vidéo à changer."
+				},
+				{
+					"title": "Choisissez un format",
+					"line": "MP4, WebM ou MOV."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Gardez la vidéo changée."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Quel format ?",
+					"a": "MP4 passe partout. WebM pèse moins sur le web. MOV aime Apple."
+				},
+				{
+					"q": "Ça perd en route ?",
+					"a": "Chaque réencodage ôte un peu. Nos réglages le cachent."
+				},
+				{
+					"q": "Pourquoi si lent d'abord ?",
+					"a": "Le navigateur prend le moteur de 30 Mo une fois, puis le garde."
+				}
+			]
+		},
+		"compress-video": {
+			"name": "Compresseur vidéo",
+			"tagline": "Plus léger, même film.",
+			"title": "Compresseur vidéo en ligne gratuit",
+			"description": "Réduisez les vidéos gratis dans le navigateur par qualité ou taille visée. Avant et après affichés. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Compresseur vidéo en ligne gratuit",
+			"sub": "Fixez qualité ou taille et comparez.",
+			"options": {
+				"mode": "Mode",
+				"modeQuality": "Qualité",
+				"modeSize": "Taille visée",
+				"quality": "Qualité (CRF)",
+				"targetSize": "Taille visée",
+				"targetPlaceholder": "p. ex. 50 Mo",
+				"before": "Avant",
+				"after": "Après",
+				"targetInvalid": "Mettez une taille comme 50 Mo.",
+				"apply": "Compresser la vidéo"
+			},
+			"steps": [
+				{
+					"title": "Ajoutez une vidéo",
+					"line": "Déposez la vidéo à réduire."
+				},
+				{
+					"title": "Fixez qualité ou taille",
+					"line": "CRF bas égale beau. Ou écrivez une taille."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Comparez avant et après, puis gardez."
+				}
+			],
+			"faqs": [
+				{
+					"q": "C'est quoi CRF ?",
+					"a": "Facteur constant. Bas égale beau et lourd. 24 vise juste."
+				},
+				{
+					"q": "La taille visée marche comment ?",
+					"a": "Le bitrate sort de la taille et de la durée, moins l'audio."
+				},
+				{
+					"q": "Ça va flouter ?",
+					"a": "Léger coûte toujours. Comparez d'abord les tailles."
+				}
+			]
+		},
+		"crop-video": {
+			"name": "Rogneur vidéo",
+			"tagline": "Rogné centré à tout ratio.",
+			"title": "Rogneur vidéo en ligne gratuit",
+			"description": "Rognez en 16:9, 9:16, 1:1, 4:3 ou taille libre gratis dans le navigateur. Toujours centré. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Rogneur vidéo en ligne gratuit",
+			"sub": "Preset ou taille libre. Toujours centré.",
+			"options": {
+				"aspect": "Ratio",
+				"free": "Libre",
+				"width": "Largeur",
+				"height": "Hauteur",
+				"apply": "Rogner la vidéo",
+				"centerNote": "Rogne depuis le centre. Bords arrondis au pair."
+			},
+			"steps": [
+				{
+					"title": "Ajoutez une vidéo",
+					"line": "Déposez la vidéo à rogner."
+				},
+				{
+					"title": "Choisissez forme",
+					"line": "Un preset, ou écrivez une taille."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Gardez la vidéo rognée."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Bouger la zone ?",
+					"a": "Non. Ici tout reste centré."
+				},
+				{
+					"q": "L'audio survit ?",
+					"a": "Oui. La piste passe telle quelle."
+				},
+				{
+					"q": "Pourquoi des pairs ?",
+					"a": "Lecteurs et codeurs veulent du pair."
 				}
 			]
 		}

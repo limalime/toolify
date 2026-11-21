@@ -1,4 +1,5 @@
 import {
+	AudioLines,
 	Barcode,
 	Binary,
 	Braces,
@@ -10,13 +11,17 @@ import {
 	Eraser,
 	FileDigit,
 	FileImage,
+	FileVideo,
+	Frame,
 	Hash,
+	Images,
 	type LucideIcon,
 	Maximize2,
 	Minimize2,
 	NotebookPen,
 	QrCode,
 	Scaling,
+	Shrink,
 	SlidersHorizontal,
 	Spline,
 	Stamp,
@@ -50,6 +55,11 @@ export const TOOL_ICONS: Record<string, LucideIcon> = {
 	code: CodeXml,
 	notes: NotebookPen,
 	digits: FileDigit,
+	audio: AudioLines,
+	gif: Images,
+	videofile: FileVideo,
+	shrink: Shrink,
+	frame: Frame,
 };
 
 export default function ToolIcon({

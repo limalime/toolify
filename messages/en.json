@@ -48,7 +48,11 @@
 		"home": "Home",
 		"relatedTools": "Related tools",
 		"batchOf": "{done} of {total}",
-		"needFiles": "Add files to start."
+		"needFiles": "Add files to start.",
+		"coreMt": "Multi-threaded engine",
+		"coreSt": "Compatibility engine (single-threaded)",
+		"loadingVideoEngine": "Loading video engine…",
+		"engineFailed": "Could not load the video engine. Check your connection and retry."
 	},
 	"howto": {
 		"step": "Step {n}",
@@ -1237,6 +1241,220 @@
 				{
 					"q": "Which ones reverse?",
 					"a": "Hashes and checksums no, encodings yes."
+				}
+			]
+		},
+		"mp4-to-mp3": {
+			"name": "MP4 to MP3",
+			"tagline": "Pull audio out of video.",
+			"title": "Free Online MP4 to MP3 Converter",
+			"description": "Extract MP3 audio from video free in your browser with ffmpeg. Bitrate choice, progress bar, honest engine note. Files never leave your device.",
+			"h1": "Free Online MP4 to MP3 Converter",
+			"sub": "Pick a bitrate, extract the audio.",
+			"options": {
+				"bitrate": "Bitrate",
+				"apply": "Extract MP3"
+			},
+			"steps": [
+				{
+					"title": "Add a video",
+					"line": "Drop the video to strip."
+				},
+				{
+					"title": "Pick a bitrate",
+					"line": "Higher numbers sound better and weigh more."
+				},
+				{
+					"title": "Download",
+					"line": "Save the MP3 audio."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Which bitrate should I pick?",
+					"a": "128k suits speech, 192k and up suits music."
+				},
+				{
+					"q": "Does the video lose quality?",
+					"a": "There is no video left. Only the audio track is kept."
+				},
+				{
+					"q": "Why is the first run slow?",
+					"a": "Your browser downloads the 30 MB video engine once, then caches it."
+				}
+			]
+		},
+		"video-to-gif": {
+			"name": "Video to GIF",
+			"tagline": "Short clips as GIFs.",
+			"title": "Free Online Video to GIF Converter",
+			"description": "Turn short videos into GIFs free in your browser. Frame rate and size choice, 30 second limit, palette-tuned quality. Files never leave your device.",
+			"h1": "Free Online Video to GIF Converter",
+			"sub": "Cap it at 30 seconds, pick rate and size.",
+			"options": {
+				"fps": "Frame rate",
+				"width": "Width",
+				"apply": "Make GIF",
+				"limitNote": "Input limit: 30 seconds."
+			},
+			"steps": [
+				{
+					"title": "Add a video",
+					"line": "Drop a clip under 30 seconds."
+				},
+				{
+					"title": "Pick rate and size",
+					"line": "Fewer frames and pixels mean smaller files."
+				},
+				{
+					"title": "Download",
+					"line": "Save the GIF."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Why only 30 seconds?",
+					"a": "GIFs balloon fast. The cap keeps files shareable and tabs alive."
+				},
+				{
+					"q": "Frame rate or size, what matters more?",
+					"a": "Both shrink files. Lower the rate for motion, the size for detail."
+				},
+				{
+					"q": "Why is my GIF huge?",
+					"a": "Long, wide, or busy clips explode. Trim the source first."
+				}
+			]
+		},
+		"video-converter": {
+			"name": "Video Converter",
+			"tagline": "MP4, WebM, and MOV.",
+			"title": "Free Online Video Converter",
+			"description": "Convert video between MP4, WebM, and MOV free in your browser with ffmpeg. Progress bar and honest engine note. Files never leave your device.",
+			"h1": "Free Online Video Converter",
+			"sub": "Pick a format, convert, download.",
+			"options": {
+				"format": "Format",
+				"apply": "Convert video"
+			},
+			"steps": [
+				{
+					"title": "Add a video",
+					"line": "Drop the video to convert."
+				},
+				{
+					"title": "Pick a format",
+					"line": "MP4, WebM, or MOV."
+				},
+				{
+					"title": "Download",
+					"line": "Save the converted video."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Which format should I pick?",
+					"a": "MP4 plays everywhere. WebM is smaller on the web. MOV suits Apple workflows."
+				},
+				{
+					"q": "Does converting lose quality?",
+					"a": "Every re-encode loses a little. These defaults keep it invisible."
+				},
+				{
+					"q": "Why is the first run slow?",
+					"a": "Your browser downloads the 30 MB video engine once, then caches it."
+				}
+			]
+		},
+		"compress-video": {
+			"name": "Video Compressor",
+			"tagline": "Smaller files, same video.",
+			"title": "Free Online Video Compressor",
+			"description": "Shrink video files free in your browser by quality or target size. Before and after sizes shown. Files never leave your device.",
+			"h1": "Free Online Video Compressor",
+			"sub": "Set quality or a target size and compare.",
+			"options": {
+				"mode": "Mode",
+				"modeQuality": "Quality",
+				"modeSize": "Target size",
+				"quality": "Quality (CRF)",
+				"targetSize": "Target size",
+				"targetPlaceholder": "e.g. 50 MB",
+				"before": "Before",
+				"after": "After",
+				"targetInvalid": "Enter a size like 50 MB.",
+				"apply": "Compress video"
+			},
+			"steps": [
+				{
+					"title": "Add a video",
+					"line": "Drop the video to shrink."
+				},
+				{
+					"title": "Set quality or size",
+					"line": "Lower CRF means better looking. Or type a target size."
+				},
+				{
+					"title": "Download",
+					"line": "Compare before and after, then save."
+				}
+			],
+			"faqs": [
+				{
+					"q": "What is CRF?",
+					"a": "Constant rate factor. Lower numbers look better and weigh more. 24 is a sane middle."
+				},
+				{
+					"q": "How does target size work?",
+					"a": "The bitrate is computed from your size and the video length, minus audio."
+				},
+				{
+					"q": "Will it look worse?",
+					"a": "Smaller always costs something. Compare the preview sizes first."
+				}
+			]
+		},
+		"crop-video": {
+			"name": "Video Cropper",
+			"tagline": "Center crops to any aspect.",
+			"title": "Free Online Video Cropper",
+			"description": "Crop video to 16:9, 9:16, 1:1, 4:3, or custom size free in your browser. Always centered. Files never leave your device.",
+			"h1": "Free Online Video Cropper",
+			"sub": "Pick a preset or type a size. Always centered.",
+			"options": {
+				"aspect": "Aspect ratio",
+				"free": "Custom",
+				"width": "Width",
+				"height": "Height",
+				"apply": "Crop video",
+				"centerNote": "Crops from the center. Edges snap even for playback."
+			},
+			"steps": [
+				{
+					"title": "Add a video",
+					"line": "Drop the video to crop."
+				},
+				{
+					"title": "Pick a shape",
+					"line": "A preset, or type a custom size."
+				},
+				{
+					"title": "Download",
+					"line": "Save the cropped video."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Can I move the crop area?",
+					"a": "No. Crops stay centered in this version."
+				},
+				{
+					"q": "Is the audio kept?",
+					"a": "Yes. The audio track copies over untouched."
+				},
+				{
+					"q": "Why even numbers?",
+					"a": "Players and codecs require even dimensions."
 				}
 			]
 		}

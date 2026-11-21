@@ -48,7 +48,11 @@
 		"home": "Inicio",
 		"relatedTools": "Herramientas relacionadas",
 		"batchOf": "{done} de {total}",
-		"needFiles": "Añade archivos primero."
+		"needFiles": "Añade archivos primero.",
+		"coreMt": "Motor multihilo",
+		"coreSt": "Motor compatible (un hilo)",
+		"loadingVideoEngine": "Cargando el motor de video…",
+		"engineFailed": "No se pudo cargar el motor de video. Revisa tu conexión y reintenta."
 	},
 	"howto": {
 		"step": "Paso {n}",
@@ -1237,6 +1241,220 @@
 				{
 					"q": "¿Qué se revierte?",
 					"a": "Hashes y checksums no, codificaciones sí."
+				}
+			]
+		},
+		"mp4-to-mp3": {
+			"name": "MP4 a MP3",
+			"tagline": "Saca el audio del video.",
+			"title": "Conversor MP4 a MP3 online gratis",
+			"description": "Extrae audio MP3 de videos gratis en tu navegador con ffmpeg. Bitrate a elegir, barra de progreso, nota honesta del motor. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Conversor MP4 a MP3 online gratis",
+			"sub": "Elige un bitrate, extrae el audio.",
+			"options": {
+				"bitrate": "Bitrate",
+				"apply": "Extraer MP3"
+			},
+			"steps": [
+				{
+					"title": "Añade un video",
+					"line": "Suelta el video a pelar."
+				},
+				{
+					"title": "Elige un bitrate",
+					"line": "Más alto suena mejor y pesa más."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda el audio MP3."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué bitrate elijo?",
+					"a": "128k para voz, 192k o más para música."
+				},
+				{
+					"q": "¿El video pierde calidad?",
+					"a": "No queda video. Solo se guarda el audio."
+				},
+				{
+					"q": "¿Por qué tarda la primera vez?",
+					"a": "Tu navegador descarga el motor de 30 MB una vez, luego lo cachea."
+				}
+			]
+		},
+		"video-to-gif": {
+			"name": "Video a GIF",
+			"tagline": "Clips cortos en GIF.",
+			"title": "Conversor de video a GIF online gratis",
+			"description": "Convierte videos cortos en GIF gratis en tu navegador. Cuadros y tamaño a elegir, límite de 30 segundos, calidad de paleta. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Conversor de video a GIF online gratis",
+			"sub": "Tope de 30 segundos, elige cuadros y tamaño.",
+			"options": {
+				"fps": "Cuadros",
+				"width": "Ancho",
+				"apply": "Hacer GIF",
+				"limitNote": "Límite de entrada: 30 segundos."
+			},
+			"steps": [
+				{
+					"title": "Añade un video",
+					"line": "Suelta un clip de menos de 30 segundos."
+				},
+				{
+					"title": "Elige cuadros y tamaño",
+					"line": "Menos cuadros y píxeles, archivo menor."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda el GIF."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Por qué solo 30 segundos?",
+					"a": "Los GIF se inflan rápido. El tope los mantiene compartibles."
+				},
+				{
+					"q": "¿Cuadros o tamaño?",
+					"a": "Ambos encogen. Baja cuadros para movimiento, tamaño para detalle."
+				},
+				{
+					"q": "¿Por qué mi GIF pesa tanto?",
+					"a": "Clips largos, anchos o movidos explotan. Recorta el origen."
+				}
+			]
+		},
+		"video-converter": {
+			"name": "Conversor de video",
+			"tagline": "MP4, WebM y MOV.",
+			"title": "Conversor de video online gratis",
+			"description": "Convierte video entre MP4, WebM y MOV gratis en tu navegador con ffmpeg. Barra de progreso y nota honesta del motor. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Conversor de video online gratis",
+			"sub": "Elige un formato, convierte, descarga.",
+			"options": {
+				"format": "Formato",
+				"apply": "Convertir video"
+			},
+			"steps": [
+				{
+					"title": "Añade un video",
+					"line": "Suelta el video a convertir."
+				},
+				{
+					"title": "Elige un formato",
+					"line": "MP4, WebM o MOV."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda el video convertido."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué formato elijo?",
+					"a": "MP4 va en todos lados. WebM pesa menos en web. MOV va con Apple."
+				},
+				{
+					"q": "¿Pierde calidad?",
+					"a": "Cada recodificado quita un poco. Estos defaults lo esconden."
+				},
+				{
+					"q": "¿Por qué tarda la primera vez?",
+					"a": "Tu navegador descarga el motor de 30 MB una vez, luego lo cachea."
+				}
+			]
+		},
+		"compress-video": {
+			"name": "Compresor de video",
+			"tagline": "Archivos menores, mismo video.",
+			"title": "Compresor de video online gratis",
+			"description": "Encoge videos gratis en tu navegador por calidad o tamaño objetivo. Antes y después a la vista. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Compresor de video online gratis",
+			"sub": "Pon calidad o tamaño y compara.",
+			"options": {
+				"mode": "Modo",
+				"modeQuality": "Calidad",
+				"modeSize": "Tamaño objetivo",
+				"quality": "Calidad (CRF)",
+				"targetSize": "Tamaño objetivo",
+				"targetPlaceholder": "p. ej. 50 MB",
+				"before": "Antes",
+				"after": "Después",
+				"targetInvalid": "Pon un tamaño como 50 MB.",
+				"apply": "Comprimir video"
+			},
+			"steps": [
+				{
+					"title": "Añade un video",
+					"line": "Suelta el video a encoger."
+				},
+				{
+					"title": "Pon calidad o tamaño",
+					"line": "CRF bajo se ve mejor. O escribe un tamaño."
+				},
+				{
+					"title": "Descarga",
+					"line": "Compara antes y después, luego guarda."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué es CRF?",
+					"a": "Factor de tasa constante. Bajo se ve mejor y pesa más. 24 es un buen medio."
+				},
+				{
+					"q": "¿Cómo va el tamaño objetivo?",
+					"a": "El bitrate sale de tu tamaño y la duración, menos audio."
+				},
+				{
+					"q": "¿Se verá peor?",
+					"a": "Menor siempre cuesta algo. Compara los tamaños primero."
+				}
+			]
+		},
+		"crop-video": {
+			"name": "Recortador de video",
+			"tagline": "Recortes centrados a cualquier aspecto.",
+			"title": "Recortador de video online gratis",
+			"description": "Recorta video a 16:9, 9:16, 1:1, 4:3 o tamaño libre gratis en tu navegador. Siempre centrado. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Recortador de video online gratis",
+			"sub": "Elige preset o escribe un tamaño. Siempre centrado.",
+			"options": {
+				"aspect": "Relación de aspecto",
+				"free": "Libre",
+				"width": "Ancho",
+				"height": "Alto",
+				"apply": "Recortar video",
+				"centerNote": "Recorta desde el centro. Los bordes se ajustan a pares."
+			},
+			"steps": [
+				{
+					"title": "Añade un video",
+					"line": "Suelta el video a recortar."
+				},
+				{
+					"title": "Elige forma",
+					"line": "Un preset, o escribe un tamaño."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda el video recortado."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Puedo mover el recorte?",
+					"a": "No. En esta versión va centrado."
+				},
+				{
+					"q": "¿Se guarda el audio?",
+					"a": "Sí. La pista se copia intacta."
+				},
+				{
+					"q": "¿Por qué números pares?",
+					"a": "Reproductores y códecs piden dimensiones pares."
 				}
 			]
 		}

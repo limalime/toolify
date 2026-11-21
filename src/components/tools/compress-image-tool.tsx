@@ -24,9 +24,9 @@ import {
 	RASTER_ACCEPT,
 	stemOf,
 } from "@/lib/images/formats";
-import { parseTargetSize } from "@/lib/images/size";
 import { imageWorker } from "@/lib/images/worker-client";
 import { zipFiles } from "@/lib/images/zip";
+import { parseTargetSize } from "@/lib/size";
 import { cn } from "@/lib/utils";
 import type { OutputFormat } from "@/workers/image-worker";
 

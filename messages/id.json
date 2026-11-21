@@ -48,7 +48,11 @@
 		"home": "Beranda",
 		"relatedTools": "Alat terkait",
 		"batchOf": "{done} dari {total}",
-		"needFiles": "Tambahkan file dulu."
+		"needFiles": "Tambahkan file dulu.",
+		"coreMt": "Mesin multi-thread",
+		"coreSt": "Mesin kompatibilitas (single-thread)",
+		"loadingVideoEngine": "Memuat mesin video…",
+		"engineFailed": "Gagal memuat mesin video. Periksa koneksi lalu coba lagi."
 	},
 	"howto": {
 		"step": "Langkah {n}",
@@ -1237,6 +1241,220 @@
 				{
 					"q": "Mana yang bisa dibalik?",
 					"a": "Hash dan checksum tidak, encoding ya."
+				}
+			]
+		},
+		"mp4-to-mp3": {
+			"name": "MP4 ke MP3",
+			"tagline": "Ambil audio dari video.",
+			"title": "Konverter MP4 ke MP3 Online Gratis",
+			"description": "Ekstrak audio MP3 dari video gratis di browser dengan ffmpeg. Pilihan bitrate, bilah progres, catatan mesin yang jujur. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Konverter MP4 ke MP3 Online Gratis",
+			"sub": "Pilih bitrate, ekstrak audionya.",
+			"options": {
+				"bitrate": "Bitrate",
+				"apply": "Ekstrak MP3"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan video",
+					"line": "Jatuhkan video yang diambil."
+				},
+				{
+					"title": "Pilih bitrate",
+					"line": "Angka besar lebih bagus dan lebih berat."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan audio MP3."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Bitrate berapa?",
+					"a": "128k cukup untuk suara, 192k ke atas untuk musik."
+				},
+				{
+					"q": "Apakah video rusak?",
+					"a": "Tidak ada video tersisa. Hanya trek audio disimpan."
+				},
+				{
+					"q": "Mengapa jalan pertama lambat?",
+					"a": "Browser mengunduh mesin video 30 MB sekali, lalu di-cache."
+				}
+			]
+		},
+		"video-to-gif": {
+			"name": "Video ke GIF",
+			"tagline": "Klip pendek jadi GIF.",
+			"title": "Konverter Video ke GIF Online Gratis",
+			"description": "Ubah video pendek jadi GIF gratis di browser. Pilihan frame rate dan ukuran, batas 30 detik, kualitas palet terjaga. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Konverter Video ke GIF Online Gratis",
+			"sub": "Maksimal 30 detik, atur rate dan ukuran.",
+			"options": {
+				"fps": "Frame rate",
+				"width": "Lebar",
+				"apply": "Buat GIF",
+				"limitNote": "Batas masukan: 30 detik."
+			},
+			"steps": [
+				{
+					"title": "Tambahkan video",
+					"line": "Jatuhkan klip di bawah 30 detik."
+				},
+				{
+					"title": "Atur rate dan ukuran",
+					"line": "Frame dan piksel lebih sedikit berarti file lebih kecil."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan GIF."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Mengapa hanya 30 detik?",
+					"a": "GIF membengkak cepat. Batas menjaga file tetap terbagikan."
+				},
+				{
+					"q": "Rate atau ukuran?",
+					"a": "Keduanya mengecilkan. Turunkan rate untuk gerak, ukuran untuk detail."
+				},
+				{
+					"q": "Mengapa GIF saya besar?",
+					"a": "Klip panjang, lebar, atau ramai meledak. Pangkas dulu sumbernya."
+				}
+			]
+		},
+		"video-converter": {
+			"name": "Konverter Video",
+			"tagline": "MP4, WebM, dan MOV.",
+			"title": "Konverter Video Online Gratis",
+			"description": "Ubah video antara MP4, WebM, dan MOV gratis di browser dengan ffmpeg. Bilah progres dan catatan mesin yang jujur. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Konverter Video Online Gratis",
+			"sub": "Pilih format, konversi, unduh.",
+			"options": {
+				"format": "Format",
+				"apply": "Konversi video"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan video",
+					"line": "Jatuhkan video yang diubah."
+				},
+				{
+					"title": "Pilih format",
+					"line": "MP4, WebM, atau MOV."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan video hasil."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Format apa?",
+					"a": "MP4 jalan di mana saja. WebM lebih kecil di web. MOV untuk alur Apple."
+				},
+				{
+					"q": "Apakah kualitas turun?",
+					"a": "Tiap encode ulang mengurangi sedikit. Default ini menjaganya tak terlihat."
+				},
+				{
+					"q": "Mengapa jalan pertama lambat?",
+					"a": "Browser mengunduh mesin video 30 MB sekali, lalu di-cache."
+				}
+			]
+		},
+		"compress-video": {
+			"name": "Kompresor Video",
+			"tagline": "File lebih kecil, video sama.",
+			"title": "Kompresor Video Online Gratis",
+			"description": "Kecilkan file video gratis di browser berdasar kualitas atau target ukuran. Ukuran sebelum dan sesudah ditampilkan. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Kompresor Video Online Gratis",
+			"sub": "Atur kualitas atau target lalu bandingkan.",
+			"options": {
+				"mode": "Mode",
+				"modeQuality": "Kualitas",
+				"modeSize": "Target ukuran",
+				"quality": "Kualitas (CRF)",
+				"targetSize": "Target ukuran",
+				"targetPlaceholder": "mis. 50 MB",
+				"before": "Sebelum",
+				"after": "Sesudah",
+				"targetInvalid": "Masukkan ukuran seperti 50 MB.",
+				"apply": "Kompres video"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan video",
+					"line": "Jatuhkan video yang dikecilkan."
+				},
+				{
+					"title": "Atur kualitas atau ukuran",
+					"line": "CRF kecil berarti lebih bagus. Atau ketik target."
+				},
+				{
+					"title": "Unduh",
+					"line": "Bandingkan sebelum dan sesudah, lalu simpan."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apa itu CRF?",
+					"a": "Faktor laju konstan. Angka kecil lebih bagus dan lebih berat. 24 titik tengah yang waras."
+				},
+				{
+					"q": "Bagaimana target ukuran bekerja?",
+					"a": "Bitrate dihitung dari ukuran dan durasi, dikurangi audio."
+				},
+				{
+					"q": "Apakah jadi jelek?",
+					"a": "Lebih kecil selalu ada harganya. Bandingkan dulu ukurannya."
+				}
+			]
+		},
+		"crop-video": {
+			"name": "Pemotong Video",
+			"tagline": "Potong tengah ke aspek apa pun.",
+			"title": "Pemotong Video Online Gratis",
+			"description": "Potong video ke 16:9, 9:16, 1:1, 4:3, atau ukuran bebas gratis di browser. Selalu di tengah. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Pemotong Video Online Gratis",
+			"sub": "Pilih preset atau ketik ukuran. Selalu di tengah.",
+			"options": {
+				"aspect": "Rasio aspek",
+				"free": "Bebas",
+				"width": "Lebar",
+				"height": "Tinggi",
+				"apply": "Potong video",
+				"centerNote": "Memotong dari tengah. Tepi dibulatkan genap agar bisa diputar."
+			},
+			"steps": [
+				{
+					"title": "Tambahkan video",
+					"line": "Jatuhkan video yang dipotong."
+				},
+				{
+					"title": "Pilih bentuk",
+					"line": "Preset, atau ketik ukuran bebas."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan video hasil."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Bisakah area digeser?",
+					"a": "Tidak. Potongan tetap di tengah pada versi ini."
+				},
+				{
+					"q": "Apakah audio disimpan?",
+					"a": "Ya. Trek audio disalin utuh."
+				},
+				{
+					"q": "Mengapa harus genap?",
+					"a": "Pemutar dan codec mensyaratkan dimensi genap."
 				}
 			]
 		}
