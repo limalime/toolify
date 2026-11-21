@@ -52,7 +52,8 @@
 		"coreMt": "Moteur multithread",
 		"coreSt": "Moteur de compatibilité (monothread)",
 		"loadingVideoEngine": "Chargement du moteur vidéo…",
-		"engineFailed": "Moteur vidéo injoignable. Vérifiez la connexion et réessayez."
+		"engineFailed": "Moteur vidéo injoignable. Vérifiez la connexion et réessayez.",
+		"loadingAudioEngine": "Chargement du moteur audio…"
 	},
 	"howto": {
 		"step": "Étape {n}",
@@ -1455,6 +1456,213 @@
 				{
 					"q": "Pourquoi des pairs ?",
 					"a": "Lecteurs et codeurs veulent du pair."
+				}
+			]
+		},
+		"audio-converter": {
+			"name": "Convertisseur audio",
+			"tagline": "MP3, WAV, OGG, M4A, FLAC.",
+			"title": "Convertisseur audio en ligne gratuit",
+			"description": "Convertissez entre MP3, WAV, OGG, M4A et FLAC gratis dans le navigateur. Barre de progrès et note moteur honnête. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Convertisseur audio en ligne gratuit",
+			"sub": "Choisissez un format, convertissez, partez.",
+			"options": {
+				"format": "Format",
+				"apply": "Convertir l'audio"
+			},
+			"steps": [
+				{
+					"title": "Ajoutez de l'audio",
+					"line": "Déposez le fichier à changer."
+				},
+				{
+					"title": "Choisissez un format",
+					"line": "MP3, WAV, OGG, M4A ou FLAC."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Gardez l'audio changé."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Quel format ?",
+					"a": "MP3 passe partout. WAV sans compression. FLAC compresse sans perte."
+				},
+				{
+					"q": "Ça perd en route ?",
+					"a": "Avec perte vers avec perte ôte un peu. Vers WAV ou FLAC rien ne bouge."
+				},
+				{
+					"q": "Pourquoi si lent d'abord ?",
+					"a": "Le navigateur prend le moteur de 30 Mo une fois, puis le garde."
+				}
+			]
+		},
+		"adjust-audio": {
+			"name": "Régleur audio",
+			"tagline": "Bitrate et échantillon.",
+			"title": "Régleur audio en ligne gratuit",
+			"description": "Changez bitrate et échantillonnage gratis dans le navigateur. Sortie MP3. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Régleur audio en ligne gratuit",
+			"sub": "Mettez des chiffres, prenez un MP3.",
+			"options": {
+				"bitrate": "Bitrate",
+				"sampleRate": "Échantillon",
+				"apply": "Régler l'audio"
+			},
+			"steps": [
+				{
+					"title": "Ajoutez de l'audio",
+					"line": "Déposez le fichier à régler."
+				},
+				{
+					"title": "Mettez des chiffres",
+					"line": "Bitrate et échantillon."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Gardez le MP3 réglé."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Quel bitrate sonne bien ?",
+					"a": "128k pour la voix, 192k et plus pour la musique."
+				},
+				{
+					"q": "Quel échantillon ?",
+					"a": "44100 Hz égale CD. 48000 Hz va avec la vidéo."
+				},
+				{
+					"q": "Pourquoi MP3 seul ?",
+					"a": "Le bitrate ne vaut que pour la perte. MP3 passe partout."
+				}
+			]
+		},
+		"join-audio": {
+			"name": "Assembleur audio",
+			"tagline": "Des bouts, une piste.",
+			"title": "Assembleur audio en ligne gratuit",
+			"description": "Assemblez plusieurs audios en un gratis dans le navigateur. Glissez pour ordonner, sortie MP3 ou WAV. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Assembleur audio en ligne gratuit",
+			"sub": "Ajoutez, glissez, assemblez.",
+			"options": {
+				"format": "Format",
+				"apply": "Assembler l'audio",
+				"reorder": "Glissez pour ordonner.",
+				"needTwo": "Ajoutez au moins deux fichiers."
+			},
+			"steps": [
+				{
+					"title": "Ajoutez des fichiers",
+					"line": "Déposez deux audios ou plus."
+				},
+				{
+					"title": "Ordonnez",
+					"line": "Glissez la liste à votre ordre."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Gardez la piste assemblée."
+				}
+			],
+			"faqs": [
+				{
+					"q": "On mélange les formats ?",
+					"a": "Oui. Tout se normalise puis s'assemble en un."
+				},
+				{
+					"q": "Limite de fichiers ?",
+					"a": "200 Mo par fichier. Dix par assemblage."
+				},
+				{
+					"q": "Des blancs entre ?",
+					"a": "Non. Bout à bout."
+				}
+			]
+		},
+		"trim-audio": {
+			"name": "Rogneur audio",
+			"tagline": "Coupez sur la forme d'onde.",
+			"title": "Rogneur audio en ligne gratuit",
+			"description": "Rognez l'audio gratis dans le navigateur sur une vraie forme d'onde à poignées. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Rogneur audio en ligne gratuit",
+			"sub": "Tirez les poignées, coupez, partez.",
+			"options": {
+				"apply": "Rogner l'audio",
+				"start": "Début",
+				"end": "Fin",
+				"dragHint": "Tirez les poignées pour marquer la coupe."
+			},
+			"steps": [
+				{
+					"title": "Ajoutez de l'audio",
+					"line": "Déposez le fichier à rogner."
+				},
+				{
+					"title": "Marquez la coupe",
+					"line": "Tirez les poignées sur l'onde."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Gardez l'audio rogné."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Quel format sort ?",
+					"a": "Le même que votre entrée."
+				},
+				{
+					"q": "Coupes exactes ?",
+					"a": "À la milliseconde. On réencode la coupe."
+				},
+				{
+					"q": "Enlever le milieu ?",
+					"a": "Non. Ça garde une plage. Marquez début et fin."
+				}
+			]
+		},
+		"audio-speed": {
+			"name": "Vitesse et hauteur",
+			"tagline": "Vite, lent, aigu, grave.",
+			"title": "Changeur de vitesse en ligne gratuit",
+			"description": "Changez vitesse et hauteur audio séparément gratis dans le navigateur. Vos fichiers ne quittent jamais votre appareil.",
+			"h1": "Changeur de vitesse en ligne gratuit",
+			"sub": "La vitesse garde la hauteur sauf à toucher la hauteur.",
+			"options": {
+				"speed": "Vitesse",
+				"pitch": "Hauteur",
+				"semitones": "demi-tons",
+				"apply": "Appliquer"
+			},
+			"steps": [
+				{
+					"title": "Ajoutez de l'audio",
+					"line": "Déposez le fichier à changer."
+				},
+				{
+					"title": "Bougez curseurs",
+					"line": "Vitesse et hauteur vont seules."
+				},
+				{
+					"title": "Téléchargez",
+					"line": "Gardez le MP3 changé."
+				}
+			],
+			"faqs": [
+				{
+					"q": "La vitesse change la hauteur ?",
+					"a": "Non sauf à bouger la hauteur. Séparées."
+				},
+				{
+					"q": "Quelle plage saine ?",
+					"a": "50 à 150 pour cent, quelques demi-tons."
+				},
+				{
+					"q": "Quel format sort ?",
+					"a": "MP3 à 192k."
 				}
 			]
 		}

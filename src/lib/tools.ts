@@ -38,6 +38,11 @@ export const TOOLS: ToolEntry[] = [
 	{ slug: "video-converter", category: "video", icon: "videofile" },
 	{ slug: "compress-video", category: "video", icon: "shrink" },
 	{ slug: "crop-video", category: "video", icon: "frame" },
+	{ slug: "audio-converter", category: "audio", icon: "disc" },
+	{ slug: "adjust-audio", category: "audio", icon: "waveform" },
+	{ slug: "join-audio", category: "audio", icon: "playlist" },
+	{ slug: "trim-audio", category: "audio", icon: "cut" },
+	{ slug: "audio-speed", category: "audio", icon: "gauge" },
 ];
 
 export const CATEGORY_ORDER: CategoryKey[] = [

@@ -52,7 +52,8 @@
 		"coreMt": "Multi-threaded engine",
 		"coreSt": "Compatibility engine (single-threaded)",
 		"loadingVideoEngine": "Loading video engine…",
-		"engineFailed": "Could not load the video engine. Check your connection and retry."
+		"engineFailed": "Could not load the video engine. Check your connection and retry.",
+		"loadingAudioEngine": "Loading audio engine…"
 	},
 	"howto": {
 		"step": "Step {n}",
@@ -1455,6 +1456,213 @@
 				{
 					"q": "Why even numbers?",
 					"a": "Players and codecs require even dimensions."
+				}
+			]
+		},
+		"audio-converter": {
+			"name": "Audio Converter",
+			"tagline": "MP3, WAV, OGG, M4A, FLAC.",
+			"title": "Free Online Audio Converter",
+			"description": "Convert audio between MP3, WAV, OGG, M4A, and FLAC free in your browser. Progress bar and honest engine note. Files never leave your device.",
+			"h1": "Free Online Audio Converter",
+			"sub": "Pick a format, convert, download.",
+			"options": {
+				"format": "Format",
+				"apply": "Convert audio"
+			},
+			"steps": [
+				{
+					"title": "Add audio",
+					"line": "Drop the file to convert."
+				},
+				{
+					"title": "Pick a format",
+					"line": "MP3, WAV, OGG, M4A, or FLAC."
+				},
+				{
+					"title": "Download",
+					"line": "Save the converted audio."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Which format should I pick?",
+					"a": "MP3 plays everywhere. WAV is uncompressed. FLAC compresses without loss."
+				},
+				{
+					"q": "Does converting lose quality?",
+					"a": "Lossy to lossy loses a little. Anything to WAV or FLAC stays exact."
+				},
+				{
+					"q": "Why is the first run slow?",
+					"a": "Your browser downloads the 30 MB audio engine once, then caches it."
+				}
+			]
+		},
+		"adjust-audio": {
+			"name": "Audio Adjuster",
+			"tagline": "Bitrate and sample rate.",
+			"title": "Free Online Audio Adjuster",
+			"description": "Change audio bitrate and sample rate free in your browser. MP3 output. Files never leave your device.",
+			"h1": "Free Online Audio Adjuster",
+			"sub": "Pick numbers, get an MP3.",
+			"options": {
+				"bitrate": "Bitrate",
+				"sampleRate": "Sample rate",
+				"apply": "Adjust audio"
+			},
+			"steps": [
+				{
+					"title": "Add audio",
+					"line": "Drop the file to adjust."
+				},
+				{
+					"title": "Pick numbers",
+					"line": "Bitrate and sample rate."
+				},
+				{
+					"title": "Download",
+					"line": "Save the adjusted MP3."
+				}
+			],
+			"faqs": [
+				{
+					"q": "What bitrate sounds good?",
+					"a": "128k suits speech, 192k and up suits music."
+				},
+				{
+					"q": "What sample rate?",
+					"a": "44100 Hz is CD quality. 48000 Hz suits video work."
+				},
+				{
+					"q": "Why MP3 output only?",
+					"a": "Bitrate only means something for lossy formats. MP3 plays everywhere."
+				}
+			]
+		},
+		"join-audio": {
+			"name": "Audio Joiner",
+			"tagline": "Many files, one track.",
+			"title": "Free Online Audio Joiner",
+			"description": "Join multiple audio files into one free in your browser. Drag to order, MP3 or WAV out. Files never leave your device.",
+			"h1": "Free Online Audio Joiner",
+			"sub": "Add files, drag to order, join.",
+			"options": {
+				"format": "Format",
+				"apply": "Join audio",
+				"reorder": "Drag to reorder.",
+				"needTwo": "Add at least two files."
+			},
+			"steps": [
+				{
+					"title": "Add files",
+					"line": "Drop two or more audio files."
+				},
+				{
+					"title": "Order them",
+					"line": "Drag the list into order."
+				},
+				{
+					"title": "Download",
+					"line": "Save the joined track."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Can I mix formats?",
+					"a": "Yes. Everything is normalized and joined into one track."
+				},
+				{
+					"q": "Is there a file limit?",
+					"a": "Each file caps at 200 MB. Ten files per join."
+				},
+				{
+					"q": "Gaps between tracks?",
+					"a": "No. Tracks join back to back."
+				}
+			]
+		},
+		"trim-audio": {
+			"name": "Audio Trimmer",
+			"tagline": "Cut with a waveform.",
+			"title": "Free Online Audio Trimmer",
+			"description": "Trim audio free in your browser on a real waveform with drag handles. Files never leave your device.",
+			"h1": "Free Online Audio Trimmer",
+			"sub": "Drag the handles, cut, download.",
+			"options": {
+				"apply": "Trim audio",
+				"start": "Start",
+				"end": "End",
+				"dragHint": "Drag the handles to mark the cut."
+			},
+			"steps": [
+				{
+					"title": "Add audio",
+					"line": "Drop the file to trim."
+				},
+				{
+					"title": "Mark the cut",
+					"line": "Drag the handles on the waveform."
+				},
+				{
+					"title": "Download",
+					"line": "Save the trimmed audio."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Which format comes out?",
+					"a": "The same format as your input."
+				},
+				{
+					"q": "Are cuts exact?",
+					"a": "To the millisecond. The file re-encodes around the cut."
+				},
+				{
+					"q": "Can I cut the middle out?",
+					"a": "No. This keeps one range. Pick start and end."
+				}
+			]
+		},
+		"audio-speed": {
+			"name": "Audio Speed and Pitch",
+			"tagline": "Faster, slower, higher, lower.",
+			"title": "Free Online Audio Speed Changer",
+			"description": "Change audio speed and pitch independently free in your browser. Files never leave your device.",
+			"h1": "Free Online Audio Speed Changer",
+			"sub": "Speed keeps pitch unless you move pitch too.",
+			"options": {
+				"speed": "Speed",
+				"pitch": "Pitch",
+				"semitones": "semitones",
+				"apply": "Apply"
+			},
+			"steps": [
+				{
+					"title": "Add audio",
+					"line": "Drop the file to change."
+				},
+				{
+					"title": "Move sliders",
+					"line": "Speed and pitch work independently."
+				},
+				{
+					"title": "Download",
+					"line": "Save the changed MP3."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Does speed change pitch?",
+					"a": "Not unless you move the pitch slider too. They are independent."
+				},
+				{
+					"q": "What range is sane?",
+					"a": "50 to 150 percent speed, a few semitones either way."
+				},
+				{
+					"q": "Which format comes out?",
+					"a": "MP3 at 192k."
 				}
 			]
 		}

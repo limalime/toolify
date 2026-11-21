@@ -52,7 +52,8 @@
 		"coreMt": "Motor multihilo",
 		"coreSt": "Motor compatible (un hilo)",
 		"loadingVideoEngine": "Cargando el motor de video…",
-		"engineFailed": "No se pudo cargar el motor de video. Revisa tu conexión y reintenta."
+		"engineFailed": "No se pudo cargar el motor de video. Revisa tu conexión y reintenta.",
+		"loadingAudioEngine": "Cargando el motor de audio…"
 	},
 	"howto": {
 		"step": "Paso {n}",
@@ -1455,6 +1456,213 @@
 				{
 					"q": "¿Por qué números pares?",
 					"a": "Reproductores y códecs piden dimensiones pares."
+				}
+			]
+		},
+		"audio-converter": {
+			"name": "Conversor de audio",
+			"tagline": "MP3, WAV, OGG, M4A, FLAC.",
+			"title": "Conversor de audio online gratis",
+			"description": "Convierte audio entre MP3, WAV, OGG, M4A y FLAC gratis en tu navegador. Barra de progreso y nota honesta del motor. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Conversor de audio online gratis",
+			"sub": "Elige un formato, convierte, descarga.",
+			"options": {
+				"format": "Formato",
+				"apply": "Convertir audio"
+			},
+			"steps": [
+				{
+					"title": "Añade audio",
+					"line": "Suelta el archivo a convertir."
+				},
+				{
+					"title": "Elige un formato",
+					"line": "MP3, WAV, OGG, M4A o FLAC."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda el audio convertido."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué formato elijo?",
+					"a": "MP3 va en todos lados. WAV sin comprimir. FLAC comprime sin perder."
+				},
+				{
+					"q": "¿Pierde calidad?",
+					"a": "Con pérdida a con pérdida quita un poco. A WAV o FLAC queda exacto."
+				},
+				{
+					"q": "¿Por qué tarda la primera vez?",
+					"a": "Tu navegador descarga el motor de 30 MB una vez, luego lo cachea."
+				}
+			]
+		},
+		"adjust-audio": {
+			"name": "Ajustador de audio",
+			"tagline": "Bitrate y muestra.",
+			"title": "Ajustador de audio online gratis",
+			"description": "Cambia bitrate y muestra de audio gratis en tu navegador. Salida MP3. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Ajustador de audio online gratis",
+			"sub": "Pon números, toma un MP3.",
+			"options": {
+				"bitrate": "Bitrate",
+				"sampleRate": "Muestra",
+				"apply": "Ajustar audio"
+			},
+			"steps": [
+				{
+					"title": "Añade audio",
+					"line": "Suelta el archivo a ajustar."
+				},
+				{
+					"title": "Pon números",
+					"line": "Bitrate y muestra."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda el MP3 ajustado."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué bitrate suena bien?",
+					"a": "128k para voz, 192k o más para música."
+				},
+				{
+					"q": "¿Qué muestra?",
+					"a": "44100 Hz es calidad CD. 48000 Hz va con video."
+				},
+				{
+					"q": "¿Por qué solo MP3?",
+					"a": "El bitrate solo vale para formatos con pérdida. MP3 va en todos lados."
+				}
+			]
+		},
+		"join-audio": {
+			"name": "Unidor de audio",
+			"tagline": "Muchos archivos, una pista.",
+			"title": "Unidor de audio online gratis",
+			"description": "Une varios audios en uno gratis en tu navegador. Arrastra para ordenar, salida MP3 o WAV. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Unidor de audio online gratis",
+			"sub": "Añade archivos, arrastra, une.",
+			"options": {
+				"format": "Formato",
+				"apply": "Unir audio",
+				"reorder": "Arrastra para ordenar.",
+				"needTwo": "Añade al menos dos archivos."
+			},
+			"steps": [
+				{
+					"title": "Añade archivos",
+					"line": "Suelta dos o más audios."
+				},
+				{
+					"title": "Ordénalos",
+					"line": "Arrastra la lista a tu orden."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda la pista unida."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Mezcla formatos?",
+					"a": "Sí. Todo se normaliza y une en una pista."
+				},
+				{
+					"q": "¿Límite de archivos?",
+					"a": "200 MB por archivo. Diez por unión."
+				},
+				{
+					"q": "¿Huecos entre pistas?",
+					"a": "No. Van pegadas."
+				}
+			]
+		},
+		"trim-audio": {
+			"name": "Recortador de audio",
+			"tagline": "Corta con forma de onda.",
+			"title": "Recortador de audio online gratis",
+			"description": "Recorta audio gratis en tu navegador sobre una onda real con asas. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Recortador de audio online gratis",
+			"sub": "Arrastra las asas, corta, descarga.",
+			"options": {
+				"apply": "Recortar audio",
+				"start": "Inicio",
+				"end": "Fin",
+				"dragHint": "Arrastra las asas para marcar el corte."
+			},
+			"steps": [
+				{
+					"title": "Añade audio",
+					"line": "Suelta el archivo a recortar."
+				},
+				{
+					"title": "Marca el corte",
+					"line": "Arrastra las asas sobre la onda."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda el audio recortado."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué formato sale?",
+					"a": "El mismo de tu entrada."
+				},
+				{
+					"q": "¿Cortes exactos?",
+					"a": "Al milisegundo. Se recodifica el corte."
+				},
+				{
+					"q": "¿Quito el medio?",
+					"a": "No. Esto guarda un rango. Elige inicio y fin."
+				}
+			]
+		},
+		"audio-speed": {
+			"name": "Velocidad y tono",
+			"tagline": "Rápido, lento, agudo, grave.",
+			"title": "Cambiador de velocidad online gratis",
+			"description": "Cambia velocidad y tono de audio por separado gratis en tu navegador. Tus archivos nunca salen de tu dispositivo.",
+			"h1": "Cambiador de velocidad online gratis",
+			"sub": "La velocidad guarda el tono salvo que muevas el tono.",
+			"options": {
+				"speed": "Velocidad",
+				"pitch": "Tono",
+				"semitones": "semitonos",
+				"apply": "Aplicar"
+			},
+			"steps": [
+				{
+					"title": "Añade audio",
+					"line": "Suelta el archivo a cambiar."
+				},
+				{
+					"title": "Mueve controles",
+					"line": "Velocidad y tono van aparte."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda el MP3 cambiado."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿La velocidad cambia el tono?",
+					"a": "No salvo que muevas el tono. Van aparte."
+				},
+				{
+					"q": "¿Qué rango es sano?",
+					"a": "50 a 150 por ciento, unos semitonos."
+				},
+				{
+					"q": "¿Qué formato sale?",
+					"a": "MP3 a 192k."
 				}
 			]
 		}

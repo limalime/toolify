@@ -7,6 +7,8 @@ export const FIXTURES = {
 	heic: "tests/fixtures/sample.heic",
 	ai: "tests/fixtures/sample.ai",
 	video: "tests/fixtures/sample.mp4",
+	toneMp3: "tests/fixtures/tone.mp3",
+	toneWav: "tests/fixtures/tone.wav",
 };
 
 export type Signature =
@@ -22,7 +24,11 @@ export type Signature =
 	| "gif"
 	| "mp4"
 	| "mov"
-	| "webm";
+	| "webm"
+	| "wav"
+	| "ogg"
+	| "flac"
+	| "m4a";
 
 const startsWith = (bytes: Uint8Array, head: number[]): boolean =>
 	head.every((byte, index) => bytes[index] === byte);
@@ -50,7 +56,22 @@ export function signatureOf(bytes: Uint8Array): Signature | "unknown" {
 		if (brand.startsWith("avif") || brand.startsWith("avis")) {
 			return "avif";
 		}
+		if (brand.startsWith("M4A")) {
+			return "m4a";
+		}
 		return "mp4";
+	}
+	if (
+		text.startsWith("RIFF") &&
+		new TextDecoder().decode(bytes.slice(8, 12)) === "WAVE"
+	) {
+		return "wav";
+	}
+	if (text.startsWith("OggS")) {
+		return "ogg";
+	}
+	if (text.startsWith("fLaC")) {
+		return "flac";
 	}
 	if (startsWith(bytes, [0x1a, 0x45, 0xdf, 0xa3])) {
 		return "webm";

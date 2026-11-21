@@ -52,7 +52,8 @@
 		"coreMt": "Mesin multi-thread",
 		"coreSt": "Mesin kompatibilitas (single-thread)",
 		"loadingVideoEngine": "Memuat mesin video…",
-		"engineFailed": "Gagal memuat mesin video. Periksa koneksi lalu coba lagi."
+		"engineFailed": "Gagal memuat mesin video. Periksa koneksi lalu coba lagi.",
+		"loadingAudioEngine": "Memuat mesin audio…"
 	},
 	"howto": {
 		"step": "Langkah {n}",
@@ -1455,6 +1456,213 @@
 				{
 					"q": "Mengapa harus genap?",
 					"a": "Pemutar dan codec mensyaratkan dimensi genap."
+				}
+			]
+		},
+		"audio-converter": {
+			"name": "Konverter Audio",
+			"tagline": "MP3, WAV, OGG, M4A, FLAC.",
+			"title": "Konverter Audio Online Gratis",
+			"description": "Ubah audio antara MP3, WAV, OGG, M4A, dan FLAC gratis di browser. Bilah progres dan catatan mesin yang jujur. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Konverter Audio Online Gratis",
+			"sub": "Pilih format, konversi, unduh.",
+			"options": {
+				"format": "Format",
+				"apply": "Konversi audio"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan audio",
+					"line": "Jatuhkan file yang diubah."
+				},
+				{
+					"title": "Pilih format",
+					"line": "MP3, WAV, OGG, M4A, atau FLAC."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan audio hasil."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Format apa?",
+					"a": "MP3 jalan di mana saja. WAV tanpa kompresi. FLAC padat tanpa rugi."
+				},
+				{
+					"q": "Apakah kualitas turun?",
+					"a": "Lossy ke lossy turun sedikit. Ke WAV atau FLAC tetap persis."
+				},
+				{
+					"q": "Mengapa jalan pertama lambat?",
+					"a": "Browser mengunduh mesin 30 MB sekali, lalu di-cache."
+				}
+			]
+		},
+		"adjust-audio": {
+			"name": "Penyesuai Audio",
+			"tagline": "Bitrate dan sample rate.",
+			"title": "Penyesuai Audio Online Gratis",
+			"description": "Ubah bitrate dan sample rate audio gratis di browser. Keluaran MP3. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Penyesuai Audio Online Gratis",
+			"sub": "Pilih angka, dapatkan MP3.",
+			"options": {
+				"bitrate": "Bitrate",
+				"sampleRate": "Sample rate",
+				"apply": "Sesuaikan audio"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan audio",
+					"line": "Jatuhkan file yang diatur."
+				},
+				{
+					"title": "Pilih angka",
+					"line": "Bitrate dan sample rate."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan MP3 hasil."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Bitrate berapa bagus?",
+					"a": "128k untuk suara, 192k ke atas untuk musik."
+				},
+				{
+					"q": "Sample rate berapa?",
+					"a": "44100 Hz kualitas CD. 48000 Hz untuk video."
+				},
+				{
+					"q": "Mengapa hanya MP3?",
+					"a": "Bitrate hanya bermakna untuk format lossy. MP3 jalan di mana saja."
+				}
+			]
+		},
+		"join-audio": {
+			"name": "Penggabung Audio",
+			"tagline": "Banyak file, satu trek.",
+			"title": "Penggabung Audio Online Gratis",
+			"description": "Gabung banyak file audio jadi satu gratis di browser. Seret untuk urutan, keluaran MP3 atau WAV. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Penggabung Audio Online Gratis",
+			"sub": "Tambah file, seret urutan, gabung.",
+			"options": {
+				"format": "Format",
+				"apply": "Gabung audio",
+				"reorder": "Seret untuk mengurutkan.",
+				"needTwo": "Tambahkan minimal dua file."
+			},
+			"steps": [
+				{
+					"title": "Tambahkan file",
+					"line": "Jatuhkan dua atau lebih file audio."
+				},
+				{
+					"title": "Urutkan",
+					"line": "Seret daftar sesuai urutan."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan trek gabungan."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Bisakah format campur?",
+					"a": "Bisa. Semua dinormalisasi lalu digabung satu trek."
+				},
+				{
+					"q": "Ada batas file?",
+					"a": "Tiap file maks 200 MB. Sepuluh file per gabung."
+				},
+				{
+					"q": "Ada jeda antar trek?",
+					"a": "Tidak. Trek tersambung rapat."
+				}
+			]
+		},
+		"trim-audio": {
+			"name": "Pemotong Audio",
+			"tagline": "Potong dengan waveform.",
+			"title": "Pemotong Audio Online Gratis",
+			"description": "Potong audio gratis di browser pada waveform asli dengan gagang seret. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Pemotong Audio Online Gratis",
+			"sub": "Seret gagang, potong, unduh.",
+			"options": {
+				"apply": "Potong audio",
+				"start": "Mulai",
+				"end": "Selesai",
+				"dragHint": "Seret gagang untuk menandai potongan."
+			},
+			"steps": [
+				{
+					"title": "Tambahkan audio",
+					"line": "Jatuhkan file yang dipotong."
+				},
+				{
+					"title": "Tandai potongan",
+					"line": "Seret gagang pada waveform."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan audio hasil."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Format apa keluar?",
+					"a": "Sama dengan masukan Anda."
+				},
+				{
+					"q": "Apakah potongan tepat?",
+					"a": "Hingga milidetik. File di-encode ulang di sekitar potongan."
+				},
+				{
+					"q": "Bisakah buang tengah?",
+					"a": "Tidak. Ini menyimpan satu rentang. Pilih awal dan akhir."
+				}
+			]
+		},
+		"audio-speed": {
+			"name": "Kecepatan dan Nada Audio",
+			"tagline": "Lebih cepat, lambat, tinggi, rendah.",
+			"title": "Pengubah Kecepatan Audio Online Gratis",
+			"description": "Ubah kecepatan dan nada audio secara independen gratis di browser. File tidak pernah meninggalkan perangkat Anda.",
+			"h1": "Pengubah Kecepatan Audio Online Gratis",
+			"sub": "Kecepatan menjaga nada kecuali nada ikut digeser.",
+			"options": {
+				"speed": "Kecepatan",
+				"pitch": "Nada",
+				"semitones": "semiton",
+				"apply": "Terapkan"
+			},
+			"steps": [
+				{
+					"title": "Tambahkan audio",
+					"line": "Jatuhkan file yang diubah."
+				},
+				{
+					"title": "Geser slider",
+					"line": "Kecepatan dan nada independen."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan MP3 hasil."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah kecepatan mengubah nada?",
+					"a": "Tidak kecuali slider nada ikut digeser. Keduanya independen."
+				},
+				{
+					"q": "Rentang yang wajar?",
+					"a": "Kecepatan 50 sampai 150 persen, nada beberapa semiton."
+				},
+				{
+					"q": "Format apa keluar?",
+					"a": "MP3 192k."
 				}
 			]
 		}
