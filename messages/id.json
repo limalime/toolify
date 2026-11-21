@@ -1048,6 +1048,197 @@
 					"a": "Tidak. Hash itu satu arah."
 				}
 			]
+		},
+		"code-formatter": {
+			"name": "Formatter Kode",
+			"tagline": "Format dan minify JSON, XML, Markdown.",
+			"title": "Formatter Kode Online Gratis",
+			"description": "Format dan minify JSON, XML, dan Markdown gratis di browser. Error validasi berbahasa sederhana dengan nomor baris. Tidak ada yang diunggah.",
+			"h1": "Formatter Kode Online Gratis",
+			"sub": "Pilih format dan mode, tempel, baca hasilnya.",
+			"options": {
+				"format": "Format",
+				"formatJson": "JSON",
+				"formatXml": "XML",
+				"formatMarkdown": "Markdown",
+				"mode": "Mode",
+				"modeFormat": "Format",
+				"modeMinify": "Minify",
+				"input": "Masukan",
+				"output": "Keluaran",
+				"errorLine": "Baris {line}",
+				"errors": {
+					"json": "JSON tidak valid. Periksa koma, kutip, dan kurung.",
+					"empty": "Dokumen kosong.",
+					"mismatch": "Tag penutup {tag} tidak cocok.",
+					"unclosed": "Tag {tag} tidak tertutup.",
+					"markdown": "Markdown ini tidak bisa diformat."
+				}
+			},
+			"steps": [
+				{
+					"title": "Pilih format dan mode",
+					"line": "Tentukan yang dikerjakan."
+				},
+				{
+					"title": "Tempel masukan",
+					"line": "Tempel teks Anda."
+				},
+				{
+					"title": "Salin keluaran",
+					"line": "Salin hasil sekali klik."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Format apa saja?",
+					"a": "JSON, XML, dan Markdown."
+				},
+				{
+					"q": "Bagaimana error dijelaskan?",
+					"a": "Bahasa sederhana plus nomor baris."
+				},
+				{
+					"q": "Apakah kode diunggah?",
+					"a": "Tidak. Semua lokal."
+				}
+			]
+		},
+		"online-ide": {
+			"name": "IDE Online",
+			"tagline": "Tulis kode dengan highlight, tanpa compiler.",
+			"title": "Editor Kode Online Gratis",
+			"description": "Tulis kode di browser dengan highlight sintaks untuk HTML, CSS, JavaScript, TypeScript, Rust, Java, C++, Python, dan lainnya. Tanpa compiler, tidak ada yang dijalankan. Salin atau unduh pekerjaan Anda.",
+			"h1": "Editor Kode Online Gratis",
+			"sub": "Editor minimal. Pilih bahasa, tulis, salin, unduh.",
+			"options": {
+				"language": "Bahasa",
+				"placeholder": "Tulis kode di sini. Tidak ada yang dijalankan, tidak ada yang diunggah.",
+				"noCompiler": "Tidak ada compiler di sini. Ini editor: mewarnai, tidak menjalankan."
+			},
+			"steps": [
+				{
+					"title": "Pilih bahasa",
+					"line": "Tentukan bahasa sintaks."
+				},
+				{
+					"title": "Tulis kode",
+					"line": "Tulis bebas."
+				},
+				{
+					"title": "Salin atau unduh",
+					"line": "Simpan pekerjaan Anda."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Bisakah menjalankan kode?",
+					"a": "Tidak. Ini editor saja."
+				},
+				{
+					"q": "Bahasa apa saja?",
+					"a": "HTML, CSS, JS, TS, Rust, Java, C++, Python, dan lainnya."
+				},
+				{
+					"q": "Apakah kode disimpan?",
+					"a": "Tidak. Salin atau unduh sebelum pergi."
+				}
+			]
+		},
+		"online-notes": {
+			"name": "Catatan Online",
+			"tagline": "Catatan pribadi di browser Anda.",
+			"title": "Catatan Online Gratis",
+			"description": "Tulis catatan yang tetap di browser memakai IndexedDB. Tersimpan otomatis saat mengetik, ekspor semua sebagai Markdown. Tidak diunggah, bukan localStorage.",
+			"h1": "Catatan Online Gratis",
+			"sub": "Lokal saja. Tersimpan otomatis, bisa diekspor, privat.",
+			"options": {
+				"new": "Catatan baru",
+				"delete": "Hapus",
+				"confirmDelete": "Klik lagi untuk hapus",
+				"export": "Ekspor semua",
+				"emptyHint": "Belum ada catatan. Mulai di atas.",
+				"saved": "Tersimpan"
+			},
+			"steps": [
+				{
+					"title": "Mulai catatan",
+					"line": "Buat catatan baru."
+				},
+				{
+					"title": "Tulis bebas",
+					"line": "Tersimpan otomatis tiap ketikan."
+				},
+				{
+					"title": "Ekspor semua",
+					"line": "Unduh semua sebagai Markdown."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Di mana catatan disimpan?",
+					"a": "Di IndexedDB browser Anda."
+				},
+				{
+					"q": "Bagaimana jika data situs dihapus?",
+					"a": "Catatan ikut hilang. Ekspor berkala."
+				},
+				{
+					"q": "Bagaimana memindahkan catatan?",
+					"a": "Ekspor lalu impor manual."
+				}
+			]
+		},
+		"text-encodings": {
+			"name": "Encoding Teks",
+			"tagline": "Hex, Base, Keccak, CRC sekaligus.",
+			"title": "Encoding Teks Online Gratis",
+			"description": "Ubah teks ke Hex, Base64, Base32, biner, ROT13, HTML, Keccak, dan CRC32 gratis di browser. Satu masukan, semua sekaligus. Klik baris untuk salin.",
+			"h1": "Encoding Teks Online Gratis",
+			"sub": "Satu masukan, semua sekaligus. Klik untuk salin.",
+			"options": {
+				"text": "Teks",
+				"hint": "Ketik di atas untuk melihat semua.",
+				"labels": {
+					"hex": "Hex",
+					"base64": "Base64",
+					"base32": "Base32",
+					"binary": "Biner",
+					"rot13": "ROT13",
+					"html": "HTML",
+					"keccak256": "Keccak-256",
+					"keccak512": "Keccak-512",
+					"crc32": "CRC32"
+				}
+			},
+			"steps": [
+				{
+					"title": "Ketik teks",
+					"line": "Masukkan satu teks."
+				},
+				{
+					"title": "Lihat semua",
+					"line": "Sembilan hasil sekaligus."
+				},
+				{
+					"title": "Klik untuk salin",
+					"line": "Klik baris untuk menyalinnya."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apa itu Keccak?",
+					"a": "Keluarga SHA-3, dipakai Ethereum."
+				},
+				{
+					"q": "CRC32 untuk apa?",
+					"a": "Checksum integritas file."
+				},
+				{
+					"q": "Mana yang bisa dibalik?",
+					"a": "Hash dan checksum tidak, encoding ya."
+				}
+			]
 		}
 	}
 }

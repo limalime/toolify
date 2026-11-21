@@ -1048,6 +1048,197 @@
 					"a": "No. Hashes go one way."
 				}
 			]
+		},
+		"code-formatter": {
+			"name": "Code Formatter",
+			"tagline": "Format and minify JSON, XML, Markdown.",
+			"title": "Free Online Code Formatter",
+			"description": "Format and minify JSON, XML, and Markdown free in your browser. Validation errors in plain language with line numbers. Nothing is uploaded.",
+			"h1": "Free Online Code Formatter",
+			"sub": "Pick a format and a mode, paste, read the result.",
+			"options": {
+				"format": "Format",
+				"formatJson": "JSON",
+				"formatXml": "XML",
+				"formatMarkdown": "Markdown",
+				"mode": "Mode",
+				"modeFormat": "Format",
+				"modeMinify": "Minify",
+				"input": "Input",
+				"output": "Output",
+				"errorLine": "Line {line}",
+				"errors": {
+					"json": "Invalid JSON. Check commas, quotes, and brackets.",
+					"empty": "Empty document.",
+					"mismatch": "Mismatched closing tag {tag}.",
+					"unclosed": "Unclosed tag {tag}.",
+					"markdown": "Could not format this Markdown."
+				}
+			},
+			"steps": [
+				{
+					"title": "Pick format and mode",
+					"line": "Decide what to do."
+				},
+				{
+					"title": "Paste input",
+					"line": "Paste your text."
+				},
+				{
+					"title": "Copy output",
+					"line": "Copy the result with one click."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Which formats?",
+					"a": "JSON, XML, and Markdown."
+				},
+				{
+					"q": "How do errors work?",
+					"a": "Plain language plus a line number."
+				},
+				{
+					"q": "Is my code uploaded?",
+					"a": "No. Everything runs locally."
+				}
+			]
+		},
+		"online-ide": {
+			"name": "Online IDE",
+			"tagline": "Write code with highlighting, no compiler.",
+			"title": "Free Online Code Editor",
+			"description": "Write code in your browser with syntax highlighting for HTML, CSS, JavaScript, TypeScript, Rust, Java, C++, Python, and more. No compiler, nothing runs. Copy or download your work.",
+			"h1": "Free Online Code Editor",
+			"sub": "A minimal editor. Pick a language, write, copy, download.",
+			"options": {
+				"language": "Language",
+				"placeholder": "Write code here. Nothing runs, nothing is uploaded.",
+				"noCompiler": "No compiler here. This is an editor: it highlights, it never runs."
+			},
+			"steps": [
+				{
+					"title": "Pick a language",
+					"line": "Set the syntax highlighting."
+				},
+				{
+					"title": "Write code",
+					"line": "Write freely."
+				},
+				{
+					"title": "Copy or download",
+					"line": "Take your work with you."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Can it run my code?",
+					"a": "No. This is an editor only."
+				},
+				{
+					"q": "Which languages?",
+					"a": "HTML, CSS, JavaScript, TypeScript, Rust, Java, C++, Python, and more."
+				},
+				{
+					"q": "Is my code saved?",
+					"a": "No. Copy or download before you leave."
+				}
+			]
+		},
+		"online-notes": {
+			"name": "Online Notes",
+			"tagline": "Private notes in your browser.",
+			"title": "Free Online Notes",
+			"description": "Write notes that stay in your browser on IndexedDB. Autosave as you type, export everything as Markdown. Never uploaded, never localStorage.",
+			"h1": "Free Online Notes",
+			"sub": "Local only. Autosaved, exportable, private.",
+			"options": {
+				"new": "New note",
+				"delete": "Delete",
+				"confirmDelete": "Click again to delete",
+				"export": "Export all",
+				"emptyHint": "No notes yet. Start one above.",
+				"saved": "Saved"
+			},
+			"steps": [
+				{
+					"title": "Start a note",
+					"line": "Create a fresh note."
+				},
+				{
+					"title": "Write freely",
+					"line": "Autosaves on each keystroke."
+				},
+				{
+					"title": "Export all",
+					"line": "Download everything as Markdown."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Where are notes stored?",
+					"a": "In your browser's IndexedDB."
+				},
+				{
+					"q": "What if I clear site data?",
+					"a": "Notes go with it. Export regularly."
+				},
+				{
+					"q": "How do I move notes?",
+					"a": "Export, then bring the file back manually."
+				}
+			]
+		},
+		"text-encodings": {
+			"name": "Text Encodings",
+			"tagline": "Hex, Base, Keccak, CRC and more at once.",
+			"title": "Free Online Text Encodings",
+			"description": "Convert text to Hex, Base64, Base32, binary, ROT13, HTML, Keccak, and CRC32 free in your browser. One input, every encoding together. Click any row to copy.",
+			"h1": "Free Online Text Encodings",
+			"sub": "One input, every encoding together. Click to copy.",
+			"options": {
+				"text": "Text",
+				"hint": "Type above to see every encoding.",
+				"labels": {
+					"hex": "Hex",
+					"base64": "Base64",
+					"base32": "Base32",
+					"binary": "Binary",
+					"rot13": "ROT13",
+					"html": "HTML",
+					"keccak256": "Keccak-256",
+					"keccak512": "Keccak-512",
+					"crc32": "CRC32"
+				}
+			},
+			"steps": [
+				{
+					"title": "Type text",
+					"line": "Enter a single text."
+				},
+				{
+					"title": "Browse encodings",
+					"line": "Nine results together."
+				},
+				{
+					"title": "Click to copy",
+					"line": "Click a row to copy it."
+				}
+			],
+			"faqs": [
+				{
+					"q": "What is Keccak?",
+					"a": "The SHA-3 family, used by Ethereum."
+				},
+				{
+					"q": "What is CRC32 for?",
+					"a": "File integrity checksums."
+				},
+				{
+					"q": "Which ones reverse?",
+					"a": "Hashes and checksums no, encodings yes."
+				}
+			]
 		}
 	}
 }

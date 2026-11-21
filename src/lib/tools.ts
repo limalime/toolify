@@ -29,6 +29,10 @@ export const TOOLS: ToolEntry[] = [
 	{ slug: "word-counter", category: "text", icon: "count" },
 	{ slug: "base64-url-encoder", category: "text", icon: "codec" },
 	{ slug: "hash-generator", category: "text", icon: "hash" },
+	{ slug: "code-formatter", category: "text", icon: "brace" },
+	{ slug: "online-ide", category: "text", icon: "code" },
+	{ slug: "online-notes", category: "text", icon: "notes" },
+	{ slug: "text-encodings", category: "text", icon: "digits" },
 ];
 
 export const CATEGORY_ORDER: CategoryKey[] = [

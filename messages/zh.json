@@ -1048,6 +1048,197 @@
 					"a": "不可逆,单向计算。"
 				}
 			]
+		},
+		"code-formatter": {
+			"name": "代码格式化",
+			"tagline": "JSON、XML、Markdown 格式化压缩。",
+			"title": "免费在线代码格式化",
+			"description": "在浏览器中免费格式化压缩 JSON、XML 和 Markdown。通俗报错附行号,不上传任何内容。",
+			"h1": "免费在线代码格式化",
+			"sub": "选格式选模式,粘贴,查看结果。",
+			"options": {
+				"format": "格式",
+				"formatJson": "JSON",
+				"formatXml": "XML",
+				"formatMarkdown": "Markdown",
+				"mode": "模式",
+				"modeFormat": "格式化",
+				"modeMinify": "压缩",
+				"input": "输入",
+				"output": "输出",
+				"errorLine": "第 {line} 行",
+				"errors": {
+					"json": "JSON 无效,请检查逗号、引号和括号。",
+					"empty": "文档为空。",
+					"mismatch": "闭合标签{tag}不匹配。",
+					"unclosed": "标签{tag}未闭合。",
+					"markdown": "此 Markdown 无法格式化。"
+				}
+			},
+			"steps": [
+				{
+					"title": "选格式和模式",
+					"line": "先定好要做什么。"
+				},
+				{
+					"title": "粘贴输入",
+					"line": "粘贴您的文本。"
+				},
+				{
+					"title": "复制输出",
+					"line": "一键复制结果。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "支持哪些格式?",
+					"a": "JSON、XML 和 Markdown。"
+				},
+				{
+					"q": "报错长什么样?",
+					"a": "通俗文字加行号。"
+				},
+				{
+					"q": "代码会上传吗?",
+					"a": "不会,全部本地运行。"
+				}
+			]
+		},
+		"online-ide": {
+			"name": "在线 IDE",
+			"tagline": "只写代码带高亮,不运行。",
+			"title": "免费在线代码编辑器",
+			"description": "在浏览器中编写 HTML、CSS、JavaScript、TypeScript、Rust、Java、C++、Python 等并高亮显示。没有编译器,什么都不运行。复制或下载带走。",
+			"h1": "免费在线代码编辑器",
+			"sub": "极简编辑器。选语言,写作,复制,下载。",
+			"options": {
+				"language": "语言",
+				"placeholder": "在此写代码。不运行,不上传。",
+				"noCompiler": "这里没有编译器。它只高亮,从不运行。"
+			},
+			"steps": [
+				{
+					"title": "选择语言",
+					"line": "定好语法。"
+				},
+				{
+					"title": "编写代码",
+					"line": "自由书写。"
+				},
+				{
+					"title": "复制或下载",
+					"line": "带走您的作品。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "能运行代码吗?",
+					"a": "不能,纯编辑器。"
+				},
+				{
+					"q": "有哪些语言?",
+					"a": "HTML、CSS、JS、TS、Rust、Java、C++、Python 等。"
+				},
+				{
+					"q": "代码会保存吗?",
+					"a": "不会,走之前请复制或下载。"
+				}
+			]
+		},
+		"online-notes": {
+			"name": "在线便签",
+			"tagline": "只在浏览器的私人便签。",
+			"title": "免费在线便签",
+			"description": "编写保存在浏览器 IndexedDB 的便签。边写边自动保存,可导出全部为 Markdown。永不上传,不用 localStorage。",
+			"h1": "免费在线便签",
+			"sub": "纯本地。自动保存,可导出,私密。",
+			"options": {
+				"new": "新建",
+				"delete": "删除",
+				"confirmDelete": "再点一次删除",
+				"export": "导出全部",
+				"emptyHint": "还没有便签,在上方开始。",
+				"saved": "已保存"
+			},
+			"steps": [
+				{
+					"title": "新建便签",
+					"line": "创建一条新便签。"
+				},
+				{
+					"title": "自由书写",
+					"line": "每敲一键自动保存。"
+				},
+				{
+					"title": "导出全部",
+					"line": "下载全部为 Markdown。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "存在哪里?",
+					"a": "您浏览器的 IndexedDB。"
+				},
+				{
+					"q": "清掉网站数据呢?",
+					"a": "会一起消失,请定期导出。"
+				},
+				{
+					"q": "怎么迁移?",
+					"a": "导出后再手动拿回。"
+				}
+			]
+		},
+		"text-encodings": {
+			"name": "文本编码",
+			"tagline": "Hex、Base、Keccak、CRC 一次看完。",
+			"title": "免费在线文本编码",
+			"description": "在浏览器中免费把文本转为 Hex、Base64、Base32、二进制、ROT13、HTML、Keccak 和 CRC32。一次输入全部列出,点击行复制。",
+			"h1": "免费在线文本编码",
+			"sub": "一次输入全部列出,点击复制。",
+			"options": {
+				"text": "文本",
+				"hint": "在上方输入以查看全部。",
+				"labels": {
+					"hex": "Hex",
+					"base64": "Base64",
+					"base32": "Base32",
+					"binary": "二进制",
+					"rot13": "ROT13",
+					"html": "HTML",
+					"keccak256": "Keccak-256",
+					"keccak512": "Keccak-512",
+					"crc32": "CRC32"
+				}
+			},
+			"steps": [
+				{
+					"title": "输入文本",
+					"line": "只输一段文本。"
+				},
+				{
+					"title": "浏览全部",
+					"line": "九种一次给出。"
+				},
+				{
+					"title": "点击复制",
+					"line": "点击行即可复制。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "Keccak 是什么?",
+					"a": "SHA-3 系,以太坊在用。"
+				},
+				{
+					"q": "CRC32 干什么?",
+					"a": "完整性校验。"
+				},
+				{
+					"q": "哪些可逆?",
+					"a": "哈希校验不可逆,编码可逆。"
+				}
+			]
 		}
 	}
 }

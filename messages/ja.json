@@ -1048,6 +1048,197 @@
 					"a": "いいえ。一方向です。"
 				}
 			]
+		},
+		"code-formatter": {
+			"name": "コード整形",
+			"tagline": "JSONもXMLもMarkdownも整形圧縮。",
+			"title": "無料オンラインコード整形",
+			"description": "JSONやXMLやMarkdownをブラウザで無料で整形・圧縮。やさしい文の誤りに行番号つき。何も送信されません。",
+			"h1": "無料オンラインコード整形",
+			"sub": "形式と方式を選んで貼って読むだけ。",
+			"options": {
+				"format": "形式",
+				"formatJson": "JSON",
+				"formatXml": "XML",
+				"formatMarkdown": "Markdown",
+				"mode": "方式",
+				"modeFormat": "整形",
+				"modeMinify": "圧縮",
+				"input": "入力",
+				"output": "出力",
+				"errorLine": "行 {line}",
+				"errors": {
+					"json": "JSONが不正です。カンマや引用符や括弧をどうぞ。",
+					"empty": "空の文書です。",
+					"mismatch": "閉じタグ{tag}が合いません。",
+					"unclosed": "タグ{tag}が閉じていません。",
+					"markdown": "このMarkdownは整形できません。"
+				}
+			},
+			"steps": [
+				{
+					"title": "形式と方式を選ぶ",
+					"line": "やることを決めます。"
+				},
+				{
+					"title": "入力を貼る",
+					"line": "文字を貼ります。"
+				},
+				{
+					"title": "出力を写す",
+					"line": "結果をワンクリックでコピーします。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "対応形式は?",
+					"a": "JSONとXMLとMarkdownです。"
+				},
+				{
+					"q": "誤りはどう出る?",
+					"a": "やさしい文と行番号です。"
+				},
+				{
+					"q": "送信される?",
+					"a": "いいえ。全部端末内です。"
+				}
+			]
+		},
+		"online-ide": {
+			"name": "オンラインIDE",
+			"tagline": "色分けで書くだけ、実行なし。",
+			"title": "無料オンラインコードエディタ",
+			"description": "HTMLやCSSやJavaScriptやTypeScriptやRustやJavaやC++やPythonなどを色分けつきで書けます。実行器なしで何も走りません。写すか保存して持ち帰り。",
+			"h1": "無料オンラインコードエディタ",
+			"sub": "小さなエディタ。言語を選んで書いて写して保存。",
+			"options": {
+				"language": "言語",
+				"placeholder": "ここに書きます。実行も送信もしません。",
+				"noCompiler": "実行器はありません。色づけ専用のエディタです。"
+			},
+			"steps": [
+				{
+					"title": "言語を選ぶ",
+					"line": "文法を決めます。"
+				},
+				{
+					"title": "書く",
+					"line": "自由に書きます。"
+				},
+				{
+					"title": "写すか保存する",
+					"line": "持ち帰ります。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "走らせられる?",
+					"a": "いいえ。エディタ専用です。"
+				},
+				{
+					"q": "言語は?",
+					"a": "HTMLやCSSやJSやTSやRustやJavaやC++やPythonなど。"
+				},
+				{
+					"q": "保存される?",
+					"a": "いいえ。写すか保存してからどうぞ。"
+				}
+			]
+		},
+		"online-notes": {
+			"name": "オンラインメモ",
+			"tagline": "端末内だけの私用メモ。",
+			"title": "無料オンラインメモ",
+			"description": "IndexedDBで端末内に残るメモを書けます。打てば自動保存し全部をMarkdownで出せます。送信なし、localStorageも不使用。",
+			"h1": "無料オンラインメモ",
+			"sub": "端末内専用。自動保存で持ち出し可の私用メモ。",
+			"options": {
+				"new": "新規メモ",
+				"delete": "消す",
+				"confirmDelete": "もう一度押して消去",
+				"export": "全部出す",
+				"emptyHint": "まだありません。上でどうぞ。",
+				"saved": "保存ずみ"
+			},
+			"steps": [
+				{
+					"title": "始める",
+					"line": "新規メモを作ります。"
+				},
+				{
+					"title": "書く",
+					"line": "一打ごとに自動保存します。"
+				},
+				{
+					"title": "全部出す",
+					"line": "Markdownで落とします。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "どこに残る?",
+					"a": "お使いの端末のIndexedDBです。"
+				},
+				{
+					"q": "消したら?",
+					"a": "消えます。時々出しておいてください。"
+				},
+				{
+					"q": "移すには?",
+					"a": "出して手で戻します。"
+				}
+			]
+		},
+		"text-encodings": {
+			"name": "文字コード変換",
+			"tagline": "HexもBaseもKeccakもCRCも一度に。",
+			"title": "無料オンライン文字コード変換",
+			"description": "文字をHexやBase64やBase32や二進やROT13やHTMLやKeccakやCRC32に無料変換。一入力で全部並び、押してコピー。",
+			"h1": "無料オンライン文字コード変換",
+			"sub": "一入力で全部並ぶ。押してコピー。",
+			"options": {
+				"text": "文字",
+				"hint": "上に打つと全部出ます。",
+				"labels": {
+					"hex": "Hex",
+					"base64": "Base64",
+					"base32": "Base32",
+					"binary": "二進",
+					"rot13": "ROT13",
+					"html": "HTML",
+					"keccak256": "Keccak-256",
+					"keccak512": "Keccak-512",
+					"crc32": "CRC32"
+				}
+			},
+			"steps": [
+				{
+					"title": "文字を打つ",
+					"line": "一文だけ入れます。"
+				},
+				{
+					"title": "眺める",
+					"line": "九種が一度に出ます。"
+				},
+				{
+					"title": "押してコピー",
+					"line": "行を押してコピーします。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "Keccakとは?",
+					"a": "SHA-3系でEthereumが採用。"
+				},
+				{
+					"q": "CRC32の用は?",
+					"a": "完全性検査用です。"
+				},
+				{
+					"q": "戻せるのは?",
+					"a": "ハッシュと検査値は不可、符号は可。"
+				}
+			]
 		}
 	}
 }

@@ -1048,6 +1048,197 @@
 					"a": "Non. Sens unique."
 				}
 			]
+		},
+		"code-formatter": {
+			"name": "Formateur de code",
+			"tagline": "Formate et minifie JSON, XML, Markdown.",
+			"title": "Formateur de code en ligne gratuit",
+			"description": "Formatez et minifiez JSON, XML et Markdown gratis dans le navigateur. Erreurs en clair avec numéros de ligne. Rien n'est envoyé.",
+			"h1": "Formateur de code en ligne gratuit",
+			"sub": "Choisissez format et mode, collez, lisez le résultat.",
+			"options": {
+				"format": "Format",
+				"formatJson": "JSON",
+				"formatXml": "XML",
+				"formatMarkdown": "Markdown",
+				"mode": "Mode",
+				"modeFormat": "Formater",
+				"modeMinify": "Minifier",
+				"input": "Entrée",
+				"output": "Sortie",
+				"errorLine": "Ligne {line}",
+				"errors": {
+					"json": "JSON invalide. Vérifiez virgules, guillemets et crochets.",
+					"empty": "Document vide.",
+					"mismatch": "Fermeture {tag} orpheline.",
+					"unclosed": "Balise {tag} non fermée.",
+					"markdown": "Ce Markdown ne se formate pas."
+				}
+			},
+			"steps": [
+				{
+					"title": "Choisissez format et mode",
+					"line": "Définissez quoi faire."
+				},
+				{
+					"title": "Collez l'entrée",
+					"line": "Collez votre texte."
+				},
+				{
+					"title": "Copiez la sortie",
+					"line": "Copiez le résultat en un clic."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Quels formats ?",
+					"a": "JSON, XML et Markdown."
+				},
+				{
+					"q": "Les erreurs disent quoi ?",
+					"a": "Du clair plus un numéro de ligne."
+				},
+				{
+					"q": "Mon code part-il ?",
+					"a": "Non. Tout en local."
+				}
+			]
+		},
+		"online-ide": {
+			"name": "IDE en ligne",
+			"tagline": "Écrivez coloré, sans compilateur.",
+			"title": "Éditeur de code en ligne gratuit",
+			"description": "Écrivez du HTML, CSS, JavaScript, TypeScript, Rust, Java, C++, Python et plus avec coloration. Sans compilateur, rien ne tourne. Copiez ou téléchargez.",
+			"h1": "Éditeur de code en ligne gratuit",
+			"sub": "Un éditeur mini. Choisissez, écrivez, copiez, partez.",
+			"options": {
+				"language": "Langage",
+				"placeholder": "Écrivez ici. Rien ne tourne, rien ne part.",
+				"noCompiler": "Pas de compilateur. Ça colore, ça n'exécute jamais."
+			},
+			"steps": [
+				{
+					"title": "Choisissez un langage",
+					"line": "Fixez la syntaxe."
+				},
+				{
+					"title": "Écrivez",
+					"line": "Écrivez librement."
+				},
+				{
+					"title": "Copiez ou partez",
+					"line": "Emportez votre travail."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Ça exécute mon code ?",
+					"a": "Non. Éditeur seul."
+				},
+				{
+					"q": "Quels langages ?",
+					"a": "HTML, CSS, JS, TS, Rust, Java, C++, Python et plus."
+				},
+				{
+					"q": "Mon code se garde ?",
+					"a": "Non. Copiez ou partez avant."
+				}
+			]
+		},
+		"online-notes": {
+			"name": "Notes en ligne",
+			"tagline": "Des notes privées, rien qu'au navigateur.",
+			"title": "Notes en ligne gratuites",
+			"description": "Écrivez des notes qui restent dans le navigateur en IndexedDB. Autosauvegarde à la frappe, exportez tout en Markdown. Jamais envoyées, jamais localStorage.",
+			"h1": "Notes en ligne gratuites",
+			"sub": "Local seul. Autosauvées, exportables, privées.",
+			"options": {
+				"new": "Nouvelle note",
+				"delete": "Supprimer",
+				"confirmDelete": "Recliquez pour supprimer",
+				"export": "Tout exporter",
+				"emptyHint": "Rien encore. Commencez ci-dessus.",
+				"saved": "Enregistré"
+			},
+			"steps": [
+				{
+					"title": "Commencez une note",
+					"line": "Créez-en une neuve."
+				},
+				{
+					"title": "Écrivez libre",
+					"line": "Sauvé à chaque touche."
+				},
+				{
+					"title": "Exportez tout",
+					"line": "Téléchargez en Markdown."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Stocké où ?",
+					"a": "Dans l'IndexedDB de votre navigateur."
+				},
+				{
+					"q": "Si j'efface tout ?",
+					"a": "Tout part. Exportez parfois."
+				},
+				{
+					"q": "Pour déplacer ?",
+					"a": "Exportez puis remettez à la main."
+				}
+			]
+		},
+		"text-encodings": {
+			"name": "Encodages de texte",
+			"tagline": "Hex, Base, Keccak, CRC et plus à la fois.",
+			"title": "Encodages de texte en ligne gratuits",
+			"description": "Convertissez du texte en Hex, Base64, Base32, binaire, ROT13, HTML, Keccak et CRC32 gratis dans le navigateur. Une entrée, tout ensemble. Cliquez une ligne pour copier.",
+			"h1": "Encodages de texte en ligne gratuits",
+			"sub": "Une entrée, tout ensemble. Cliquez pour copier.",
+			"options": {
+				"text": "Texte",
+				"hint": "Écrivez ci-dessus pour tout voir.",
+				"labels": {
+					"hex": "Hex",
+					"base64": "Base64",
+					"base32": "Base32",
+					"binary": "Binaire",
+					"rot13": "ROT13",
+					"html": "HTML",
+					"keccak256": "Keccak-256",
+					"keccak512": "Keccak-512",
+					"crc32": "CRC32"
+				}
+			},
+			"steps": [
+				{
+					"title": "Tapez du texte",
+					"line": "Mettez un seul texte."
+				},
+				{
+					"title": "Voyez tout",
+					"line": "Neuf résultats à la fois."
+				},
+				{
+					"title": "Cliquez pour copier",
+					"line": "Cliquez une ligne pour la copier."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Keccak, c'est quoi ?",
+					"a": "Famille SHA-3, Ethereum l'emploie."
+				},
+				{
+					"q": "CRC32 pour quoi ?",
+					"a": "Sommes de contrôle."
+				},
+				{
+					"q": "Quoi d'inversible ?",
+					"a": "Hashs et sommes non, codages oui."
+				}
+			]
 		}
 	}
 }

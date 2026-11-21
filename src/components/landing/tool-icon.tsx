@@ -1,16 +1,20 @@
 import {
 	Barcode,
 	Binary,
+	Braces,
 	CaseSensitive,
 	CaseUpper,
+	CodeXml,
 	Crop,
 	Drama,
 	Eraser,
+	FileDigit,
 	FileImage,
 	Hash,
 	type LucideIcon,
 	Maximize2,
 	Minimize2,
+	NotebookPen,
 	QrCode,
 	Scaling,
 	SlidersHorizontal,
@@ -42,6 +46,10 @@ export const TOOL_ICONS: Record<string, LucideIcon> = {
 	count: WholeWord,
 	codec: Binary,
 	hash: Hash,
+	brace: Braces,
+	code: CodeXml,
+	notes: NotebookPen,
+	digits: FileDigit,
 };
 
 export default function ToolIcon({
