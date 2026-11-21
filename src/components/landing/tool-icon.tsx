@@ -1,4 +1,6 @@
 import {
+	Barcode,
+	CaseSensitive,
 	Crop,
 	Drama,
 	Eraser,
@@ -6,10 +8,12 @@ import {
 	type LucideIcon,
 	Maximize2,
 	Minimize2,
+	QrCode,
 	Scaling,
 	SlidersHorizontal,
 	Spline,
 	Stamp,
+	Terminal,
 	Wrench,
 } from "lucide-react";
 
@@ -26,6 +30,10 @@ export const TOOL_ICONS: Record<string, LucideIcon> = {
 	upscale: Maximize2,
 	meme: Drama,
 	trace: Spline,
+	qr: QrCode,
+	barcode: Barcode,
+	ascii: Terminal,
+	font: CaseSensitive,
 };
 
 export default function ToolIcon({

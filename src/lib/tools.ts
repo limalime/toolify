@@ -21,6 +21,10 @@ export const TOOLS: ToolEntry[] = [
 	{ slug: "upscale-image", category: "gambar", icon: "upscale" },
 	{ slug: "meme-generator", category: "gambar", icon: "meme" },
 	{ slug: "png-to-svg", category: "gambar", icon: "trace" },
+	{ slug: "qr-code-generator", category: "text", icon: "qr" },
+	{ slug: "ascii-art", category: "text", icon: "ascii" },
+	{ slug: "ascii-fonts", category: "text", icon: "font" },
+	{ slug: "barcode-generator", category: "text", icon: "barcode" },
 ];
 
 export const CATEGORY_ORDER: CategoryKey[] = [

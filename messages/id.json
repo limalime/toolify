@@ -644,6 +644,228 @@
 					"a": "Warna sedang dan penghalusan sedang cocok untuk kebanyakan logo."
 				}
 			]
+		},
+		"qr-code-generator": {
+			"name": "Pembuat Kode QR",
+			"tagline": "Teks, tautan, WiFi, dan kontak jadi QR.",
+			"title": "Pembuat Kode QR Online Gratis",
+			"description": "Buat kode QR gratis di browser untuk teks, tautan, WiFi, kontak, email, SMS, telepon, dan lokasi. Unduh PNG dan SVG. Tidak ada yang diunggah.",
+			"h1": "Pembuat Kode QR Online Gratis",
+			"sub": "Pilih jenis konten, isi kolomnya, unduh kodenya.",
+			"options": {
+				"kind": "Jenis konten",
+				"kindText": "Teks",
+				"kindUrl": "Tautan",
+				"kindWifi": "WiFi",
+				"kindVcard": "Kontak",
+				"kindEmail": "Email",
+				"kindSms": "SMS",
+				"kindPhone": "Telepon",
+				"kindGeo": "Lokasi",
+				"text": "Teks",
+				"url": "URL",
+				"ssid": "Nama jaringan",
+				"password": "Kata sandi",
+				"encryption": "Keamanan",
+				"encWpa": "WPA/WPA2",
+				"encWep": "WEP",
+				"encNone": "Terbuka",
+				"hidden": "Jaringan tersembunyi",
+				"firstName": "Nama depan",
+				"lastName": "Nama belakang",
+				"phone": "Telepon",
+				"email": "Email",
+				"org": "Organisasi",
+				"website": "Situs web",
+				"to": "Kepada",
+				"subject": "Subjek",
+				"body": "Isi",
+				"number": "Nomor",
+				"latitude": "Lintang",
+				"longitude": "Bujur",
+				"generate": "Buat QR",
+				"downloadPng": "Unduh PNG",
+				"downloadSvg": "Unduh SVG",
+				"tooLong": "Terlalu panjang untuk kode QR (maks sekitar 3KB).",
+				"needText": "Ketik sesuatu dulu.",
+				"badCoords": "Masukkan lintang (-90 sampai 90) dan bujur (-180 sampai 180) yang valid."
+			},
+			"steps": [
+				{
+					"title": "Pilih jenis",
+					"line": "Pilih jenis konten kode QR."
+				},
+				{
+					"title": "Isi kolom",
+					"line": "Lengkapi kolom yang dibutuhkan."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan sebagai PNG atau SVG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah kode QR ini kedaluwarsa?",
+					"a": "Tidak. Kode dibuat statis dan berlaku selamanya."
+				},
+				{
+					"q": "Bisakah memasukkan gambar?",
+					"a": "Tidak. Kode QR memuat sekitar 3KB, hanya cukup untuk teks pendek."
+				},
+				{
+					"q": "Apakah pindaian terlacak?",
+					"a": "Tidak. Kodenya statis dan tidak menghubungi server apa pun."
+				}
+			]
+		},
+		"ascii-art": {
+			"name": "Seni ASCII",
+			"tagline": "Spanduk teks besar dari teks kecil.",
+			"title": "Pembuat Seni ASCII Online Gratis",
+			"description": "Ubah teks menjadi spanduk seni ASCII dengan font figlet. Pratinjau langsung, salin atau unduh hasilnya. Semua berjalan di browser.",
+			"h1": "Pembuat Seni ASCII Online Gratis",
+			"sub": "Ketik kata, pilih font, salin spanduknya.",
+			"options": {
+				"text": "Teks",
+				"font": "Font",
+				"needText": "Ketik sesuatu dulu."
+			},
+			"steps": [
+				{
+					"title": "Ketik teks",
+					"line": "Tulis kata yang ingin dibuat."
+				},
+				{
+					"title": "Pilih font",
+					"line": "Coba font sampai cocok."
+				},
+				{
+					"title": "Salin atau unduh",
+					"line": "Salin hasilnya atau simpan sebagai TXT."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Mengapa sebagian huruf aneh?",
+					"a": "Font mencakup huruf latin dasar. Karakter lain tampil apa adanya."
+				},
+				{
+					"q": "Bisakah kalimat panjang?",
+					"a": "Kata pendek terlihat terbaik. Kalimat panjang melebar."
+				},
+				{
+					"q": "Di mana bisa ditempel?",
+					"a": "Di mana saja yang memakai font monospace."
+				}
+			]
+		},
+		"ascii-fonts": {
+			"name": "Font ASCII",
+			"tagline": "Gaya teks stylish untuk bio dan nama.",
+			"title": "Pembuat Teks Stylish Online Gratis",
+			"description": "Ubah teks menjadi gaya tebal, miring, skrip, dan lingkaran unicode. Klik gaya apa pun untuk menyalin. Semua berjalan di browser.",
+			"h1": "Pembuat Teks Stylish Online Gratis",
+			"sub": "Satu baris masuk, sepuluh gaya keluar. Klik untuk salin.",
+			"options": {
+				"text": "Teks",
+				"hint": "Ketik di atas untuk melihat semua gaya.",
+				"styles": {
+					"bold": "Tebal",
+					"italic": "Miring",
+					"boldItalic": "Tebal miring",
+					"monospace": "Monospace",
+					"script": "Skrip",
+					"boldScript": "Skrip tebal",
+					"doubleStruck": "Garis ganda",
+					"circled": "Lingkaran",
+					"fullwidth": "Lebar penuh",
+					"smallCaps": "Kapital kecil"
+				}
+			},
+			"steps": [
+				{
+					"title": "Ketik baris",
+					"line": "Tulis satu baris teks."
+				},
+				{
+					"title": "Jelajahi gaya",
+					"line": "Lihat semua gaya sekaligus."
+				},
+				{
+					"title": "Klik untuk salin",
+					"line": "Klik kartu gaya untuk menyalinnya."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah berfungsi di Instagram?",
+					"a": "Umumnya ya, karena ini karakter unicode biasa."
+				},
+				{
+					"q": "Mengapa ada karakter kotak?",
+					"a": "Font perangkat tidak punya glifnya. Coba gaya lain."
+				},
+				{
+					"q": "Apakah ini font asli?",
+					"a": "Bukan. Ini karakter unicode yang mirip, bukan file font."
+				}
+			]
+		},
+		"barcode-generator": {
+			"name": "Pembuat Barcode",
+			"tagline": "Sembilan jenis barcode sebagai PNG dan SVG.",
+			"title": "Pembuat Barcode Online Gratis",
+			"description": "Buat barcode CODE128, CODE39, EAN, UPC, dan lainnya di browser. Unduh PNG dan SVG. Tidak ada yang diunggah.",
+			"h1": "Pembuat Barcode Online Gratis",
+			"sub": "Pilih jenis, ketik isi, unduh kedua format.",
+			"options": {
+				"format": "Jenis",
+				"text": "Isi",
+				"downloadPng": "Unduh PNG",
+				"downloadSvg": "Unduh SVG",
+				"invalid": "Karakter ini tidak cocok untuk jenis barcode tersebut.",
+				"needText": "Ketik sesuatu dulu.",
+				"hints": {
+					"hintCode128": "Teks apa pun hingga sekitar 40 karakter.",
+					"hintCode39": "A-Z, 0-9 dan - . spasi $ / + %. Huruf besar saja.",
+					"hintEan13": "Tepat 13 digit.",
+					"hintEan8": "Tepat 8 digit.",
+					"hintUpc": "Tepat 12 digit.",
+					"hintItf": "Digit berjumlah genap.",
+					"hintMsi": "Digit saja.",
+					"hintPharmacode": "Angka 3 sampai 131070.",
+					"hintCodabar": "Digit dengan penjaga A B C D opsional."
+				}
+			},
+			"steps": [
+				{
+					"title": "Pilih jenis",
+					"line": "Pilih jenis barcode yang dibutuhkan."
+				},
+				{
+					"title": "Ketik isi",
+					"line": "Masukkan konten sesuai aturan jenisnya."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan sebagai PNG atau SVG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Jenis apa untuk produk?",
+					"a": "EAN untuk ritel umum, UPC untuk Amerika Utara."
+				},
+				{
+					"q": "Mengapa masukan ditolak?",
+					"a": "Tiap jenis punya aturan karakter. Ikuti petunjuk di bawah kolom."
+				},
+				{
+					"q": "Apakah bisa dipindai?",
+					"a": "Bisa, asal dicetak jelas dengan ukuran cukup."
+				}
+			]
 		}
 	}
 }

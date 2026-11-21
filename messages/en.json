@@ -644,6 +644,228 @@
 					"a": "Medium colors and medium smoothing suit most logos."
 				}
 			]
+		},
+		"qr-code-generator": {
+			"name": "QR Code Generator",
+			"tagline": "Text, links, WiFi and contacts as QR.",
+			"title": "Free Online QR Code Generator",
+			"description": "Generate QR codes free in your browser for text, links, WiFi, contacts, email, SMS, phone, and locations. Download PNG and SVG. Nothing is uploaded.",
+			"h1": "Free Online QR Code Generator",
+			"sub": "Pick a content type, fill the fields, download the code.",
+			"options": {
+				"kind": "Content type",
+				"kindText": "Text",
+				"kindUrl": "Link",
+				"kindWifi": "WiFi",
+				"kindVcard": "Contact",
+				"kindEmail": "Email",
+				"kindSms": "SMS",
+				"kindPhone": "Phone",
+				"kindGeo": "Location",
+				"text": "Text",
+				"url": "URL",
+				"ssid": "Network name",
+				"password": "Password",
+				"encryption": "Security",
+				"encWpa": "WPA/WPA2",
+				"encWep": "WEP",
+				"encNone": "Open",
+				"hidden": "Hidden network",
+				"firstName": "First name",
+				"lastName": "Last name",
+				"phone": "Phone",
+				"email": "Email",
+				"org": "Organization",
+				"website": "Website",
+				"to": "To",
+				"subject": "Subject",
+				"body": "Message",
+				"number": "Number",
+				"latitude": "Latitude",
+				"longitude": "Longitude",
+				"generate": "Generate QR",
+				"downloadPng": "Download PNG",
+				"downloadSvg": "Download SVG",
+				"tooLong": "Too long for a QR code (max about 3KB).",
+				"needText": "Type something first.",
+				"badCoords": "Enter a valid latitude (-90 to 90) and longitude (-180 to 180)."
+			},
+			"steps": [
+				{
+					"title": "Pick a type",
+					"line": "Choose the QR content type."
+				},
+				{
+					"title": "Fill the fields",
+					"line": "Complete the fields you need."
+				},
+				{
+					"title": "Download",
+					"line": "Save as PNG or SVG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Do these QR codes expire?",
+					"a": "No. The codes are static and work forever."
+				},
+				{
+					"q": "Can I put a picture inside?",
+					"a": "No. A QR code holds about 3KB, only enough for short text."
+				},
+				{
+					"q": "Do scans phone home?",
+					"a": "No. Static codes contact no server."
+				}
+			]
+		},
+		"ascii-art": {
+			"name": "ASCII Art",
+			"tagline": "Big text banners from small text.",
+			"title": "Free Online ASCII Art Generator",
+			"description": "Turn text into ASCII art banners with figlet fonts. Live preview, copy or download the result. Everything runs in your browser.",
+			"h1": "Free Online ASCII Art Generator",
+			"sub": "Type a word, pick a font, copy the banner.",
+			"options": {
+				"text": "Text",
+				"font": "Font",
+				"needText": "Type something first."
+			},
+			"steps": [
+				{
+					"title": "Type text",
+					"line": "Write the word to make."
+				},
+				{
+					"title": "Pick a font",
+					"line": "Try fonts until one fits."
+				},
+				{
+					"title": "Copy or download",
+					"line": "Copy the result or save it as TXT."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Why do some letters look off?",
+					"a": "Fonts cover basic latin. Other characters pass through as typed."
+				},
+				{
+					"q": "Can I use long sentences?",
+					"a": "Short words look best. Long sentences stretch wide."
+				},
+				{
+					"q": "Where can I paste it?",
+					"a": "Anywhere with a monospace font."
+				}
+			]
+		},
+		"ascii-fonts": {
+			"name": "ASCII Fonts",
+			"tagline": "Stylish text for bios and names.",
+			"title": "Free Online Fancy Text Generator",
+			"description": "Convert text into bold, italic, script, and circled unicode styles. Click any style to copy it. Everything runs in your browser.",
+			"h1": "Free Online Fancy Text Generator",
+			"sub": "One line in, ten styles out. Click to copy.",
+			"options": {
+				"text": "Text",
+				"hint": "Type above to see every style.",
+				"styles": {
+					"bold": "Bold",
+					"italic": "Italic",
+					"boldItalic": "Bold italic",
+					"monospace": "Monospace",
+					"script": "Script",
+					"boldScript": "Bold script",
+					"doubleStruck": "Double struck",
+					"circled": "Circled",
+					"fullwidth": "Fullwidth",
+					"smallCaps": "Small caps"
+				}
+			},
+			"steps": [
+				{
+					"title": "Type a line",
+					"line": "Write one line of text."
+				},
+				{
+					"title": "Browse styles",
+					"line": "See every style at once."
+				},
+				{
+					"title": "Click to copy",
+					"line": "Click a style card to copy it."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Will this work on Instagram?",
+					"a": "Almost always, because these are plain unicode characters."
+				},
+				{
+					"q": "Why do some characters show as boxes?",
+					"a": "The device font lacks that glyph. Try another style."
+				},
+				{
+					"q": "Is this a real font?",
+					"a": "No. Lookalike characters, not a font file."
+				}
+			]
+		},
+		"barcode-generator": {
+			"name": "Barcode Generator",
+			"tagline": "Nine barcode types as PNG and SVG.",
+			"title": "Free Online Barcode Generator",
+			"description": "Generate CODE128, CODE39, EAN, UPC, and more barcodes in your browser. Download PNG and SVG. Nothing is uploaded.",
+			"h1": "Free Online Barcode Generator",
+			"sub": "Pick a type, type the content, download both formats.",
+			"options": {
+				"format": "Type",
+				"text": "Content",
+				"downloadPng": "Download PNG",
+				"downloadSvg": "Download SVG",
+				"invalid": "These characters do not fit this barcode type.",
+				"needText": "Type something first.",
+				"hints": {
+					"hintCode128": "Any text up to about 40 characters.",
+					"hintCode39": "A-Z, 0-9 and - . space $ / + %. Uppercase only.",
+					"hintEan13": "Exactly 13 digits.",
+					"hintEan8": "Exactly 8 digits.",
+					"hintUpc": "Exactly 12 digits.",
+					"hintItf": "Even number of digits.",
+					"hintMsi": "Digits only.",
+					"hintPharmacode": "A number from 3 to 131070.",
+					"hintCodabar": "Digits with optional A B C D guards."
+				}
+			},
+			"steps": [
+				{
+					"title": "Pick a type",
+					"line": "Choose the barcode type you need."
+				},
+				{
+					"title": "Type the content",
+					"line": "Enter content following its rules."
+				},
+				{
+					"title": "Download",
+					"line": "Save as PNG or SVG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Which type for products?",
+					"a": "EAN for general retail, UPC for North America."
+				},
+				{
+					"q": "Why was my input rejected?",
+					"a": "Every type has character rules. Follow the hint under the field."
+				},
+				{
+					"q": "Do these scan?",
+					"a": "Yes, printed clearly at a decent size."
+				}
+			]
 		}
 	}
 }

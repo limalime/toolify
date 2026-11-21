@@ -644,6 +644,228 @@
 					"a": "Colores y suavizado medios sirven para casi todos los logos."
 				}
 			]
+		},
+		"qr-code-generator": {
+			"name": "Generador de QR",
+			"tagline": "Texto, enlaces, WiFi y contactos en QR.",
+			"title": "Generador de códigos QR online gratis",
+			"description": "Genera códigos QR gratis en tu navegador para texto, enlaces, WiFi, contactos, email, SMS, teléfono y ubicaciones. Descarga PNG y SVG. Nada se sube.",
+			"h1": "Generador de códigos QR online gratis",
+			"sub": "Elige un tipo, llena los campos, descarga el código.",
+			"options": {
+				"kind": "Tipo de contenido",
+				"kindText": "Texto",
+				"kindUrl": "Enlace",
+				"kindWifi": "WiFi",
+				"kindVcard": "Contacto",
+				"kindEmail": "Email",
+				"kindSms": "SMS",
+				"kindPhone": "Teléfono",
+				"kindGeo": "Ubicación",
+				"text": "Texto",
+				"url": "URL",
+				"ssid": "Nombre de red",
+				"password": "Contraseña",
+				"encryption": "Seguridad",
+				"encWpa": "WPA/WPA2",
+				"encWep": "WEP",
+				"encNone": "Abierta",
+				"hidden": "Red oculta",
+				"firstName": "Nombre",
+				"lastName": "Apellido",
+				"phone": "Teléfono",
+				"email": "Email",
+				"org": "Organización",
+				"website": "Sitio web",
+				"to": "Para",
+				"subject": "Asunto",
+				"body": "Mensaje",
+				"number": "Número",
+				"latitude": "Latitud",
+				"longitude": "Longitud",
+				"generate": "Generar QR",
+				"downloadPng": "Descargar PNG",
+				"downloadSvg": "Descargar SVG",
+				"tooLong": "Demasiado largo para un QR (máx. unos 3 KB).",
+				"needText": "Escribe algo primero.",
+				"badCoords": "Pon una latitud (-90 a 90) y una longitud (-180 a 180) válidas."
+			},
+			"steps": [
+				{
+					"title": "Elige un tipo",
+					"line": "Elige el contenido del QR."
+				},
+				{
+					"title": "Llena los campos",
+					"line": "Completa los campos necesarios."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda como PNG o SVG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Caducan estos QR?",
+					"a": "No. Los códigos son estáticos y valen para siempre."
+				},
+				{
+					"q": "¿Puedo meter una imagen?",
+					"a": "No. Un QR guarda unos 3 KB, solo texto corto."
+				},
+				{
+					"q": "¿Los escaneos se rastrean?",
+					"a": "No. Son estáticos y no llaman a ningún servidor."
+				}
+			]
+		},
+		"ascii-art": {
+			"name": "Arte ASCII",
+			"tagline": "Carteles grandes desde texto pequeño.",
+			"title": "Generador de arte ASCII online gratis",
+			"description": "Convierte texto en carteles ASCII con fuentes figlet. Vista previa en vivo, copia o descarga el resultado. Todo corre en tu navegador.",
+			"h1": "Generador de arte ASCII online gratis",
+			"sub": "Escribe una palabra, elige fuente, copia el cartel.",
+			"options": {
+				"text": "Texto",
+				"font": "Fuente",
+				"needText": "Escribe algo primero."
+			},
+			"steps": [
+				{
+					"title": "Escribe texto",
+					"line": "Escribe la palabra a crear."
+				},
+				{
+					"title": "Elige fuente",
+					"line": "Prueba fuentes hasta dar con la tuya."
+				},
+				{
+					"title": "Copia o descarga",
+					"line": "Copia el resultado o guárdalo como TXT."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Por qué algunas letras se ven raras?",
+					"a": "Las fuentes cubren latín básico. Otros caracteres salen tal cual."
+				},
+				{
+					"q": "¿Sirven frases largas?",
+					"a": "Las palabras cortas se ven mejor. Las frases se ensanchan."
+				},
+				{
+					"q": "¿Dónde puedo pegarlo?",
+					"a": "Donde sea que use fuente monoespaciada."
+				}
+			]
+		},
+		"ascii-fonts": {
+			"name": "Fuentes ASCII",
+			"tagline": "Estilos con gracia para bios y nombres.",
+			"title": "Generador de texto con estilo online gratis",
+			"description": "Convierte texto en estilos unicode de negrita, cursiva, script y círculos. Pulsa un estilo para copiarlo. Todo corre en tu navegador.",
+			"h1": "Generador de texto con estilo online gratis",
+			"sub": "Una línea dentro, diez estilos fuera. Pulsa para copiar.",
+			"options": {
+				"text": "Texto",
+				"hint": "Escribe arriba para ver todos los estilos.",
+				"styles": {
+					"bold": "Negrita",
+					"italic": "Cursiva",
+					"boldItalic": "Negrita cursiva",
+					"monospace": "Monoespaciada",
+					"script": "Script",
+					"boldScript": "Script negrita",
+					"doubleStruck": "Doble trazo",
+					"circled": "Círculos",
+					"fullwidth": "Ancho completo",
+					"smallCaps": "Versalitas"
+				}
+			},
+			"steps": [
+				{
+					"title": "Escribe una línea",
+					"line": "Escribe una línea de texto."
+				},
+				{
+					"title": "Mira estilos",
+					"line": "Ve todos los estilos a la vez."
+				},
+				{
+					"title": "Pulsa para copiar",
+					"line": "Pulsa una tarjeta para copiarla."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Funciona en Instagram?",
+					"a": "Casi siempre, porque son caracteres unicode normales."
+				},
+				{
+					"q": "¿Por qué salen cuadraditos?",
+					"a": "La fuente del dispositivo no tiene ese glifo. Prueba otro estilo."
+				},
+				{
+					"q": "¿Es una fuente real?",
+					"a": "No. Son caracteres parecidos, no un archivo de fuente."
+				}
+			]
+		},
+		"barcode-generator": {
+			"name": "Generador de códigos de barras",
+			"tagline": "Nueve tipos en PNG y SVG.",
+			"title": "Generador de códigos de barras online gratis",
+			"description": "Genera códigos CODE128, CODE39, EAN, UPC y más en tu navegador. Descarga PNG y SVG. Nada se sube.",
+			"h1": "Generador de códigos de barras online gratis",
+			"sub": "Elige un tipo, escribe el contenido, descarga ambos formatos.",
+			"options": {
+				"format": "Tipo",
+				"text": "Contenido",
+				"downloadPng": "Descargar PNG",
+				"downloadSvg": "Descargar SVG",
+				"invalid": "Esos caracteres no valen para este tipo.",
+				"needText": "Escribe algo primero.",
+				"hints": {
+					"hintCode128": "Cualquier texto hasta unos 40 caracteres.",
+					"hintCode39": "A-Z, 0-9 y - . espacio $ / + %. Solo mayúsculas.",
+					"hintEan13": "Exactamente 13 dígitos.",
+					"hintEan8": "Exactamente 8 dígitos.",
+					"hintUpc": "Exactamente 12 dígitos.",
+					"hintItf": "Cantidad par de dígitos.",
+					"hintMsi": "Solo dígitos.",
+					"hintPharmacode": "Un número de 3 a 131070.",
+					"hintCodabar": "Dígitos con guardas A B C D opcionales."
+				}
+			},
+			"steps": [
+				{
+					"title": "Elige un tipo",
+					"line": "Elige el tipo que necesitas."
+				},
+				{
+					"title": "Escribe el contenido",
+					"line": "Pon el contenido según las reglas."
+				},
+				{
+					"title": "Descarga",
+					"line": "Guarda como PNG o SVG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué tipo para productos?",
+					"a": "EAN para retail general, UPC para Norteamérica."
+				},
+				{
+					"q": "¿Por qué rechaza mi texto?",
+					"a": "Cada tipo tiene sus reglas. Sigue la ayuda bajo el campo."
+				},
+				{
+					"q": "¿Escanean bien?",
+					"a": "Sí, impresos con claridad y buen tamaño."
+				}
+			]
 		}
 	}
 }
