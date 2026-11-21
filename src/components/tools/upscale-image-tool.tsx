@@ -21,8 +21,8 @@ import { tabActiveClass } from "@/lib/control-classes";
 import { formatBytes } from "@/lib/format";
 import { downloadBytes } from "@/lib/images/download";
 import { MAX_IMAGE_BYTES, RASTER_ACCEPT, stemOf } from "@/lib/images/formats";
-import { ORT_WASM_BASE, UPSCALE_MODEL_URL } from "@/lib/images/r2";
 import { imageWorker } from "@/lib/images/worker-client";
+import { ORT_WASM_BASE, UPSCALE_MODEL_URL } from "@/lib/r2";
 import type { DecodedImage } from "@/workers/image-worker";
 
 type Format = "png" | "jpg" | "webp" | "avif";

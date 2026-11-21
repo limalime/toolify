@@ -33,6 +33,8 @@
 		"@codemirror/state": "6.5.3",
 		"@codemirror/theme-one-dark": "6.1.3",
 		"@codemirror/view": "6.38.1",
+		"@ffmpeg/ffmpeg": "0.12.15",
+		"@ffmpeg/util": "0.12.2",
 		"@imgly/background-removal": "1.7.0",
 		"@jsquash/avif": "^2.1.1",
 		"@jsquash/jpeg": "^1.6.0",

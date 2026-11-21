@@ -26,8 +26,8 @@ import {
 	RASTER_ACCEPT,
 	stemOf,
 } from "@/lib/images/formats";
-import { BG_REMOVAL_PUBLIC_PATH } from "@/lib/images/r2";
 import { imageWorker } from "@/lib/images/worker-client";
+import { BG_REMOVAL_PUBLIC_PATH } from "@/lib/r2";
 
 type Model = "isnet_quint8" | "isnet_fp16";
 

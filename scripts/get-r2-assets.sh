@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # Downloads every large asset Toolify serves from R2 (background removal
-# data, onnxruntime wasm, upscale model, ffmpeg cores) into a folder tree
-# that mirrors the R2 key layout. Every file is size/hash verified.
+# data, onnxruntime wasm, upscale model, ffmpeg cores and api) into a
+# folder tree that mirrors the R2 key layout. Every file is size/hash
+# verified. Run from the repo root after npm install.
 # Usage: ./get-r2-assets.sh [output-dir]
 set -euo pipefail
 OUT="${1:-r2-upload}"
 mkdir -p "$OUT/bg-removal/1.7.0" "$OUT/ort/1.21.0" "$OUT/upscale" \
-  "$OUT/ffmpeg/0.12.10/st" "$OUT/ffmpeg/0.12.10/mt"
+  "$OUT/ffmpeg/0.12.10/st" "$OUT/ffmpeg/0.12.10/mt" "$OUT/ffmpeg/0.12.15/esm"
 
 get() { # url, dest, want_bytes
   curl -sfL "$1" -o "$2"
@@ -15,7 +16,7 @@ get() { # url, dest, want_bytes
   echo "ok ($got B) $2"
 }
 
-echo "== 1/4 background-removal data 1.7.0 (trimmed: small + medium models) =="
+echo "== 1/5 background-removal data 1.7.0 (trimmed: small + medium models) =="
 BASE="https://staticimgly.com/@imgly/background-removal-data/1.7.0/dist"
 curl -sfL "$BASE/resources.json" -o /tmp/imgly-full.json
 python3 -c "import json; m=json.load(open('/tmp/imgly-full.json')); del m['/models/isnet']; json.dump(m, open('$OUT/bg-removal/1.7.0/resources.json', 'w'))"
@@ -35,19 +36,19 @@ for entry in m.values():
 print('imgly chunks ok:', len(seen))
 EOF
 
-echo "== 2/4 onnxruntime-web 1.21.0 wasm =="
+echo "== 2/5 onnxruntime-web 1.21.0 wasm =="
 ORT="https://unpkg.com/onnxruntime-web@1.21.0/dist"
 get "$ORT/ort-wasm-simd-threaded.wasm" "$OUT/ort/1.21.0/ort-wasm-simd-threaded.wasm" 12666427
 get "$ORT/ort-wasm-simd-threaded.mjs" "$OUT/ort/1.21.0/ort-wasm-simd-threaded.mjs" 26583
 get "$ORT/ort-wasm-simd-threaded.jsep.wasm" "$OUT/ort/1.21.0/ort-wasm-simd-threaded.jsep.wasm" 23914392
 get "$ORT/ort-wasm-simd-threaded.jsep.mjs" "$OUT/ort/1.21.0/ort-wasm-simd-threaded.jsep.mjs" 53602
 
-echo "== 3/4 upscale model realesr-general-x4v3 =="
+echo "== 3/5 upscale model realesr-general-x4v3 =="
 get "https://github.com/MohaElder/openenlarge/releases/download/upscaler-assets-v1/realesr-general-x4v3.onnx" \
   "$OUT/upscale/realesr-general-x4v3.onnx" 4871181
 echo "09b757accd747d7e423c1d352b3e8f23e77cc5742d04bae958d4eb8082b76fa4  $OUT/upscale/realesr-general-x4v3.onnx" | sha256sum -c -
 
-echo "== 4/4 ffmpeg 0.12.10 cores =="
+echo "== 4/5 ffmpeg 0.12.10 cores =="
 ST="https://unpkg.com/@ffmpeg/core@0.12.10/dist/esm"
 MT="https://unpkg.com/@ffmpeg/core-mt@0.12.10/dist/esm"
 get "$ST/ffmpeg-core.js" "$OUT/ffmpeg/0.12.10/st/ffmpeg-core.js" 111804
@@ -55,6 +56,14 @@ get "$ST/ffmpeg-core.wasm" "$OUT/ffmpeg/0.12.10/st/ffmpeg-core.wasm" 32232419
 get "$MT/ffmpeg-core.js" "$OUT/ffmpeg/0.12.10/mt/ffmpeg-core.js" 128947
 get "$MT/ffmpeg-core.worker.js" "$OUT/ffmpeg/0.12.10/mt/ffmpeg-core.worker.js" 2115
 get "$MT/ffmpeg-core.wasm" "$OUT/ffmpeg/0.12.10/mt/ffmpeg-core.wasm" 32718323
+
+echo "== 5/5 ffmpeg 0.12.15 api (from node_modules, version pinned) =="
+for f in index.js classes.js const.js errors.js types.js utils.js worker.js; do
+  cp "node_modules/@ffmpeg/ffmpeg/dist/esm/$f" "$OUT/ffmpeg/0.12.15/esm/$f"
+  echo "ok $OUT/ffmpeg/0.12.15/esm/$f"
+done
+npx -y esbuild@0.25.1 node_modules/@ffmpeg/ffmpeg/dist/esm/worker.js --bundle --format=esm --target=es2020 --outfile="$OUT/ffmpeg/0.12.15/class-worker.js"
+echo "ok $OUT/ffmpeg/0.12.15/class-worker.js"
 
 echo "DONE. Upload the contents of $OUT/ to R2 preserving relative paths."
 du -sh "$OUT"
