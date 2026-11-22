@@ -1665,6 +1665,160 @@
 					"a": "MP3 à 192k."
 				}
 			]
+		},
+		"uuid-generator": {
+			"name": "Générateur UUID",
+			"tagline": "Versions 1 à 7, en lot.",
+			"title": "Générateur UUID en ligne gratuit",
+			"description": "Générez des UUID v1 à v7 gratis dans le navigateur. v7 par défaut, v3 et v5 depuis namespace et nom, lots jusqu'à 100. Rien n'est envoyé.",
+			"h1": "Générateur UUID en ligne gratuit",
+			"sub": "Choisissez une version, générez un ou cent.",
+			"options": {
+				"version": "Version",
+				"namespace": "Namespace UUID",
+				"namespaceInvalid": "Mettez un namespace UUID valide.",
+				"name": "Nom",
+				"count": "Combien",
+				"generate": "Générer",
+				"copyAll": "Tout copier",
+				"emptyHint": "Rien n'est encore généré.",
+				"oneAtATime": "Les versions par nom donnent un seul id."
+			},
+			"steps": [
+				{
+					"title": "Choisissez une version",
+					"line": "v7 est le défaut moderne."
+				},
+				{
+					"title": "Noms demandent plus",
+					"line": "v3 et v5 prennent namespace plus nom."
+				},
+				{
+					"title": "Générez et copiez",
+					"line": "Copiez un ou tout."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Quelle version ?",
+					"a": "v7 pour du neuf : triable et moderne. v4 pour l'aléatoire. v1 et v6 horodatent."
+				},
+				{
+					"q": "v3 et v5 pour quoi ?",
+					"a": "Ids déterministes : même namespace plus même nom donne même id."
+				},
+				{
+					"q": "Pourquoi pas v2 ?",
+					"a": "v2 c'est DCE Security, quasi jamais employé."
+				}
+			]
+		},
+		"password-generator": {
+			"name": "Générateur de mots de passe",
+			"tagline": "Aléatoire, réglable, honnête.",
+			"title": "Générateur de mots de passe en ligne gratuit",
+			"description": "Générez des mots de passe au hasard gratis dans le navigateur avec de l'aléa crypto. Longueur, jeux, ambigus, jauge. Rien n'est envoyé.",
+			"h1": "Générateur de mots de passe en ligne gratuit",
+			"sub": "Réglez le pool, lisez la jauge, copiez.",
+			"options": {
+				"length": "Longueur",
+				"lower": "Minuscules",
+				"upper": "Majuscules",
+				"digits": "Chiffres",
+				"symbols": "Symboles",
+				"excludeAmbiguous": "Sans ambigus",
+				"generate": "Générer",
+				"strengthWeak": "Faible",
+				"strengthFair": "Moyen",
+				"strengthStrong": "Fort",
+				"strengthExcellent": "Top",
+				"emptyHint": "Rien n'est encore généré.",
+				"entropy": "{bits} bits"
+			},
+			"steps": [
+				{
+					"title": "Réglez le pool",
+					"line": "Longueur plus jeux de signes."
+				},
+				{
+					"title": "Lisez la jauge",
+					"line": "Des bits d'entropie, pas du feeling."
+				},
+				{
+					"title": "Copiez",
+					"line": "Copiez le mot de passe dehors."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Quel hasard ?",
+					"a": "Aléa crypto du navigateur, pas une formule."
+				},
+				{
+					"q": "Les bits veulent dire ?",
+					"a": "Entropie : longueur fois pool en bits. Plus c'est dur."
+				},
+				{
+					"q": "Stockés quelque part ?",
+					"a": "Non. Générés, montrés, oubliés."
+				}
+			]
+		},
+		"mnemonic-generator": {
+			"name": "Générateur mnémonique",
+			"tagline": "BIP39 plus vraie dérivation.",
+			"title": "Générateur mnémonique en ligne gratuit",
+			"description": "Générez des mnémoniques BIP39 et dérivez des adresses BTC, ETH et LTC gratis dans le navigateur. Analytique off sur cette page. N'utilisez jamais un mnémonique généré pour un vrai wallet.",
+			"h1": "Générateur mnémonique en ligne gratuit",
+			"sub": "Générez ou collez, dérivez, vérifiez. Pour apprendre et tester.",
+			"options": {
+				"words": "Mots",
+				"words12": "12 mots",
+				"words24": "24 mots",
+				"coin": "Monnaie",
+				"purpose": "Objet",
+				"account": "Compte",
+				"change": "Change",
+				"index": "Indice",
+				"mnemonic": "Mnémonique",
+				"pasteHint": "Ou collez-en un pour dériver.",
+				"generate": "Nouveau mnémonique",
+				"derive": "Dériver",
+				"address": "Adresse",
+				"path": "Chemin",
+				"publicKey": "Clé publique",
+				"warning": "N'utilisez jamais un mnémonique généré pour un vrai wallet.",
+				"invalid": "Mettez un mnémonique valide de 12 ou 24 mots.",
+				"emptyHint": "Rien n'est encore dérivé."
+			},
+			"steps": [
+				{
+					"title": "Prenez des mots",
+					"line": "Générez neuf ou collez."
+				},
+				{
+					"title": "Fixez le chemin",
+					"line": "Monnaie, objet, compte, change, indice."
+				},
+				{
+					"title": "Dérivez et vérifiez",
+					"line": "Lisez adresse et clé publique."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Pourquoi ce gros avertissement ?",
+					"a": "Hasard de navigateur et écrans ne sont pas des coffres. Pour apprendre et tester."
+				},
+				{
+					"q": "Quel numéro d'objet ?",
+					"a": "44 legacy, 49 segwit emballé, 84 segwit natif, 86 taproot. BIP141 est la proposition, pas un chemin."
+				},
+				{
+					"q": "Quoi quitte l'appareil ?",
+					"a": "Rien. Tout dérive en local, et l'analytique est off ici."
+				}
+			]
 		}
 	}
 }

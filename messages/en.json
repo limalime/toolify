@@ -1665,6 +1665,160 @@
 					"a": "MP3 at 192k."
 				}
 			]
+		},
+		"uuid-generator": {
+			"name": "UUID Generator",
+			"tagline": "Versions 1 to 7, bulk ready.",
+			"title": "Free Online UUID Generator",
+			"description": "Generate UUID v1 to v7 free in your browser. v7 default, v3 and v5 from namespace and name, bulk up to 100. Nothing is uploaded.",
+			"h1": "Free Online UUID Generator",
+			"sub": "Pick a version, generate one or a hundred.",
+			"options": {
+				"version": "Version",
+				"namespace": "Namespace UUID",
+				"namespaceInvalid": "Enter a valid namespace UUID.",
+				"name": "Name",
+				"count": "How many",
+				"generate": "Generate",
+				"copyAll": "Copy all",
+				"emptyHint": "Nothing generated yet.",
+				"oneAtATime": "Name versions always give one id."
+			},
+			"steps": [
+				{
+					"title": "Pick a version",
+					"line": "v7 is the modern default."
+				},
+				{
+					"title": "Name versions need more",
+					"line": "v3 and v5 take a namespace plus a name."
+				},
+				{
+					"title": "Generate and copy",
+					"line": "Copy one value or all of them."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Which version should I use?",
+					"a": "v7 for new ids: sortable and modern. v4 for plain random. v1 and v6 stamp time."
+				},
+				{
+					"q": "What are v3 and v5 for?",
+					"a": "Deterministic ids: same namespace plus same name always gives the same id."
+				},
+				{
+					"q": "Why no v2?",
+					"a": "v2 is DCE Security, practically never used anywhere."
+				}
+			]
+		},
+		"password-generator": {
+			"name": "Password Generator",
+			"tagline": "Random, tunable, honest strength.",
+			"title": "Free Online Password Generator",
+			"description": "Generate random passwords free in your browser with crypto randomness. Length, character sets, ambiguous toggle, strength meter. Nothing is uploaded.",
+			"h1": "Free Online Password Generator",
+			"sub": "Tune the pool, read the meter, copy.",
+			"options": {
+				"length": "Length",
+				"lower": "Lowercase",
+				"upper": "Uppercase",
+				"digits": "Digits",
+				"symbols": "Symbols",
+				"excludeAmbiguous": "Exclude ambiguous",
+				"generate": "Generate",
+				"strengthWeak": "Weak",
+				"strengthFair": "Fair",
+				"strengthStrong": "Strong",
+				"strengthExcellent": "Excellent",
+				"emptyHint": "Nothing generated yet.",
+				"entropy": "{bits} bits"
+			},
+			"steps": [
+				{
+					"title": "Tune the pool",
+					"line": "Length plus character sets."
+				},
+				{
+					"title": "Read the meter",
+					"line": "Entropy bits, not vibes."
+				},
+				{
+					"title": "Copy",
+					"line": "Copy the password out."
+				}
+			],
+			"faqs": [
+				{
+					"q": "How random is this?",
+					"a": "Crypto randomness from your browser, never a math formula."
+				},
+				{
+					"q": "What do the bits mean?",
+					"a": "Entropy: length times pool size in bits. More bits, harder guessing."
+				},
+				{
+					"q": "Are passwords stored?",
+					"a": "No. Generated, shown, forgotten."
+				}
+			]
+		},
+		"mnemonic-generator": {
+			"name": "Mnemonic Generator",
+			"tagline": "BIP39 plus real derivation.",
+			"title": "Free Online Mnemonic Generator",
+			"description": "Generate BIP39 mnemonics and derive BTC, ETH, and LTC addresses free in your browser. Analytics is off on this page. Never use a generated mnemonic for a real wallet.",
+			"h1": "Free Online Mnemonic Generator",
+			"sub": "Generate or paste, derive, verify. For learning and testing only.",
+			"options": {
+				"words": "Words",
+				"words12": "12 words",
+				"words24": "24 words",
+				"coin": "Coin",
+				"purpose": "Purpose",
+				"account": "Account",
+				"change": "Change",
+				"index": "Index",
+				"mnemonic": "Mnemonic",
+				"pasteHint": "Or paste an existing one to derive from it.",
+				"generate": "New mnemonic",
+				"derive": "Derive",
+				"address": "Address",
+				"path": "Path",
+				"publicKey": "Public key",
+				"warning": "Never use a generated mnemonic for a real wallet.",
+				"invalid": "Enter a valid 12 or 24 word mnemonic.",
+				"emptyHint": "Nothing derived yet."
+			},
+			"steps": [
+				{
+					"title": "Get words",
+					"line": "Generate new or paste existing."
+				},
+				{
+					"title": "Set the path",
+					"line": "Coin, purpose, account, change, index."
+				},
+				{
+					"title": "Derive and verify",
+					"line": "Read the address and public key."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Why the big warning?",
+					"a": "Browser randomness and screens are not vaults. Learning and testing only."
+				},
+				{
+					"q": "Which purpose number?",
+					"a": "44 legacy, 49 wrapped segwit, 84 native segwit, 86 taproot. BIP141 is the segwit proposal itself, not a path."
+				},
+				{
+					"q": "Does anything leave my device?",
+					"a": "No. Everything derives locally, and analytics is off on this page."
+				}
+			]
 		}
 	}
 }

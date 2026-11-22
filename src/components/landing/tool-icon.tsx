@@ -9,6 +9,7 @@ import {
 	CodeXml,
 	Crop,
 	Disc3,
+	Dna,
 	Drama,
 	Eraser,
 	FileDigit,
@@ -18,6 +19,7 @@ import {
 	Gauge,
 	Hash,
 	Images,
+	KeyRound,
 	ListMusic,
 	type LucideIcon,
 	Maximize2,
@@ -31,6 +33,7 @@ import {
 	Spline,
 	Stamp,
 	Terminal,
+	Wallet,
 	WholeWord,
 	Wrench,
 } from "lucide-react";
@@ -70,6 +73,9 @@ export const TOOL_ICONS: Record<string, LucideIcon> = {
 	playlist: ListMusic,
 	cut: Scissors,
 	gauge: Gauge,
+	dna: Dna,
+	key: KeyRound,
+	wallet: Wallet,
 };
 
 export default function ToolIcon({

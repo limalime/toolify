@@ -1665,6 +1665,160 @@
 					"a": "MP3 a 192k."
 				}
 			]
+		},
+		"uuid-generator": {
+			"name": "Generador UUID",
+			"tagline": "Versiones 1 a 7, en lote.",
+			"title": "Generador UUID online gratis",
+			"description": "Genera UUID v1 a v7 gratis en tu navegador. v7 por defecto, v3 y v5 desde namespace y nombre, lotes hasta 100. Nada se sube.",
+			"h1": "Generador UUID online gratis",
+			"sub": "Elige versión, genera uno o cien.",
+			"options": {
+				"version": "Versión",
+				"namespace": "Namespace UUID",
+				"namespaceInvalid": "Pon un namespace UUID válido.",
+				"name": "Nombre",
+				"count": "Cuántos",
+				"generate": "Generar",
+				"copyAll": "Copiar todo",
+				"emptyHint": "Aún no hay nada generado.",
+				"oneAtATime": "Las versiones por nombre dan un solo id."
+			},
+			"steps": [
+				{
+					"title": "Elige versión",
+					"line": "v7 es el default moderno."
+				},
+				{
+					"title": "Nombres piden más",
+					"line": "v3 y v5 toman namespace más nombre."
+				},
+				{
+					"title": "Genera y copia",
+					"line": "Copia uno o todos."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué versión uso?",
+					"a": "v7 para ids nuevos: ordenable y moderna. v4 para azar. v1 y v6 sellan tiempo."
+				},
+				{
+					"q": "¿v3 y v5 para qué?",
+					"a": "Ids deterministas: mismo namespace más mismo nombre da mismo id."
+				},
+				{
+					"q": "¿Por qué sin v2?",
+					"a": "v2 es DCE Security, casi sin uso."
+				}
+			]
+		},
+		"password-generator": {
+			"name": "Generador de contraseñas",
+			"tagline": "Azar, ajustes, medidor honesto.",
+			"title": "Generador de contraseñas online gratis",
+			"description": "Genera contraseñas al azar gratis en tu navegador con azar cripto. Largo, sets, ambiguos, medidor. Nada se sube.",
+			"h1": "Generador de contraseñas online gratis",
+			"sub": "Ajusta el pool, lee el medidor, copia.",
+			"options": {
+				"length": "Largo",
+				"lower": "Minúsculas",
+				"upper": "Mayúsculas",
+				"digits": "Dígitos",
+				"symbols": "Símbolos",
+				"excludeAmbiguous": "Sin ambiguos",
+				"generate": "Generar",
+				"strengthWeak": "Débil",
+				"strengthFair": "Media",
+				"strengthStrong": "Fuerte",
+				"strengthExcellent": "Óptima",
+				"emptyHint": "Aún no hay nada generado.",
+				"entropy": "{bits} bits"
+			},
+			"steps": [
+				{
+					"title": "Ajusta el pool",
+					"line": "Largo más sets de caracteres."
+				},
+				{
+					"title": "Lee el medidor",
+					"line": "Bits de entropía, no sensaciones."
+				},
+				{
+					"title": "Copia",
+					"line": "Copia la contraseña fuera."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué tan azaroso?",
+					"a": "Azar cripto del navegador, no una fórmula."
+				},
+				{
+					"q": "¿Qué son los bits?",
+					"a": "Entropía: largo por pool en bits. Más bits, más difícil."
+				},
+				{
+					"q": "¿Se guardan?",
+					"a": "No. Se generan, se muestran, se olvidan."
+				}
+			]
+		},
+		"mnemonic-generator": {
+			"name": "Generador mnemónico",
+			"tagline": "BIP39 más derivación real.",
+			"title": "Generador mnemónico online gratis",
+			"description": "Genera mnemónicos BIP39 y deriva direcciones BTC, ETH y LTC gratis en tu navegador. Analítica off en esta página. Nunca uses un mnemónico generado para una wallet real.",
+			"h1": "Generador mnemónico online gratis",
+			"sub": "Genera o pega, deriva, verifica. Solo aprender y probar.",
+			"options": {
+				"words": "Palabras",
+				"words12": "12 palabras",
+				"words24": "24 palabras",
+				"coin": "Moneda",
+				"purpose": "Propósito",
+				"account": "Cuenta",
+				"change": "Cambio",
+				"index": "Índice",
+				"mnemonic": "Mnemónico",
+				"pasteHint": "O pega uno para derivar de él.",
+				"generate": "Nuevo mnemónico",
+				"derive": "Derivar",
+				"address": "Dirección",
+				"path": "Ruta",
+				"publicKey": "Clave pública",
+				"warning": "Nunca uses un mnemónico generado para una wallet real.",
+				"invalid": "Pon un mnemónico válido de 12 o 24 palabras.",
+				"emptyHint": "Aún no hay nada derivado."
+			},
+			"steps": [
+				{
+					"title": "Toma palabras",
+					"line": "Genera nuevo o pega uno."
+				},
+				{
+					"title": "Pon la ruta",
+					"line": "Moneda, propósito, cuenta, cambio, índice."
+				},
+				{
+					"title": "Deriva y verifica",
+					"line": "Lee dirección y clave pública."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Por qué el aviso?",
+					"a": "Azar de navegador y pantallas no son cajas fuertes. Solo aprender y probar."
+				},
+				{
+					"q": "¿Qué propósito?",
+					"a": "44 legacy, 49 segwit envuelto, 84 segwit nativo, 86 taproot. BIP141 es la propuesta, no una ruta."
+				},
+				{
+					"q": "¿Algo sale del dispositivo?",
+					"a": "No. Todo deriva en local, y la analítica está off aquí."
+				}
+			]
 		}
 	}
 }

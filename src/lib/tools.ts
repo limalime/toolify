@@ -43,6 +43,9 @@ export const TOOLS: ToolEntry[] = [
 	{ slug: "join-audio", category: "audio", icon: "playlist" },
 	{ slug: "trim-audio", category: "audio", icon: "cut" },
 	{ slug: "audio-speed", category: "audio", icon: "gauge" },
+	{ slug: "uuid-generator", category: "lainnya", icon: "dna" },
+	{ slug: "password-generator", category: "lainnya", icon: "key" },
+	{ slug: "mnemonic-generator", category: "lainnya", icon: "wallet" },
 ];
 
 export const CATEGORY_ORDER: CategoryKey[] = [

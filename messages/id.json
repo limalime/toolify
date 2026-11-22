@@ -1665,6 +1665,160 @@
 					"a": "MP3 192k."
 				}
 			]
+		},
+		"uuid-generator": {
+			"name": "Generator UUID",
+			"tagline": "Versi 1 sampai 7, siap massal.",
+			"title": "Generator UUID Online Gratis",
+			"description": "Buat UUID v1 sampai v7 gratis di browser. Default v7, v3 dan v5 dari namespace dan nama, massal hingga 100. Tidak ada yang diunggah.",
+			"h1": "Generator UUID Online Gratis",
+			"sub": "Pilih versi, buat satu atau seratus.",
+			"options": {
+				"version": "Versi",
+				"namespace": "Namespace UUID",
+				"namespaceInvalid": "Masukkan namespace UUID yang valid.",
+				"name": "Nama",
+				"count": "Jumlah",
+				"generate": "Buat",
+				"copyAll": "Salin semua",
+				"emptyHint": "Belum ada yang dibuat.",
+				"oneAtATime": "Versi nama selalu memberi satu id."
+			},
+			"steps": [
+				{
+					"title": "Pilih versi",
+					"line": "v7 default modern."
+				},
+				{
+					"title": "Versi nama butuh lebih",
+					"line": "v3 dan v5 butuh namespace plus nama."
+				},
+				{
+					"title": "Buat dan salin",
+					"line": "Salin satu atau semua."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Versi apa?",
+					"a": "v7 untuk id baru: terurut dan modern. v4 untuk acak. v1 dan v6 berstempel waktu."
+				},
+				{
+					"q": "v3 dan v5 untuk apa?",
+					"a": "Id deterministik: namespace plus nama yang sama selalu memberi id sama."
+				},
+				{
+					"q": "Mengapa tanpa v2?",
+					"a": "v2 adalah DCE Security, praktis tak dipakai."
+				}
+			]
+		},
+		"password-generator": {
+			"name": "Generator Kata Sandi",
+			"tagline": "Acak, bisa diatur, meter jujur.",
+			"title": "Generator Kata Sandi Online Gratis",
+			"description": "Buat kata sandi acak gratis di browser dengan keacakan kripto. Panjang, set karakter, sakelar ambigu, meter kekuatan. Tidak ada yang diunggah.",
+			"h1": "Generator Kata Sandi Online Gratis",
+			"sub": "Atur pool, baca meter, salin.",
+			"options": {
+				"length": "Panjang",
+				"lower": "Huruf kecil",
+				"upper": "Huruf besar",
+				"digits": "Digit",
+				"symbols": "Simbol",
+				"excludeAmbiguous": "Buang yang ambigu",
+				"generate": "Buat",
+				"strengthWeak": "Lemah",
+				"strengthFair": "Sedang",
+				"strengthStrong": "Kuat",
+				"strengthExcellent": "Prima",
+				"emptyHint": "Belum ada yang dibuat.",
+				"entropy": "{bits} bit"
+			},
+			"steps": [
+				{
+					"title": "Atur pool",
+					"line": "Panjang plus set karakter."
+				},
+				{
+					"title": "Baca meter",
+					"line": "Bit entropi, bukan perasaan."
+				},
+				{
+					"title": "Salin",
+					"line": "Salin kata sandi keluar."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Seberapa acak?",
+					"a": "Keacakan kripto browser, bukan rumus matematika."
+				},
+				{
+					"q": "Arti bit?",
+					"a": "Entropi: panjang kali ukuran pool dalam bit. Makin besar makin sulit ditebak."
+				},
+				{
+					"q": "Apakah disimpan?",
+					"a": "Tidak. Dibuat, ditampilkan, dilupakan."
+				}
+			]
+		},
+		"mnemonic-generator": {
+			"name": "Generator Mnemonic",
+			"tagline": "BIP39 plus derivasi asli.",
+			"title": "Generator Mnemonic Online Gratis",
+			"description": "Buat mnemonic BIP39 dan turunkan alamat BTC, ETH, dan LTC gratis di browser. Analitik mati di halaman ini. Jangan pernah pakai mnemonic hasil untuk dompet asli.",
+			"h1": "Generator Mnemonic Online Gratis",
+			"sub": "Buat atau tempel, turunkan, verifikasi. Untuk belajar dan testing saja.",
+			"options": {
+				"words": "Kata",
+				"words12": "12 kata",
+				"words24": "24 kata",
+				"coin": "Koin",
+				"purpose": "Purpose",
+				"account": "Akun",
+				"change": "Change",
+				"index": "Index",
+				"mnemonic": "Mnemonic",
+				"pasteHint": "Atau tempel yang ada untuk diturunkan.",
+				"generate": "Mnemonic baru",
+				"derive": "Turunkan",
+				"address": "Alamat",
+				"path": "Path",
+				"publicKey": "Kunci publik",
+				"warning": "Jangan pernah pakai mnemonic hasil untuk dompet asli.",
+				"invalid": "Masukkan mnemonic 12 atau 24 kata yang valid.",
+				"emptyHint": "Belum ada yang diturunkan."
+			},
+			"steps": [
+				{
+					"title": "Dapatkan kata",
+					"line": "Buat baru atau tempel yang ada."
+				},
+				{
+					"title": "Atur path",
+					"line": "Koin, purpose, akun, change, index."
+				},
+				{
+					"title": "Turunkan dan verifikasi",
+					"line": "Baca alamat dan kunci publik."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Mengapa peringatan besar?",
+					"a": "Keacakan dan layar browser bukan brankas. Belajar dan testing saja."
+				},
+				{
+					"q": "Purpose berapa?",
+					"a": "44 legacy, 49 segwit terbungkus, 84 segwit murni, 86 taproot. BIP141 adalah proposalnya, bukan path."
+				},
+				{
+					"q": "Adakah yang keluar perangkat?",
+					"a": "Tidak. Semua diturunkan lokal, dan analitik mati di halaman ini."
+				}
+			]
 		}
 	}
 }

@@ -10,6 +10,7 @@ import {
 	AccordionTrigger,
 } from "@/components/smoothui/accordion";
 import { Link } from "@/i18n/navigation";
+import { isAnalyticsDisabled } from "@/lib/analytics";
 import { accordionClass } from "@/lib/control-classes";
 import { faqPageJsonLd, toJsonLd, webApplicationJsonLd } from "@/lib/jsonld";
 import type { LocaleCode } from "@/lib/locales";
@@ -73,7 +74,11 @@ export default async function ToolShell({
 	);
 
 	return (
-		<div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-8 md:py-12">
+		<div
+			className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-8 md:py-12"
+			data-analytics={isAnalyticsDisabled(slug) ? "off" : "on"}
+			data-testid="tool-shell"
+		>
 			<script type="application/ld+json">{toJsonLd(webapp)}</script>
 			<script type="application/ld+json">{toJsonLd(faq)}</script>
 			<nav aria-label="Breadcrumb">
