@@ -132,6 +132,13 @@ test("copy actions count as a completed tool", async ({ page }) => {
 	expect(hits.length).toBeGreaterThan(0);
 });
 
+test("the tool surface stays masked from session replay", async ({ page }) => {
+	await page.goto("/image-converter");
+	const masked = page.locator('[data-clarity-mask="true"]');
+	await expect(masked).toHaveCount(1);
+	await expect(masked.locator("input[type='file']")).toHaveCount(1);
+});
+
 test("mnemonic pages load no analytics even when consent would allow it", async ({
 	page,
 }) => {

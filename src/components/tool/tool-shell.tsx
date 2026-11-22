@@ -125,7 +125,9 @@ export default async function ToolShell({
 				<h1>{h1}</h1>
 				<p className="max-w-prose text-body text-text-2">{sub}</p>
 			</div>
-			<div className="flex flex-col gap-4">{children}</div>
+			<div className="flex flex-col gap-4" data-clarity-mask="true">
+				{children}
+			</div>
 			<AdSlot name="tool_below_tool" />
 			<section aria-label={th("title")} className="flex flex-col gap-4">
 				<h2>{th("title")}</h2>
