@@ -3,6 +3,7 @@
 import { ArrowRightLeft, RefreshCw } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
+import { useToolCompleted } from "@/components/analytics/use-tool-completed";
 import Alert from "@/components/smoothui/alert";
 import Field, { FieldLabel } from "@/components/smoothui/field";
 import Input from "@/components/smoothui/input";
@@ -134,6 +135,8 @@ export default function CurrencyConverterTool() {
 			unitRate = null;
 		}
 	}
+
+	useToolCompleted(converted !== null);
 
 	const swap = () => {
 		setFrom(to);

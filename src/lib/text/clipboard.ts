@@ -1,8 +1,11 @@
 // clipboard copy with an old-browser fallback. returns false instead
 // of throwing so callers can notify honestly either way.
+import { trackToolComplete } from "@/lib/analytics-client";
+
 export async function copyText(text: string): Promise<boolean> {
 	try {
 		await navigator.clipboard.writeText(text);
+		trackToolComplete();
 		return true;
 	} catch {
 		try {
@@ -14,6 +17,9 @@ export async function copyText(text: string): Promise<boolean> {
 			area.select();
 			const ok = document.execCommand("copy");
 			area.remove();
+			if (ok) {
+				trackToolComplete();
+			}
 			return ok;
 		} catch {
 			return false;

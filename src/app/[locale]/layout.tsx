@@ -5,6 +5,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import "../globals.css";
 import { ThemeProvider } from "next-themes";
+import ConsentProvider from "@/components/analytics/consent-provider";
 import SiteFooter from "@/components/layout/site-footer";
 import SiteHeader from "@/components/layout/site-header";
 import AppToaster from "@/components/primitives/toaster";
@@ -52,6 +53,9 @@ export async function generateMetadata({
 		twitter: {
 			card: "summary_large_image",
 		},
+		verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+			? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+			: undefined,
 	};
 }
 
@@ -90,6 +94,7 @@ export default async function LocaleLayout({
 						<main className="flex-1">{children}</main>
 						<SiteFooter />
 						<AppToaster />
+						<ConsentProvider />
 					</ThemeProvider>
 				</NextIntlClientProvider>
 			</body>

@@ -2,6 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
+import { useToolCompleted } from "@/components/analytics/use-tool-completed";
 import Field, { FieldLabel } from "@/components/smoothui/field";
 import Input from "@/components/smoothui/input";
 import {
@@ -65,6 +66,8 @@ export default function PercentageCalculatorTool() {
 	const decreased = stepValid
 		? decreasedValue(Number(stepValue), Number(stepPercent))
 		: null;
+
+	useToolCompleted(ofResult !== null || change !== null || increased !== null);
 
 	return (
 		<div className="flex min-w-0 flex-col gap-4">

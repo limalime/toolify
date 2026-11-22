@@ -2,6 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
+import { useToolCompleted } from "@/components/analytics/use-tool-completed";
 import Alert from "@/components/smoothui/alert";
 import Field, { FieldLabel } from "@/components/smoothui/field";
 import Input from "@/components/smoothui/input";
@@ -157,6 +158,7 @@ export default function CompoundInterestTool() {
 		() => compoundSchedule(principal, rate, years, frequency),
 		[principal, rate, years, frequency],
 	);
+	useToolCompleted(valid);
 
 	const numberFormat = useMemo(
 		() =>

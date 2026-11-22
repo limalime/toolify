@@ -3,6 +3,7 @@
 import { ArrowRightLeft, Check, Copy } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
+import { useToolCompleted } from "@/components/analytics/use-tool-completed";
 import Field, { FieldLabel } from "@/components/smoothui/field";
 import Input from "@/components/smoothui/input";
 import Select from "@/components/smoothui/select";
@@ -57,6 +58,7 @@ export default function UnitConverterTool() {
 	const converted = valid ? convertUnit(category, numeric, from, to) : null;
 	const resultText =
 		converted === null ? "" : formatUnitValue(converted, locale);
+	useToolCompleted(valid);
 
 	const rows = useMemo(() => {
 		return options.map((unit) => {

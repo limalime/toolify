@@ -2,6 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
+import { useToolCompleted } from "@/components/analytics/use-tool-completed";
 import Alert from "@/components/smoothui/alert";
 import Field, { FieldLabel } from "@/components/smoothui/field";
 import Input from "@/components/smoothui/input";
@@ -31,6 +32,8 @@ export default function LoanCalculatorTool() {
 		years > 0 &&
 		months >= 1 &&
 		months <= 600;
+
+	useToolCompleted(valid);
 
 	const summary = useMemo(
 		() => loanSummary(amount, rate, months),

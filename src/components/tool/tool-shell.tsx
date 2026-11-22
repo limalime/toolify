@@ -1,5 +1,7 @@
 import { ChevronRight, ShieldCheck } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
+import { Fragment } from "react";
+import AdSlot from "@/components/ads/ad-slot";
 import ToolCard from "@/components/landing/tool-card";
 import type { CategoryKey } from "@/components/layout/categories";
 import {
@@ -75,10 +77,19 @@ export default async function ToolShell({
 
 	return (
 		<div
-			className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-8 md:py-12"
+			className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-8 md:py-12"
 			data-analytics={isAnalyticsDisabled(slug) ? "off" : "on"}
 			data-testid="tool-shell"
 		>
+			<div
+				aria-hidden="true"
+				className="pointer-events-none absolute inset-y-0 start-full ms-6 hidden w-40 2xl:block"
+				data-ad-rail="tool_sidebar_sticky"
+			>
+				<div className="pointer-events-auto sticky top-24">
+					<AdSlot name="tool_sidebar_sticky" />
+				</div>
+			</div>
 			<script type="application/ld+json">{toJsonLd(webapp)}</script>
 			<script type="application/ld+json">{toJsonLd(faq)}</script>
 			<nav aria-label="Breadcrumb">
@@ -115,6 +126,7 @@ export default async function ToolShell({
 				<p className="max-w-prose text-body text-text-2">{sub}</p>
 			</div>
 			<div className="flex flex-col gap-4">{children}</div>
+			<AdSlot name="tool_below_tool" />
 			<section aria-label={th("title")} className="flex flex-col gap-4">
 				<h2>{th("title")}</h2>
 				<ol className="flex flex-col gap-3">
@@ -138,12 +150,17 @@ export default async function ToolShell({
 				<h2>{tf("title")}</h2>
 				<AccordionRoot className={accordionClass}>
 					{faqs.map((entry, index) => (
-						<AccordionItem key={entry.q} value={`faq-${index}`}>
-							<AccordionHeader>
-								<AccordionTrigger>{entry.q}</AccordionTrigger>
-							</AccordionHeader>
-							<AccordionPanel>{entry.a}</AccordionPanel>
-						</AccordionItem>
+						<Fragment key={entry.q}>
+							<AccordionItem value={`faq-${index}`}>
+								<AccordionHeader>
+									<AccordionTrigger>{entry.q}</AccordionTrigger>
+								</AccordionHeader>
+								<AccordionPanel>{entry.a}</AccordionPanel>
+							</AccordionItem>
+							{index === 1 && faqs.length > 2 ? (
+								<AdSlot name="tool_in_faq" />
+							) : null}
+						</Fragment>
 					))}
 				</AccordionRoot>
 			</section>

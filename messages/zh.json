@@ -55,6 +55,14 @@
 		"engineFailed": "视频引擎加载失败,请检查网络后重试。",
 		"loadingAudioEngine": "正在加载音频引擎…"
 	},
+	"consent": {
+		"accept": "允许分析",
+		"body": "Toolify 使用 Google Analytics 和 Microsoft Clarity 统计页面浏览量和工具使用次数。绝不会包含你的文件。你可以随时在隐私页面更改此选择。",
+		"decline": "拒绝",
+		"privacy": "隐私政策",
+		"settings": "分析设置",
+		"title": "分析与隐私"
+	},
 	"howto": {
 		"step": "第{n}步",
 		"title": "使用方法"
@@ -119,7 +127,8 @@
 			},
 			{
 				"body": [
-					"欧洲经济区访客会看到同意横幅。未接受之前不会触发分析 Cookie(遵循 Google Consent Mode v2)。拒绝不影响任何功能。"
+					"欧洲经济区访客会看到同意横幅。未接受之前不会触发分析 Cookie(遵循 Google Consent Mode v2)。拒绝不影响任何功能。",
+					"你可以随时使用本页的分析设置按钮更改或撤回选择。"
 				],
 				"h": "同意"
 			},

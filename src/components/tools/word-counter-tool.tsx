@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
+import { useToolCompleted } from "@/components/analytics/use-tool-completed";
 import Field, { FieldLabel } from "@/components/smoothui/field";
 import Textarea from "@/components/smoothui/textarea";
 import { countText, formatReadingTime } from "@/lib/text/count";
@@ -11,6 +12,7 @@ export default function WordCounterTool() {
 	const [text, setText] = useState("");
 
 	const counts = useMemo(() => countText(text), [text]);
+	useToolCompleted(counts.words > 0);
 
 	const stats: Array<{ key: string; value: string }> = [
 		{ key: "words", value: String(counts.words) },

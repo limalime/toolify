@@ -55,6 +55,14 @@
 		"engineFailed": "Gagal memuat mesin video. Periksa koneksi lalu coba lagi.",
 		"loadingAudioEngine": "Memuat mesin audio…"
 	},
+	"consent": {
+		"accept": "Setujui analitik",
+		"body": "Toolify memakai Google Analytics dan Microsoft Clarity untuk menghitung kunjungan dan pemakaian alat. File Anda tidak pernah disertakan. Anda bisa mengubah pilihan ini di halaman Privasi.",
+		"decline": "Tolak",
+		"privacy": "Kebijakan privasi",
+		"settings": "Pengaturan analitik",
+		"title": "Analitik dan privasi"
+	},
 	"howto": {
 		"step": "Langkah {n}",
 		"title": "Cara pakai"
@@ -119,7 +127,8 @@
 			},
 			{
 				"body": [
-					"Pengunjung di Kawasan Ekonomi Eropa melihat spanduk persetujuan. Tidak ada cookie analitik sebelum Anda setuju, mengikuti Google Consent Mode v2. Menolak tidak mengubah cara kerja alat."
+					"Pengunjung di Kawasan Ekonomi Eropa melihat spanduk persetujuan. Tidak ada cookie analitik sebelum Anda setuju, mengikuti Google Consent Mode v2. Menolak tidak mengubah cara kerja alat.",
+					"Anda bisa mengubah atau menarik pilihan kapan saja lewat tombol pengaturan analitik di halaman ini."
 				],
 				"h": "Persetujuan"
 			},

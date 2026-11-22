@@ -55,6 +55,14 @@
 		"engineFailed": "Could not load the video engine. Check your connection and retry.",
 		"loadingAudioEngine": "Loading audio engine…"
 	},
+	"consent": {
+		"accept": "Accept analytics",
+		"body": "Toolify uses Google Analytics and Microsoft Clarity to count page views and tool uses. Your files are never included. You can change this choice on the Privacy page.",
+		"decline": "Decline",
+		"privacy": "Privacy policy",
+		"settings": "Analytics settings",
+		"title": "Analytics and privacy"
+	},
 	"howto": {
 		"step": "Step {n}",
 		"title": "How to use"
@@ -119,7 +127,8 @@
 			},
 			{
 				"body": [
-					"Visitors in the European Economic Area see a consent banner. No analytics cookie fires before you accept, following Google Consent Mode v2. Declining keeps every tool working exactly the same."
+					"Visitors in the European Economic Area see a consent banner. No analytics cookie fires before you accept, following Google Consent Mode v2. Declining keeps every tool working exactly the same.",
+					"You can change or withdraw your choice at any time with the analytics settings button on this page."
 				],
 				"h": "Consent"
 			},

@@ -5,6 +5,7 @@ import {
 	ProgressTrack,
 } from "@/components/smoothui/progress";
 import SmoothButton from "@/components/smoothui/smooth-button";
+import { trackToolComplete } from "@/lib/analytics-client";
 import { formatBytes } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
@@ -101,6 +102,7 @@ export default function FileList({
 								<a
 									download={file.downloadName ?? file.name}
 									href={file.downloadUrl}
+									onClick={() => trackToolComplete()}
 								>
 									{labels.download}
 								</a>

@@ -15,6 +15,7 @@ import {
 } from "@/components/smoothui/progress";
 import Slider from "@/components/smoothui/slider";
 import SmoothButton from "@/components/smoothui/smooth-button";
+import { trackToolComplete } from "@/lib/analytics-client";
 import { inputClass } from "@/lib/control-classes";
 import { formatBytes } from "@/lib/format";
 import { downloadBlob } from "@/lib/images/download";
@@ -366,6 +367,7 @@ export default function CompressImageTool() {
 											<a
 												download={job.result?.filename ?? job.name}
 												href={job.downloadUrl}
+												onClick={() => trackToolComplete()}
 											>
 												{tc("download")}
 											</a>

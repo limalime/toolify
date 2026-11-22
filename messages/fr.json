@@ -55,6 +55,14 @@
 		"engineFailed": "Moteur vidéo injoignable. Vérifiez la connexion et réessayez.",
 		"loadingAudioEngine": "Chargement du moteur audio…"
 	},
+	"consent": {
+		"accept": "Accepter l'analytique",
+		"body": "Toolify utilise Google Analytics et Microsoft Clarity pour compter les visites et l'utilisation des outils. Tes fichiers ne sont jamais inclus. Tu peux changer ce choix sur la page Confidentialité.",
+		"decline": "Refuser",
+		"privacy": "Politique de confidentialité",
+		"settings": "Réglages analytiques",
+		"title": "Analytique et vie privée"
+	},
 	"howto": {
 		"step": "Étape {n}",
 		"title": "Mode d'emploi"
@@ -119,7 +127,8 @@
 			},
 			{
 				"body": [
-					"Les visiteurs de l'Espace économique européen voient une bannière de consentement. Aucun cookie analytique avant acceptation, selon Google Consent Mode v2. Refuser ne change rien."
+					"Les visiteurs de l'Espace économique européen voient une bannière de consentement. Aucun cookie analytique avant acceptation, selon Google Consent Mode v2. Refuser ne change rien.",
+					"Tu peux changer ou retirer ton choix à tout moment avec le bouton de réglages analytiques de cette page."
 				],
 				"h": "Consentement"
 			},

@@ -11,6 +11,17 @@ export default defineConfig({
 	use: {
 		baseURL,
 		trace: "on-first-retry",
+		// every spec except the consent one starts with analytics declined,
+		// so no banner covers the page and no tag script loads.
+		storageState: {
+			cookies: [],
+			origins: [
+				{
+					origin: baseURL,
+					localStorage: [{ name: "toolify.consent.v1", value: "denied" }],
+				},
+			],
+		},
 	},
 	projects: [
 		{

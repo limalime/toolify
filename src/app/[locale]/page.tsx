@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
+import AdSlot from "@/components/ads/ad-slot";
 import ToolMenu from "@/components/landing/tool-menu";
 import { routing } from "@/i18n/routing";
 import { organizationJsonLd, toJsonLd, websiteJsonLd } from "@/lib/jsonld";
@@ -55,6 +56,7 @@ export default async function LandingPage({
 				}}
 				tools={tools}
 			/>
+			<AdSlot name="home_below_tools" />
 			<div className="grid gap-4 md:grid-cols-3">
 				<div className="flex flex-col gap-1">
 					<h2 className="font-display text-h3">{t("why1title")}</h2>
@@ -69,6 +71,7 @@ export default async function LandingPage({
 					<p className="text-small text-text-2">{t("why3line")}</p>
 				</div>
 			</div>
+			<AdSlot name="home_above_footer" />
 		</div>
 	);
 }
