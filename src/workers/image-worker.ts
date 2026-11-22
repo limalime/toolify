@@ -1,4 +1,5 @@
 import * as Comlink from "comlink";
+import { BG_MODEL } from "@/lib/images/bg-model";
 import {
 	adjustPixel,
 	type EnhanceOptions,
@@ -430,9 +431,8 @@ export async function adjustImage(
 }
 
 export interface BgRemovalOptions {
-	publicPath: string;
-	model: "isnet_quint8" | "isnet_fp16";
-	device: "cpu" | "gpu";
+	modelsBase: string;
+	wasmBase: string;
 }
 
 export type BgRemovalProgress = (
@@ -441,32 +441,76 @@ export type BgRemovalProgress = (
 	total: number,
 ) => void;
 
-// isnet segmentation through imgly, model and wasm stream from R2.
+interface SegmenterImage {
+	data: Uint8ClampedArray;
+	width: number;
+	height: number;
+	channels: number;
+}
+
+type Segmenter = (input: Blob) => Promise<SegmenterImage>;
+
+// ormbg through transformers, weights and ort wasm stream from r2. wasm
+// everywhere so the tool works in every browser, no webgpu gate.
+async function loadSegmenter(
+	options: BgRemovalOptions,
+	onProgress?: BgRemovalProgress,
+): Promise<Segmenter> {
+	const { pipeline, env } = await import("@huggingface/transformers");
+	env.allowRemoteModels = true;
+	env.remoteHost = options.modelsBase;
+	env.remotePathTemplate = "{model}/";
+	env.useBrowserCache = true;
+	const wasm = env.backends.onnx.wasm;
+	if (wasm) {
+		wasm.wasmPaths = options.wasmBase;
+		wasm.numThreads = 1;
+	}
+	const segmenter = await pipeline("background-removal", BG_MODEL.id, {
+		device: "wasm",
+		dtype: "fp16",
+		progress_callback: (progress) => {
+			if (
+				progress.status === "progress" &&
+				progress.file?.endsWith(".onnx") &&
+				progress.total > 0
+			) {
+				onProgress?.("download", progress.loaded, progress.total);
+			}
+		},
+	});
+	return segmenter as unknown as Segmenter;
+}
+
+async function pngFromMask(image: SegmenterImage): Promise<EncodedImage> {
+	const canvas = new OffscreenCanvas(image.width, image.height);
+	const context = canvas.getContext("2d");
+	if (!context) {
+		throw new Error("2d context unavailable");
+	}
+	context.putImageData(
+		new ImageData(new Uint8ClampedArray(image.data), image.width, image.height),
+		0,
+		0,
+	);
+	const blob = await canvas.convertToBlob({ type: "image/png" });
+	return {
+		bytes: await blob.arrayBuffer(),
+		mime: "image/png",
+		extension: "png",
+	};
+}
+
 export async function removeBackgroundImage(
 	bytes: ArrayBuffer,
 	mime: string,
 	options: BgRemovalOptions,
 	onProgress?: BgRemovalProgress,
 ): Promise<EncodedImage> {
-	const { removeBackground } = await import("@imgly/background-removal");
-	const blob = await removeBackground(new Blob([bytes], { type: mime }), {
-		publicPath: options.publicPath,
-		model: options.model,
-		device: options.device,
-		output: { format: "image/png", quality: 1 },
-		progress: (key: string, current: number, total: number) => {
-			onProgress?.(
-				key.startsWith("fetch:") ? "download" : "inference",
-				current,
-				total,
-			);
-		},
-	});
-	return {
-		bytes: await blob.arrayBuffer(),
-		mime: "image/png",
-		extension: "png",
-	};
+	const segmenter = await loadSegmenter(options, onProgress);
+	onProgress?.("inference", 0, 0);
+	const mask = await segmenter(new Blob([bytes], { type: mime }));
+	return pngFromMask(mask);
 }
 
 export interface UpscaleOptions {

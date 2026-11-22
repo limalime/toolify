@@ -38,7 +38,13 @@ Unit and logic tests use Vitest:
 npm run test
 ```
 
-End to end tests use Playwright with Chromium on mobile and desktop viewports. Playwright starts its own dev server, so no server needs to run first:
+End to end tests use Playwright with Chromium on mobile and desktop viewports. The heavy test assets (background removal model, onnxruntime wasm, ffmpeg cores) are not committed. Download them once after install:
+
+```bash
+./scripts/get-r2-assets.sh
+```
+
+Playwright then starts a local mirror of those assets plus its own dev server, so no server needs to run first:
 
 ```bash
 npm run e2e

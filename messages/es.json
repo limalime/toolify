@@ -484,15 +484,11 @@
 			"h1": "Quita fondos online gratis",
 			"sub": "Una descarga y recortes en segundos. El modelo vive en la caché del navegador.",
 			"options": {
-				"model": "Modelo",
-				"fast": "Rápido",
-				"quality": "Calidad",
 				"apply": "Quitar fondo",
 				"downloading": "Descargando modelo",
 				"working": "Recortando",
 				"cached": "Modelo en caché del navegador",
-				"usedWebgpu": "Se ejecutó en WebGPU",
-				"usedCpu": "Se ejecutó en CPU"
+				"failed": "No se pudo quitar el fondo. Prueba otra imagen o recarga la página."
 			},
 			"steps": [
 				{
@@ -500,8 +496,8 @@
 					"line": "Suelta la foto que quieres recortar."
 				},
 				{
-					"title": "Elige un modelo",
-					"line": "Rápido descarga 44 MB y calidad 88 MB. Cada uno se descarga una vez y queda en caché."
+					"title": "Quita el fondo",
+					"line": "La primera vez descarga el modelo de 84 MB una vez y luego queda en caché."
 				},
 				{
 					"title": "Descarga",
@@ -514,8 +510,8 @@
 					"a": "Tu navegador descarga primero el modelo de IA y su motor. Luego usa la caché y empieza al instante."
 				},
 				{
-					"q": "¿Rápido o calidad?",
-					"a": "Rápido es más pequeño y basta para sujetos simples. Calidad conserva mejor el pelo y los bordes suaves."
+					"q": "¿Qué modelo usa?",
+					"a": "ORMBG, un modelo de código abierto con licencia Apache-2.0 que se ejecuta en tu dispositivo. Ninguna imagen se sube."
 				},
 				{
 					"q": "¿Adónde van mis fotos?",

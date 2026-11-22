@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 # Downloads every large asset Toolify serves from R2 (background removal
-# data, onnxruntime wasm, upscale model, ffmpeg cores and api) into a
+# model, onnxruntime wasm, upscale model, ffmpeg cores and api) into a
 # folder tree that mirrors the R2 key layout. Every file is size/hash
 # verified. Run from the repo root after npm install.
 # Usage: ./get-r2-assets.sh [output-dir]
 set -euo pipefail
 OUT="${1:-r2-upload}"
-mkdir -p "$OUT/bg-removal/1.7.0" "$OUT/ort/1.21.0" "$OUT/upscale" \
-  "$OUT/ffmpeg/0.12.10/st" "$OUT/ffmpeg/0.12.10/mt" "$OUT/ffmpeg/0.12.15/esm"
+mkdir -p "$OUT/bg-removal/ormbg/1.0.0/onnx" "$OUT/ort/1.21.0" \
+  "$OUT/ort/1.31.0" "$OUT/upscale" "$OUT/ffmpeg/0.12.10/st" \
+  "$OUT/ffmpeg/0.12.10/mt" "$OUT/ffmpeg/0.12.15/esm"
 
 get() { # url, dest, want_bytes
   curl -sfL "$1" -o "$2"
@@ -16,24 +17,16 @@ get() { # url, dest, want_bytes
   echo "ok ($got B) $2"
 }
 
-echo "== 1/5 background-removal data 1.7.0 (trimmed: small + medium models) =="
-BASE="https://staticimgly.com/@imgly/background-removal-data/1.7.0/dist"
-curl -sfL "$BASE/resources.json" -o /tmp/imgly-full.json
-python3 -c "import json; m=json.load(open('/tmp/imgly-full.json')); del m['/models/isnet']; json.dump(m, open('$OUT/bg-removal/1.7.0/resources.json', 'w'))"
-python3 - "$BASE" "$OUT/bg-removal/1.7.0" <<'EOF'
-import json, subprocess, sys
-base, dest = sys.argv[1], sys.argv[2]
-m = json.load(open(dest + '/resources.json'))
-seen = set()
-for entry in m.values():
-    for c in entry['chunks']:
-        if c['name'] in seen:
-            continue
-        seen.add(c['name'])
-        subprocess.run(['curl', '-sfL', base + '/' + c['name'], '-o', dest + '/' + c['name']], check=True)
-        h = subprocess.run(['sha256sum', dest + '/' + c['name']], capture_output=True, text=True).stdout.split()[0]
-        assert h == c['hash'] == c['name'], c['name']
-print('imgly chunks ok:', len(seen))
+echo "== 1/5 background removal ORMBG 1.0.0 (Apache-2.0) =="
+HF="https://huggingface.co/onnx-community/ormbg-ONNX/resolve/main"
+BG="$OUT/bg-removal/ormbg/1.0.0"
+get "$HF/config.json" "$BG/config.json" 27
+get "$HF/preprocessor_config.json" "$BG/preprocessor_config.json" 283
+get "$HF/onnx/model_fp16.onnx" "$BG/onnx/model_fp16.onnx" 88117930
+sha256sum -c <<EOF
+d0b94ab052ace79177085c66a00a3f014a973edb09999cb0108bb01e65ded060  $BG/config.json
+ed502c6ea29c5fb8aafdafdc5bcf1657dfca09888ff753e5c358672ebcfd448d  $BG/preprocessor_config.json
+06e4236d2c2fae771f56b6e4723b6ed870a554b661ea4da4a74f650bbd53cf57  $BG/onnx/model_fp16.onnx
 EOF
 
 echo "== 2/5 onnxruntime-web 1.21.0 wasm =="
@@ -42,6 +35,20 @@ get "$ORT/ort-wasm-simd-threaded.wasm" "$OUT/ort/1.21.0/ort-wasm-simd-threaded.w
 get "$ORT/ort-wasm-simd-threaded.mjs" "$OUT/ort/1.21.0/ort-wasm-simd-threaded.mjs" 26583
 get "$ORT/ort-wasm-simd-threaded.jsep.wasm" "$OUT/ort/1.21.0/ort-wasm-simd-threaded.jsep.wasm" 23914392
 get "$ORT/ort-wasm-simd-threaded.jsep.mjs" "$OUT/ort/1.21.0/ort-wasm-simd-threaded.jsep.mjs" 53602
+
+echo "== 2b/5 ORT 1.31.0 wasm, the build inside transformers =="
+# the transformers package ships its own onnxruntime-web, find it by walking
+# up from the resolved entry point instead of guessing node_modules nesting.
+TRANSFORMERS_DIR="$(node -e 'let p=require("path"),f=require("fs"); let d=p.dirname(require.resolve("@huggingface/transformers")); while(!f.existsSync(p.join(d,"package.json"))) d=p.dirname(d); process.stdout.write(d)')"
+ORT_131="$TRANSFORMERS_DIR/node_modules/onnxruntime-web/dist"
+for f in ort-wasm-simd-threaded.asyncify.mjs ort-wasm-simd-threaded.asyncify.wasm; do
+  cp "$ORT_131/$f" "$OUT/ort/1.31.0/$f"
+  echo "ok $OUT/ort/1.31.0/$f"
+done
+sha256sum -c <<EOF
+0966b6105cd936744498aa60df7a22cbd47af3374dbc64a9ab561c08a71e3611  $OUT/ort/1.31.0/ort-wasm-simd-threaded.asyncify.mjs
+49871f5a4409519797e127440868a6d1923339d9185907f301a5b2a1d90af082  $OUT/ort/1.31.0/ort-wasm-simd-threaded.asyncify.wasm
+EOF
 
 echo "== 3/5 upscale model realesr-general-x4v3 =="
 get "https://github.com/MohaElder/openenlarge/releases/download/upscaler-assets-v1/realesr-general-x4v3.onnx" \

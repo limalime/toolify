@@ -1,33 +1,26 @@
-import { readFileSync } from "node:fs";
-import type { Page } from "@playwright/test";
+import type { Page, Request } from "@playwright/test";
 
-const TYPES: Record<string, string> = {
-	".wasm": "application/wasm",
-	".js": "text/javascript",
-	".mjs": "text/javascript",
-	".json": "application/json",
-	".onnx": "application/octet-stream",
-};
+export const R2_STAGING = "http://127.0.0.1:8092";
 
-// serves the real R2 bytes from the local staging dir. the bytes are
-// identical to production, only the network hop is local, since the
-// bucket allows the production origin and not the test server.
+// points R2 at the local staging server, which serves the same bytes. the
+// redirect keeps large model files out of route.fulfill, where an 88 MB body
+// kills the tab. the callback sees worker fetches, page events do not.
 export async function routeR2(
 	page: Page,
-	onRequest?: (key: string) => void,
+	onRequest?: (key: string, request: Request) => void,
 ): Promise<void> {
 	await page.route("https://bucket.toolify.bond/**", async (route) => {
 		const key = route
 			.request()
 			.url()
 			.replace("https://bucket.toolify.bond/", "");
-		onRequest?.(key);
-		const dot = key.lastIndexOf(".");
-		const ext = dot >= 0 ? key.slice(dot) : "";
+		onRequest?.(key, route.request());
 		await route.fulfill({
-			body: readFileSync(`r2-upload/${key}`),
-			contentType: TYPES[ext] ?? "application/octet-stream",
-			headers: { "Access-Control-Allow-Origin": "*" },
+			status: 302,
+			headers: {
+				location: `${R2_STAGING}/${key}`,
+				"Access-Control-Allow-Origin": "*",
+			},
 		});
 	});
 }

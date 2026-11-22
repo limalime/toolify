@@ -484,15 +484,11 @@
 			"h1": "Penghapus Latar Foto Online Gratis",
 			"sub": "Sekali unduh, lalu potong dalam hitungan detik. Model tersimpan di cache browser Anda.",
 			"options": {
-				"model": "Model",
-				"fast": "Cepat",
-				"quality": "Berkualitas",
 				"apply": "Hapus latar",
 				"downloading": "Mengunduh model",
 				"working": "Memotong",
 				"cached": "Model tersimpan di browser",
-				"usedWebgpu": "Berjalan di WebGPU",
-				"usedCpu": "Berjalan di CPU"
+				"failed": "Gagal menghapus latar. Coba gambar lain atau muat ulang halaman."
 			},
 			"steps": [
 				{
@@ -500,8 +496,8 @@
 					"line": "Jatuhkan foto yang ingin dipotong."
 				},
 				{
-					"title": "Pilih model",
-					"line": "Cepat mengunduh 44 MB dan berkualitas 88 MB. Masing-masing diunduh sekali, lalu tersimpan."
+					"title": "Hapus latar",
+					"line": "Unduhan pertama mengambil model 84 MB sekali, lalu tersimpan di cache."
 				},
 				{
 					"title": "Unduh",
@@ -514,8 +510,8 @@
 					"a": "Browser mengunduh model AI dan mesin hitungnya dulu. Jalan berikutnya memakai cache dan langsung mulai."
 				},
 				{
-					"q": "Cepat atau berkualitas?",
-					"a": "Cepat lebih kecil dan cukup untuk subjek sederhana. Berkualitas menjaga rambut dan tepi lembut lebih rapi."
+					"q": "Model apa yang dipakai?",
+					"a": "ORMBG, model sumber terbuka berlisensi Apache-2.0 yang berjalan di perangkat Anda. Tidak ada gambar yang diunggah."
 				},
 				{
 					"q": "Ke mana foto saya pergi?",

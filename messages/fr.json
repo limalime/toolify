@@ -484,15 +484,11 @@
 			"h1": "Suppresseur de fond en ligne gratuit",
 			"sub": "Un téléchargement, puis des découpes en quelques secondes. Le modèle vit dans le cache du navigateur.",
 			"options": {
-				"model": "Modèle",
-				"fast": "Rapide",
-				"quality": "Qualité",
 				"apply": "Supprimer le fond",
 				"downloading": "Téléchargement du modèle",
 				"working": "Découpe en cours",
 				"cached": "Modèle en cache dans le navigateur",
-				"usedWebgpu": "Exécuté sur WebGPU",
-				"usedCpu": "Exécuté sur CPU"
+				"failed": "La suppression du fond a échoué. Essayez une autre image ou rechargez la page."
 			},
 			"steps": [
 				{
@@ -500,8 +496,8 @@
 					"line": "Déposez la photo à détourer."
 				},
 				{
-					"title": "Choisissez un modèle",
-					"line": "Rapide télécharge 44 Mo et qualité 88 Mo. Chacun se télécharge une fois, puis reste en cache."
+					"title": "Supprimez le fond",
+					"line": "Le premier passage télécharge le modèle de 84 Mo une fois, puis il reste en cache."
 				},
 				{
 					"title": "Téléchargez",
@@ -514,8 +510,8 @@
 					"a": "Votre navigateur télécharge d'abord le modèle IA et son moteur. Ensuite il utilise le cache et démarre aussitôt."
 				},
 				{
-					"q": "Rapide ou qualité ?",
-					"a": "Rapide est plus léger et suffit pour les sujets simples. Qualité garde mieux les cheveux et les bords doux."
+					"q": "Quel modèle est utilisé ?",
+					"a": "ORMBG, un modèle open source sous licence Apache-2.0 qui tourne sur votre appareil. Aucune image n'est envoyée."
 				},
 				{
 					"q": "Où vont mes photos ?",

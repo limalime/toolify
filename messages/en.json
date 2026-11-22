@@ -484,15 +484,11 @@
 			"h1": "Free Online Background Remover",
 			"sub": "One download, then cutouts in seconds. The model lives in your browser cache.",
 			"options": {
-				"model": "Model",
-				"fast": "Fast",
-				"quality": "Quality",
 				"apply": "Remove background",
 				"downloading": "Downloading model",
 				"working": "Cutting out",
 				"cached": "Model cached in your browser",
-				"usedWebgpu": "Ran on WebGPU",
-				"usedCpu": "Ran on CPU"
+				"failed": "Background removal failed. Try another image or reload the page."
 			},
 			"steps": [
 				{
@@ -500,8 +496,8 @@
 					"line": "Drop the photo to cut out."
 				},
 				{
-					"title": "Pick a model",
-					"line": "Fast downloads 44 MB and quality 88 MB. Each downloads once, then stays cached."
+					"title": "Remove the background",
+					"line": "The first run downloads the 84 MB model once, then it stays cached."
 				},
 				{
 					"title": "Download",
@@ -514,8 +510,8 @@
 					"a": "Your browser downloads the AI model and the math engine first. Later runs reuse the cache and start at once."
 				},
 				{
-					"q": "Fast or quality?",
-					"a": "Fast is smaller and fine for simple subjects. Quality keeps hair and soft edges cleaner."
+					"q": "Which model does it use?",
+					"a": "ORMBG, an open source Apache-2.0 model that runs on your device. No image is uploaded."
 				},
 				{
 					"q": "Where do my photos go?",

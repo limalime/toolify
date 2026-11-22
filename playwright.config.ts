@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+import { R2_STAGING } from "./tests/e2e/r2";
 
 const PORT = 3100;
 const baseURL = `http://localhost:${PORT}`;
@@ -33,10 +34,18 @@ export default defineConfig({
 			use: { ...devices["Desktop Chrome"] },
 		},
 	],
-	webServer: {
-		command: `npm run dev -- --port ${PORT}`,
-		url: baseURL,
-		reuseExistingServer: true,
-		timeout: 120000,
-	},
+	webServer: [
+		{
+			command: "node tests/e2e/r2-server.mjs",
+			url: `${R2_STAGING}/bg-removal/ormbg/1.0.0/config.json`,
+			reuseExistingServer: true,
+			timeout: 30000,
+		},
+		{
+			command: `npm run dev -- --port ${PORT}`,
+			url: baseURL,
+			reuseExistingServer: true,
+			timeout: 120000,
+		},
+	],
 });

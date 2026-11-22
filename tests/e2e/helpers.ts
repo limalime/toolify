@@ -3,6 +3,7 @@ import type { Locator, Page } from "@playwright/test";
 
 export const FIXTURES = {
 	photo: "tests/fixtures/photo.png",
+	pet: "tests/fixtures/pet.jpg",
 	logo: "tests/fixtures/logo.png",
 	heic: "tests/fixtures/sample.heic",
 	ai: "tests/fixtures/sample.ai",
@@ -130,6 +131,73 @@ export async function imageDims(
 			image.onload = () => {
 				URL.revokeObjectURL(url);
 				resolve({ width: image.naturalWidth, height: image.naturalHeight });
+			};
+			image.onerror = () => reject(new Error("could not decode image"));
+			image.src = url;
+		});
+	}, Array.from(bytes));
+}
+
+export async function imageAlphaStats(
+	page: Page,
+	bytes: Uint8Array,
+): Promise<{
+	zeroPct: number;
+	opaquePct: number;
+	partialPct: number;
+	center: number;
+}> {
+	return page.evaluate((raw) => {
+		const data = Uint8Array.from(raw);
+		const url = URL.createObjectURL(new Blob([data], { type: "image/png" }));
+		return new Promise<{
+			zeroPct: number;
+			opaquePct: number;
+			partialPct: number;
+			center: number;
+		}>((resolve, reject) => {
+			const image = new Image();
+			image.onload = () => {
+				const canvas = document.createElement("canvas");
+				canvas.width = image.naturalWidth;
+				canvas.height = image.naturalHeight;
+				const context = canvas.getContext("2d");
+				if (!context) {
+					reject(new Error("no 2d context"));
+					return;
+				}
+				context.drawImage(image, 0, 0);
+				const px = context.getImageData(0, 0, canvas.width, canvas.height).data;
+				let zero = 0;
+				let opaque = 0;
+				let partial = 0;
+				for (let index = 3; index < px.length; index += 4) {
+					const alpha = px[index];
+					// a soft sigmoid never lands on exactly 255, so treat 250+
+					// as kept and 5- as erased, the middle band is the edge.
+					if (alpha <= 5) {
+						zero++;
+					} else if (alpha >= 250) {
+						opaque++;
+					} else {
+						partial++;
+					}
+				}
+				const total = px.length / 4;
+				const center =
+					px[
+						(Math.floor(canvas.height / 2) * canvas.width +
+							Math.floor(canvas.width / 2)) *
+							4 +
+							3
+					];
+				URL.revokeObjectURL(url);
+				resolve({
+					zeroPct: (zero / total) * 100,
+					opaquePct: (opaque / total) * 100,
+					partialPct: (partial / total) * 100,
+					center,
+				});
 			};
 			image.onerror = () => reject(new Error("could not decode image"));
 			image.src = url;

@@ -11,13 +11,6 @@ import {
 	ProgressTrack,
 } from "@/components/smoothui/progress";
 import SmoothButton from "@/components/smoothui/smooth-button";
-import {
-	TabsIndicator,
-	TabsList,
-	TabsRoot,
-	TabsTab,
-} from "@/components/smoothui/tabs";
-import { tabActiveClass } from "@/lib/control-classes";
 import { formatBytes } from "@/lib/format";
 import { downloadBytes } from "@/lib/images/download";
 import {
@@ -27,15 +20,12 @@ import {
 	stemOf,
 } from "@/lib/images/formats";
 import { imageWorker } from "@/lib/images/worker-client";
-import { BG_REMOVAL_PUBLIC_PATH } from "@/lib/r2";
-
-type Model = "isnet_quint8" | "isnet_fp16";
+import { BG_REMOVAL_BASE, ORT_WASM_1_31_BASE } from "@/lib/r2";
 
 interface Result {
 	bytes: ArrayBuffer;
 	filename: string;
 	url: string;
-	device: string;
 }
 
 export default function RemoveBackgroundTool() {
@@ -43,7 +33,6 @@ export default function RemoveBackgroundTool() {
 	const tc = useTranslations("common");
 	const te = useTranslations("errors");
 	const [file, setFile] = useState<File | null>(null);
-	const [model, setModel] = useState<Model>("isnet_quint8");
 	const [loading, setLoading] = useState(false);
 	const [running, setRunning] = useState(false);
 	const [progress, setProgress] = useState<{
@@ -53,7 +42,7 @@ export default function RemoveBackgroundTool() {
 	} | null>(null);
 	const [error, setError] = useState<string | null>(null);
 	const [result, setResult] = useState<Result | null>(null);
-	const [ranModels, setRanModels] = useState<Model[]>([]);
+	const [ranOnce, setRanOnce] = useState(false);
 	const bytes = useRef<ArrayBuffer | null>(null);
 	const mime = useRef("image/png");
 	const urls = useRef<string[]>([]);
@@ -126,14 +115,12 @@ export default function RemoveBackgroundTool() {
 		setProgress({ stage: "download", current: 0, total: 1 });
 		try {
 			const worker = await imageWorker();
-			const gpu = "gpu" in globalThis.navigator;
 			const encoded = await worker.removeBackgroundImage(
 				bytes.current,
 				mime.current,
 				{
-					publicPath: BG_REMOVAL_PUBLIC_PATH,
-					model,
-					device: gpu ? "gpu" : "cpu",
+					modelsBase: BG_REMOVAL_BASE,
+					wasmBase: ORT_WASM_1_31_BASE,
 				},
 				Comlink.proxy((stage: string, current: number, total: number) => {
 					setProgress({ stage, current, total });
@@ -144,18 +131,13 @@ export default function RemoveBackgroundTool() {
 				new Blob([encoded.bytes], { type: encoded.mime }),
 			);
 			urls.current.push(url);
-			setResult({
-				bytes: encoded.bytes,
-				filename,
-				url,
-				device: gpu ? t("options.usedWebgpu") : t("options.usedCpu"),
-			});
-			setRanModels((ran) => (ran.includes(model) ? ran : [...ran, model]));
+			setResult({ bytes: encoded.bytes, filename, url });
+			setRanOnce(true);
 		} catch (unknown) {
 			if (process.env.NODE_ENV !== "production") {
 				console.error(unknown);
 			}
-			setError(te("unreadableFile"));
+			setError(t("options.failed"));
 		} finally {
 			setRunning(false);
 			setProgress(null);
@@ -190,9 +172,6 @@ export default function RemoveBackgroundTool() {
 							className="h-auto w-full rounded-lg"
 							src={result.url}
 						/>
-						<p className="font-display text-small text-text-2">
-							{result.device}
-						</p>
 						<SmoothButton
 							onClick={() =>
 								downloadBytes(result.bytes, "image/png", result.filename)
@@ -206,26 +185,7 @@ export default function RemoveBackgroundTool() {
 				) : null}
 			</div>
 			<div className="flex h-fit flex-col gap-4 rounded-lg border border-border bg-surface p-5 md:p-6">
-				<div className="flex flex-col gap-2">
-					<span className="text-small font-medium" id="bg-model-label">
-						{t("options.model")}
-					</span>
-					<TabsRoot
-						defaultValue="isnet_quint8"
-						onValueChange={(value) => setModel(value as Model)}
-					>
-						<TabsList aria-labelledby="bg-model-label">
-							<TabsTab className={tabActiveClass} value="isnet_quint8">
-								{t("options.fast")}
-							</TabsTab>
-							<TabsTab className={tabActiveClass} value="isnet_fp16">
-								{t("options.quality")}
-							</TabsTab>
-							<TabsIndicator />
-						</TabsList>
-					</TabsRoot>
-				</div>
-				{ranModels.includes(model) && !running ? (
+				{ranOnce && !running ? (
 					<p className="text-small text-text-2" data-testid="bg-cached">
 						{t("options.cached")}
 					</p>
