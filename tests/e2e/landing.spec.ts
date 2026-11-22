@@ -52,6 +52,7 @@ test("every card links to a page that answers 200", async ({
 	page,
 	request,
 }) => {
+	test.setTimeout(180_000);
 	const cards = page.locator("[data-tool-card]");
 	const count = await cards.count();
 	for (let index = 0; index < count; index++) {

@@ -2032,6 +2032,192 @@
 					"a": "L'affichage arrondit à quatre décimales. Le calcul lui-même garde toute sa précision."
 				}
 			]
+		},
+		"pdf-merge-split": {
+			"name": "Fusionner et diviser un PDF",
+			"tagline": "Assemblez des PDF dans votre ordre ou découpez-en un par plages de pages.",
+			"title": "Outil gratuit pour fusionner et diviser un PDF, sans envoi",
+			"description": "Fusionnez plusieurs PDF en un document ou divisez un PDF par plages de pages. Glissez pour réordonner, choisissez les pages et téléchargez. Tout reste dans votre navigateur.",
+			"h1": "Fusionner et diviser un PDF gratuitement",
+			"sub": "Réunissez plusieurs PDF en un seul ou découpez un PDF par plages de pages. Rien n'est envoyé.",
+			"options": {
+				"modeMerge": "Fusionner",
+				"modeSplit": "Diviser",
+				"mergeHint": "Déposez des PDF ici ou",
+				"splitHint": "Déposez un PDF ici ou",
+				"reorder": "Glissez pour réordonner. L'ordre de la liste devient l'ordre des pages.",
+				"moveUp": "Monter",
+				"moveDown": "Descendre",
+				"remove": "Retirer {name}",
+				"clear": "Tout retirer",
+				"mergeAction": "Fusionner les PDF",
+				"splitAction": "Diviser le PDF",
+				"needTwo": "Ajoutez au moins deux PDF pour fusionner.",
+				"needOne": "Ajoutez un PDF pour diviser.",
+				"notPdf": "Seuls les fichiers PDF fonctionnent ici. {name} a été ignoré.",
+				"tooLarge": "{name} dépasse la limite de {limit}.",
+				"merging": "Fusion de {done} sur {total} fichiers.",
+				"splitting": "Création de {done} sur {total} fichiers.",
+				"merged": "PDF fusionné prêt",
+				"splitReady": "PDF divisés prêts",
+				"resultMeta": "{count, plural, one {# page} other {# pages}}, {size}",
+				"pages": "{count, plural, one {# page} other {# pages}}",
+				"ranges": "Plages de pages",
+				"rangesHint": "Chaque groupe séparé par une virgule devient un PDF. Laissez vide pour diviser chaque page.",
+				"rangesPlaceholder": "1-3, 4-6",
+				"pageCount": "Ce PDF contient {count, plural, one {# page} other {# pages}}.",
+				"reading": "Lecture du PDF.",
+				"outputCount": "{count, plural, one {# fichier de sortie} other {# fichiers de sortie}}",
+				"invalidRange": "Utilisez des numéros comme 1-3, 5 ou 2-. Les pages doivent être entre 1 et {max}.",
+				"descendingRange": "Une plage ne peut pas aller à l'envers. Vérifiez la page de début et de fin.",
+				"tooManyRanges": "Cela dépasse {max} fichiers de sortie. Utilisez moins de groupes.",
+				"unreadable": "Impossible de lire {name}. Le fichier est peut-être corrompu ou protégé par un mot de passe.",
+				"engineFailed": "Le moteur PDF n'a pas pu démarrer. Vérifiez votre connexion et réessayez.",
+				"downloadAll": "Tout télécharger en ZIP",
+				"zipName": "split-pdfs.zip",
+				"fileNote": "Fusionné dans votre navigateur. Rien n'a été envoyé."
+			},
+			"steps": [
+				{
+					"title": "Choisissez un mode",
+					"line": "Fusionner assemble les fichiers, diviser découpe un fichier en plages."
+				},
+				{
+					"title": "Ajoutez des PDF et réglez l'ordre",
+					"line": "Glissez les lignes ou utilisez les boutons. Le mode diviser demande des plages."
+				},
+				{
+					"title": "Lancez et téléchargez",
+					"line": "Le résultat est créé sur votre appareil, prêt à être enregistré."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Mes PDF sont-ils envoyés ?",
+					"a": "Non. Les fichiers sont lus dans un worker dans votre navigateur et le PDF fusionné ou divisé y est aussi créé."
+				},
+				{
+					"q": "Comment fonctionnent les plages de pages ?",
+					"a": "Chaque groupe séparé par une virgule donne un PDF. 1-3, 5 produit deux fichiers, un avec les pages 1 à 3 et un avec la page 5. Laissez le champ vide pour diviser chaque page."
+				},
+				{
+					"q": "Peut-il ouvrir un PDF protégé par mot de passe ?",
+					"a": "Non. Les fichiers protégés ne peuvent pas être lus. Retirez le mot de passe dans un lecteur PDF, puis réessayez."
+				}
+			]
+		},
+		"unit-converter": {
+			"name": "Convertisseur d'unités",
+			"tagline": "Longueur, poids, température, volume, surface, vitesse, temps et taille de données.",
+			"title": "Convertisseur d'unités gratuit pour longueur, poids et plus",
+			"description": "Convertissez longueur, poids, température, volume, surface, vitesse, temps et taille de données sur une seule page. Saisissez une valeur et voyez toutes les unités, dans votre navigateur.",
+			"h1": "Convertisseur d'unités gratuit",
+			"sub": "Choisissez une catégorie, saisissez une valeur et comparez toutes les unités de la liste.",
+			"options": {
+				"category": "Catégorie",
+				"length": "Longueur",
+				"weight": "Poids",
+				"temperature": "Température",
+				"volume": "Volume",
+				"area": "Surface",
+				"speed": "Vitesse",
+				"time": "Temps",
+				"data": "Taille de données",
+				"value": "Valeur",
+				"from": "De",
+				"to": "Vers",
+				"swap": "Inverser les unités",
+				"result": "Résultat",
+				"allUnits": "Toutes les unités de {category}",
+				"unit": "Unité",
+				"invalid": "Saisissez un nombre à convertir.",
+				"copy": "Copier le résultat",
+				"copied": "Copié",
+				"copyFailed": "Copie impossible. Sélectionnez le résultat et copiez-le à la main.",
+				"note": "Les conversions se font dans votre navigateur. Rien n'est envoyé.",
+				"averageNote": "Le mois et l'année utilisent la durée moyenne du calendrier grégorien."
+			},
+			"steps": [
+				{
+					"title": "Choisissez une catégorie",
+					"line": "Longueur, poids, température, volume, surface, vitesse, temps ou taille de données."
+				},
+				{
+					"title": "Saisissez une valeur",
+					"line": "Choisissez les unités des deux côtés ou appuyez sur inverser."
+				},
+				{
+					"title": "Lisez le résultat",
+					"line": "Le tableau plus bas convertit la même valeur dans toutes les unités."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Quelle est la précision des conversions ?",
+					"a": "La plupart des facteurs sont des définitions exactes, comme 1 pouce = 2,54 cm. Le mois et l'année utilisent la durée moyenne grégorienne, donc les mois du calendrier varient d'un jour ou deux."
+				},
+				{
+					"q": "Quelle différence entre KB et KiB ?",
+					"a": "KB est décimal, 1000 octets. KiB est binaire, 1024 octets. Les fabricants de disques utilisent le décimal, les systèmes d'exploitation affichent souvent le binaire."
+				},
+				{
+					"q": "Ma valeur est-elle envoyée quelque part ?",
+					"a": "Non. La conversion se fait dans votre navigateur et rien n'est envoyé."
+				}
+			]
+		},
+		"color-palette": {
+			"name": "Générateur de palettes de couleurs",
+			"tagline": "Créez une palette harmonieuse à partir d'une couleur de base.",
+			"title": "Générateur de palettes de couleurs gratuit avec modes d'harmonie",
+			"description": "Choisissez une couleur de base et générez des palettes analogues, complémentaires ou triadiques. Copiez chaque code hex ou exportez la palette en CSS ou JSON, dans votre navigateur.",
+			"h1": "Générateur de palettes de couleurs gratuit",
+			"sub": "Partez d'une couleur. Obtenez une palette qui va vraiment ensemble.",
+			"options": {
+				"base": "Couleur de base",
+				"hex": "Code hex",
+				"invalidHex": "Saisissez une couleur hex comme #1b56fd.",
+				"harmony": "Harmonie",
+				"analogous": "Analogue",
+				"complementary": "Complémentaire",
+				"triadic": "Triadique",
+				"palette": "Palette",
+				"copy": "Copier {hex}",
+				"copyAll": "Tout copier",
+				"copied": "Copié",
+				"copyFailed": "Copie impossible. Sélectionnez le code hex et copiez-le à la main.",
+				"exportCss": "Exporter en CSS",
+				"exportJson": "Exporter en JSON",
+				"note": "Généré dans votre navigateur. Rien n'est envoyé."
+			},
+			"steps": [
+				{
+					"title": "Choisissez une couleur de base",
+					"line": "Saisissez un code hex ou utilisez le sélecteur de couleur."
+				},
+				{
+					"title": "Choisissez une harmonie",
+					"line": "Analogue reste proche, complémentaire passe à l'opposé, triadique se répartit également."
+				},
+				{
+					"title": "Copiez ou exportez",
+					"line": "Copiez un hex, copiez l'ensemble ou téléchargez un fichier CSS ou JSON."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Que signifient les modes d'harmonie ?",
+					"a": "Analogue utilise des couleurs voisines sur le cercle. Complémentaire utilise la couleur opposée. Triadique utilise trois couleurs espacées de 120 degrés."
+				},
+				{
+					"q": "Puis-je utiliser une palette générée dans un projet ?",
+					"a": "Oui. Une palette n'est qu'un ensemble de valeurs de couleur. Utilisez-la pour une marque, une présentation ou un site."
+				},
+				{
+					"q": "Où la palette est-elle enregistrée ?",
+					"a": "Nulle part. Les couleurs restent sur cette page jusqu'à sa fermeture, exportez ce que vous voulez garder."
+				}
+			]
 		}
 	}
 }

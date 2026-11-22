@@ -2032,6 +2032,192 @@
 					"a": "Display rounds to four decimals. The calculation itself keeps full precision."
 				}
 			]
+		},
+		"pdf-merge-split": {
+			"name": "PDF Merge and Split",
+			"tagline": "Combine PDFs in your own order, or cut one into page ranges.",
+			"title": "Free PDF Merge and Split Tool, Nothing Uploaded",
+			"description": "Merge several PDF files into one document or split a PDF by page range. Drag to reorder, choose the pages, and download. Every file stays in your browser.",
+			"h1": "Free PDF Merge and Split",
+			"sub": "Join several PDFs into one, or pull a single PDF apart by page range. Nothing is uploaded.",
+			"options": {
+				"modeMerge": "Merge",
+				"modeSplit": "Split",
+				"mergeHint": "Drop PDFs here or",
+				"splitHint": "Drop one PDF here or",
+				"reorder": "Drag to reorder. The list order becomes the page order.",
+				"moveUp": "Move up",
+				"moveDown": "Move down",
+				"remove": "Remove {name}",
+				"clear": "Clear all",
+				"mergeAction": "Merge PDFs",
+				"splitAction": "Split PDF",
+				"needTwo": "Add at least two PDF files to merge.",
+				"needOne": "Add one PDF file to split.",
+				"notPdf": "Only PDF files work here. {name} was skipped.",
+				"tooLarge": "{name} is larger than {limit}.",
+				"merging": "Merging {done} of {total} files.",
+				"splitting": "Writing {done} of {total} files.",
+				"merged": "Merged PDF ready",
+				"splitReady": "Split PDFs ready",
+				"resultMeta": "{count, plural, one {# page} other {# pages}}, {size}",
+				"pages": "{count, plural, one {# page} other {# pages}}",
+				"ranges": "Page ranges",
+				"rangesHint": "Each comma group becomes one PDF. Leave it empty to split every page.",
+				"rangesPlaceholder": "1-3, 4-6",
+				"pageCount": "This PDF has {count, plural, one {# page} other {# pages}}.",
+				"reading": "Reading the PDF.",
+				"outputCount": "{count, plural, one {# output file} other {# output files}}",
+				"invalidRange": "Use page numbers like 1-3, 5, or 2-. Pages must fall between 1 and {max}.",
+				"descendingRange": "A range cannot run backwards. Check the start and end page.",
+				"tooManyRanges": "That is more than {max} output files. Use fewer groups.",
+				"unreadable": "Could not read {name}. It may be corrupted or password protected.",
+				"engineFailed": "The PDF engine could not start. Check your connection and try again.",
+				"downloadAll": "Download all as ZIP",
+				"zipName": "split-pdfs.zip",
+				"fileNote": "Merged in your browser. Nothing was uploaded."
+			},
+			"steps": [
+				{
+					"title": "Choose a mode",
+					"line": "Merge joins files, split cuts one file into page ranges."
+				},
+				{
+					"title": "Add PDFs and set the order",
+					"line": "Drag the rows or use the move buttons. Split asks for ranges instead."
+				},
+				{
+					"title": "Run and download",
+					"line": "The result is built on your device and ready to save."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Are my PDFs uploaded?",
+					"a": "No. The files are read in a worker inside your browser and the merged or split PDF is built there too."
+				},
+				{
+					"q": "How do page ranges work?",
+					"a": "Each comma group becomes one PDF. 1-3, 5 gives you two files, one with pages 1 to 3 and one with page 5. Leave the field empty to split every page."
+				},
+				{
+					"q": "Can it open password protected PDFs?",
+					"a": "No. Password protected files cannot be read. Remove the password in a PDF reader, then try again."
+				}
+			]
+		},
+		"unit-converter": {
+			"name": "Unit Converter",
+			"tagline": "Length, weight, temperature, volume, area, speed, time, and data size.",
+			"title": "Free Unit Converter for Length, Weight, and More",
+			"description": "Convert length, weight, temperature, volume, area, speed, time, and data size in one page. Type a value and see every unit at once, right in your browser.",
+			"h1": "Free Unit Converter",
+			"sub": "Pick a category, enter a value, and compare every unit in the list.",
+			"options": {
+				"category": "Category",
+				"length": "Length",
+				"weight": "Weight",
+				"temperature": "Temperature",
+				"volume": "Volume",
+				"area": "Area",
+				"speed": "Speed",
+				"time": "Time",
+				"data": "Data size",
+				"value": "Value",
+				"from": "From",
+				"to": "To",
+				"swap": "Swap units",
+				"result": "Result",
+				"allUnits": "All {category} units",
+				"unit": "Unit",
+				"invalid": "Enter a number to convert.",
+				"copy": "Copy result",
+				"copied": "Copied",
+				"copyFailed": "Could not copy. Select the result and copy it manually.",
+				"note": "Conversions run in your browser. Nothing is sent anywhere.",
+				"averageNote": "Month and year use the average Gregorian length."
+			},
+			"steps": [
+				{
+					"title": "Pick a category",
+					"line": "Length, weight, temperature, volume, area, speed, time, or data size."
+				},
+				{
+					"title": "Enter a value",
+					"line": "Choose the units on both sides, or press swap."
+				},
+				{
+					"title": "Read the result",
+					"line": "The table below converts the same value into every unit."
+				}
+			],
+			"faqs": [
+				{
+					"q": "How exact are the conversions?",
+					"a": "Most factors are exact definitions, such as 1 inch = 2.54 cm. Month and year use the average Gregorian length, so calendar months differ by a day or two."
+				},
+				{
+					"q": "What is the difference between KB and KiB?",
+					"a": "KB is decimal, 1000 bytes. KiB is binary, 1024 bytes. Drive makers use decimal, operating systems often show binary."
+				},
+				{
+					"q": "Is my value sent anywhere?",
+					"a": "No. The conversion runs in your browser and nothing is uploaded."
+				}
+			]
+		},
+		"color-palette": {
+			"name": "Color Palette Generator",
+			"tagline": "Build a matching palette from one base color.",
+			"title": "Free Color Palette Generator With Harmony Modes",
+			"description": "Pick a base color and generate analogous, complementary, or triadic palettes. Copy every hex code or export the palette as CSS or JSON, all in your browser.",
+			"h1": "Free Color Palette Generator",
+			"sub": "Start with one color. Get a palette that belongs together.",
+			"options": {
+				"base": "Base color",
+				"hex": "Hex code",
+				"invalidHex": "Enter a hex color like #1b56fd.",
+				"harmony": "Harmony",
+				"analogous": "Analogous",
+				"complementary": "Complementary",
+				"triadic": "Triadic",
+				"palette": "Palette",
+				"copy": "Copy {hex}",
+				"copyAll": "Copy all",
+				"copied": "Copied",
+				"copyFailed": "Could not copy. Select the hex code and copy it manually.",
+				"exportCss": "Export CSS",
+				"exportJson": "Export JSON",
+				"note": "Generated in your browser. Nothing is uploaded."
+			},
+			"steps": [
+				{
+					"title": "Pick a base color",
+					"line": "Type a hex code or use the color picker."
+				},
+				{
+					"title": "Choose a harmony",
+					"line": "Analogous stays close, complementary goes opposite, triadic spreads evenly."
+				},
+				{
+					"title": "Copy or export",
+					"line": "Copy one hex, copy the set, or download a CSS or JSON file."
+				}
+			],
+			"faqs": [
+				{
+					"q": "What do the harmony modes mean?",
+					"a": "Analogous uses colors next to each other on the wheel. Complementary uses the opposite color. Triadic uses three colors spaced 120 degrees apart."
+				},
+				{
+					"q": "Can I use a generated palette in a project?",
+					"a": "Yes. A palette is only a set of color values. Use it for a brand, a slide, or a website."
+				},
+				{
+					"q": "Where is the palette saved?",
+					"a": "It is not saved. The colors live in this page until you close it, so export anything you want to keep."
+				}
+			]
 		}
 	}
 }

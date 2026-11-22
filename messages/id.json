@@ -2032,6 +2032,192 @@
 					"a": "Tampilan dibulatkan sampai empat desimal. Perhitungannya sendiri tetap presisi penuh."
 				}
 			]
+		},
+		"pdf-merge-split": {
+			"name": "Gabung dan Pisah PDF",
+			"tagline": "Gabungkan PDF sesuai urutanmu, atau potong menjadi rentang halaman.",
+			"title": "Alat Gabung dan Pisah PDF Gratis, Tanpa Unggah",
+			"description": "Gabungkan beberapa file PDF menjadi satu dokumen atau pisahkan PDF berdasarkan rentang halaman. Geser untuk mengatur urutan, pilih halaman, lalu unduh. Semua file tetap di browser kamu.",
+			"h1": "Gabung dan Pisah PDF Gratis",
+			"sub": "Satukan beberapa PDF menjadi satu, atau potong satu PDF berdasarkan rentang halaman. Tidak ada yang diunggah.",
+			"options": {
+				"modeMerge": "Gabung",
+				"modeSplit": "Pisah",
+				"mergeHint": "Letakkan PDF di sini atau",
+				"splitHint": "Letakkan satu PDF di sini atau",
+				"reorder": "Geser untuk mengatur ulang. Urutan daftar menjadi urutan halaman.",
+				"moveUp": "Naikkan",
+				"moveDown": "Turunkan",
+				"remove": "Hapus {name}",
+				"clear": "Hapus semua",
+				"mergeAction": "Gabungkan PDF",
+				"splitAction": "Pisahkan PDF",
+				"needTwo": "Tambahkan minimal dua file PDF untuk digabung.",
+				"needOne": "Tambahkan satu file PDF untuk dipisah.",
+				"notPdf": "Hanya file PDF yang bisa dipakai. {name} dilewati.",
+				"tooLarge": "{name} lebih besar dari {limit}.",
+				"merging": "Menggabungkan {done} dari {total} file.",
+				"splitting": "Menulis {done} dari {total} file.",
+				"merged": "PDF gabungan siap",
+				"splitReady": "PDF hasil pisah siap",
+				"resultMeta": "{count, plural, other {# halaman}}, {size}",
+				"pages": "{count, plural, other {# halaman}}",
+				"ranges": "Rentang halaman",
+				"rangesHint": "Setiap kelompok dipisah koma menjadi satu PDF. Kosongkan untuk memisah setiap halaman.",
+				"rangesPlaceholder": "1-3, 4-6",
+				"pageCount": "PDF ini memiliki {count, plural, other {# halaman}}.",
+				"reading": "Membaca PDF.",
+				"outputCount": "{count, plural, other {# file hasil}}",
+				"invalidRange": "Gunakan nomor halaman seperti 1-3, 5, atau 2-. Halaman harus antara 1 dan {max}.",
+				"descendingRange": "Rentang tidak boleh mundur. Periksa halaman awal dan akhir.",
+				"tooManyRanges": "Itu lebih dari {max} file hasil. Gunakan lebih sedikit kelompok.",
+				"unreadable": "Tidak bisa membaca {name}. File mungkin rusak atau dilindungi kata sandi.",
+				"engineFailed": "Mesin PDF tidak bisa dimulai. Periksa koneksi lalu coba lagi.",
+				"downloadAll": "Unduh semua sebagai ZIP",
+				"zipName": "split-pdfs.zip",
+				"fileNote": "Digabung di browser kamu. Tidak ada yang diunggah."
+			},
+			"steps": [
+				{
+					"title": "Pilih mode",
+					"line": "Gabung menyatukan file, pisah memotong satu file menjadi rentang halaman."
+				},
+				{
+					"title": "Tambahkan PDF dan atur urutan",
+					"line": "Geser baris atau pakai tombol naik turun. Mode pisah meminta rentang halaman."
+				},
+				{
+					"title": "Jalankan dan unduh",
+					"line": "Hasil dibuat di perangkatmu dan siap disimpan."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah PDF saya diunggah?",
+					"a": "Tidak. File dibaca di worker dalam browser kamu dan PDF gabungan atau hasil pisah juga dibuat di sana."
+				},
+				{
+					"q": "Bagaimana rentang halaman bekerja?",
+					"a": "Setiap kelompok dipisah koma menjadi satu PDF. 1-3, 5 menghasilkan dua file, satu berisi halaman 1 sampai 3 dan satu berisi halaman 5. Kosongkan kolom untuk memisah setiap halaman."
+				},
+				{
+					"q": "Bisakah membuka PDF yang dilindungi kata sandi?",
+					"a": "Tidak. File yang dilindungi kata sandi tidak bisa dibaca. Hapus kata sandinya di pembaca PDF, lalu coba lagi."
+				}
+			]
+		},
+		"unit-converter": {
+			"name": "Konverter Satuan",
+			"tagline": "Panjang, berat, suhu, volume, luas, kecepatan, waktu, dan ukuran data.",
+			"title": "Konverter Satuan Gratis untuk Panjang, Berat, dan Lainnya",
+			"description": "Konversi panjang, berat, suhu, volume, luas, kecepatan, waktu, dan ukuran data dalam satu halaman. Ketik satu nilai dan lihat semua satuan sekaligus, langsung di browser kamu.",
+			"h1": "Konverter Satuan Gratis",
+			"sub": "Pilih kategori, masukkan nilai, dan bandingkan semua satuan dalam daftar.",
+			"options": {
+				"category": "Kategori",
+				"length": "Panjang",
+				"weight": "Berat",
+				"temperature": "Suhu",
+				"volume": "Volume",
+				"area": "Luas",
+				"speed": "Kecepatan",
+				"time": "Waktu",
+				"data": "Ukuran data",
+				"value": "Nilai",
+				"from": "Dari",
+				"to": "Ke",
+				"swap": "Tukar satuan",
+				"result": "Hasil",
+				"allUnits": "Semua satuan {category}",
+				"unit": "Satuan",
+				"invalid": "Masukkan angka untuk dikonversi.",
+				"copy": "Salin hasil",
+				"copied": "Tersalin",
+				"copyFailed": "Tidak bisa menyalin. Pilih hasilnya lalu salin secara manual.",
+				"note": "Konversi berjalan di browser kamu. Tidak ada yang dikirim ke mana pun.",
+				"averageNote": "Bulan dan tahun memakai panjang rata-rata kalender Gregorian."
+			},
+			"steps": [
+				{
+					"title": "Pilih kategori",
+					"line": "Panjang, berat, suhu, volume, luas, kecepatan, waktu, atau ukuran data."
+				},
+				{
+					"title": "Masukkan nilai",
+					"line": "Pilih satuan di kedua sisi, atau tekan tukar."
+				},
+				{
+					"title": "Baca hasilnya",
+					"line": "Tabel di bawah mengonversi nilai yang sama ke setiap satuan."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Seberapa tepat konversinya?",
+					"a": "Sebagian besar faktor adalah definisi tepat, misalnya 1 inci = 2,54 cm. Bulan dan tahun memakai panjang rata-rata Gregorian, jadi bulan kalender bisa berbeda satu atau dua hari."
+				},
+				{
+					"q": "Apa bedanya KB dan KiB?",
+					"a": "KB desimal, 1000 byte. KiB biner, 1024 byte. Produsen drive memakai desimal, sistem operasi sering menampilkan biner."
+				},
+				{
+					"q": "Apakah nilai saya dikirim ke mana pun?",
+					"a": "Tidak. Konversi berjalan di browser kamu dan tidak ada yang diunggah."
+				}
+			]
+		},
+		"color-palette": {
+			"name": "Pembuat Palet Warna",
+			"tagline": "Buat palet yang serasi dari satu warna dasar.",
+			"title": "Pembuat Palet Warna Gratis dengan Mode Harmoni",
+			"description": "Pilih warna dasar dan buat palet analog, komplementer, atau triadik. Salin setiap kode hex atau ekspor palet sebagai CSS atau JSON, semuanya di browser kamu.",
+			"h1": "Pembuat Palet Warna Gratis",
+			"sub": "Mulai dari satu warna. Dapatkan palet yang benar-benar cocok.",
+			"options": {
+				"base": "Warna dasar",
+				"hex": "Kode hex",
+				"invalidHex": "Masukkan warna hex seperti #1b56fd.",
+				"harmony": "Harmoni",
+				"analogous": "Analog",
+				"complementary": "Komplementer",
+				"triadic": "Triadik",
+				"palette": "Palet",
+				"copy": "Salin {hex}",
+				"copyAll": "Salin semua",
+				"copied": "Tersalin",
+				"copyFailed": "Tidak bisa menyalin. Pilih kode hex lalu salin secara manual.",
+				"exportCss": "Ekspor CSS",
+				"exportJson": "Ekspor JSON",
+				"note": "Dibuat di browser kamu. Tidak ada yang diunggah."
+			},
+			"steps": [
+				{
+					"title": "Pilih warna dasar",
+					"line": "Ketik kode hex atau pakai pemilih warna."
+				},
+				{
+					"title": "Pilih harmoni",
+					"line": "Analog tetap berdekatan, komplementer berlawanan, triadik tersebar merata."
+				},
+				{
+					"title": "Salin atau ekspor",
+					"line": "Salin satu hex, salin semuanya, atau unduh file CSS atau JSON."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apa arti mode harmoni?",
+					"a": "Analog memakai warna yang berdekatan di roda warna. Komplementer memakai warna berseberangan. Triadik memakai tiga warna dengan jarak 120 derajat."
+				},
+				{
+					"q": "Bisakah palet buatan ini dipakai di proyek?",
+					"a": "Bisa. Palet hanyalah kumpulan nilai warna. Pakai untuk merek, presentasi, atau situs web."
+				},
+				{
+					"q": "Di mana palet disimpan?",
+					"a": "Tidak disimpan. Warna hanya ada di halaman ini sampai kamu menutupnya, jadi ekspor jika ingin menyimpannya."
+				}
+			]
 		}
 	}
 }

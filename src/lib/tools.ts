@@ -50,6 +50,9 @@ export const TOOLS: ToolEntry[] = [
 	{ slug: "compound-interest", category: "finance", icon: "growth" },
 	{ slug: "loan-calculator", category: "finance", icon: "loan" },
 	{ slug: "percentage-calculator", category: "finance", icon: "percent" },
+	{ slug: "pdf-merge-split", category: "pdfUtilities", icon: "pdf" },
+	{ slug: "unit-converter", category: "pdfUtilities", icon: "ruler" },
+	{ slug: "color-palette", category: "pdfUtilities", icon: "palette" },
 ];
 
 export const CATEGORY_ORDER: CategoryKey[] = [

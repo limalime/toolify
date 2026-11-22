@@ -15,6 +15,7 @@ import {
 	Eraser,
 	FileDigit,
 	FileImage,
+	FileText,
 	FileVideo,
 	Frame,
 	Gauge,
@@ -27,8 +28,10 @@ import {
 	Maximize2,
 	Minimize2,
 	NotebookPen,
+	Palette,
 	Percent,
 	QrCode,
+	Ruler,
 	Scaling,
 	Scissors,
 	Shrink,
@@ -84,6 +87,9 @@ export const TOOL_ICONS: Record<string, LucideIcon> = {
 	growth: TrendingUp,
 	loan: Landmark,
 	percent: Percent,
+	pdf: FileText,
+	ruler: Ruler,
+	palette: Palette,
 };
 
 export default function ToolIcon({

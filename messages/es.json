@@ -2032,6 +2032,192 @@
 					"a": "La pantalla redondea a cuatro decimales. El cálculo mantiene toda la precisión."
 				}
 			]
+		},
+		"pdf-merge-split": {
+			"name": "Unir y dividir PDF",
+			"tagline": "Combina PDF en tu orden o corta uno en rangos de páginas.",
+			"title": "Herramienta gratuita para unir y dividir PDF, sin subir archivos",
+			"description": "Une varios archivos PDF en un documento o divide un PDF por rangos de páginas. Arrastra para ordenar, elige las páginas y descarga. Todo se queda en tu navegador.",
+			"h1": "Unir y dividir PDF gratis",
+			"sub": "Une varios PDF en uno o separa un PDF por rangos de páginas. No se sube nada.",
+			"options": {
+				"modeMerge": "Unir",
+				"modeSplit": "Dividir",
+				"mergeHint": "Suelta PDF aquí o",
+				"splitHint": "Suelta un PDF aquí o",
+				"reorder": "Arrastra para ordenar. El orden de la lista será el orden de las páginas.",
+				"moveUp": "Subir",
+				"moveDown": "Bajar",
+				"remove": "Quitar {name}",
+				"clear": "Quitar todo",
+				"mergeAction": "Unir PDF",
+				"splitAction": "Dividir PDF",
+				"needTwo": "Añade al menos dos archivos PDF para unir.",
+				"needOne": "Añade un archivo PDF para dividir.",
+				"notPdf": "Aquí solo funcionan archivos PDF. Se omitió {name}.",
+				"tooLarge": "{name} supera el límite de {limit}.",
+				"merging": "Uniendo {done} de {total} archivos.",
+				"splitting": "Creando {done} de {total} archivos.",
+				"merged": "PDF unido listo",
+				"splitReady": "PDF divididos listos",
+				"resultMeta": "{count, plural, one {# página} other {# páginas}}, {size}",
+				"pages": "{count, plural, one {# página} other {# páginas}}",
+				"ranges": "Rangos de páginas",
+				"rangesHint": "Cada grupo separado por comas será un PDF. Déjalo vacío para dividir todas las páginas.",
+				"rangesPlaceholder": "1-3, 4-6",
+				"pageCount": "Este PDF tiene {count, plural, one {# página} other {# páginas}}.",
+				"reading": "Leyendo el PDF.",
+				"outputCount": "{count, plural, one {# archivo de salida} other {# archivos de salida}}",
+				"invalidRange": "Usa números de página como 1-3, 5 o 2-. Las páginas deben estar entre 1 y {max}.",
+				"descendingRange": "Un rango no puede ir hacia atrás. Revisa la página inicial y la final.",
+				"tooManyRanges": "Son más de {max} archivos de salida. Usa menos grupos.",
+				"unreadable": "No se pudo leer {name}. Puede estar dañado o protegido con contraseña.",
+				"engineFailed": "El motor de PDF no pudo iniciarse. Revisa tu conexión e inténtalo de nuevo.",
+				"downloadAll": "Descargar todo en ZIP",
+				"zipName": "split-pdfs.zip",
+				"fileNote": "Unido en tu navegador. No se subió nada."
+			},
+			"steps": [
+				{
+					"title": "Elige un modo",
+					"line": "Unir junta archivos, dividir corta uno en rangos de páginas."
+				},
+				{
+					"title": "Añade PDF y ordena",
+					"line": "Arrastra las filas o usa los botones. Dividir pide rangos en su lugar."
+				},
+				{
+					"title": "Ejecuta y descarga",
+					"line": "El resultado se crea en tu dispositivo y queda listo para guardar."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Se suben mis PDF?",
+					"a": "No. Los archivos se leen en un worker dentro de tu navegador y el PDF unido o dividido también se crea allí."
+				},
+				{
+					"q": "¿Cómo funcionan los rangos de páginas?",
+					"a": "Cada grupo separado por comas se convierte en un PDF. 1-3, 5 genera dos archivos, uno con las páginas 1 a 3 y otro con la página 5. Deja el campo vacío para dividir todas las páginas."
+				},
+				{
+					"q": "¿Puede abrir PDF protegidos con contraseña?",
+					"a": "No. Los archivos protegidos con contraseña no se pueden leer. Quita la contraseña en un lector de PDF y vuelve a intentarlo."
+				}
+			]
+		},
+		"unit-converter": {
+			"name": "Conversor de unidades",
+			"tagline": "Longitud, peso, temperatura, volumen, área, velocidad, tiempo y tamaño de datos.",
+			"title": "Conversor de unidades gratis para longitud, peso y más",
+			"description": "Convierte longitud, peso, temperatura, volumen, área, velocidad, tiempo y tamaño de datos en una sola página. Escribe un valor y mira todas las unidades a la vez, en tu navegador.",
+			"h1": "Conversor de unidades gratis",
+			"sub": "Elige una categoría, escribe un valor y compara todas las unidades de la lista.",
+			"options": {
+				"category": "Categoría",
+				"length": "Longitud",
+				"weight": "Peso",
+				"temperature": "Temperatura",
+				"volume": "Volumen",
+				"area": "Área",
+				"speed": "Velocidad",
+				"time": "Tiempo",
+				"data": "Tamaño de datos",
+				"value": "Valor",
+				"from": "De",
+				"to": "A",
+				"swap": "Intercambiar unidades",
+				"result": "Resultado",
+				"allUnits": "Todas las unidades de {category}",
+				"unit": "Unidad",
+				"invalid": "Escribe un número para convertir.",
+				"copy": "Copiar resultado",
+				"copied": "Copiado",
+				"copyFailed": "No se pudo copiar. Selecciona el resultado y cópialo a mano.",
+				"note": "Las conversiones se hacen en tu navegador. No se envía nada.",
+				"averageNote": "El mes y el año usan la duración media del calendario gregoriano."
+			},
+			"steps": [
+				{
+					"title": "Elige una categoría",
+					"line": "Longitud, peso, temperatura, volumen, área, velocidad, tiempo o tamaño de datos."
+				},
+				{
+					"title": "Escribe un valor",
+					"line": "Elige las unidades en ambos lados o pulsa intercambiar."
+				},
+				{
+					"title": "Lee el resultado",
+					"line": "La tabla de abajo convierte el mismo valor a todas las unidades."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué precisión tienen las conversiones?",
+					"a": "Casi todos los factores son definiciones exactas, como 1 pulgada = 2,54 cm. El mes y el año usan la duración media gregoriana, así que los meses del calendario varían uno o dos días."
+				},
+				{
+					"q": "¿Cuál es la diferencia entre KB y KiB?",
+					"a": "KB es decimal, 1000 bytes. KiB es binario, 1024 bytes. Los fabricantes de discos usan decimal y los sistemas operativos suelen mostrar binario."
+				},
+				{
+					"q": "¿Se envía mi valor a algún sitio?",
+					"a": "No. La conversión se hace en tu navegador y no se sube nada."
+				}
+			]
+		},
+		"color-palette": {
+			"name": "Generador de paletas de color",
+			"tagline": "Crea una paleta que combine a partir de un color base.",
+			"title": "Generador de paletas de color gratis con modos de armonía",
+			"description": "Elige un color base y genera paletas análogas, complementarias o triádicas. Copia cada código hex o exporta la paleta como CSS o JSON, todo en tu navegador.",
+			"h1": "Generador de paletas de color gratis",
+			"sub": "Empieza con un color. Consigue una paleta que encaje de verdad.",
+			"options": {
+				"base": "Color base",
+				"hex": "Código hex",
+				"invalidHex": "Escribe un color hex como #1b56fd.",
+				"harmony": "Armonía",
+				"analogous": "Análoga",
+				"complementary": "Complementaria",
+				"triadic": "Triádica",
+				"palette": "Paleta",
+				"copy": "Copiar {hex}",
+				"copyAll": "Copiar todo",
+				"copied": "Copiado",
+				"copyFailed": "No se pudo copiar. Selecciona el código hex y cópialo a mano.",
+				"exportCss": "Exportar CSS",
+				"exportJson": "Exportar JSON",
+				"note": "Generado en tu navegador. No se sube nada."
+			},
+			"steps": [
+				{
+					"title": "Elige un color base",
+					"line": "Escribe un código hex o usa el selector de color."
+				},
+				{
+					"title": "Elige una armonía",
+					"line": "Análoga se mantiene cerca, complementaria va al lado opuesto, triádica se reparte por igual."
+				},
+				{
+					"title": "Copia o exporta",
+					"line": "Copia un hex, copia el conjunto o descarga un archivo CSS o JSON."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué significan los modos de armonía?",
+					"a": "Análoga usa colores vecinos en la rueda. Complementaria usa el color opuesto. Triádica usa tres colores separados 120 grados."
+				},
+				{
+					"q": "¿Puedo usar una paleta generada en un proyecto?",
+					"a": "Sí. Una paleta solo es un conjunto de valores de color. Úsala para una marca, una presentación o un sitio web."
+				},
+				{
+					"q": "¿Dónde se guarda la paleta?",
+					"a": "No se guarda. Los colores viven en esta página hasta que la cierras, así que exporta lo que quieras conservar."
+				}
+			]
 		}
 	}
 }
