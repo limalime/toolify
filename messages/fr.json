@@ -1820,6 +1820,218 @@
 					"a": "Rien. Tout dérive en local, et l'analytique est off ici."
 				}
 			]
+		},
+		"currency-converter": {
+			"name": "Convertisseur de devises",
+			"tagline": "Convertissez plus de 40 devises aux taux de référence du jour.",
+			"title": "Convertisseur de Devises Gratuit avec Taux du Jour",
+			"description": "Convertissez de l'argent entre 40 devises avec les taux de référence de la Banque centrale européenne. Les taux sont gardés un jour, sans inscription, et la conversion se fait dans votre navigateur.",
+			"h1": "Convertisseur de Devises Gratuit",
+			"sub": "Choisissez deux devises et un montant. La date du taux est toujours affichée, vous savez donc si le chiffre est récent.",
+			"options": {
+				"amount": "Montant",
+				"from": "De",
+				"to": "Vers",
+				"swap": "Inverser les devises",
+				"result": "Montant converti",
+				"rateLine": "1 {from} = {rate} {to}",
+				"rateDate": "Taux de référence du {date}",
+				"loading": "Récupération du taux le plus récent. Un instant.",
+				"staleTitle": "Affichage du dernier taux enregistré",
+				"staleBody": "Le service de taux est injoignable, ce résultat utilise donc le taux enregistré le {date}. Il peut être obsolète, vérifiez plus tard si le montant compte.",
+				"errorTitle": "Service de taux indisponible",
+				"errorBody": "Le taux de change n'a pas pu être chargé et rien n'est encore enregistré. Vérifiez votre connexion et réessayez.",
+				"retry": "Réessayer",
+				"invalid": "Saisissez un montant supérieur ou égal à zéro.",
+				"localNote": "La conversion se fait dans votre navigateur. Seuls les codes de devise sont envoyés, jamais un montant ni un nom."
+			},
+			"steps": [
+				{
+					"title": "Saisissez le montant",
+					"line": "Tout nombre, décimales comprises."
+				},
+				{
+					"title": "Choisissez les deux devises",
+					"line": "Utilisez les deux listes ou le bouton d'inversion."
+				},
+				{
+					"title": "Lisez le résultat",
+					"line": "Le taux et sa date figurent sous le montant converti."
+				}
+			],
+			"faqs": [
+				{
+					"q": "D'où viennent les taux ?",
+					"a": "Frankfurter publie des taux de référence collectés auprès des banques centrales, surtout la Banque centrale européenne. Ils paraissent une fois par jour ouvré, ce ne sont pas des cotations en direct."
+				},
+				{
+					"q": "Quelle est la fraîcheur du taux ?",
+					"a": "Les taux sont gardés dans votre navigateur pendant un jour. La date sous le résultat indique le jour de publication par la source."
+				},
+				{
+					"q": "Le site voit-il mon montant ?",
+					"a": "Non. La conversion se fait dans votre navigateur et seuls les deux codes de devise sont envoyés au service de taux."
+				}
+			]
+		},
+		"compound-interest": {
+			"name": "Calculateur d'intérêts composés",
+			"tagline": "Voyez comment un solde grandit avec le temps.",
+			"title": "Calculateur d'Intérêts Composés Gratuit avec Graphique",
+			"description": "Calculez les intérêts composés avec une capitalisation annuelle, trimestrielle, mensuelle ou quotidienne. Voyez le solde final, le total des intérêts, un graphique de croissance et un tableau année par année dans votre navigateur.",
+			"h1": "Calculateur d'Intérêts Composés",
+			"sub": "Saisissez un solde de départ, un taux annuel et une durée. Le graphique montre tout le parcours, pas seulement l'arrivée.",
+			"options": {
+				"principal": "Solde de départ",
+				"rate": "Taux annuel, pour cent",
+				"years": "Années",
+				"frequency": "Capitalisation",
+				"annually": "Une fois par an",
+				"semiannually": "Deux fois par an",
+				"quarterly": "Chaque trimestre",
+				"monthly": "Chaque mois",
+				"daily": "Chaque jour",
+				"finalBalance": "Solde final",
+				"totalInterest": "Intérêts gagnés",
+				"chartLabel": "Croissance du solde sur {years} ans",
+				"schedule": "Tableau année par année",
+				"year": "Année",
+				"balance": "Solde",
+				"invalid": "Utilisez un solde supérieur à zéro, un taux supérieur ou égal à zéro et une durée d'au moins un an."
+			},
+			"steps": [
+				{
+					"title": "Fixez le solde de départ",
+					"line": "L'argent placé le premier jour."
+				},
+				{
+					"title": "Choisissez taux et capitalisation",
+					"line": "La capitalisation mensuelle est courante pour l'épargne."
+				},
+				{
+					"title": "Lisez le graphique",
+					"line": "Le tableau dessous montre chaque année."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Quelle formule est utilisée ?",
+					"a": "A égale P multiplié par (1 plus r divisé par n) puissance n fois t, où n est le nombre de périodes de capitalisation par an."
+				},
+				{
+					"q": "Gère-t-il des versements mensuels ?",
+					"a": "Non. Ce calculateur capitalise un seul solde de départ. Un plan de versements demanderait une autre formule et ne fait pas partie de cette version."
+				},
+				{
+					"q": "Pourquoi la capitalisation quotidienne est-elle la plus élevée ?",
+					"a": "Plus de périodes signifie que les intérêts s'ajoutent plus souvent au solde, donc la période suivante gagne un peu plus."
+				}
+			]
+		},
+		"loan-calculator": {
+			"name": "Calculateur de prêt",
+			"tagline": "Mensualité, intérêts totaux et échéancier complet.",
+			"title": "Calculateur de Prêt et Crédit Immobilier Gratuit avec Tableau d'Amortissement",
+			"description": "Calculez la mensualité, le total des intérêts et le coût total d'un prêt ou d'un crédit immobilier, puis consultez le tableau d'amortissement mois par mois dans votre navigateur.",
+			"h1": "Calculateur de Prêt et Crédit Immobilier",
+			"sub": "Un prêt à taux fixe avec des mensualités égales. Chaque mois se divise en intérêts et en capital, et le tableau montre cette répartition.",
+			"options": {
+				"amount": "Montant du prêt",
+				"rate": "Taux annuel, pour cent",
+				"years": "Durée en années",
+				"payment": "Mensualité",
+				"totalInterest": "Intérêts totaux",
+				"totalPaid": "Total remboursé",
+				"schedule": "Tableau d'amortissement",
+				"month": "Mois",
+				"interest": "Intérêts",
+				"principal": "Capital",
+				"balance": "Solde",
+				"invalid": "Utilisez un montant supérieur à zéro, un taux supérieur ou égal à zéro et une durée entre un mois et cinquante ans.",
+				"localNote": "Les chiffres sont des estimations pour un prêt à taux fixe. Les frais, l'assurance et les taxes ne sont pas inclus."
+			},
+			"steps": [
+				{
+					"title": "Saisissez le prêt",
+					"line": "Montant, taux annuel et durée en années."
+				},
+				{
+					"title": "Lisez la mensualité",
+					"line": "Le total des intérêts montre le vrai coût du prêt."
+				},
+				{
+					"title": "Ouvrez le tableau",
+					"line": "Chaque ligne est un mois de l'échéancier."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Quel type de prêt est modélisé ?",
+					"a": "Un prêt à taux fixe entièrement amortissable avec des mensualités égales. Il correspond à la plupart des crédits immobiliers et prêts personnels."
+				},
+				{
+					"q": "Pourquoi les intérêts sont-ils élevés au début ?",
+					"a": "Les intérêts portent sur le solde restant. Au début, ce solde est au maximum, donc la majeure partie de la mensualité est constituée d'intérêts."
+				},
+				{
+					"q": "Puis-je comparer deux offres ?",
+					"a": "Oui. Changez le taux et lisez le total des intérêts, c'est le chiffre le plus clair pour comparer deux prêteurs."
+				}
+			]
+		},
+		"percentage-calculator": {
+			"name": "Calculateur de pourcentages",
+			"tagline": "Pourcentage d'un nombre, variation et hausse ou baisse.",
+			"title": "Calculateur de Pourcentages Gratuit",
+			"description": "Calculez un pourcentage d'un nombre, la variation en pourcentage entre deux valeurs et appliquez une hausse ou une baisse en pourcentage. Trois calculateurs sur une page, sans inscription.",
+			"h1": "Calculateur de Pourcentages",
+			"sub": "Trois questions courantes, chacune dans son onglet. Les résultats se mettent à jour pendant la saisie.",
+			"options": {
+				"modeOf": "Pourcentage d'un nombre",
+				"modeChange": "Variation en pourcentage",
+				"modeIncrease": "Hausse ou baisse",
+				"percent": "Pourcentage",
+				"value": "Valeur",
+				"from": "De",
+				"to": "À",
+				"result": "Résultat",
+				"invalid": "Remplissez les deux champs avec un nombre.",
+				"undefined": "Une variation depuis zéro n'a pas de pourcentage.",
+				"changeUp": "C'est une hausse.",
+				"changeDown": "C'est une baisse.",
+				"noChange": "Il n'y a pas de variation.",
+				"increased": "Après une hausse",
+				"decreased": "Après une baisse",
+				"localNote": "Tout est calculé sur votre appareil. Rien n'est envoyé."
+			},
+			"steps": [
+				{
+					"title": "Choisissez un onglet",
+					"line": "Chaque onglet répond à une question différente."
+				},
+				{
+					"title": "Remplissez deux champs",
+					"line": "Les résultats changent à chaque frappe."
+				},
+				{
+					"title": "Changez d'onglet",
+					"line": "Vos valeurs restent où vous les avez laissées."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Comment calcule-t-on une variation en pourcentage ?",
+					"a": "Soustrayez l'ancienne valeur de la nouvelle, divisez par l'ancienne valeur, puis multipliez par 100."
+				},
+				{
+					"q": "Pourquoi une variation depuis zéro est-elle indéfinie ?",
+					"a": "Toute hausse depuis zéro est un pourcentage infini, il n'y a donc aucun nombre à afficher."
+				},
+				{
+					"q": "Le résultat est-il arrondi ?",
+					"a": "L'affichage arrondit à quatre décimales. Le calcul lui-même garde toute sa précision."
+				}
+			]
 		}
 	}
 }

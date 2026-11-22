@@ -1820,6 +1820,218 @@
 					"a": "Tidak. Semua diturunkan lokal, dan analitik mati di halaman ini."
 				}
 			]
+		},
+		"currency-converter": {
+			"name": "Konverter Mata Uang",
+			"tagline": "Konversi lebih dari 40 mata uang dengan kurs referensi harian.",
+			"title": "Konverter Mata Uang Gratis dengan Kurs Harian",
+			"description": "Konversi uang antara lebih dari 40 mata uang memakai kurs referensi Bank Sentral Eropa. Kurs disimpan satu hari, tanpa pendaftaran, dan konversi berjalan di browser Anda.",
+			"h1": "Konverter Mata Uang Gratis",
+			"sub": "Pilih dua mata uang dan nominalnya. Tanggal kurs selalu ditampilkan, jadi Anda tahu seberapa baru angkanya.",
+			"options": {
+				"amount": "Nominal",
+				"from": "Dari",
+				"to": "Ke",
+				"swap": "Tukar mata uang",
+				"result": "Hasil konversi",
+				"rateLine": "1 {from} = {rate} {to}",
+				"rateDate": "Kurs referensi dari {date}",
+				"loading": "Mengambil kurs terbaru. Tunggu sebentar.",
+				"staleTitle": "Menampilkan kurs tersimpan terakhir",
+				"staleBody": "Layanan kurs tidak dapat dihubungi, jadi hasil ini memakai kurs yang disimpan pada {date}. Kurs bisa sudah lama. Periksa lagi nanti kalau nominalnya penting.",
+				"errorTitle": "Layanan kurs tidak tersedia",
+				"errorBody": "Kurs tidak bisa dimuat dan belum ada yang tersimpan. Periksa koneksi lalu coba lagi.",
+				"retry": "Coba lagi",
+				"invalid": "Masukkan nominal nol atau lebih.",
+				"localNote": "Konversi terjadi di browser Anda. Hanya kode mata uang yang dikirim, bukan nominal atau nama."
+			},
+			"steps": [
+				{
+					"title": "Masukkan nominal",
+					"line": "Ketik angka apa pun, termasuk desimal."
+				},
+				{
+					"title": "Pilih kedua mata uang",
+					"line": "Pakai dua daftar atau tombol tukar."
+				},
+				{
+					"title": "Baca hasilnya",
+					"line": "Kurs dan tanggalnya ada di bawah hasil konversi."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Dari mana kurs ini berasal?",
+					"a": "Frankfurter menerbitkan kurs referensi dari bank sentral, terutama Bank Sentral Eropa. Kurs terbit sekali setiap hari kerja, bukan kuotasi pasar langsung."
+				},
+				{
+					"q": "Seberapa baru kursnya?",
+					"a": "Kurs disimpan di browser selama satu hari. Tanggal di bawah hasil adalah hari sumber menerbitkan kurs."
+				},
+				{
+					"q": "Apakah situs melihat nominal saya?",
+					"a": "Tidak. Konversi berjalan di browser Anda dan hanya dua kode mata uang yang dikirim ke layanan kurs."
+				}
+			]
+		},
+		"compound-interest": {
+			"name": "Kalkulator Bunga Majemuk",
+			"tagline": "Lihat pertumbuhan saldo sepanjang waktu.",
+			"title": "Kalkulator Bunga Majemuk Gratis dengan Grafik",
+			"description": "Hitung bunga majemuk dengan peracikan tahunan, triwulan, bulanan, atau harian. Lihat saldo akhir, total bunga, grafik pertumbuhan, dan tabel per tahun di browser Anda.",
+			"h1": "Kalkulator Bunga Majemuk",
+			"sub": "Masukkan saldo awal, suku bunga tahunan, dan jangka waktu. Grafik menunjukkan seluruh perjalanan, bukan hanya hasil akhir.",
+			"options": {
+				"principal": "Saldo awal",
+				"rate": "Suku bunga tahunan, persen",
+				"years": "Tahun",
+				"frequency": "Peracikan",
+				"annually": "Sekali setahun",
+				"semiannually": "Dua kali setahun",
+				"quarterly": "Setiap triwulan",
+				"monthly": "Setiap bulan",
+				"daily": "Setiap hari",
+				"finalBalance": "Saldo akhir",
+				"totalInterest": "Bunga diperoleh",
+				"chartLabel": "Pertumbuhan saldo selama {years} tahun",
+				"schedule": "Tabel per tahun",
+				"year": "Tahun",
+				"balance": "Saldo",
+				"invalid": "Gunakan saldo di atas nol, suku bunga nol atau lebih, dan jangka waktu minimal satu tahun."
+			},
+			"steps": [
+				{
+					"title": "Tentukan saldo awal",
+					"line": "Uang yang Anda simpan di hari pertama."
+				},
+				{
+					"title": "Pilih bunga dan peracikan",
+					"line": "Peracikan bulanan adalah kasus umum untuk tabungan."
+				},
+				{
+					"title": "Baca grafiknya",
+					"line": "Tabel di bawahnya menampilkan setiap tahun."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Rumus apa yang dipakai?",
+					"a": "A sama dengan P dikali (1 ditambah r dibagi n) pangkat n dikali t, dengan n jumlah periode peracikan per tahun."
+				},
+				{
+					"q": "Apakah bisa menghitung setoran bulanan tambahan?",
+					"a": "Tidak. Kalkulator ini meracik satu saldo awal. Jadwal setoran membutuhkan rumus lain dan belum ada di versi ini."
+				},
+				{
+					"q": "Mengapa peracikan harian paling tinggi?",
+					"a": "Makin banyak periode, makin sering bunga ditambahkan ke saldo, jadi periode berikutnya menghasilkan sedikit lebih banyak."
+				}
+			]
+		},
+		"loan-calculator": {
+			"name": "Kalkulator Pinjaman",
+			"tagline": "Angsuran bulanan, total bunga, dan jadwal lengkap.",
+			"title": "Kalkulator Pinjaman dan KPR Gratis dengan Tabel Amortisasi",
+			"description": "Hitung angsuran bulanan, total bunga, dan total biaya pinjaman atau KPR, lalu baca tabel amortisasi bulan demi bulan di browser Anda.",
+			"h1": "Kalkulator Pinjaman dan KPR",
+			"sub": "Pinjaman suku bunga tetap dengan angsuran bulanan yang sama. Setiap bulan terbagi menjadi bunga dan pokok, dan tabelnya menunjukkan pembagian itu.",
+			"options": {
+				"amount": "Jumlah pinjaman",
+				"rate": "Suku bunga tahunan, persen",
+				"years": "Jangka waktu dalam tahun",
+				"payment": "Angsuran bulanan",
+				"totalInterest": "Total bunga",
+				"totalPaid": "Total dibayar",
+				"schedule": "Tabel amortisasi",
+				"month": "Bulan",
+				"interest": "Bunga",
+				"principal": "Pokok",
+				"balance": "Sisa saldo",
+				"invalid": "Gunakan jumlah di atas nol, suku bunga nol atau lebih, dan jangka waktu antara satu bulan dan lima puluh tahun.",
+				"localNote": "Angka ini perkiraan untuk pinjaman suku bunga tetap. Biaya, asuransi, dan pajak tidak termasuk."
+			},
+			"steps": [
+				{
+					"title": "Masukkan pinjaman",
+					"line": "Jumlah, suku bunga tahunan, dan jangka waktu dalam tahun."
+				},
+				{
+					"title": "Baca angsurannya",
+					"line": "Total bunga menunjukkan biaya pinjaman sebenarnya."
+				},
+				{
+					"title": "Buka tabelnya",
+					"line": "Setiap baris adalah satu bulan jadwal."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Jenis pinjaman apa yang dihitung?",
+					"a": "Pinjaman suku bunga tetap yang diamortisasi penuh dengan angsuran bulanan sama. Cocok untuk sebagian besar KPR dan pinjaman pribadi."
+				},
+				{
+					"q": "Mengapa bunga di awal besar?",
+					"a": "Bunga dihitung dari sisa saldo. Di awal saldonya masih penuh, jadi sebagian besar angsuran masuk ke bunga."
+				},
+				{
+					"q": "Bisakah membandingkan dua penawaran?",
+					"a": "Bisa. Ubah suku bunganya dan lihat total bunga, angka itu cara paling jelas membandingkan dua pemberi pinjaman."
+				}
+			]
+		},
+		"percentage-calculator": {
+			"name": "Kalkulator Persentase",
+			"tagline": "Persen dari angka, perubahan, dan kenaikan atau penurunan.",
+			"title": "Kalkulator Persentase Gratis",
+			"description": "Cari persen dari sebuah angka, hitung perubahan persen antara dua nilai, dan terapkan kenaikan atau penurunan persen. Tiga kalkulator dalam satu halaman, tanpa pendaftaran.",
+			"h1": "Kalkulator Persentase",
+			"sub": "Tiga pertanyaan sehari-hari, masing-masing punya tab sendiri. Hasil diperbarui saat Anda mengetik.",
+			"options": {
+				"modeOf": "Persen dari angka",
+				"modeChange": "Perubahan persen",
+				"modeIncrease": "Kenaikan atau penurunan",
+				"percent": "Persen",
+				"value": "Angka",
+				"from": "Dari",
+				"to": "Ke",
+				"result": "Hasil",
+				"invalid": "Isi kedua kolom dengan angka.",
+				"undefined": "Perubahan dari nol tidak punya persentase.",
+				"changeUp": "Ini kenaikan.",
+				"changeDown": "Ini penurunan.",
+				"noChange": "Tidak ada perubahan.",
+				"increased": "Setelah kenaikan",
+				"decreased": "Setelah penurunan",
+				"localNote": "Semua dihitung di perangkat Anda. Tidak ada yang dikirim ke mana pun."
+			},
+			"steps": [
+				{
+					"title": "Pilih tab",
+					"line": "Setiap tab menjawab pertanyaan berbeda."
+				},
+				{
+					"title": "Isi dua kolom",
+					"line": "Hasil diperbarui pada setiap ketikan."
+				},
+				{
+					"title": "Pindah tab",
+					"line": "Nilai Anda tetap di tempatnya."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Bagaimana perubahan persen dihitung?",
+					"a": "Kurangi nilai lama dari nilai baru, bagi dengan nilai lama, lalu kalikan 100."
+				},
+				{
+					"q": "Mengapa perubahan dari nol tidak terdefinisi?",
+					"a": "Kenaikan dari nol adalah persentase tak terhingga, jadi tidak ada angka yang bisa ditampilkan."
+				},
+				{
+					"q": "Apakah hasilnya dibulatkan?",
+					"a": "Tampilan dibulatkan sampai empat desimal. Perhitungannya sendiri tetap presisi penuh."
+				}
+			]
 		}
 	}
 }

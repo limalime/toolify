@@ -46,6 +46,10 @@ export const TOOLS: ToolEntry[] = [
 	{ slug: "uuid-generator", category: "lainnya", icon: "dna" },
 	{ slug: "password-generator", category: "lainnya", icon: "key" },
 	{ slug: "mnemonic-generator", category: "lainnya", icon: "wallet" },
+	{ slug: "currency-converter", category: "finance", icon: "exchange" },
+	{ slug: "compound-interest", category: "finance", icon: "growth" },
+	{ slug: "loan-calculator", category: "finance", icon: "loan" },
+	{ slug: "percentage-calculator", category: "finance", icon: "percent" },
 ];
 
 export const CATEGORY_ORDER: CategoryKey[] = [

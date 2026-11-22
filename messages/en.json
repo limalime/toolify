@@ -1820,6 +1820,218 @@
 					"a": "No. Everything derives locally, and analytics is off on this page."
 				}
 			]
+		},
+		"currency-converter": {
+			"name": "Currency Converter",
+			"tagline": "Convert across more than 40 currencies at daily reference rates.",
+			"title": "Free Currency Converter With Daily Exchange Rates",
+			"description": "Convert money across more than 40 currencies using European Central Bank reference rates. Rates are cached for one day, no sign up, and the conversion runs in your browser.",
+			"h1": "Free Currency Converter",
+			"sub": "Pick two currencies and an amount. The rate date is always shown, so you know how recent the number is.",
+			"options": {
+				"amount": "Amount",
+				"from": "From",
+				"to": "To",
+				"swap": "Swap currencies",
+				"result": "Converted amount",
+				"rateLine": "1 {from} = {rate} {to}",
+				"rateDate": "Reference rates from {date}",
+				"loading": "Fetching the latest rate. This takes a moment.",
+				"staleTitle": "Showing the last saved rate",
+				"staleBody": "The rate service could not be reached, so this result uses the rate saved on {date}. It may be out of date, check again later if the amount matters.",
+				"errorTitle": "Rate service unavailable",
+				"errorBody": "The exchange rate could not be loaded and nothing is saved yet. Check your connection and try again.",
+				"retry": "Try again",
+				"invalid": "Enter an amount of zero or more.",
+				"localNote": "Conversion happens in your browser. Only the currency codes are sent, never an amount or a name."
+			},
+			"steps": [
+				{
+					"title": "Enter the amount",
+					"line": "Type any number, decimals included."
+				},
+				{
+					"title": "Pick both currencies",
+					"line": "Use the two lists or the swap button."
+				},
+				{
+					"title": "Read the result",
+					"line": "The rate and its date sit under the converted amount."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Where do the rates come from?",
+					"a": "Frankfurter publishes reference rates gathered from central banks, mainly the European Central Bank. They are published once a working day, not live market quotes."
+				},
+				{
+					"q": "How fresh is the rate?",
+					"a": "Rates are cached in your browser for one day. The date under the result is the day the rate was published by the source."
+				},
+				{
+					"q": "Does the site see my amount?",
+					"a": "No. The conversion runs in your browser and only the two currency codes go to the rate service."
+				}
+			]
+		},
+		"compound-interest": {
+			"name": "Compound Interest Calculator",
+			"tagline": "See how a balance grows over time.",
+			"title": "Free Compound Interest Calculator With Growth Chart",
+			"description": "Calculate compound interest with annual, quarterly, monthly, or daily compounding. See the final balance, total interest, a growth chart, and a year by year table in your browser.",
+			"h1": "Compound Interest Calculator",
+			"sub": "Enter a starting balance, an annual rate, and a term. The chart shows the whole path, not just the finish.",
+			"options": {
+				"principal": "Starting balance",
+				"rate": "Annual rate, percent",
+				"years": "Years",
+				"frequency": "Compounding",
+				"annually": "Once a year",
+				"semiannually": "Twice a year",
+				"quarterly": "Every quarter",
+				"monthly": "Every month",
+				"daily": "Every day",
+				"finalBalance": "Final balance",
+				"totalInterest": "Interest earned",
+				"chartLabel": "Balance growth over {years} years",
+				"schedule": "Year by year table",
+				"year": "Year",
+				"balance": "Balance",
+				"invalid": "Use a balance above zero, a rate of zero or more, and a term of at least one year."
+			},
+			"steps": [
+				{
+					"title": "Set the starting balance",
+					"line": "The money you put in on day one."
+				},
+				{
+					"title": "Choose rate and compounding",
+					"line": "Monthly compounding is the common case for savings."
+				},
+				{
+					"title": "Read the chart",
+					"line": "The table under it shows every year."
+				}
+			],
+			"faqs": [
+				{
+					"q": "What formula is used?",
+					"a": "A equals P times (1 plus r divided by n) to the power of n times t, where n is the number of compounding periods per year."
+				},
+				{
+					"q": "Does it handle extra monthly deposits?",
+					"a": "No. This calculator compounds one starting balance. A deposit schedule would need a different formula and is not part of this version."
+				},
+				{
+					"q": "Why is daily compounding the highest?",
+					"a": "More compounding periods means interest is added to the balance more often, so the next period earns a little more."
+				}
+			]
+		},
+		"loan-calculator": {
+			"name": "Loan Calculator",
+			"tagline": "Monthly payment, total interest, and a full schedule.",
+			"title": "Free Loan and Mortgage Calculator With Amortization Table",
+			"description": "Work out the monthly payment, total interest, and total cost of a loan or mortgage, then read the month by month amortization table in your browser.",
+			"h1": "Loan and Mortgage Calculator",
+			"sub": "A fixed rate loan with equal monthly payments. Every month splits into interest and principal, and the table shows the split.",
+			"options": {
+				"amount": "Loan amount",
+				"rate": "Annual rate, percent",
+				"years": "Term in years",
+				"payment": "Monthly payment",
+				"totalInterest": "Total interest",
+				"totalPaid": "Total paid",
+				"schedule": "Amortization table",
+				"month": "Month",
+				"interest": "Interest",
+				"principal": "Principal",
+				"balance": "Balance",
+				"invalid": "Use an amount above zero, a rate of zero or more, and a term between one month and fifty years.",
+				"localNote": "The numbers are estimates for a fixed rate loan. Fees, insurance, and taxes are not included."
+			},
+			"steps": [
+				{
+					"title": "Enter the loan",
+					"line": "Amount, annual rate, and term in years."
+				},
+				{
+					"title": "Read the payment",
+					"line": "Total interest shows what the loan really costs."
+				},
+				{
+					"title": "Open the table",
+					"line": "Each row is one month of the schedule."
+				}
+			],
+			"faqs": [
+				{
+					"q": "What loan type does this model?",
+					"a": "A fixed rate, fully amortising loan with equal monthly payments. It fits most mortgages and personal loans."
+				},
+				{
+					"q": "Why is early interest so high?",
+					"a": "Interest is charged on the remaining balance. Early on that balance is the full amount, so most of the payment is interest."
+				},
+				{
+					"q": "Can I compare two offers?",
+					"a": "Yes. Change the rate and read the total interest, that number is the cleanest way to compare two lenders."
+				}
+			]
+		},
+		"percentage-calculator": {
+			"name": "Percentage Calculator",
+			"tagline": "Percent of a number, change, and increase or decrease.",
+			"title": "Free Percentage Calculator",
+			"description": "Find a percent of a number, work out percent change between two values, and apply a percent increase or decrease. Three calculators in one page, no sign up.",
+			"h1": "Percentage Calculator",
+			"sub": "Three everyday questions, each with its own tab. Results update as you type.",
+			"options": {
+				"modeOf": "Percent of a number",
+				"modeChange": "Percent change",
+				"modeIncrease": "Increase or decrease",
+				"percent": "Percent",
+				"value": "Value",
+				"from": "From",
+				"to": "To",
+				"result": "Result",
+				"invalid": "Fill in both fields with a number.",
+				"undefined": "Change from zero has no percentage.",
+				"changeUp": "This is an increase.",
+				"changeDown": "This is a decrease.",
+				"noChange": "There is no change.",
+				"increased": "After an increase",
+				"decreased": "After a decrease",
+				"localNote": "Everything is computed on your device. Nothing is sent anywhere."
+			},
+			"steps": [
+				{
+					"title": "Pick a tab",
+					"line": "Each tab answers a different question."
+				},
+				{
+					"title": "Fill two fields",
+					"line": "Results update on every keystroke."
+				},
+				{
+					"title": "Switch tabs",
+					"line": "Your values stay where you left them."
+				}
+			],
+			"faqs": [
+				{
+					"q": "How is percent change computed?",
+					"a": "Subtract the old value from the new one, divide by the old value, then multiply by 100."
+				},
+				{
+					"q": "Why is change from zero undefined?",
+					"a": "Any increase from zero is an infinite percentage, so there is no number to show."
+				},
+				{
+					"q": "Does it round?",
+					"a": "Display rounds to four decimals. The calculation itself keeps full precision."
+				}
+			]
 		}
 	}
 }

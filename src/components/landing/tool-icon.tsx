@@ -1,4 +1,5 @@
 import {
+	ArrowRightLeft,
 	AudioLines,
 	AudioWaveform,
 	Barcode,
@@ -20,11 +21,13 @@ import {
 	Hash,
 	Images,
 	KeyRound,
+	Landmark,
 	ListMusic,
 	type LucideIcon,
 	Maximize2,
 	Minimize2,
 	NotebookPen,
+	Percent,
 	QrCode,
 	Scaling,
 	Scissors,
@@ -33,6 +36,7 @@ import {
 	Spline,
 	Stamp,
 	Terminal,
+	TrendingUp,
 	Wallet,
 	WholeWord,
 	Wrench,
@@ -76,6 +80,10 @@ export const TOOL_ICONS: Record<string, LucideIcon> = {
 	dna: Dna,
 	key: KeyRound,
 	wallet: Wallet,
+	exchange: ArrowRightLeft,
+	growth: TrendingUp,
+	loan: Landmark,
+	percent: Percent,
 };
 
 export default function ToolIcon({

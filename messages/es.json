@@ -1820,6 +1820,218 @@
 					"a": "No. Todo deriva en local, y la analítica está off aquí."
 				}
 			]
+		},
+		"currency-converter": {
+			"name": "Conversor de divisas",
+			"tagline": "Convierte entre más de 40 divisas con tipos de referencia diarios.",
+			"title": "Conversor de Divisas Gratis con Tipos de Cambio Diarios",
+			"description": "Convierte dinero entre 40 divisas con los tipos de referencia del Banco Central Europeo. Los tipos se guardan un día, sin registro, y la conversión se hace en tu navegador.",
+			"h1": "Conversor de Divisas Gratis",
+			"sub": "Elige dos divisas y un importe. La fecha del tipo siempre aparece, así sabes qué tan reciente es la cifra.",
+			"options": {
+				"amount": "Importe",
+				"from": "De",
+				"to": "A",
+				"swap": "Intercambiar divisas",
+				"result": "Importe convertido",
+				"rateLine": "1 {from} = {rate} {to}",
+				"rateDate": "Tipos de referencia del {date}",
+				"loading": "Obteniendo el tipo más reciente. Un momento.",
+				"staleTitle": "Mostrando el último tipo guardado",
+				"staleBody": "No se pudo contactar el servicio de tipos, así que este resultado usa el tipo guardado el {date}. Puede estar desactualizado, vuelve a comprobar más tarde si el importe importa.",
+				"errorTitle": "Servicio de tipos no disponible",
+				"errorBody": "No se pudo cargar el tipo de cambio y todavía no hay nada guardado. Revisa tu conexión y reintenta.",
+				"retry": "Reintentar",
+				"invalid": "Escribe un importe de cero o más.",
+				"localNote": "La conversión ocurre en tu navegador. Solo se envían los códigos de divisa, nunca un importe ni un nombre."
+			},
+			"steps": [
+				{
+					"title": "Escribe el importe",
+					"line": "Cualquier número, con decimales si hace falta."
+				},
+				{
+					"title": "Elige ambas divisas",
+					"line": "Usa las dos listas o el botón de intercambio."
+				},
+				{
+					"title": "Lee el resultado",
+					"line": "El tipo y su fecha aparecen bajo el importe convertido."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿De dónde vienen los tipos?",
+					"a": "Frankfurter publica tipos de referencia de bancos centrales, sobre todo del Banco Central Europeo. Se publican una vez por día laborable, no son cotizaciones en vivo."
+				},
+				{
+					"q": "¿Qué tan reciente es el tipo?",
+					"a": "Los tipos se guardan en tu navegador durante un día. La fecha bajo el resultado es el día en que la fuente publicó el tipo."
+				},
+				{
+					"q": "¿El sitio ve mi importe?",
+					"a": "No. La conversión se hace en tu navegador y solo los dos códigos de divisa llegan al servicio de tipos."
+				}
+			]
+		},
+		"compound-interest": {
+			"name": "Calculadora de interés compuesto",
+			"tagline": "Mira cómo crece un saldo con el tiempo.",
+			"title": "Calculadora de Interés Compuesto Gratis con Gráfico",
+			"description": "Calcula el interés compuesto con capitalización anual, trimestral, mensual o diaria. Mira el saldo final, el interés total, un gráfico de crecimiento y una tabla año a año en tu navegador.",
+			"h1": "Calculadora de Interés Compuesto",
+			"sub": "Escribe un saldo inicial, una tasa anual y un plazo. El gráfico muestra todo el recorrido, no solo el final.",
+			"options": {
+				"principal": "Saldo inicial",
+				"rate": "Tasa anual, por ciento",
+				"years": "Años",
+				"frequency": "Capitalización",
+				"annually": "Una vez al año",
+				"semiannually": "Dos veces al año",
+				"quarterly": "Cada trimestre",
+				"monthly": "Cada mes",
+				"daily": "Cada día",
+				"finalBalance": "Saldo final",
+				"totalInterest": "Interés ganado",
+				"chartLabel": "Crecimiento del saldo durante {years} años",
+				"schedule": "Tabla año a año",
+				"year": "Año",
+				"balance": "Saldo",
+				"invalid": "Usa un saldo mayor que cero, una tasa de cero o más y un plazo de al menos un año."
+			},
+			"steps": [
+				{
+					"title": "Fija el saldo inicial",
+					"line": "El dinero que pones el primer día."
+				},
+				{
+					"title": "Elige tasa y capitalización",
+					"line": "La capitalización mensual es lo habitual en ahorros."
+				},
+				{
+					"title": "Lee el gráfico",
+					"line": "La tabla de abajo muestra cada año."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué fórmula se usa?",
+					"a": "A es igual a P por (1 más r dividido entre n) elevado a n por t, donde n es el número de periodos de capitalización al año."
+				},
+				{
+					"q": "¿Incluye depósitos mensuales extra?",
+					"a": "No. Esta calculadora capitaliza un solo saldo inicial. Un plan de depósitos necesitaría otra fórmula y no forma parte de esta versión."
+				},
+				{
+					"q": "¿Por qué la capitalización diaria da más?",
+					"a": "Más periodos significa que el interés se suma al saldo más a menudo, así que el siguiente periodo gana un poco más."
+				}
+			]
+		},
+		"loan-calculator": {
+			"name": "Calculadora de préstamos",
+			"tagline": "Cuota mensual, interés total y un calendario completo.",
+			"title": "Calculadora de Préstamos e Hipotecas Gratis con Tabla de Amortización",
+			"description": "Calcula la cuota mensual, el interés total y el coste total de un préstamo o hipoteca, y consulta la tabla de amortización mes a mes en tu navegador.",
+			"h1": "Calculadora de Préstamos e Hipotecas",
+			"sub": "Un préstamo a tasa fija con cuotas mensuales iguales. Cada mes se divide en interés y capital, y la tabla muestra esa división.",
+			"options": {
+				"amount": "Importe del préstamo",
+				"rate": "Tasa anual, por ciento",
+				"years": "Plazo en años",
+				"payment": "Cuota mensual",
+				"totalInterest": "Interés total",
+				"totalPaid": "Total pagado",
+				"schedule": "Tabla de amortización",
+				"month": "Mes",
+				"interest": "Interés",
+				"principal": "Capital",
+				"balance": "Saldo",
+				"invalid": "Usa un importe mayor que cero, una tasa de cero o más y un plazo entre un mes y cincuenta años.",
+				"localNote": "Las cifras son estimaciones para un préstamo a tasa fija. No incluyen comisiones, seguros ni impuestos."
+			},
+			"steps": [
+				{
+					"title": "Escribe el préstamo",
+					"line": "Importe, tasa anual y plazo en años."
+				},
+				{
+					"title": "Lee la cuota",
+					"line": "El interés total muestra el coste real del préstamo."
+				},
+				{
+					"title": "Abre la tabla",
+					"line": "Cada fila es un mes del calendario."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Qué tipo de préstamo modela?",
+					"a": "Un préstamo a tasa fija totalmente amortizable con cuotas mensuales iguales. Encaja con la mayoría de hipotecas y préstamos personales."
+				},
+				{
+					"q": "¿Por qué el interés es alto al principio?",
+					"a": "El interés se cobra sobre el saldo pendiente. Al principio ese saldo es el total, así que la mayor parte de la cuota es interés."
+				},
+				{
+					"q": "¿Puedo comparar dos ofertas?",
+					"a": "Sí. Cambia la tasa y mira el interés total, esa cifra es la forma más clara de comparar dos prestamistas."
+				}
+			]
+		},
+		"percentage-calculator": {
+			"name": "Calculadora de porcentajes",
+			"tagline": "Porcentaje de un número, cambio y aumento o reducción.",
+			"title": "Calculadora de Porcentajes Gratis",
+			"description": "Calcula un porcentaje de un número, el cambio porcentual entre dos valores y aplica un aumento o una reducción porcentual. Tres calculadoras en una página, sin registro.",
+			"h1": "Calculadora de Porcentajes",
+			"sub": "Tres preguntas de cada día, cada una en su pestaña. Los resultados se actualizan mientras escribes.",
+			"options": {
+				"modeOf": "Porcentaje de un número",
+				"modeChange": "Cambio porcentual",
+				"modeIncrease": "Aumento o reducción",
+				"percent": "Porcentaje",
+				"value": "Valor",
+				"from": "De",
+				"to": "A",
+				"result": "Resultado",
+				"invalid": "Rellena los dos campos con un número.",
+				"undefined": "El cambio desde cero no tiene porcentaje.",
+				"changeUp": "Es un aumento.",
+				"changeDown": "Es una reducción.",
+				"noChange": "No hay cambio.",
+				"increased": "Tras un aumento",
+				"decreased": "Tras una reducción",
+				"localNote": "Todo se calcula en tu dispositivo. No se envía nada a ningún sitio."
+			},
+			"steps": [
+				{
+					"title": "Elige una pestaña",
+					"line": "Cada pestaña responde a una pregunta distinta."
+				},
+				{
+					"title": "Rellena dos campos",
+					"line": "Los resultados cambian con cada tecla."
+				},
+				{
+					"title": "Cambia de pestaña",
+					"line": "Tus valores se quedan donde los dejaste."
+				}
+			],
+			"faqs": [
+				{
+					"q": "¿Cómo se calcula el cambio porcentual?",
+					"a": "Resta el valor antiguo al nuevo, divide entre el valor antiguo y multiplica por 100."
+				},
+				{
+					"q": "¿Por qué el cambio desde cero no está definido?",
+					"a": "Cualquier aumento desde cero es un porcentaje infinito, así que no hay un número que mostrar."
+				},
+				{
+					"q": "¿Redondea?",
+					"a": "La pantalla redondea a cuatro decimales. El cálculo mantiene toda la precisión."
+				}
+			]
 		}
 	}
 }
