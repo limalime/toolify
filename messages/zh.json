@@ -1733,7 +1733,8 @@
 				"strengthStrong": "强",
 				"strengthExcellent": "极强",
 				"emptyHint": "还没有生成内容。",
-				"entropy": "{bits} 比特"
+				"entropy": "{bits} 比特",
+				"strengthLabel": "强度"
 			},
 			"steps": [
 				{

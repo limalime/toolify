@@ -1733,7 +1733,8 @@
 				"strengthStrong": "Kuat",
 				"strengthExcellent": "Prima",
 				"emptyHint": "Belum ada yang dibuat.",
-				"entropy": "{bits} bit"
+				"entropy": "{bits} bit",
+				"strengthLabel": "Kekuatan"
 			},
 			"steps": [
 				{

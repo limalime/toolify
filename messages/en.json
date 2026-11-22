@@ -1733,7 +1733,8 @@
 				"strengthStrong": "Strong",
 				"strengthExcellent": "Excellent",
 				"emptyHint": "Nothing generated yet.",
-				"entropy": "{bits} bits"
+				"entropy": "{bits} bits",
+				"strengthLabel": "Strength"
 			},
 			"steps": [
 				{

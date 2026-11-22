@@ -1733,7 +1733,8 @@
 				"strengthStrong": "強い",
 				"strengthExcellent": "最強",
 				"emptyHint": "まだ何も作っていません。",
-				"entropy": "{bits} ビット"
+				"entropy": "{bits} ビット",
+				"strengthLabel": "強さ"
 			},
 			"steps": [
 				{

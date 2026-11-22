@@ -1733,7 +1733,8 @@
 				"strengthStrong": "قوي",
 				"strengthExcellent": "ممتاز",
 				"emptyHint": "لم يُولَّد شيء بعد.",
-				"entropy": "{bits} بت"
+				"entropy": "{bits} بت",
+				"strengthLabel": "القوة"
 			},
 			"steps": [
 				{

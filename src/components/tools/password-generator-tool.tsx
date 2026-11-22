@@ -96,7 +96,7 @@ export default function PasswordGeneratorTool() {
 							</div>
 							<ProgressRoot
 								value={strengthPercent}
-								aria-label={t("options.generate")}
+								aria-label={t("options.strengthLabel")}
 							>
 								<ProgressTrack className="bg-surface-2" size="sm">
 									<ProgressIndicator />
