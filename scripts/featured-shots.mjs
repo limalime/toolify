@@ -1,5 +1,5 @@
-import { chromium } from "playwright";
 import { mkdirSync } from "node:fs";
+import { chromium } from "playwright";
 
 const BASE = "http://localhost:3100";
 const OUT = "/data/home/workspace/toolify/public/featured";
@@ -30,7 +30,10 @@ async function shot(slug, { path, setup } = {}) {
 	}
 	await page.evaluate(() => window.scrollTo(0, 0));
 	await page.waitForTimeout(700);
-	const box = await page.locator("[data-clarity-mask='true']").first().boundingBox();
+	const box = await page
+		.locator("[data-clarity-mask='true']")
+		.first()
+		.boundingBox();
 	if (!box) {
 		throw new Error(`no tool area on ${target}`);
 	}
@@ -81,11 +84,9 @@ await shot("meme-generator", {
 				layerBox.y + layerBox.height / 2,
 			);
 			await page.mouse.down();
-			await page.mouse.move(
-				box.x + box.width / 2,
-				box.y + box.height * toY,
-				{ steps: 8 },
-			);
+			await page.mouse.move(box.x + box.width / 2, box.y + box.height * toY, {
+				steps: 8,
+			});
 			await page.mouse.up();
 			await page.waitForTimeout(200);
 		};
@@ -114,8 +115,9 @@ await shot("online-notes", {
 
 await shot("qr-code-generator", {
 	setup: async () => {
+		await page.getByLabel("Text", { exact: true }).fill("https://toolify.bond");
 		await page.getByRole("button", { name: "Generate QR" }).click();
-		await page.waitForTimeout(500);
+		await page.waitForTimeout(700);
 	},
 });
 

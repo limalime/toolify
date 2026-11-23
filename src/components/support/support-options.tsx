@@ -18,37 +18,63 @@ const KOFI_EMBED =
 	"https://ko-fi.com/usetoolify/?hidefeed=true&widget=true&embed=true&preview=true";
 const PAYPAL_URL = "https://paypal.me/usetoolify";
 
-const CRYPTO: Record<
-	"btc" | "eth" | "solana",
-	{ address: string; network: string }
-> = {
-	btc: { address: "[MING] BTC address", network: "Bitcoin" },
-	eth: {
-		address: "[MING] ETH and EVM address",
-		network: "Ethereum, Base, Polygon, BNB Chain",
+const BTC_ADDRESSES = [
+	{
+		key: "taproot",
+		address: "bc1p8dpfqaj5xrzm2x2ccc9rj0d4u636tvag4yy50f2mcdp2t7q43fzq4lnx20",
 	},
-	solana: { address: "[MING] Solana address", network: "Solana" },
-};
+	{
+		key: "legacy",
+		address: "1PLwr1PmV8RAjjdZg9vFfjUnhSuWTKYNPb",
+	},
+] as const;
+
+const EVM_ADDRESS = "0xf253589c90a9d9C58EfC613Ef405c3DD343F59e0";
+const SOLANA_ADDRESS = "5dCoouEXCbCE7s6ChvRWNTy6Lu4d9ZF2oLWQiM9DY6tx";
 
 export default function SupportOptions() {
 	const t = useTranslations("support");
 	const [channel, setChannel] = useState<Channel>("kofi");
-	const [copied, setCopied] = useState(false);
+	const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
-	const copy = async (address: string) => {
-		if (address.startsWith("[MING]")) {
-			notify.warning(t("notReady"));
-			return;
-		}
+	const copy = async (address: string, key: string) => {
 		try {
 			await navigator.clipboard.writeText(address);
-			setCopied(true);
+			setCopiedKey(key);
 			notify.success(t("copied"));
-			setTimeout(() => setCopied(false), 2000);
+			setTimeout(() => setCopiedKey(null), 2000);
 		} catch {
 			notify.error(t("copyFailed"), address);
 		}
 	};
+
+	const addressBlock = (key: string, label: string, address: string) => (
+		<div className="flex flex-col gap-2" key={key}>
+			<span className="text-caption uppercase tracking-wide text-text-3">
+				{label}
+			</span>
+			<code
+				className="block break-all rounded-lg border border-border bg-surface-2 p-3 font-mono text-small text-text"
+				dir="ltr"
+			>
+				{address}
+			</code>
+			<div className="flex flex-wrap gap-2">
+				<SmoothButton
+					onClick={() => copy(address, key)}
+					size="lg"
+					variant="candy"
+				>
+					{copiedKey === key ? (
+						<Check aria-hidden="true" className="size-4" />
+					) : (
+						<Copy aria-hidden="true" className="size-4" />
+					)}
+					{copiedKey === key ? t("copied") : t("copy")}
+				</SmoothButton>
+			</div>
+		</div>
+	);
 
 	return (
 		<div className="flex flex-col gap-5">
@@ -60,7 +86,7 @@ export default function SupportOptions() {
 					id="support-channel"
 					onValueChange={(value) => {
 						setChannel(value as Channel);
-						setCopied(false);
+						setCopiedKey(null);
 					}}
 					options={OPTIONS.map((entry) => ({
 						label: t(`options.${entry}`),
@@ -109,42 +135,41 @@ export default function SupportOptions() {
 				</section>
 			) : null}
 
-			{channel === "btc" || channel === "eth" || channel === "solana" ? (
+			{channel === "btc" ? (
 				<section className="flex flex-col gap-4 rounded-lg border border-border bg-surface p-5 md:p-6">
 					<div className="flex flex-col gap-1">
-						<h2 className="font-display text-h3">
-							{t(`crypto.${channel}.title`)}
-						</h2>
+						<h2 className="font-display text-h3">{t("crypto.btc.title")}</h2>
+						<p className="text-small text-text-2">{t("crypto.btc.network")}</p>
+					</div>
+					{BTC_ADDRESSES.map((entry) =>
+						addressBlock(
+							entry.key,
+							t(`crypto.btc.${entry.key}`),
+							entry.address,
+						),
+					)}
+				</section>
+			) : null}
+
+			{channel === "eth" ? (
+				<section className="flex flex-col gap-4 rounded-lg border border-border bg-surface p-5 md:p-6">
+					<div className="flex flex-col gap-1">
+						<h2 className="font-display text-h3">{t("crypto.eth.title")}</h2>
+						<p className="text-small text-text-2">{t("crypto.eth.network")}</p>
+					</div>
+					{addressBlock("eth", t("address"), EVM_ADDRESS)}
+				</section>
+			) : null}
+
+			{channel === "solana" ? (
+				<section className="flex flex-col gap-4 rounded-lg border border-border bg-surface p-5 md:p-6">
+					<div className="flex flex-col gap-1">
+						<h2 className="font-display text-h3">{t("crypto.solana.title")}</h2>
 						<p className="text-small text-text-2">
-							{CRYPTO[channel].network}
+							{t("crypto.solana.network")}
 						</p>
 					</div>
-					<div className="flex flex-col gap-2">
-						<span className="text-caption uppercase tracking-wide text-text-3">
-							{t("address")}
-						</span>
-						<code
-							className="block break-all rounded-lg border border-border bg-surface-2 p-3 font-mono text-small text-text"
-							dir="ltr"
-						>
-							{CRYPTO[channel].address}
-						</code>
-						<p className="text-small text-warning">{t("notReady")}</p>
-					</div>
-					<div className="flex flex-wrap gap-2">
-						<SmoothButton
-							onClick={() => copy(CRYPTO[channel].address)}
-							size="lg"
-							variant="candy"
-						>
-							{copied ? (
-								<Check aria-hidden="true" className="size-4" />
-							) : (
-								<Copy aria-hidden="true" className="size-4" />
-							)}
-							{copied ? t("copied") : t("copy")}
-						</SmoothButton>
-					</div>
+					{addressBlock("solana", t("address"), SOLANA_ADDRESS)}
 				</section>
 			) : null}
 

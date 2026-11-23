@@ -8,14 +8,14 @@ import { notify } from "@/components/primitives/notify";
 import SmoothButton from "@/components/smoothui/smooth-button";
 import { formatBytes } from "@/lib/format";
 import {
-	containerStructure,
 	type ContainerSegment,
+	containerStructure,
 	type ImageSize,
 	probeDimensions,
 } from "@/lib/images/containers";
-import { parseExif, type ExifEntry } from "@/lib/images/exif";
-import { MAX_IMAGE_BYTES } from "@/lib/images/formats";
 import { downloadBlob } from "@/lib/images/download";
+import { type ExifEntry, parseExif } from "@/lib/images/exif";
+import { MAX_IMAGE_BYTES } from "@/lib/images/formats";
 
 const METADATA_ACCEPT =
 	".png,.jpg,.jpeg,.webp,.avif,.gif,.svg,.heic,.heif,image/*";
@@ -146,7 +146,9 @@ export default function ImageMetadataTool() {
 						<dl className="grid gap-2 text-small" data-testid="metadata-basic">
 							<div className="flex justify-between gap-3">
 								<dt className="text-text-3">{t("options.file")}</dt>
-								<dd className="min-w-0 truncate text-end text-text">{info.name}</dd>
+								<dd className="min-w-0 truncate text-end text-text">
+									{info.name}
+								</dd>
 							</div>
 							<div className="flex justify-between gap-3">
 								<dt className="text-text-3">{t("options.type")}</dt>
@@ -154,7 +156,9 @@ export default function ImageMetadataTool() {
 							</div>
 							<div className="flex justify-between gap-3">
 								<dt className="text-text-3">{t("options.size")}</dt>
-								<dd className="font-mono text-text">{formatBytes(info.size)}</dd>
+								<dd className="font-mono text-text">
+									{formatBytes(info.size)}
+								</dd>
 							</div>
 							<div className="flex justify-between gap-3">
 								<dt className="text-text-3">{t("options.dimensions")}</dt>
@@ -192,9 +196,7 @@ export default function ImageMetadataTool() {
 								))}
 							</dl>
 						) : (
-							<p className="text-small text-text-3">
-								{t("options.noExif")}
-							</p>
+							<p className="text-small text-text-3">{t("options.noExif")}</p>
 						)}
 					</div>
 				) : null}
@@ -235,7 +237,12 @@ export default function ImageMetadataTool() {
 			</div>
 			<div className="flex h-fit flex-col gap-4 rounded-lg border border-border bg-surface p-5 md:p-6">
 				<p className="text-small text-text-2">{t("options.hint")}</p>
-				<SmoothButton disabled={!info} onClick={copy} size="lg" variant="secondary">
+				<SmoothButton
+					disabled={!info}
+					onClick={copy}
+					size="lg"
+					variant="secondary"
+				>
 					<Copy aria-hidden="true" className="size-4" />
 					{t("options.copy")}
 				</SmoothButton>
@@ -253,7 +260,6 @@ export default function ImageMetadataTool() {
 					<Download aria-hidden="true" className="size-4" />
 					{t("options.download")}
 				</SmoothButton>
-				<p className="text-caption text-text-3">{tc("filesNeverLeave")}</p>
 			</div>
 		</div>
 	);

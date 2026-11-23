@@ -18,6 +18,14 @@ import {
 	MOCKUP_FONTS,
 	roundRect,
 } from "@/lib/images/mockup";
+import {
+	cameraIcon,
+	dotsIcon,
+	paperclipIcon,
+	phoneIcon,
+	smileyIcon,
+	videoIcon,
+} from "@/lib/images/social-icons";
 
 export type ChatVariant = "whatsapp" | "messenger" | "imessage" | "instagram";
 
@@ -172,7 +180,11 @@ export default function ChatMockupTool({
 }) {
 	const t = useTranslations(`tools.${slug}`);
 	const [contact, setContact] = useState(
-		variant === "whatsapp" ? "Alex" : variant === "messenger" ? "Sam Rivera" : "Jamie",
+		variant === "whatsapp"
+			? "Alex"
+			: variant === "messenger"
+				? "Sam Rivera"
+				: "Jamie",
 	);
 	const [dark, setDark] = useState(variant === "imessage");
 	const [messages, setMessages] = useState<Message[]>([
@@ -227,7 +239,8 @@ export default function ChatMockupTool({
 		const timestampLine = 32;
 		let content = header + 40;
 		for (const lines of rows) {
-			content += lines * lineHeight + bubblePadding * 2 + timestampLine + bubbleGap;
+			content +=
+				lines * lineHeight + bubblePadding * 2 + timestampLine + bubbleGap;
 		}
 		const footer = 130;
 		const height = content + footer;
@@ -251,18 +264,28 @@ export default function ChatMockupTool({
 		context.fillStyle = theme.meta;
 		context.font = `400 28px ${MOCKUP_FONTS.sans}`;
 		context.fillText("online", 232, header / 2 + 30);
+		if (variant === "whatsapp") {
+			videoIcon(context, 810, header / 2 - 26, 46, theme.accent);
+			phoneIcon(context, 890, header / 2 - 24, 44, theme.accent);
+			dotsIcon(context, 978, header / 2, theme.accent);
+		}
 
 		let y = header + 40;
+		const insideTime = variant === "whatsapp";
 		for (const [index, message] of messages.entries()) {
 			const lines = rows[index] ?? 1;
-			const bubbleHeight = lines * lineHeight + bubblePadding * 2;
+			const bubbleHeight =
+				lines * lineHeight + bubblePadding * 2 + (insideTime ? 34 : 0);
 			const bubbleW = Math.min(
 				bubbleWidth,
 				Math.max(
 					140,
 					Math.max(
-						...message.text.split("\n").map((line) => context.measureText(line).width),
-					) + bubblePadding * 2,
+						...message.text
+							.split("\n")
+							.map((line) => context.measureText(line).width),
+					) +
+						bubblePadding * 2,
 				),
 			);
 			const outgoing = message.side === "out";
@@ -282,19 +305,48 @@ export default function ChatMockupTool({
 			});
 			context.fillStyle = theme.meta;
 			context.font = `400 24px ${MOCKUP_FONTS.sans}`;
-			context.fillText(message.time, outgoing ? x + bubbleW - 90 : x + bubbleW - 90, y + bubbleHeight + 26);
-			y += bubbleHeight + timestampLine + bubbleGap;
+			context.textAlign = "right";
+			context.fillText(
+				message.time,
+				x + bubbleW - 24,
+				insideTime ? y + bubbleHeight - 18 : y + bubbleHeight + 26,
+			);
+			context.textAlign = "left";
+			y += bubbleHeight + (insideTime ? bubbleGap : timestampLine + bubbleGap);
 		}
 
 		context.fillStyle = theme.footer;
 		context.fillRect(0, height - footer, width, footer);
+		if (variant === "whatsapp") {
+			smileyIcon(context, 48, height - footer / 2 - 22, 44, theme.meta);
+			context.strokeStyle = theme.meta;
+			context.lineWidth = 2;
+			roundRect(context, 116, height - footer + 26, 700, footer - 52, 28);
+			context.stroke();
+			context.fillStyle = theme.meta;
+			context.font = `400 30px ${MOCKUP_FONTS.sans}`;
+			context.textAlign = "left";
+			context.textBaseline = "middle";
+			context.fillText(
+				t("options.messagePlaceholder"),
+				152,
+				height - footer / 2,
+			);
+			paperclipIcon(context, 866, height - footer / 2 - 21, 42, theme.meta);
+			cameraIcon(context, 968, height - footer / 2 - 22, 44, theme.meta);
+			return;
+		}
 		context.strokeStyle = theme.meta;
 		context.lineWidth = 2;
 		roundRect(context, 40, height - footer + 26, width - 160, footer - 52, 28);
 		context.stroke();
 		context.fillStyle = theme.meta;
 		context.font = `400 30px ${MOCKUP_FONTS.sans}`;
-		context.fillText(t("options.messagePlaceholder"), 70, height - footer / 2 + 10);
+		context.fillText(
+			t("options.messagePlaceholder"),
+			70,
+			height - footer / 2 + 10,
+		);
 		context.fillStyle = theme.accent;
 		context.beginPath();
 		context.arc(width - 70, height - footer / 2, 36, 0, Math.PI * 2);
@@ -303,7 +355,7 @@ export default function ChatMockupTool({
 		context.font = `700 30px ${MOCKUP_FONTS.sans}`;
 		context.textAlign = "center";
 		context.fillText("↑", width - 70, height - footer / 2 + 11);
-	}, [contact, messages, theme, t]);
+	}, [contact, messages, theme, t, variant]);
 
 	const download = async () => {
 		if (!canvas.current) {
@@ -323,7 +375,9 @@ export default function ChatMockupTool({
 
 	const update = (id: string, patch: Partial<Message>) => {
 		setMessages((current) =>
-			current.map((message) => (message.id === id ? { ...message, ...patch } : message)),
+			current.map((message) =>
+				message.id === id ? { ...message, ...patch } : message,
+			),
 		);
 	};
 
@@ -410,7 +464,9 @@ export default function ChatMockupTool({
 
 				<div className="flex flex-col gap-2">
 					<div className="flex items-center justify-between">
-						<span className="text-small font-medium">{t("options.messages")}</span>
+						<span className="text-small font-medium">
+							{t("options.messages")}
+						</span>
 						<SmoothButton
 							onClick={() =>
 								setMessages((current) => [

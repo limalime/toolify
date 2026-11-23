@@ -8,18 +8,15 @@ import { notify } from "@/components/primitives/notify";
 import SmoothButton from "@/components/smoothui/smooth-button";
 import { formatBytes } from "@/lib/format";
 import {
+	type AverageColor,
 	averageColor,
 	cssHsl,
 	cssRgb,
-	type AverageColor,
 	type DominantColor,
 	dominantColors,
 	rgbToHsl,
 } from "@/lib/images/color";
-import {
-	MAX_IMAGE_BYTES,
-	RASTER_ACCEPT,
-} from "@/lib/images/formats";
+import { MAX_IMAGE_BYTES, RASTER_ACCEPT } from "@/lib/images/formats";
 import { imageWorker } from "@/lib/images/worker-client";
 
 export default function AverageColorTool() {
@@ -68,7 +65,10 @@ export default function AverageColorTool() {
 				picked.name,
 			);
 			const width = Math.min(96, decoded.width);
-			const height = Math.max(1, Math.round(width * (decoded.height / decoded.width)));
+			const height = Math.max(
+				1,
+				Math.round(width * (decoded.height / decoded.width)),
+			);
 			const small = await worker.resizeImage(decoded.image, width, height);
 			setResult(averageColor(small.data));
 			setPalette(dominantColors(small.data, 6));
@@ -147,9 +147,7 @@ export default function AverageColorTool() {
 							</div>
 							<div className="flex justify-between gap-3">
 								<dt className="text-text-3">RGB</dt>
-								<dd className="font-mono text-text">
-									{cssRgb(result)}
-								</dd>
+								<dd className="font-mono text-text">{cssRgb(result)}</dd>
 							</div>
 							<div className="flex justify-between gap-3">
 								<dt className="text-text-3">HSL</dt>
@@ -202,7 +200,6 @@ export default function AverageColorTool() {
 					<Copy aria-hidden="true" className="size-4" />
 					{t("options.copy")}
 				</SmoothButton>
-				<p className="text-caption text-text-3">{tc("filesNeverLeave")}</p>
 			</div>
 		</div>
 	);

@@ -31,26 +31,24 @@ export default async function SupportPage() {
 	return (
 		<div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-4 py-12 md:py-16">
 			<section className="flex flex-col items-center gap-5 text-center">
-				<div className="relative flex size-36 items-center justify-center rounded-lg border border-border bg-surface md:size-44">
-					<Image
-						alt=""
-						aria-hidden="true"
-						className="size-28 w-auto md:size-36 dark:hidden"
-						height={1000}
-						priority
-						src="/assets/donate-box.svg"
-						width={1000}
-					/>
-					<Image
-						alt=""
-						aria-hidden="true"
-						className="hidden size-28 w-auto md:size-36 dark:block"
-						height={1000}
-						priority
-						src="/assets/donate-box-dark.svg"
-						width={1000}
-					/>
-				</div>
+				<Image
+					alt=""
+					aria-hidden="true"
+					className="h-auto w-full max-w-52 dark:hidden md:max-w-64"
+					height={1000}
+					priority
+					src="/assets/donate.svg"
+					width={1000}
+				/>
+				<Image
+					alt=""
+					aria-hidden="true"
+					className="hidden h-auto w-full max-w-52 dark:block md:max-w-64"
+					height={1000}
+					priority
+					src="/assets/donate-dark.svg"
+					width={1000}
+				/>
 				<div className="flex flex-col gap-3">
 					<h1>{t("h1")}</h1>
 					<p className="max-w-xl text-body text-text-2">{t("sub")}</p>

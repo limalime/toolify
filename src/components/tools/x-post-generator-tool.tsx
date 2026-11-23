@@ -25,8 +25,25 @@ import {
 	MOCKUP_FONTS,
 	wrapLines,
 } from "@/lib/images/mockup";
+import {
+	commentIcon,
+	dotsIcon,
+	heart,
+	repostIcon,
+	viewsIcon,
+} from "@/lib/images/social-icons";
 
 type Mode = "post" | "profile";
+
+function compactViews(value: number): string {
+	if (value >= 1_000_000) {
+		return `${Number((value / 1_000_000).toFixed(2))}M`;
+	}
+	if (value >= 1_000) {
+		return `${Number((value / 1_000).toFixed(2))}K`;
+	}
+	return String(value);
+}
 
 export default function XPostGeneratorTool() {
 	const t = useTranslations("tools.x-post-generator");
@@ -34,8 +51,10 @@ export default function XPostGeneratorTool() {
 	const [name, setName] = useState("Toolify");
 	const [handle, setHandle] = useState("toolify");
 	const [text, setText] = useState(t("options.sampleText"));
-	const [likes, setLikes] = useState("2400");
-	const [reposts, setReposts] = useState("318");
+	const [likes, setLikes] = useState("5300");
+	const [reposts, setReposts] = useState("43");
+	const [replies, setReplies] = useState("165");
+	const [views, setViews] = useState("165430");
 	const [bio, setBio] = useState(t("options.sampleBio"));
 	const [dark, setDark] = useState(true);
 	const [avatarName, setAvatarName] = useState<string | null>(null);
@@ -60,6 +79,8 @@ export default function XPostGeneratorTool() {
 		};
 	}, []);
 
+	// image names change after the ref loads, repaint when they do
+	// biome-ignore lint/correctness/useExhaustiveDependencies: names drive the repaint
 	useEffect(() => {
 		const target = canvas.current;
 		const context = target?.getContext("2d");
@@ -109,7 +130,11 @@ export default function XPostGeneratorTool() {
 			});
 			context.fillStyle = muted;
 			context.font = `400 28px ${MOCKUP_FONTS.sans}`;
-			context.fillText("Following  128   Followers  24.6K", 60, Math.min(640, end + 20));
+			context.fillText(
+				"Following  128   Followers  24.6K",
+				60,
+				Math.min(640, end + 20),
+			);
 			context.fillStyle = ink;
 			context.strokeStyle = dark ? "#536471" : "#cfd9de";
 			context.lineWidth = 2;
@@ -130,10 +155,18 @@ export default function XPostGeneratorTool() {
 		let textHeight = 0;
 		if (image.current) {
 			const imageHeight = 380;
-			const lines = wrapLines(text, bodyWidth, (value) => context.measureText(value).width);
+			const lines = wrapLines(
+				text,
+				bodyWidth,
+				(value) => context.measureText(value).width,
+			);
 			textHeight = 210 + lines.length * 48 + imageHeight + 180;
 		} else {
-			const lines = wrapLines(text, bodyWidth, (value) => context.measureText(value).width);
+			const lines = wrapLines(
+				text,
+				bodyWidth,
+				(value) => context.measureText(value).width,
+			);
 			textHeight = 210 + lines.length * 48 + 190;
 		}
 		target.height = Math.max(420, textHeight);
@@ -148,6 +181,7 @@ export default function XPostGeneratorTool() {
 		context.fillStyle = muted;
 		context.font = `400 30px ${MOCKUP_FONTS.sans}`;
 		context.fillText(`@${handle}`, 168, 120);
+		dotsIcon(context, 1074, 64, muted);
 		context.fillStyle = ink;
 		context.font = `400 36px ${MOCKUP_FONTS.sans}`;
 		const bodyEnd = drawParagraph(context, text, {
@@ -170,13 +204,33 @@ export default function XPostGeneratorTool() {
 		context.moveTo(48, cursor);
 		context.lineTo(1152, cursor);
 		context.stroke();
-		cursor += 48;
+		cursor += 22;
+		commentIcon(context, 48, cursor, 38, muted);
 		context.fillStyle = muted;
 		context.font = `400 28px ${MOCKUP_FONTS.sans}`;
-		context.fillText(`${formatCount(Number(reposts) || 0)} Reposts`, 48, cursor);
-		context.fillText(`${formatCount(Number(likes) || 0)} Likes`, 360, cursor);
-		context.fillText(`${formatCount(Number(likes) * 38 || 0)} Views`, 680, cursor);
-	}, [avatarName, bannerName, bio, dark, handle, imageName, likes, mode, name, reposts, t, text]);
+		context.fillText(formatCount(Number(replies) || 0), 98, cursor + 32);
+		repostIcon(context, 300, cursor, 38, muted);
+		context.fillText(formatCount(Number(reposts) || 0), 350, cursor + 32);
+		heart(context, 552, cursor, 38, false, muted);
+		context.fillText(formatCount(Number(likes) || 0), 602, cursor + 32);
+		viewsIcon(context, 828, cursor, 38, muted);
+		context.fillText(compactViews(Number(views) || 0), 876, cursor + 32);
+	}, [
+		avatarName,
+		bannerName,
+		bio,
+		dark,
+		handle,
+		imageName,
+		likes,
+		mode,
+		name,
+		replies,
+		reposts,
+		t,
+		text,
+		views,
+	]);
 
 	const download = async () => {
 		if (!canvas.current) {
@@ -212,7 +266,10 @@ export default function XPostGeneratorTool() {
 	return (
 		<div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
 			<div className="flex min-w-0 flex-col gap-4">
-				<TabsRoot onValueChange={(value) => setMode(value as Mode)} value={mode}>
+				<TabsRoot
+					onValueChange={(value) => setMode(value as Mode)}
+					value={mode}
+				>
 					<TabsList variant="segment">
 						<TabsTab className={tabActiveClass} value="post">
 							{t("options.post")}
@@ -281,6 +338,34 @@ export default function XPostGeneratorTool() {
 						</Field>
 						<div className="grid grid-cols-2 gap-3">
 							<Field>
+								<FieldLabel htmlFor="x-replies">
+									{t("options.replies")}
+								</FieldLabel>
+								<FieldControl
+									className={inputClass}
+									id="x-replies"
+									inputMode="numeric"
+									onChange={(event) =>
+										setReplies(event.target.value.replace(/[^0-9]/g, ""))
+									}
+									value={replies}
+								/>
+							</Field>
+							<Field>
+								<FieldLabel htmlFor="x-reposts">
+									{t("options.reposts")}
+								</FieldLabel>
+								<FieldControl
+									className={inputClass}
+									id="x-reposts"
+									inputMode="numeric"
+									onChange={(event) =>
+										setReposts(event.target.value.replace(/[^0-9]/g, ""))
+									}
+									value={reposts}
+								/>
+							</Field>
+							<Field>
 								<FieldLabel htmlFor="x-likes">{t("options.likes")}</FieldLabel>
 								<FieldControl
 									className={inputClass}
@@ -293,15 +378,15 @@ export default function XPostGeneratorTool() {
 								/>
 							</Field>
 							<Field>
-								<FieldLabel htmlFor="x-reposts">{t("options.reposts")}</FieldLabel>
+								<FieldLabel htmlFor="x-views">{t("options.views")}</FieldLabel>
 								<FieldControl
 									className={inputClass}
-									id="x-reposts"
+									id="x-views"
 									inputMode="numeric"
 									onChange={(event) =>
-										setReposts(event.target.value.replace(/[^0-9]/g, ""))
+										setViews(event.target.value.replace(/[^0-9]/g, ""))
 									}
-									value={reposts}
+									value={views}
 								/>
 							</Field>
 						</div>

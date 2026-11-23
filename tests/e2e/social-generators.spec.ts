@@ -9,7 +9,6 @@ test("instagram generator exports a story mockup", async ({ page }) => {
 	await expect(page.getByTestId("instagram-canvas")).toBeVisible();
 	await page.getByLabel("Username").fill("toolify");
 	await page.getByRole("tab", { name: "Story" }).click();
-	await page.getByLabel("Caption").fill("Everything runs in your browser.");
 	const { bytes, filename } = await downloadBytes(
 		page,
 		page.getByRole("button", { name: "Download PNG" }),

@@ -1,19 +1,26 @@
 import * as Comlink from "comlink";
-import { PDFDocument } from "pdf-lib";
 import { zipSync } from "fflate";
+import { PDFDocument } from "pdf-lib";
+import {
+	PDF_QUALITY_JPEG,
+	PDF_QUALITY_SCALE,
+	type PdfQuality,
+} from "@/lib/pdf/compress";
 import {
 	mergePdfs,
 	PdfError,
 	pdfPageCount,
 	splitPdf,
 } from "@/lib/pdf/merge-split";
-import {
-	PDF_QUALITY_JPEG,
-	PDF_QUALITY_SCALE,
-	type PdfQuality,
-} from "@/lib/pdf/compress";
 
 export type PdfCode = "empty" | "unreadable" | "range" | "failed";
+
+// pdf.js resolves its runtime assets against document.baseURI. a worker has no
+// document, so give it the one property it reads and its fetch path works.
+const scope = globalThis as typeof globalThis & {
+	document?: { baseURI: string };
+};
+scope.document ??= { baseURI: self.location.href } as Document;
 
 export type PdfResult<T> =
 	| { ok: true; value: T }
@@ -31,6 +38,31 @@ async function loadPdfjs() {
 	pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 	return pdfjs;
 }
+
+// fonts, cmaps, wasm image decoders and colour profiles are served from
+// public/pdfjs, without them pdf.js draws tofu text and refuses to decode
+// jbig2 and jpeg2000 scans. sync-pdfjs-assets.mjs keeps this folder current.
+// pdf.js resolves these against document.baseURI, which does not exist inside
+// our worker, so hand it absolute urls.
+const origin = self.location.origin;
+const documentOptions = {
+	cMapUrl: `${origin}/pdfjs/cmaps/`,
+	cMapPacked: true,
+	standardFontDataUrl: `${origin}/pdfjs/standard_fonts/`,
+	wasmUrl: `${origin}/pdfjs/wasm/`,
+	iccUrl: `${origin}/pdfjs/iccs/`,
+	// without this pdf.js probes document.baseURI, which workers do not have
+	useWorkerFetch: false,
+	// render with the bundled Foxit fonts, system font lookup is unreliable
+	// inside a worker and shows up as boxes on some linux fonts
+	useSystemFonts: false,
+	// FontFace has no document to attach to inside this worker
+	disableFontFace: true,
+};
+
+// a huge page at a high zoom can exceed the largest canvas the browser will
+// allocate, cap the long edge and let css scale the bitmap instead.
+const MAX_EDGE = 4096;
 
 // one open document at a time, the viewer replaces it on the next file.
 let viewer: Awaited<
@@ -93,14 +125,19 @@ const api = {
 		}
 	},
 
-	openPdf: async (bytes: ArrayBuffer): Promise<PdfResult<{ pages: number }>> => {
+	openPdf: async (
+		bytes: ArrayBuffer,
+	): Promise<PdfResult<{ pages: number }>> => {
 		try {
 			const pdfjs = await loadPdfjs();
 			if (viewer) {
 				await viewer.destroy();
 				viewer = null;
 			}
-			const task = pdfjs.getDocument({ data: new Uint8Array(bytes) });
+			const task = pdfjs.getDocument({
+				...documentOptions,
+				data: new Uint8Array(bytes),
+			});
 			viewer = await task.promise;
 			return { ok: true, value: { pages: viewer.numPages } };
 		} catch (unknown) {
@@ -112,13 +149,19 @@ const api = {
 	renderPage: async (
 		pageNumber: number,
 		scale: number,
-	): Promise<PdfResult<{ bitmap: ImageBitmap; width: number; height: number }>> => {
+	): Promise<
+		PdfResult<{ bitmap: ImageBitmap; width: number; height: number }>
+	> => {
 		try {
 			if (!viewer) {
 				return { ok: false, code: "unreadable" };
 			}
-			const page = await viewer.getPage(Math.max(1, Math.min(viewer.numPages, pageNumber)));
-			const viewport = page.getViewport({ scale });
+			const page = await viewer.getPage(
+				Math.max(1, Math.min(viewer.numPages, pageNumber)),
+			);
+			const base = page.getViewport({ scale: 1 });
+			const limit = MAX_EDGE / Math.max(base.width, base.height);
+			const viewport = page.getViewport({ scale: Math.min(scale, limit) });
 			const canvas = new OffscreenCanvas(
 				Math.max(1, Math.floor(viewport.width)),
 				Math.max(1, Math.floor(viewport.height)),
@@ -156,7 +199,10 @@ const api = {
 	): Promise<PdfResult<{ bytes: Uint8Array; pages: number }>> => {
 		try {
 			const pdfjs = await loadPdfjs();
-			const task = pdfjs.getDocument({ data: new Uint8Array(bytes) });
+			const task = pdfjs.getDocument({
+				...documentOptions,
+				data: new Uint8Array(bytes),
+			});
 			const source = await task.promise;
 			const output = await PDFDocument.create();
 			const scale = PDF_QUALITY_SCALE[quality] ?? 1.4;

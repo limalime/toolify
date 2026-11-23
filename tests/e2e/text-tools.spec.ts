@@ -99,9 +99,7 @@ test("spin wheel picks one of the listed options", async ({ page }) => {
 	await page.getByRole("button", { name: "Spin the wheel" }).click();
 	const result = page.getByTestId("spin-result");
 	await expect(result).toBeVisible({ timeout: 8000 });
-	await expect(result).toHaveText(
-		/^(Pizza|Sushi|Burger|Salad|Tacos|Pasta)$/,
-	);
+	await expect(result).toHaveText(/^(Pizza|Sushi|Burger|Salad|Tacos|Pasta)$/);
 });
 
 test("spin wheel takes colors, an image, shuffle and a share link", async ({
@@ -116,19 +114,15 @@ test("spin wheel takes colors, an image, shuffle and a share link", async ({
 		canvas.evaluate((node) => (node as HTMLCanvasElement).toDataURL());
 
 	const before = await paint();
-	await page.locator('[data-testid="spin-colors"] input').first().evaluate(
-		(node) => {
-			const input = node as HTMLInputElement;
-			const setter = Object.getOwnPropertyDescriptor(
-				HTMLInputElement.prototype,
-				"value",
-			)?.set;
-			setter?.call(input, "#00ff00");
-			input.dispatchEvent(new Event("input", { bubbles: true }));
-			input.dispatchEvent(new Event("change", { bubbles: true }));
-		},
-	);
+	await page
+		.locator('[data-testid="spin-colors"] [data-slot="color-picker-trigger"]')
+		.first()
+		.click();
+	const hex = page.getByRole("textbox", { name: "Hex", exact: true });
+	await hex.fill("00ff00");
+	await hex.press("Enter");
 	await expect.poll(paint).not.toBe(before);
+	await page.keyboard.press("Escape");
 
 	const options = page.getByTestId("spin-options");
 	const original = await options.inputValue();

@@ -8,7 +8,7 @@ import FileList, {
 	type FileRowStatus,
 } from "@/components/primitives/file-list";
 import { notify } from "@/components/primitives/notify";
-import Field, { FieldControl, FieldLabel } from "@/components/smoothui/field";
+import Field, { FieldLabel } from "@/components/smoothui/field";
 import {
 	ProgressIndicator,
 	ProgressLabel,
@@ -19,7 +19,8 @@ import {
 import Select from "@/components/smoothui/select";
 import Slider from "@/components/smoothui/slider";
 import SmoothButton from "@/components/smoothui/smooth-button";
-import { inputClass, selectTriggerClass } from "@/lib/control-classes";
+import ColorPickerField from "@/components/tool/color-picker-field";
+import { selectTriggerClass } from "@/lib/control-classes";
 import { formatBytes } from "@/lib/format";
 import { downloadBlob } from "@/lib/images/download";
 import {
@@ -319,16 +320,15 @@ export default function ImageConverterTool() {
 					<FieldLabel htmlFor="converter-background">
 						{t("options.background")}
 					</FieldLabel>
-					<FieldControl
-						aria-label={t("options.background")}
-						className={`${inputClass} cursor-pointer px-2`}
+					<ColorPickerField
+						className="h-11"
 						disabled={!needsBackground(format)}
 						id="converter-background"
-						onChange={(event) => {
-							setBackground(event.target.value);
+						label={t("options.background")}
+						onChange={(value) => {
+							setBackground(value);
 							markDirty();
 						}}
-						type="color"
 						value={background}
 					/>
 					<p className="text-caption text-text-3">{t("options.bgNote")}</p>

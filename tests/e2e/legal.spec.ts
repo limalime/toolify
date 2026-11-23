@@ -75,14 +75,45 @@ test("contact send button uses the candy default", async ({ page }) => {
 	expect(background).toContain("linear-gradient");
 });
 
-test("contact without delivery answers honestly", async ({ page }) => {
+test("contact posts to web3forms and confirms delivery", async ({ page }) => {
+	await page.route("https://api.web3forms.com/submit", async (route) => {
+		const body = route.request().postDataJSON() as {
+			access_key?: string;
+			name?: string;
+			email?: string;
+			message?: string;
+		};
+		expect(body.access_key).toBe("c75a459b-7323-4a49-85da-6c40a49e1120");
+		expect(body.message).toBe("Hello");
+		await route.fulfill({
+			body: JSON.stringify({ success: true }),
+			contentType: "application/json",
+			status: 200,
+		});
+	});
+	await page.goto("/contact");
+	await page.getByLabel("Name").fill("Ada");
+	await page.getByLabel("Email").fill("ada@example.com");
+	await page.getByLabel("Message").fill("Hello");
+	await page.getByRole("button", { name: "Send message" }).click();
+	await expect(page.getByText("Message sent")).toBeVisible();
+});
+
+test("contact reports a failed delivery", async ({ page }) => {
+	await page.route("https://api.web3forms.com/submit", async (route) => {
+		await route.fulfill({
+			body: JSON.stringify({ success: false }),
+			contentType: "application/json",
+			status: 200,
+		});
+	});
 	await page.goto("/contact");
 	await page.getByLabel("Name").fill("Ada");
 	await page.getByLabel("Email").fill("ada@example.com");
 	await page.getByLabel("Message").fill("Hello");
 	await page.getByRole("button", { name: "Send message" }).click();
 	await expect(
-		page.getByText("The contact form is unavailable right now."),
+		page.getByText("The message could not be delivered. Try again later."),
 	).toBeVisible();
 });
 

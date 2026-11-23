@@ -58,12 +58,11 @@ export default function PdfViewerTool() {
 		}
 	};
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: render is recreated each render, page and scale drive it
 	useEffect(() => {
 		if (pages > 0 && canvas.current) {
 			render(page, scale);
 		}
-		// render is a stable local closure over current state setters
-		// biome-ignore lint/correctness/useExhaustiveDependencies: page and scale drive it
 	}, [page, scale, pages]);
 
 	useEffect(() => {
@@ -124,11 +123,14 @@ export default function PdfViewerTool() {
 						</p>
 						<div className="flex items-center gap-2">
 							<SmoothButton asChild size="sm" variant="secondary">
-								<button onClick={() => {
-									setFile(null);
-									setPages(0);
-									pdfWorker().then((worker) => worker.closePdf());
-								}} type="button">
+								<button
+									onClick={() => {
+										setFile(null);
+										setPages(0);
+										pdfWorker().then((worker) => worker.closePdf());
+									}}
+									type="button"
+								>
 									{t("options.close")}
 								</button>
 							</SmoothButton>
@@ -208,7 +210,9 @@ export default function PdfViewerTool() {
 							</SmoothButton>
 						</div>
 						<div className="flex items-center justify-between gap-2">
-							<span className="text-small font-medium">{t("options.zoom")}</span>
+							<span className="text-small font-medium">
+								{t("options.zoom")}
+							</span>
 							<div className="flex items-center gap-1">
 								<button
 									aria-label={t("options.zoomOut")}
@@ -241,7 +245,6 @@ export default function PdfViewerTool() {
 				) : (
 					<p className="text-small text-text-2">{t("options.hint")}</p>
 				)}
-				<p className="text-caption text-text-3">{tc("filesNeverLeave")}</p>
 			</div>
 		</div>
 	);

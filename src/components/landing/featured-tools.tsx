@@ -5,6 +5,7 @@ import NextImage from "next/image";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import type { MenuTool } from "@/components/landing/tool-menu";
+import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "@/i18n/navigation";
 import {
 	FEATURED_COUNT,
@@ -91,66 +92,73 @@ export default function FeaturedTools({ tools }: { tools: MenuTool[] }) {
 	return (
 		<section
 			aria-labelledby="featured-tools-title"
-			className="flex flex-col gap-6"
+			className="mt-4 flex flex-col gap-4 md:mt-10"
 			data-testid="featured-tools"
 		>
-			<div className="flex items-start gap-4">
-				<span
-					aria-hidden="true"
-					className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,var(--color-blue-500),#6d4aff)] text-white shadow-glow"
+			<div className="flex flex-col gap-1">
+				<h2
+					className="flex items-center gap-2 font-display text-h2"
+					id="featured-tools-title"
 				>
-					<Sparkles className="size-7" />
-				</span>
-				<div className="flex flex-col gap-1">
-					<h2 className="font-display text-h1" id="featured-tools-title">
-						{t("featuredTitle")}
-					</h2>
-					<p className="text-body text-text-2">{t("featuredSub")}</p>
-				</div>
+					<Sparkles aria-hidden="true" className="size-5 text-blue-500" />
+					{t("featuredTitle")}
+				</h2>
+				<p className="text-small text-text-2">{t("featuredSub")}</p>
 			</div>
 			<div
 				aria-busy={picks === null}
-				className="grid gap-6 md:grid-cols-3"
+				className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] md:mx-0 md:gap-4 md:scroll-px-0 md:px-0 [&::-webkit-scrollbar]:hidden"
 				data-testid="featured-grid"
 			>
 				{picks === null
-					? Array.from({ length: FEATURED_COUNT }, (_, index) => (
-							<div className="flex flex-col gap-3" key={index}>
-								<div className="aspect-[4/3] animate-pulse rounded-2xl bg-surface-2" />
-								<div className="h-5 w-2/3 animate-pulse rounded bg-surface-2" />
-								<div className="h-4 w-full animate-pulse rounded bg-surface-2" />
+					? Array.from(
+							{ length: FEATURED_COUNT },
+							(_, index) => `skeleton-${index + 1}`,
+						).map((slot) => (
+							<div
+								className="flex w-[70%] shrink-0 snap-start flex-col gap-2 md:w-[calc((100%-2rem)/3)]"
+								key={slot}
+							>
+								<div className="aspect-[16/10] animate-pulse rounded-xl bg-surface-2" />
+								<div className="mt-2 h-4 w-2/3 animate-pulse rounded bg-surface-2" />
+								<div className="h-3 w-full animate-pulse rounded bg-surface-2" />
 							</div>
 						))
 					: picks.map((pick) => (
 							<Link
-								className="group flex flex-col gap-3 outline-none"
+								className="group w-[70%] shrink-0 snap-start outline-none md:w-[calc((100%-2rem)/3)]"
 								data-featured-tool={pick.slug}
 								href={`/${pick.slug}`}
 								key={pick.slug}
 							>
-								<span
-									className={cn(
-										"relative block aspect-[4/3] overflow-hidden rounded-2xl p-3 transition-transform duration-200 ease-out group-hover:-translate-y-1 group-focus-visible:ring-2 group-focus-visible:ring-blue-500 motion-reduce:transition-none md:p-4",
-										TONES[pick.tone] ?? TONES.sky,
-									)}
-								>
-									<NextImage
-										alt=""
-										aria-hidden="true"
-										className="rounded-xl object-cover object-top shadow-modal"
-										fill
-										sizes="(min-width: 768px) 33vw, 100vw"
-										src={pick.image}
-									/>
-								</span>
-								<span className="flex flex-col gap-1">
-									<span className="font-display text-h3 text-text group-hover:text-blue-500">
-										{pick.name}
-									</span>
-									<span className="line-clamp-2 text-small text-text-2">
-										{pick.tagline}
-									</span>
-								</span>
+								<Card className="h-full gap-0 rounded-none bg-transparent py-0 ring-0">
+									<CardContent className="flex flex-col gap-3 px-0">
+										<span
+											className={cn(
+												"relative block aspect-[16/10] overflow-hidden rounded-xl p-2.5 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-focus-visible:ring-2 group-focus-visible:ring-blue-500 motion-reduce:transition-none md:p-3",
+												TONES[pick.tone] ?? TONES.sky,
+											)}
+										>
+											<NextImage
+												alt=""
+												aria-hidden="true"
+												className="rounded-lg object-contain shadow-modal"
+												fill
+												loading="eager"
+												sizes="(min-width: 768px) 320px, 240px"
+												src={pick.image}
+											/>
+										</span>
+										<span className="flex flex-col gap-0.5">
+											<span className="truncate font-display text-h3 text-text group-hover:text-blue-500">
+												{pick.name}
+											</span>
+											<span className="line-clamp-2 text-caption text-text-2">
+												{pick.tagline}
+											</span>
+										</span>
+									</CardContent>
+								</Card>
 							</Link>
 						))}
 			</div>

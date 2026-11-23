@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { notify } from "@/components/primitives/notify";
 import SmoothButton from "@/components/smoothui/smooth-button";
+import ColorPickerField from "@/components/tool/color-picker-field";
 import {
 	decodeWheel,
 	encodeWheel,
@@ -136,9 +137,7 @@ function draw(
 
 export default function SpinWheelTool() {
 	const t = useTranslations("tools.spin-wheel");
-	const [text, setText] = useState(
-		"Pizza\nSushi\nBurger\nSalad\nTacos\nPasta",
-	);
+	const [text, setText] = useState("Pizza\nSushi\nBurger\nSalad\nTacos\nPasta");
 	const [colors, setColors] = useState<string[]>(
 		WHEEL_COLORS.slice(0, MAX_WHEEL_COLORS),
 	);
@@ -165,18 +164,17 @@ export default function SpinWheelTool() {
 		.filter(Boolean)
 		.slice(0, MAX_WHEEL_LABELS);
 
+	// labels is derived from text, key off its value instead
+	// biome-ignore lint/correctness/useExhaustiveDependencies: labels is rebuilt from text every render
 	const paint = useCallback(
 		(angle: number) => {
 			if (canvas.current) {
 				draw(canvas.current, labels, angle, colors, centerImage.current);
 			}
 		},
-		// labels changes identity every render, key off its value instead
-		// biome-ignore lint/correctness/useExhaustiveDependencies: value key
 		[text, colors],
 	);
 
-	// biome-ignore lint/correctness/useExhaustiveDependencies: only text and colors need this repaint
 	useEffect(() => {
 		paint(rotationRef.current);
 	}, [paint]);
@@ -304,10 +302,7 @@ export default function SpinWheelTool() {
 		const buffer = new Uint32Array(labels.length);
 		crypto.getRandomValues(buffer);
 		let cursor = 0;
-		const order = shuffled(
-			labels,
-			() => (buffer[cursor++] ?? 0) / 4294967296,
-		);
+		const order = shuffled(labels, () => (buffer[cursor++] ?? 0) / 4294967296);
 		setText(order.join("\n"));
 	};
 
@@ -410,12 +405,11 @@ export default function SpinWheelTool() {
 					<span className="text-small font-medium">{t("options.colors")}</span>
 					<div className="grid grid-cols-8 gap-1" data-testid="spin-colors">
 						{colors.map((color, index) => (
-							<input
-								aria-label={t("options.sliceColor", { number: index + 1 })}
-								className="h-8 w-full cursor-pointer rounded border border-border bg-transparent p-0"
-								key={`${color}-${index}`}
-								onChange={(event) => {
-									const next = event.target.value;
+							<ColorPickerField
+								className="h-8 w-full"
+								key={index}
+								label={t("options.sliceColor", { number: index + 1 })}
+								onChange={(next) => {
 									setColors((current) =>
 										current.map((entry, entryIndex) =>
 											entryIndex === index ? next : entry,
@@ -423,8 +417,8 @@ export default function SpinWheelTool() {
 									);
 									setShareUrl(null);
 								}}
-								type="color"
 								value={color}
+								variant="swatch"
 							/>
 						))}
 					</div>

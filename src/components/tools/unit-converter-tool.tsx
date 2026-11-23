@@ -32,7 +32,6 @@ type CopyState = "idle" | "copied" | "failed";
 
 export default function UnitConverterTool() {
 	const t = useTranslations("tools.unit-converter");
-	const tc = useTranslations("common");
 	const locale = useLocale();
 
 	const [category, setCategory] = useState<UnitCategory>("length");
@@ -285,8 +284,6 @@ export default function UnitConverterTool() {
 					<p className="text-caption text-text-3">{t("options.averageNote")}</p>
 				) : null}
 			</div>
-
-			<p className="text-caption text-text-3">{tc("filesNeverLeave")}</p>
 		</div>
 	);
 }

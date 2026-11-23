@@ -17,10 +17,8 @@ import Select from "@/components/smoothui/select";
 import Slider from "@/components/smoothui/slider";
 import SmoothButton from "@/components/smoothui/smooth-button";
 import Switch from "@/components/smoothui/switch";
-import {
-	inputClass,
-	selectTriggerClass,
-} from "@/lib/control-classes";
+import ColorPickerField from "@/components/tool/color-picker-field";
+import { inputClass, selectTriggerClass } from "@/lib/control-classes";
 import { downloadBlob } from "@/lib/images/download";
 import { stemOf } from "@/lib/images/formats";
 import { cn } from "@/lib/utils";
@@ -68,6 +66,8 @@ interface TextLayer {
 	fontSize: number;
 	color: string;
 	stroke: boolean;
+	strokeWidth: number;
+	outlineColor: string;
 	font: (typeof FONTS)[number]["value"];
 }
 
@@ -84,7 +84,9 @@ interface ImageLayer {
 type Layer = TextLayer | ImageLayer;
 
 function uid(): string {
-	return globalThis.crypto?.randomUUID?.() ?? `layer-${Date.now().toString(36)}`;
+	return (
+		globalThis.crypto?.randomUUID?.() ?? `layer-${Date.now().toString(36)}`
+	);
 }
 
 function loadImage(src: string): Promise<HTMLImageElement> {
@@ -98,7 +100,6 @@ function loadImage(src: string): Promise<HTMLImageElement> {
 
 export default function MemeGeneratorTool() {
 	const t = useTranslations("tools.meme-generator");
-	const tc = useTranslations("common");
 	const [template, setTemplate] = useState<string>(`/meme/${TEMPLATES[0]}.jpg`);
 	const [backgroundName, setBackgroundName] = useState(`${TEMPLATES[0]}.jpg`);
 	const [aspect, setAspect] = useState(1);
@@ -108,6 +109,15 @@ export default function MemeGeneratorTool() {
 	const [error, setError] = useState<string | null>(null);
 	const [dragging, setDragging] = useState<string | null>(null);
 	const stage = useRef<HTMLDivElement>(null);
+	const resize = useRef<{
+		id: string;
+		type: Layer["type"];
+		centerX: number;
+		centerY: number;
+		distance: number;
+		fontSize: number;
+		width: number;
+	} | null>(null);
 	const background = useRef<HTMLImageElement>(null);
 	const imageInput = useRef<HTMLInputElement>(null);
 	const layerImageInput = useRef<HTMLInputElement>(null);
@@ -141,6 +151,8 @@ export default function MemeGeneratorTool() {
 			fontSize: 8,
 			color: "#ffffff",
 			stroke: true,
+			strokeWidth: 4,
+			outlineColor: "#000000",
 			font: "impact",
 		};
 		setLayers((current) => [...current, layer]);
@@ -207,9 +219,65 @@ export default function MemeGeneratorTool() {
 		if (!rect) {
 			return;
 		}
-		const x = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
-		const y = Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height));
+		const x = Math.min(
+			1,
+			Math.max(0, (event.clientX - rect.left) / rect.width),
+		);
+		const y = Math.min(
+			1,
+			Math.max(0, (event.clientY - rect.top) / rect.height),
+		);
 		updateLayer(id, { x, y } as Partial<Layer>);
+	};
+
+	// the corner handle is the only way a layer changes size, a plain drag
+	// on a touch screen never should.
+	const startResize = (event: React.PointerEvent, layer: Layer) => {
+		const rect = stage.current?.getBoundingClientRect();
+		if (!rect) {
+			return;
+		}
+		event.preventDefault();
+		event.stopPropagation();
+		event.currentTarget.setPointerCapture(event.pointerId);
+		const centerX = rect.left + layer.x * rect.width;
+		const centerY = rect.top + layer.y * rect.height;
+		resize.current = {
+			id: layer.id,
+			type: layer.type,
+			centerX,
+			centerY,
+			distance:
+				Math.hypot(event.clientX - centerX, event.clientY - centerY) || 1,
+			fontSize: layer.type === "text" ? layer.fontSize : 0,
+			width: layer.type === "image" ? layer.width : 0,
+		};
+		setSelected(layer.id);
+	};
+
+	const resizeMove = (event: React.PointerEvent) => {
+		const current = resize.current;
+		if (!current) {
+			return;
+		}
+		event.preventDefault();
+		const distance =
+			Math.hypot(
+				event.clientX - current.centerX,
+				event.clientY - current.centerY,
+			) || 1;
+		const ratio = Math.max(0.15, distance / current.distance);
+		if (current.type === "text") {
+			const fontSize = Math.min(26, Math.max(2, current.fontSize * ratio));
+			updateLayer(current.id, {
+				fontSize: Math.round(fontSize * 10) / 10,
+			} as Partial<TextLayer>);
+		} else {
+			const width = Math.min(0.95, Math.max(0.03, current.width * ratio));
+			updateLayer(current.id, {
+				width: Math.round(width * 1000) / 1000,
+			} as Partial<ImageLayer>);
+		}
 	};
 
 	const download = async () => {
@@ -255,19 +323,21 @@ export default function MemeGeneratorTool() {
 					continue;
 				}
 				const fontPx = (layer.fontSize / 100) * canvas.width;
-				context.font = `${fontPx}px ${FONT_STACK[layer.font]}`;
+				const weight = layer.font === "impact" ? 900 : 700;
+				context.font = `${weight} ${fontPx}px ${FONT_STACK[layer.font]}`;
 				context.textAlign = "center";
 				context.textBaseline = "middle";
 				context.lineJoin = "round";
 				const lines = layer.text.split("\n");
 				const lineHeight = fontPx * 1.08;
-				const startY = layer.y * canvas.height - ((lines.length - 1) * lineHeight) / 2;
+				const startY =
+					layer.y * canvas.height - ((lines.length - 1) * lineHeight) / 2;
 				lines.forEach((line, index) => {
 					const x = layer.x * canvas.width;
 					const y = startY + index * lineHeight;
 					if (layer.stroke) {
-						context.lineWidth = fontPx * 0.1;
-						context.strokeStyle = "#000000";
+						context.lineWidth = fontPx * (layer.strokeWidth / 100);
+						context.strokeStyle = layer.outlineColor;
 						context.strokeText(line, x, y);
 					}
 					context.fillStyle = layer.color;
@@ -311,75 +381,90 @@ export default function MemeGeneratorTool() {
 						ref={background}
 						src={template}
 					/>
-					{layers.map((layer) =>
-						layer.type === "text" ? (
-							<button
-								className={cn(
-									"absolute max-w-[92%] -translate-x-1/2 -translate-y-1/2 cursor-move whitespace-pre-wrap break-words border border-transparent p-1 text-center font-black leading-none outline-none",
-									selected === layer.id && "border-blue-400",
-								)}
-								key={layer.id}
-								onClick={() => setSelected(layer.id)}
-								onPointerDown={(event) => {
-									event.currentTarget.setPointerCapture(event.pointerId);
+					{layers.map((layer) => (
+						// biome-ignore lint/a11y/useSemanticElements: holds a resize button, buttons cannot nest
+						<div
+							aria-label={layer.type === "text" ? layer.text : layer.name}
+							className={cn(
+								"absolute -translate-x-1/2 -translate-y-1/2 cursor-move touch-none select-none border border-transparent outline-none focus-visible:border-blue-500",
+								selected === layer.id && "border-blue-400",
+							)}
+							key={layer.id}
+							onKeyDown={(event) => {
+								if (event.key === "Enter" || event.key === " ") {
+									event.preventDefault();
 									setSelected(layer.id);
-									setDragging(layer.id);
-								}}
-								onPointerMove={(event) => {
-									if (dragging === layer.id) {
-										drag(event, layer.id);
-									}
-								}}
-								onPointerUp={() => setDragging(null)}
-								style={{
-									left: `${layer.x * 100}%`,
-									top: `${layer.y * 100}%`,
-									fontSize: `${layer.fontSize}cqw`,
-									color: layer.color,
-									fontFamily: FONT_STACK[layer.font],
-									WebkitTextStroke: layer.stroke ? "0.055em #000" : undefined,
-								}}
-								type="button"
-							>
-								{layer.text}
-							</button>
-						) : (
-							<button
-								aria-label={layer.name}
-								className={cn(
-									"absolute -translate-x-1/2 -translate-y-1/2 cursor-move border border-transparent p-1 outline-none",
-									selected === layer.id && "border-blue-400",
-								)}
-								key={layer.id}
-								onClick={() => setSelected(layer.id)}
-								onPointerDown={(event) => {
-									event.currentTarget.setPointerCapture(event.pointerId);
-									setSelected(layer.id);
-									setDragging(layer.id);
-								}}
-								onPointerMove={(event) => {
-									if (dragging === layer.id) {
-										drag(event, layer.id);
-									}
-								}}
-								onPointerUp={() => setDragging(null)}
-								style={{
-									left: `${layer.x * 100}%`,
-									top: `${layer.y * 100}%`,
-									width: `${layer.width * 100}%`,
-								}}
-								type="button"
-							>
-								{/* biome-ignore lint/performance/noImgElement: layer data url, next-image cannot optimize it */}
+								}
+							}}
+							onPointerCancel={() => setDragging(null)}
+							onPointerDown={(event) => {
+								event.preventDefault();
+								event.currentTarget.setPointerCapture(event.pointerId);
+								setSelected(layer.id);
+								setDragging(layer.id);
+							}}
+							onPointerMove={(event) => {
+								if (dragging === layer.id && !resize.current) {
+									drag(event, layer.id);
+								}
+							}}
+							onPointerUp={() => setDragging(null)}
+							role="button"
+							style={{
+								left: `${layer.x * 100}%`,
+								top: `${layer.y * 100}%`,
+								...(layer.type === "text"
+									? {
+											maxWidth: "92%",
+											padding: 4,
+											textAlign: "center" as const,
+											fontSize: `${layer.fontSize}cqw`,
+											fontWeight: layer.font === "impact" ? 900 : 700,
+											lineHeight: 1,
+											color: layer.color,
+											fontFamily: FONT_STACK[layer.font],
+											WebkitTextStroke: layer.stroke
+												? `${layer.strokeWidth / 100}em ${layer.outlineColor}`
+												: undefined,
+											paintOrder: "stroke fill",
+										}
+									: { width: `${layer.width * 100}%`, padding: 4 }),
+							}}
+							tabIndex={0}
+						>
+							{layer.type === "text" ? (
+								<span className="pointer-events-none block whitespace-pre-wrap break-words">
+									{layer.text}
+								</span>
+							) : (
+								// biome-ignore lint/performance/noImgElement: layer data url, next-image cannot optimize it
 								<img
 									alt={layer.name}
 									className="pointer-events-none h-auto w-full select-none"
 									draggable={false}
 									src={layer.dataUrl}
 								/>
-							</button>
-						),
-					)}
+							)}
+							{selected === layer.id ? (
+								<button
+									aria-label={t("options.resize")}
+									className="absolute -right-3 -bottom-3 size-6 cursor-nwse-resize touch-none rounded-full border-2 border-white bg-blue-500 shadow-[0_1px_3px_rgb(0_0_0/0.4)] outline-none focus-visible:ring-2 focus-visible:ring-blue-400 md:size-5"
+									onLostPointerCapture={() => {
+										resize.current = null;
+									}}
+									onPointerCancel={() => {
+										resize.current = null;
+									}}
+									onPointerDown={(event) => startResize(event, layer)}
+									onPointerMove={resizeMove}
+									onPointerUp={() => {
+										resize.current = null;
+									}}
+									type="button"
+								/>
+							) : null}
+						</div>
+					))}
 				</div>
 				<p className="text-small text-text-2">{t("options.dragHint")}</p>
 
@@ -581,15 +666,14 @@ export default function MemeGeneratorTool() {
 							/>
 						</div>
 						<div className="flex items-center justify-between gap-3">
-							<span className="text-small font-medium">{t("options.color")}</span>
-							<input
-								aria-label={t("options.color")}
-								className="h-10 w-16 cursor-pointer rounded-md border border-border bg-surface-2 p-1"
-								onChange={(event) =>
-									updateLayer(active.id, { color: event.target.value })
-								}
-								type="color"
+							<span className="text-small font-medium">
+								{t("options.color")}
+							</span>
+							<ColorPickerField
+								label={t("options.color")}
+								onChange={(value) => updateLayer(active.id, { color: value })}
 								value={active.color}
+								variant="swatch"
 							/>
 						</div>
 						<div className="flex items-center justify-between gap-3">
@@ -604,6 +688,42 @@ export default function MemeGeneratorTool() {
 								}
 							/>
 						</div>
+						{active.stroke ? (
+							<>
+								<div className="flex flex-col gap-2">
+									<div className="flex items-center justify-between gap-2">
+										<span className="text-small font-medium">
+											{t("options.outlineSize")}
+										</span>
+										<output className="font-display text-h3 tabular-nums">
+											{active.strokeWidth}
+										</output>
+									</div>
+									<Slider
+										aria-label={t("options.outlineSize")}
+										max={12}
+										min={1}
+										onValueChange={(value) =>
+											updateLayer(active.id, { strokeWidth: value })
+										}
+										value={active.strokeWidth}
+									/>
+								</div>
+								<div className="flex items-center justify-between gap-3">
+									<span className="text-small font-medium">
+										{t("options.outlineColor")}
+									</span>
+									<ColorPickerField
+										label={t("options.outlineColor")}
+										onChange={(value) =>
+											updateLayer(active.id, { outlineColor: value })
+										}
+										value={active.outlineColor}
+										variant="swatch"
+									/>
+								</div>
+							</>
+						) : null}
 					</>
 				) : null}
 
@@ -643,7 +763,6 @@ export default function MemeGeneratorTool() {
 						{error}
 					</p>
 				) : null}
-				<p className="text-caption text-text-3">{tc("filesNeverLeave")}</p>
 			</div>
 		</div>
 	);

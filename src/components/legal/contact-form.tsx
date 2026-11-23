@@ -9,6 +9,8 @@ import Textarea from "@/components/smoothui/textarea";
 import { alertDestructiveClass, inputClass } from "@/lib/control-classes";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_KEY = "c75a459b-7323-4a49-85da-6c40a49e1120";
 
 type Status =
 	| { kind: "idle" }
@@ -42,22 +44,28 @@ export default function ContactForm() {
 		setFieldError(null);
 		setStatus({ kind: "sending" });
 		try {
-			const response = await fetch("/api/contact", {
+			const response = await fetch(WEB3FORMS_ENDPOINT, {
 				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(trimmed),
+				headers: {
+					"Content-Type": "application/json",
+					Accept: "application/json",
+				},
+				body: JSON.stringify({
+					access_key: WEB3FORMS_KEY,
+					name: trimmed.name,
+					email: trimmed.email,
+					message: trimmed.message,
+					subject: `Toolify contact from ${trimmed.name}`,
+				}),
 			});
 			const result = (await response.json().catch(() => null)) as {
-				ok?: boolean;
-				error?: string;
+				success?: boolean;
 			} | null;
-			if (response.ok && result?.ok) {
+			if (response.ok && result?.success) {
 				setStatus({ kind: "success" });
 				setName("");
 				setEmail("");
 				setMessage("");
-			} else if (result?.error === "unavailable") {
-				setStatus({ kind: "error", message: t("errorUnavailable") });
 			} else {
 				setStatus({ kind: "error", message: t("errorUpstream") });
 			}

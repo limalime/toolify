@@ -152,6 +152,15 @@
 
 @theme inline {
 	--font-sans: var(--font-inter), system-ui, sans-serif;
+	--color-invert-foreground: var(--invert-foreground);
+	--color-invert: var(--invert);
+	--color-warning-foreground: var(--warning-foreground);
+	--color-warning: var(--warning);
+	--color-info-foreground: var(--info-foreground);
+	--color-info: var(--info);
+	--color-success-foreground: var(--success-foreground);
+	--color-success: var(--success);
+	--color-destructive-foreground: var(--destructive-foreground);
 }
 
 /* dark theme values. the app ships dark by default. */
@@ -199,6 +208,15 @@
 	--smooth-900: #f1f5f9;
 	--smooth-950: #f1f5f9;
 	--smooth-1000: #ffffff;
+	--destructive-foreground: var(--color-red-600);
+	--success: var(--color-emerald-500);
+	--success-foreground: var(--color-emerald-600);
+	--info: var(--color-violet-500);
+	--info-foreground: var(--color-violet-600);
+	--warning: var(--color-yellow-500);
+	--warning-foreground: var(--color-yellow-600);
+	--invert: var(--color-zinc-700);
+	--invert-foreground: var(--color-zinc-50);
 }
 
 /* uppercase micro labels, badges, eyebrows, table headers */
@@ -252,11 +270,20 @@
 	--smooth-900: #0f172a;
 	--smooth-950: #0f172a;
 	--smooth-1000: #020617;
+	--destructive-foreground: var(--color-red-800);
+	--invert: var(--color-zinc-900);
+	--invert-foreground: var(--color-zinc-50);
 }
 
 @layer base {
 	* {
 		@apply border-border;
+	}
+	/* decorative overflow, like the button sheen, must never widen the
+	   mobile layout viewport or add a sideways scrollbar */
+	html,
+	body {
+		overflow-x: clip;
 	}
 	body {
 		@apply bg-bg font-sans text-text antialiased;

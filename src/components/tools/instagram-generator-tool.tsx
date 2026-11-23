@@ -26,37 +26,52 @@ import {
 	roundRect,
 	wrapLines,
 } from "@/lib/images/mockup";
+import type { Ink } from "@/lib/images/social-icons";
+import {
+	cameraIcon,
+	commentIcon,
+	dotsIcon,
+	heart,
+	imageIcon,
+	microphoneIcon,
+	phoneIcon,
+	repostIcon,
+	shareIcon,
+	videoIcon,
+} from "@/lib/images/social-icons";
 
 type Mode = "post" | "story" | "dm";
 
-function heart(
+function drawCaption(
 	context: CanvasRenderingContext2D,
-	x: number,
-	y: number,
-	size: number,
-	filled: boolean,
-): void {
-	context.save();
-	context.translate(x, y);
-	context.scale(size / 24, size / 24);
-	context.beginPath();
-	context.moveTo(12, 21);
-	context.bezierCurveTo(4, 14, 1, 10, 1, 6.5);
-	context.bezierCurveTo(1, 3, 3.5, 1, 6.5, 1);
-	context.bezierCurveTo(9, 1, 11, 2.5, 12, 4.5);
-	context.bezierCurveTo(13, 2.5, 15, 1, 17.5, 1);
-	context.bezierCurveTo(20.5, 1, 23, 3, 23, 6.5);
-	context.bezierCurveTo(23, 10, 20, 14, 12, 21);
-	context.closePath();
-	if (filled) {
-		context.fillStyle = "#ed4956";
-		context.fill();
-	} else {
-		context.strokeStyle = "#262626";
-		context.lineWidth = 2;
-		context.stroke();
+	username: string,
+	caption: string,
+	options: { x: number; y: number; maxWidth: number; lineHeight: number },
+	ink: Ink,
+): number {
+	context.direction = "ltr";
+	context.textAlign = "left";
+	context.textBaseline = "alphabetic";
+	context.fillStyle = ink;
+	context.font = `600 32px ${MOCKUP_FONTS.sans}`;
+	context.fillText(username, options.x, options.y);
+	let cursorX =
+		options.x +
+		context.measureText(username).width +
+		context.measureText(" ").width;
+	let cursorY = options.y;
+	const space = context.measureText(" ").width;
+	context.font = `400 32px ${MOCKUP_FONTS.sans}`;
+	for (const word of caption.split(/\s+/).filter(Boolean)) {
+		const width = context.measureText(word).width;
+		if (cursorX + width > options.x + options.maxWidth && cursorX > options.x) {
+			cursorY += options.lineHeight;
+			cursorX = options.x;
+		}
+		context.fillText(word, cursorX, cursorY);
+		cursorX += width + space;
 	}
-	context.restore();
+	return cursorY + options.lineHeight;
 }
 
 export default function InstagramGeneratorTool() {
@@ -64,20 +79,26 @@ export default function InstagramGeneratorTool() {
 	const [mode, setMode] = useState<Mode>("post");
 	const [username, setUsername] = useState("toolify.bond");
 	const [caption, setCaption] = useState(t("options.sampleCaption"));
-	const [likes, setLikes] = useState("1284");
+	const [likes, setLikes] = useState("46300");
+	const [comments, setComments] = useState("110");
+	const [reposts, setReposts] = useState("84");
+	const [shares, setShares] = useState("312");
 	const [dark, setDark] = useState(false);
 	const [incoming, setIncoming] = useState(t("options.sampleIncoming"));
 	const [outgoing, setOutgoing] = useState(t("options.sampleOutgoing"));
 	const [imageName, setImageName] = useState<string | null>(null);
 	const [avatarName, setAvatarName] = useState<string | null>(null);
+	const [avatarBName, setAvatarBName] = useState<string | null>(null);
 	const [running, setRunning] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const canvas = useRef<HTMLCanvasElement>(null);
 	const image = useRef<HTMLImageElement | null>(null);
 	const avatar = useRef<HTMLImageElement | null>(null);
+	const avatarB = useRef<HTMLImageElement | null>(null);
 	const urls = useRef<string[]>([]);
 	const imageInput = useRef<HTMLInputElement>(null);
 	const avatarInput = useRef<HTMLInputElement>(null);
+	const avatarBInput = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
 		return () => {
@@ -87,6 +108,8 @@ export default function InstagramGeneratorTool() {
 		};
 	}, []);
 
+	// image names change after the ref loads, repaint when they do
+	// biome-ignore lint/correctness/useExhaustiveDependencies: names drive the repaint
 	useEffect(() => {
 		const target = canvas.current;
 		const context = target?.getContext("2d");
@@ -113,11 +136,11 @@ export default function InstagramGeneratorTool() {
 			top.addColorStop(1, "rgba(0,0,0,0)");
 			context.fillStyle = top;
 			context.fillRect(0, 0, 1080, 320);
-			const bottom = context.createLinearGradient(0, 1320, 0, 1920);
+			const bottom = context.createLinearGradient(0, 1520, 0, 1920);
 			bottom.addColorStop(0, "rgba(0,0,0,0)");
-			bottom.addColorStop(1, "rgba(0,0,0,0.75)");
+			bottom.addColorStop(1, "rgba(0,0,0,0.72)");
 			context.fillStyle = bottom;
-			context.fillRect(0, 1320, 1080, 600);
+			context.fillRect(0, 1520, 1080, 400);
 
 			let x = 24;
 			for (let index = 0; index < 3; index += 1) {
@@ -131,22 +154,24 @@ export default function InstagramGeneratorTool() {
 			context.font = `600 32px ${MOCKUP_FONTS.sans}`;
 			context.textAlign = "left";
 			context.textBaseline = "middle";
-			context.fillText(username, 128, 98);
+			context.fillText(username, 128, 88);
 			context.font = `400 26px ${MOCKUP_FONTS.sans}`;
 			context.fillStyle = "rgba(255,255,255,0.85)";
-			context.fillText("2h", 128, 132);
-			context.textBaseline = "alphabetic";
-			context.font = `500 44px ${MOCKUP_FONTS.sans}`;
-			context.fillStyle = "#ffffff";
-			const height = drawParagraph(context, caption, {
-				x: 48,
-				y: 1560,
-				maxWidth: 900,
-				lineHeight: 60,
-			});
-			context.font = `400 28px ${MOCKUP_FONTS.sans}`;
-			context.fillStyle = "rgba(255,255,255,0.8)";
-			context.fillText(t("options.reply"), 48, Math.min(1850, height + 34));
+			context.fillText("2h", 128, 122);
+			const dotsX = 986;
+			dotsIcon(context, dotsX, 98, "#ffffff");
+
+			context.strokeStyle = "#ffffff";
+			context.lineWidth = 3;
+			roundRect(context, 40, 1762, 748, 88, 44);
+			context.stroke();
+			context.fillStyle = "rgba(255,255,255,0.92)";
+			context.font = `400 32px ${MOCKUP_FONTS.sans}`;
+			context.textBaseline = "middle";
+			context.fillText(t("options.sendMessage"), 78, 1808);
+			heart(context, 848, 1780, 50, false, "#ffffff");
+			commentIcon(context, 928, 1780, 50, "#ffffff");
+			shareIcon(context, 1008, 1780, 50, "#ffffff");
 			return;
 		}
 
@@ -168,44 +193,103 @@ export default function InstagramGeneratorTool() {
 			context.textAlign = "left";
 			context.textBaseline = "middle";
 			context.fillText("‹", 36, 110);
-			drawAvatar(context, avatar.current, 100, 60, 100, username);
-			context.font = `600 40px ${MOCKUP_FONTS.sans}`;
-			context.fillText(username, 230, 94);
-			context.font = `400 28px ${MOCKUP_FONTS.sans}`;
+			drawAvatar(context, avatar.current, 96, 60, 100, username);
+			context.font = `600 38px ${MOCKUP_FONTS.sans}`;
+			context.fillText(username, 224, 92);
+			context.fillStyle = "#1cd14f";
+			context.beginPath();
+			context.arc(232, 142, 8, 0, Math.PI * 2);
+			context.fill();
 			context.fillStyle = "#a8a8a8";
-			context.fillText(t("options.active"), 230, 136);
-			drawAvatar(context, avatar.current, 60, 480, 84, username);
+			context.font = `400 28px ${MOCKUP_FONTS.sans}`;
+			context.fillText(t("options.active"), 252, 148);
+			phoneIcon(context, 900, 62, 46, "#ffffff");
+			videoIcon(context, 980, 62, 50, "#ffffff");
+
 			context.font = `400 38px ${MOCKUP_FONTS.sans}`;
-			context.fillStyle = "#ffffff";
-			const inLines = wrapLines(incoming, 620, (value) =>
-				context.measureText(value).width,
+			const bubbleWidth = 640;
+			const inLines = wrapLines(
+				incoming,
+				bubbleWidth - 84,
+				(value) => context.measureText(value).width,
 			);
-			const inHeight = inLines.length * 52 + 52;
+			const inHeight = inLines.length * 54 + 64;
+			const inY = 292;
+			drawAvatar(context, avatarB.current, 36, inY + 6, 80, "B");
 			context.fillStyle = "#262626";
-			roundRect(context, 168, 470, 700, inHeight, 38);
+			context.beginPath();
+			context.moveTo(146, inY + 26);
+			context.lineTo(118, inY + 12);
+			context.lineTo(146, inY + 58);
+			context.closePath();
+			context.fill();
+			roundRect(context, 146, inY, bubbleWidth, inHeight, 44);
 			context.fill();
 			context.fillStyle = "#ffffff";
 			drawParagraph(context, incoming, {
-				x: 206,
-				y: 516,
-				maxWidth: 624,
-				lineHeight: 52,
+				x: 190,
+				y: inY + 56,
+				maxWidth: bubbleWidth - 84,
+				lineHeight: 54,
 			});
-			const bubbleHeight = 52 * wrapLines(outgoing, 620, (value) => context.measureText(value).width).length + 52;
-			const bubbleY = 490 + inHeight + 40;
-			const gradient = context.createLinearGradient(300, bubbleY, 1010, bubbleY + bubbleHeight);
+
+			const outLines = wrapLines(
+				outgoing,
+				bubbleWidth - 84,
+				(value) => context.measureText(value).width,
+			);
+			const outHeight = outLines.length * 54 + 64;
+			let cursorY = inY + inHeight + 60;
+			const photoWidth = 620;
+			const photoHeight = 440;
+			const photoX = 1080 - 40 - photoWidth;
+			context.save();
+			roundRect(context, photoX, cursorY, photoWidth, photoHeight, 44);
+			context.clip();
+			if (image.current) {
+				drawCover(
+					context,
+					image.current,
+					photoX,
+					cursorY,
+					photoWidth,
+					photoHeight,
+				);
+			} else {
+				const gradient = context.createLinearGradient(
+					photoX,
+					cursorY,
+					photoX + photoWidth,
+					cursorY + photoHeight,
+				);
+				gradient.addColorStop(0, "#7b2ff7");
+				gradient.addColorStop(1, "#f107a3");
+				context.fillStyle = gradient;
+				context.fillRect(photoX, cursorY, photoWidth, photoHeight);
+				imageIcon(context, 520, cursorY + 196, 76, "rgba(255,255,255,0.9)");
+			}
+			context.restore();
+			cursorY += photoHeight + 34;
+			const outX = 1080 - 40 - bubbleWidth;
+			const gradient = context.createLinearGradient(
+				outX,
+				cursorY,
+				outX + bubbleWidth,
+				cursorY + outHeight,
+			);
 			gradient.addColorStop(0, "#7b2ff7");
 			gradient.addColorStop(1, "#f107a3");
 			context.fillStyle = gradient;
-			roundRect(context, 300, bubbleY, 720, bubbleHeight, 38);
+			roundRect(context, outX, cursorY, bubbleWidth, outHeight, 44);
 			context.fill();
 			context.fillStyle = "#ffffff";
 			drawParagraph(context, outgoing, {
-				x: 338,
-				y: bubbleY + 46,
-				maxWidth: 644,
-				lineHeight: 52,
+				x: outX + 42,
+				y: cursorY + 56,
+				maxWidth: bubbleWidth - 84,
+				lineHeight: 54,
 			});
+
 			context.fillStyle = "#000000";
 			context.fillRect(0, 1740, 1080, 180);
 			context.strokeStyle = "#262626";
@@ -214,32 +298,52 @@ export default function InstagramGeneratorTool() {
 			context.lineTo(1080, 1740);
 			context.stroke();
 			context.strokeStyle = "#a8a8a8";
-			context.lineWidth = 2;
-			roundRect(context, 40, 1780, 880, 88, 44);
+			context.lineWidth = 2.4;
+			context.beginPath();
+			context.arc(70, 1832, 30, 0, Math.PI * 2);
+			context.stroke();
+			context.beginPath();
+			context.moveTo(70, 1820);
+			context.lineTo(70, 1844);
+			context.moveTo(58, 1832);
+			context.lineTo(82, 1832);
+			context.stroke();
+			context.strokeStyle = "#363636";
+			roundRect(context, 124, 1786, 500, 92, 46);
 			context.stroke();
 			context.fillStyle = "#a8a8a8";
-			context.font = `400 32px ${MOCKUP_FONTS.sans}`;
-			context.fillText(t("options.message"), 70, 1836);
+			context.font = `400 30px ${MOCKUP_FONTS.sans}`;
+			context.textBaseline = "middle";
+			context.fillText(t("options.message"), 162, 1834);
+			const cameraGradient = context.createLinearGradient(636, 1792, 700, 1856);
+			cameraGradient.addColorStop(0, "#7b2ff7");
+			cameraGradient.addColorStop(1, "#f107a3");
+			context.fillStyle = cameraGradient;
+			context.beginPath();
+			context.arc(672, 1832, 32, 0, Math.PI * 2);
+			context.fill();
+			cameraIcon(context, 655, 1815, 36, "#ffffff");
+			microphoneIcon(context, 750, 1812, 44, "#a8a8a8");
+			imageIcon(context, 880, 1812, 44, "#a8a8a8");
 			return;
 		}
 
 		target.width = 1080;
 		target.height = 1350;
+		const ink = dark ? "#ffffff" : "#262626";
+		const muted = dark ? "#a8a8a8" : "#8e8e8e";
 		context.fillStyle = dark ? "#000000" : "#ffffff";
 		context.fillRect(0, 0, 1080, 1350);
 		drawAvatar(context, avatar.current, 30, 28, 76, username);
-		context.fillStyle = dark ? "#ffffff" : "#262626";
+		context.fillStyle = ink;
 		context.font = `600 34px ${MOCKUP_FONTS.sans}`;
 		context.textAlign = "left";
 		context.textBaseline = "middle";
 		context.fillText(username, 126, 54);
 		context.font = `400 28px ${MOCKUP_FONTS.sans}`;
-		context.fillStyle = dark ? "#a8a8a8" : "#8e8e8e";
-		context.fillText(t("options.sponsored"), 126, 90);
-		context.textAlign = "right";
-		context.font = `700 44px ${MOCKUP_FONTS.sans}`;
-		context.fillStyle = dark ? "#ffffff" : "#262626";
-		context.fillText("···", 1040, 64);
+		context.fillStyle = muted;
+		context.fillText(t("options.suggested"), 126, 90);
+		dotsIcon(context, 966, 64, ink);
 
 		if (image.current) {
 			drawCover(context, image.current, 0, 124, 1080, 900);
@@ -259,32 +363,47 @@ export default function InstagramGeneratorTool() {
 		}
 
 		context.textAlign = "left";
-		heart(context, 40, 1050, 54, true);
-		context.strokeStyle = dark ? "#ffffff" : "#262626";
-		context.lineWidth = 3;
-		context.beginPath();
-		context.arc(158, 1076, 24, 0, Math.PI * 2);
-		context.stroke();
-		context.beginPath();
-		context.moveTo(196, 1058);
-		context.lineTo(230, 1094);
-		context.lineTo(196, 1094);
-		context.closePath();
-		context.stroke();
-		context.fillStyle = dark ? "#ffffff" : "#262626";
+		context.textBaseline = "alphabetic";
+		heart(context, 40, 1054, 52, true, "#ed4956");
+		context.fillStyle = ink;
 		context.font = `600 30px ${MOCKUP_FONTS.sans}`;
-		context.fillText(`${formatCount(Number(likes) || 0)} ${t("options.likes")}`, 36, 1158);
-		context.font = `400 32px ${MOCKUP_FONTS.sans}`;
-		const end = drawParagraph(context, caption, {
-			x: 36,
-			y: 1210,
-			maxWidth: 1000,
-			lineHeight: 44,
-		});
-		context.fillStyle = dark ? "#a8a8a8" : "#8e8e8e";
+		context.fillText(formatCount(Number(likes) || 0), 104, 1094);
+		commentIcon(context, 250, 1054, 52, ink);
+		context.fillStyle = ink;
+		context.fillText(formatCount(Number(comments) || 0), 314, 1094);
+		repostIcon(context, 450, 1054, 52, ink);
+		context.fillStyle = ink;
+		context.fillText(formatCount(Number(reposts) || 0), 516, 1094);
+		shareIcon(context, 640, 1054, 52, ink);
+		context.fillStyle = ink;
+		context.fillText(formatCount(Number(shares) || 0), 706, 1094);
+
+		const captionEnd = drawCaption(
+			context,
+			username,
+			caption,
+			{ x: 36, y: 1182, maxWidth: 1004, lineHeight: 44 },
+			ink,
+		);
+		context.fillStyle = muted;
 		context.font = `400 26px ${MOCKUP_FONTS.sans}`;
-		context.fillText(t("options.time"), 36, Math.min(1320, end + 10));
-	}, [avatarName, caption, dark, imageName, incoming, likes, mode, outgoing, t, username]);
+		context.fillText(t("options.time"), 36, Math.min(1324, captionEnd + 14));
+	}, [
+		avatarBName,
+		avatarName,
+		caption,
+		comments,
+		dark,
+		imageName,
+		incoming,
+		likes,
+		mode,
+		outgoing,
+		reposts,
+		shares,
+		t,
+		username,
+	]);
 
 	const download = async () => {
 		if (!canvas.current) {
@@ -320,7 +439,10 @@ export default function InstagramGeneratorTool() {
 	return (
 		<div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
 			<div className="flex min-w-0 flex-col gap-4">
-				<TabsRoot onValueChange={(value) => setMode(value as Mode)} value={mode}>
+				<TabsRoot
+					onValueChange={(value) => setMode(value as Mode)}
+					value={mode}
+				>
 					<TabsList variant="segment">
 						<TabsTab className={tabActiveClass} value="post">
 							{t("options.post")}
@@ -394,39 +516,110 @@ export default function InstagramGeneratorTool() {
 								value={outgoing}
 							/>
 						</Field>
+						<input
+							accept=".png,.jpg,.jpeg,.webp"
+							className="sr-only"
+							onChange={(event) => {
+								const picked = event.target.files?.[0];
+								if (picked) {
+									loadInto(picked, image, setImageName);
+								}
+								event.target.value = "";
+							}}
+							ref={imageInput}
+							type="file"
+						/>
+						<SmoothButton
+							onClick={() => imageInput.current?.click()}
+							size="sm"
+							variant="secondary"
+						>
+							<ImagePlus aria-hidden="true" className="size-4" />
+							{imageName ?? t("options.image")}
+						</SmoothButton>
 					</>
 				) : (
 					<>
-						<Field>
-							<FieldLabel htmlFor="instagram-caption">
-								{t("options.caption")}
-							</FieldLabel>
-							<textarea
-								className="min-h-24 w-full resize-y rounded-md border border-border bg-surface-2 p-3 text-small text-text outline-none focus-visible:border-blue-500"
-								id="instagram-caption"
-								onChange={(event) => setCaption(event.target.value)}
-								rows={3}
-								value={caption}
-							/>
-						</Field>
+						{mode === "post" ? (
+							<Field>
+								<FieldLabel htmlFor="instagram-caption">
+									{t("options.caption")}
+								</FieldLabel>
+								<textarea
+									className="min-h-24 w-full resize-y rounded-md border border-border bg-surface-2 p-3 text-small text-text outline-none focus-visible:border-blue-500"
+									id="instagram-caption"
+									onChange={(event) => setCaption(event.target.value)}
+									rows={3}
+									value={caption}
+								/>
+							</Field>
+						) : null}
 						{mode === "post" ? (
 							<>
-								<Field>
-									<FieldLabel htmlFor="instagram-likes">
-										{t("options.likesLabel")}
-									</FieldLabel>
-									<FieldControl
-										className={inputClass}
-										id="instagram-likes"
-										inputMode="numeric"
-										onChange={(event) =>
-											setLikes(event.target.value.replace(/[^0-9]/g, ""))
-										}
-										value={likes}
-									/>
-								</Field>
+								<div className="grid grid-cols-2 gap-3">
+									<Field>
+										<FieldLabel htmlFor="instagram-likes">
+											{t("options.likesLabel")}
+										</FieldLabel>
+										<FieldControl
+											className={inputClass}
+											id="instagram-likes"
+											inputMode="numeric"
+											onChange={(event) =>
+												setLikes(event.target.value.replace(/[^0-9]/g, ""))
+											}
+											value={likes}
+										/>
+									</Field>
+									<Field>
+										<FieldLabel htmlFor="instagram-comments">
+											{t("options.commentsLabel")}
+										</FieldLabel>
+										<FieldControl
+											className={inputClass}
+											id="instagram-comments"
+											inputMode="numeric"
+											onChange={(event) =>
+												setComments(event.target.value.replace(/[^0-9]/g, ""))
+											}
+											value={comments}
+										/>
+									</Field>
+								</div>
+								<div className="grid grid-cols-2 gap-3">
+									<Field>
+										<FieldLabel htmlFor="instagram-reposts">
+											{t("options.repostsLabel")}
+										</FieldLabel>
+										<FieldControl
+											className={inputClass}
+											id="instagram-reposts"
+											inputMode="numeric"
+											onChange={(event) =>
+												setReposts(event.target.value.replace(/[^0-9]/g, ""))
+											}
+											value={reposts}
+										/>
+									</Field>
+									<Field>
+										<FieldLabel htmlFor="instagram-shares">
+											{t("options.sharesLabel")}
+										</FieldLabel>
+										<FieldControl
+											className={inputClass}
+											id="instagram-shares"
+											inputMode="numeric"
+											onChange={(event) =>
+												setShares(event.target.value.replace(/[^0-9]/g, ""))
+											}
+											value={shares}
+										/>
+									</Field>
+								</div>
 								<div className="flex items-center justify-between gap-3">
-									<span className="text-small font-medium">{t("options.dark")}</span>
+									<span className="text-small font-medium">
+										{t("options.dark")}
+									</span>
 									<Switch
 										aria-label={t("options.dark")}
 										checked={dark}
@@ -472,14 +665,42 @@ export default function InstagramGeneratorTool() {
 					ref={avatarInput}
 					type="file"
 				/>
-				<SmoothButton
-					onClick={() => avatarInput.current?.click()}
-					size="sm"
-					variant="secondary"
-				>
-					<ImagePlus aria-hidden="true" className="size-4" />
-					{avatarName ?? t("options.avatar")}
-				</SmoothButton>
+				{avatarBName || mode === "dm" ? (
+					<input
+						accept=".png,.jpg,.jpeg,.webp"
+						className="sr-only"
+						onChange={(event) => {
+							const picked = event.target.files?.[0];
+							if (picked) {
+								loadInto(picked, avatarB, setAvatarBName);
+							}
+							event.target.value = "";
+						}}
+						ref={avatarBInput}
+						type="file"
+					/>
+				) : null}
+				<div className="flex flex-wrap gap-2">
+					<SmoothButton
+						onClick={() => avatarInput.current?.click()}
+						size="sm"
+						variant="secondary"
+					>
+						<ImagePlus aria-hidden="true" className="size-4" />
+						{avatarName ??
+							t(mode === "dm" ? "options.recipientAvatar" : "options.avatar")}
+					</SmoothButton>
+					{mode === "dm" ? (
+						<SmoothButton
+							onClick={() => avatarBInput.current?.click()}
+							size="sm"
+							variant="secondary"
+						>
+							<ImagePlus aria-hidden="true" className="size-4" />
+							{avatarBName ?? t("options.replierAvatar")}
+						</SmoothButton>
+					) : null}
+				</div>
 			</div>
 		</div>
 	);

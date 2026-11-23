@@ -11,8 +11,8 @@ import {
 	cssHsl,
 	cssRgb,
 	pickColor,
-	rgbToHsl,
 	readableInk,
+	rgbToHsl,
 } from "@/lib/images/color";
 import { MAX_IMAGE_BYTES, RASTER_ACCEPT } from "@/lib/images/formats";
 import { imageWorker } from "@/lib/images/worker-client";
@@ -37,7 +37,11 @@ export default function ImageColorPickerTool() {
 	const [picks, setPicks] = useState<Picked[]>([]);
 	const [current, setCurrent] = useState<Picked | null>(null);
 	const canvas = useRef<HTMLCanvasElement>(null);
-	const pixels = useRef<{ data: Uint8ClampedArray; width: number; height: number } | null>(null);
+	const pixels = useRef<{
+		data: Uint8ClampedArray;
+		width: number;
+		height: number;
+	} | null>(null);
 	const url = useRef<string | null>(null);
 
 	const reset = () => {
@@ -72,7 +76,10 @@ export default function ImageColorPickerTool() {
 				picked.name,
 			);
 			const width = Math.min(1800, decoded.width);
-			const height = Math.max(1, Math.round(width * (decoded.height / decoded.width)));
+			const height = Math.max(
+				1,
+				Math.round(width * (decoded.height / decoded.width)),
+			);
 			const preview = await worker.resizeImage(decoded.image, width, height);
 			pixels.current = preview;
 			const target = canvas.current;
@@ -108,7 +115,9 @@ export default function ImageColorPickerTool() {
 			y: Math.round(y),
 		};
 		setCurrent(next);
-		setPicks((history) => [next, ...history.filter((item) => item.hex !== next.hex)].slice(0, 10));
+		setPicks((history) =>
+			[next, ...history.filter((item) => item.hex !== next.hex)].slice(0, 10),
+		);
 	};
 
 	const copy = async (value: string) => {
@@ -209,9 +218,7 @@ export default function ImageColorPickerTool() {
 					</div>
 					<div className="flex justify-between gap-3">
 						<dt className="text-text-3">HSL</dt>
-						<dd className="font-mono text-text">
-							{hsl ? cssHsl(hsl) : "-"}
-						</dd>
+						<dd className="font-mono text-text">{hsl ? cssHsl(hsl) : "-"}</dd>
 					</div>
 					<div className="flex justify-between gap-3">
 						<dt className="text-text-3">{t("options.position")}</dt>
@@ -228,7 +235,6 @@ export default function ImageColorPickerTool() {
 					<Copy aria-hidden="true" className="size-4" />
 					{t("options.copy")}
 				</SmoothButton>
-				<p className="text-caption text-text-3">{tc("filesNeverLeave")}</p>
 			</div>
 		</div>
 	);

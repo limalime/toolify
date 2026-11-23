@@ -14,6 +14,7 @@ import {
 	TabsRoot,
 	TabsTab,
 } from "@/components/smoothui/tabs";
+import ColorPickerField from "@/components/tool/color-picker-field";
 import {
 	buildPalette,
 	type Harmony,
@@ -89,12 +90,11 @@ export default function ColorPaletteTool() {
 				<Field>
 					<FieldLabel htmlFor="palette-hex">{t("options.base")}</FieldLabel>
 					<div className="flex items-center gap-2">
-						<input
-							aria-label={t("options.base")}
-							className="h-11 w-14 shrink-0 cursor-pointer rounded-lg border border-border bg-surface-2 p-1"
-							onChange={(event) => applyColor(event.target.value)}
-							type="color"
+						<ColorPickerField
+							label={t("options.base")}
+							onChange={applyColor}
 							value={base}
+							variant="swatch"
 						/>
 						<Input
 							aria-invalid={hexError ? true : undefined}
