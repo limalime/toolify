@@ -473,6 +473,7 @@ export default function MemeGeneratorTool() {
 						<h2 className="font-display text-h3">{t("options.templates")}</h2>
 						<input
 							accept=".png,.jpg,.jpeg,.webp,.avif"
+							aria-label={t("options.ownImage")}
 							className="sr-only"
 							onChange={(event) => {
 								const picked = event.target.files?.[0];
@@ -534,6 +535,7 @@ export default function MemeGeneratorTool() {
 					</SmoothButton>
 					<input
 						accept=".png,.jpg,.jpeg,.webp,.avif"
+						aria-label={t("options.addImage")}
 						className="sr-only"
 						onChange={(event) => {
 							const picked = event.target.files?.[0];

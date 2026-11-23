@@ -428,6 +428,7 @@ export default function ChatMockupTool({
 				<div className="flex items-center gap-2">
 					<input
 						accept=".png,.jpg,.jpeg,.webp"
+						aria-label={t("options.avatar")}
 						className="sr-only"
 						onChange={async (event) => {
 							const picked = event.target.files?.[0];

@@ -518,6 +518,7 @@ export default function InstagramGeneratorTool() {
 						</Field>
 						<input
 							accept=".png,.jpg,.jpeg,.webp"
+							aria-label={t("options.image")}
 							className="sr-only"
 							onChange={(event) => {
 								const picked = event.target.files?.[0];
@@ -630,6 +631,7 @@ export default function InstagramGeneratorTool() {
 						) : null}
 						<input
 							accept=".png,.jpg,.jpeg,.webp"
+							aria-label={t("options.image")}
 							className="sr-only"
 							onChange={(event) => {
 								const picked = event.target.files?.[0];
@@ -654,6 +656,9 @@ export default function InstagramGeneratorTool() {
 
 				<input
 					accept=".png,.jpg,.jpeg,.webp"
+					aria-label={t(
+						mode === "dm" ? "options.recipientAvatar" : "options.avatar",
+					)}
 					className="sr-only"
 					onChange={(event) => {
 						const picked = event.target.files?.[0];
@@ -668,6 +673,7 @@ export default function InstagramGeneratorTool() {
 				{avatarBName || mode === "dm" ? (
 					<input
 						accept=".png,.jpg,.jpeg,.webp"
+						aria-label={t("options.replierAvatar")}
 						className="sr-only"
 						onChange={(event) => {
 							const picked = event.target.files?.[0];

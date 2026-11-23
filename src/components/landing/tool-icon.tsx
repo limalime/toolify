@@ -59,7 +59,7 @@ import {
 	Wrench,
 } from "lucide-react";
 
-// one icon per tool family, registered by the phase that ships the tool.
+// one icon per tool family, looked up by the icon name in the tool registry.
 // unknown names fall back to the wrench so a missing icon stays visible.
 export const TOOL_ICONS: Record<string, LucideIcon> = {
 	converter: FileImage,

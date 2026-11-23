@@ -73,7 +73,7 @@ for (const platform of [
 			platform.title,
 		);
 		await expect(page.getByLabel("Contact name")).toHaveValue(platform.name);
-		await page.getByLabel("Contact name").fill("Ming");
+		await page.getByLabel("Contact name").fill("Nadia");
 		await page.getByRole("button", { name: "Add message" }).click();
 		const boxes = page.getByLabel("Message", { exact: true });
 		await boxes.last().fill("One more line.");

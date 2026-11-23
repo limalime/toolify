@@ -6,10 +6,10 @@ export interface ToolEntry {
 	icon: string;
 }
 
-// contract for tool phases: shipping a tool means appending one entry
-// here, registering its icon, adding tools.{slug} messages in all seven
-// locales, and shipping its page. the registry guard test fails
-// otherwise, so the menu only ever lists working tools.
+// shipping a tool means appending one entry here, registering its icon,
+// adding tools.{slug} messages in all seven locales, and shipping its
+// page. the registry guard test fails otherwise, so the menu only ever
+// lists working tools.
 export const TOOLS: ToolEntry[] = [
 	{ slug: "image-converter", category: "gambar", icon: "converter" },
 	{ slug: "compress-image", category: "gambar", icon: "compress" },

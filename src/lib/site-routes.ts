@@ -1,7 +1,7 @@
 import { TOOLS } from "./tools";
 
-// static pages. the phase that ships a page appends its route here so
-// the sitemap, llms.txt, and the seo suite grow with the site.
+// static pages. add a route here so the sitemap, llms.txt, and the seo
+// suite grow with the site.
 export const STATIC_ROUTES: string[] = [
 	"/",
 	"/about",
