@@ -7,6 +7,7 @@ export const FIXTURES = {
 	logo: "tests/fixtures/logo.png",
 	heic: "tests/fixtures/sample.heic",
 	ai: "tests/fixtures/sample.ai",
+	pdf: "tests/fixtures/sample.pdf",
 	video: "tests/fixtures/sample.mp4",
 	toneMp3: "tests/fixtures/tone.mp3",
 	toneWav: "tests/fixtures/tone.wav",

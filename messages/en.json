@@ -9,7 +9,9 @@
 		"openMenu": "Open menu",
 		"search": "Search tools",
 		"themeToLight": "Switch to light theme",
-		"themeToDark": "Switch to dark theme"
+		"themeToDark": "Switch to dark theme",
+		"support": "Support Toolify",
+		"tip": "Tip"
 	},
 	"categories": {
 		"audio": "Audio",
@@ -41,7 +43,7 @@
 		"download": "Download",
 		"downloadAll": "Download all",
 		"dropHint": "Drop files here or",
-		"filesNeverLeave": "Files never leave your browser.",
+		"filesNeverLeave": "100% Private, files never leave your browser.",
 		"generate": "Generate",
 		"remove": "Remove",
 		"retry": "Retry",
@@ -73,7 +75,8 @@
 	"notfound": {
 		"explanation": "That address does not exist. Search the tools or head back home.",
 		"home": "Back to homepage",
-		"title": "Page not found"
+		"title": "Oops, Page not found",
+		"artAlt": "A cat asleep on a laptop showing a 404 screen"
 	},
 	"about": {
 		"body": [
@@ -204,10 +207,15 @@
 		"searchPlaceholder": "Search tools, try png to jpg",
 		"why1line": "Every tool is free with no limits.",
 		"why1title": "Free forever",
-		"why2line": "Files never leave your browser.",
+		"why2line": "100% Private, files never leave your browser.",
 		"why2title": "Private by design",
 		"why3line": "Open a tool and start. Nothing to install.",
-		"why3title": "No signup"
+		"why3title": "No signup",
+		"heroTitleLead": "Every tool you need.",
+		"heroTitleAccent": "Free, fast, private.",
+		"featuredTitle": "Featured Tools",
+		"featuredSub": "A few tools worth opening first, picked fresh for this week.",
+		"featuredLoading": "Picking this week's tools."
 	},
 	"tools": {
 		"image-converter": {
@@ -570,39 +578,54 @@
 			"name": "Meme Generator",
 			"tagline": "Top text, bottom text, instant classic.",
 			"title": "Free Online Meme Generator",
-			"description": "Make memes in your browser with top and bottom captions. Live preview, font size control, one download. Files never leave your device.",
+			"description": "Make memes in your browser with ready templates or your own image. Add text and image layers, drag them into place, download a PNG. 100% private, files never leave your browser.",
 			"h1": "Free Online Meme Generator",
-			"sub": "Type the joke, see it live, download the meme.",
+			"sub": "Pick a template, add your text, drag it into place, download.",
 			"options": {
-				"top": "Top text",
-				"topPlaceholder": "Top caption",
-				"bottom": "Bottom text",
-				"bottomPlaceholder": "Bottom caption",
+				"addText": "Add text",
+				"addImage": "Add image",
+				"color": "Color",
+				"defaultText": "Your text",
+				"download": "Download meme",
+				"dragHint": "Drag any layer on the canvas to place it.",
+				"emptyLayers": "No layers yet. Add text or an image.",
+				"font": "Font",
 				"fontSize": "Font size",
-				"download": "Download meme"
+				"imageError": "That image could not be read.",
+				"imageWidth": "Image width",
+				"moveDown": "Move down",
+				"moveUp": "Move up",
+				"needBackground": "Pick a template or upload an image first.",
+				"ownImage": "Own image",
+				"removeLayer": "Remove layer",
+				"stroke": "Outline",
+				"templateN": "Template {n}",
+				"templates": "Templates",
+				"text": "Text",
+				"textLayer": "Text layer"
 			},
 			"steps": [
 				{
-					"title": "Add an image",
-					"line": "Drop the meme template."
+					"title": "Pick a template",
+					"line": "Choose one of the built in images or upload your own."
 				},
 				{
-					"title": "Write captions",
-					"line": "Type top and bottom text, watch the preview."
+					"title": "Add your layers",
+					"line": "Type captions, add stickers, drag anything into place."
 				},
 				{
 					"title": "Download",
-					"line": "Save the meme as PNG."
+					"line": "Save the finished meme as a PNG."
 				}
 			],
 			"faqs": [
 				{
-					"q": "Which format downloads?",
-					"a": "PNG at the original image size."
+					"q": "Can I use my own image?",
+					"a": "Yes. Upload any PNG, JPG, WebP or AVIF image as the background."
 				},
 				{
-					"q": "Can I use one caption only?",
-					"a": "Yes, leave either box empty."
+					"q": "Can I move the text?",
+					"a": "Drag a layer on the preview, or select it and move it with the arrow keys."
 				},
 				{
 					"q": "Whose images can I meme?",
@@ -733,40 +756,60 @@
 			"name": "ASCII Art",
 			"tagline": "Big text banners from small text.",
 			"title": "Free Online ASCII Art Generator",
-			"description": "Turn text into ASCII art banners with figlet fonts. Live preview, copy or download the result. Everything runs in your browser.",
+			"description": "Turn text into ASCII art banners or convert a photo into ASCII art. Presets, character sets, contrast, color, and PNG or JPG export. Everything runs in your browser.",
 			"h1": "Free Online ASCII Art Generator",
-			"sub": "Type a word, pick a font, copy the banner.",
+			"sub": "Make a text banner or turn an image into ASCII.",
 			"options": {
 				"text": "Text",
 				"font": "Font",
-				"needText": "Type something first."
+				"needText": "Type something first.",
+				"canvas": "ASCII preview",
+				"charset": "Character set",
+				"charsetClassic": "Classic",
+				"charsetDetailed": "Detailed",
+				"charsetBlocks": "Blocks",
+				"preset": "Style",
+				"presetClassic": "Classic",
+				"presetMatrix": "Matrix",
+				"presetBlueprint": "Blueprint",
+				"presetPaper": "Paper",
+				"color": "Color",
+				"contrast": "Contrast",
+				"width": "Width",
+				"needImage": "Add an image first.",
+				"copyText": "Copy text",
+				"downloadPng": "Download PNG",
+				"downloadJpg": "Download JPG",
+				"modeText": "Text",
+				"modeImage": "Image",
+				"emptyBanner": "Type a word above to see the banner."
 			},
 			"steps": [
 				{
-					"title": "Type text",
-					"line": "Write the word to make."
+					"title": "Choose a mode",
+					"line": "Switch between text banners and image conversion."
 				},
 				{
-					"title": "Pick a font",
-					"line": "Try fonts until one fits."
+					"title": "Adjust the style",
+					"line": "Pick a font or preset, then tune width, contrast, and color."
 				},
 				{
 					"title": "Copy or download",
-					"line": "Copy the result or save it as TXT."
+					"line": "Copy the characters or save a PNG or JPG."
 				}
 			],
 			"faqs": [
+				{
+					"q": "Can I convert an image?",
+					"a": "Yes. Switch to Image and drop a PNG, JPG, or WebP file."
+				},
 				{
 					"q": "Why do some letters look off?",
 					"a": "Fonts cover basic latin. Other characters pass through as typed."
 				},
 				{
-					"q": "Can I use long sentences?",
-					"a": "Short words look best. Long sentences stretch wide."
-				},
-				{
-					"q": "Where can I paste it?",
-					"a": "Anywhere with a monospace font."
+					"q": "Does the image upload anywhere?",
+					"a": "No. The conversion runs in your browser and files never leave it."
 				}
 			]
 		},
@@ -1118,26 +1161,31 @@
 			"name": "Online IDE",
 			"tagline": "Write code with highlighting, no compiler.",
 			"title": "Free Online Code Editor",
-			"description": "Write code in your browser with syntax highlighting for HTML, CSS, JavaScript, TypeScript, Rust, Java, C++, Python, and more. No compiler, nothing runs. Copy or download your work.",
+			"description": "Write or open code in your browser with syntax highlighting for HTML, CSS, JavaScript, TypeScript, Rust, Java, C++, Python, and more. Upload a file, download with any filename. No compiler, nothing runs.",
 			"h1": "Free Online Code Editor",
-			"sub": "A minimal editor. Pick a language, write, copy, download.",
+			"sub": "Open a file or start blank. Nothing runs, nothing is uploaded.",
 			"options": {
 				"language": "Language",
 				"placeholder": "Write code here. Nothing runs, nothing is uploaded.",
-				"noCompiler": "No compiler here. This is an editor: it highlights, it never runs."
+				"noCompiler": "No compiler here. This is an editor: it highlights, it never runs.",
+				"upload": "Upload file",
+				"noFile": "No file loaded",
+				"filename": "Download filename",
+				"fileTooLarge": "That file is larger than 2 MB.",
+				"unreadableFile": "That file could not be read as text."
 			},
 			"steps": [
 				{
+					"title": "Upload or write",
+					"line": "Start from a code file or a blank editor."
+				},
+				{
 					"title": "Pick a language",
-					"line": "Set the syntax highlighting."
+					"line": "Set the highlighting, or let the upload set it."
 				},
 				{
-					"title": "Write code",
-					"line": "Write freely."
-				},
-				{
-					"title": "Copy or download",
-					"line": "Take your work with you."
+					"title": "Download",
+					"line": "Choose the filename and save your work."
 				}
 			],
 			"faqs": [
@@ -1146,12 +1194,12 @@
 					"a": "No. This is an editor only."
 				},
 				{
-					"q": "Which languages?",
-					"a": "HTML, CSS, JavaScript, TypeScript, Rust, Java, C++, Python, and more."
+					"q": "Can I open a file?",
+					"a": "Yes. Upload a text or code file up to 2 MB."
 				},
 				{
 					"q": "Is my code saved?",
-					"a": "No. Copy or download before you leave."
+					"a": "No. Download it before you leave."
 				}
 			]
 		},
@@ -1159,43 +1207,74 @@
 			"name": "Online Notes",
 			"tagline": "Private notes in your browser.",
 			"title": "Free Online Notes",
-			"description": "Write notes that stay in your browser on IndexedDB. Autosave as you type, export everything as Markdown. Never uploaded, never localStorage.",
+			"description": "Write notes with a title, rich text, highlights, links, lists and custom spacing. Autosaves in your browser, exports as Markdown and shares as a link. Nothing is uploaded.",
 			"h1": "Free Online Notes",
-			"sub": "Local only. Autosaved, exportable, private.",
+			"sub": "Title, rich text and a share link. All local.",
 			"options": {
 				"new": "New note",
 				"delete": "Delete",
 				"confirmDelete": "Click again to delete",
 				"export": "Export all",
 				"emptyHint": "No notes yet. Start one above.",
-				"saved": "Saved"
+				"saved": "Saved",
+				"title": "Title",
+				"titlePlaceholder": "Untitled note",
+				"bold": "Bold",
+				"italic": "Italic",
+				"highlight": "Highlight",
+				"bullets": "Bullet list",
+				"numbers": "Numbered list",
+				"alignStart": "Align start",
+				"alignCenter": "Align center",
+				"alignEnd": "Align end",
+				"link": "Insert link",
+				"linkUrl": "Link address",
+				"applyLink": "Add link",
+				"markdown": "Markdown",
+				"editor": "Note body",
+				"spacing": "Line spacing",
+				"presets": "Spacing presets",
+				"saving": "Saving",
+				"share": "Share note",
+				"shareReady": "Anyone with this link can read the note. The note travels inside the link, not through a server.",
+				"shareLink": "Share link",
+				"copyLink": "Copy link",
+				"linkCopied": "Link copied",
+				"copiedForInstagram": "Note copied. Paste it into Instagram.",
+				"shareTooLong": "This note is too long for a link. Export it or share the text instead.",
+				"sharedLabel": "Shared note",
+				"sharedTitle": "Shared note",
+				"sharedDescription": "A note shared from Toolify Online Notes.",
+				"sharedMissing": "This note link is incomplete or out of date.",
+				"sharedWrite": "Write your own note",
+				"emptyNote": "Empty note"
 			},
 			"steps": [
 				{
-					"title": "Start a note",
-					"line": "Create a fresh note."
+					"title": "Write",
+					"line": "Add a title and format the body."
 				},
 				{
-					"title": "Write freely",
-					"line": "Autosaves on each keystroke."
+					"title": "Style it",
+					"line": "Bold, highlight, lists, links and spacing."
 				},
 				{
-					"title": "Export all",
-					"line": "Download everything as Markdown."
+					"title": "Share or export",
+					"line": "Copy a link or download Markdown."
 				}
 			],
 			"faqs": [
 				{
 					"q": "Where are notes stored?",
-					"a": "In your browser's IndexedDB."
+					"a": "In your browser IndexedDB. Nothing is uploaded."
+				},
+				{
+					"q": "How does sharing work?",
+					"a": "The note is packed into the link itself. No server copy exists."
 				},
 				{
 					"q": "What if I clear site data?",
-					"a": "Notes go with it. Export regularly."
-				},
-				{
-					"q": "How do I move notes?",
-					"a": "Export, then bring the file back manually."
+					"a": "Local notes go with it. Export regularly."
 				}
 			]
 		},
@@ -2223,6 +2302,801 @@
 					"a": "It is not saved. The colors live in this page until you close it, so export anything you want to keep."
 				}
 			]
+		},
+		"lorem-ipsum": {
+			"name": "Lorem Ipsum Generator",
+			"tagline": "Placeholder text in one click.",
+			"title": "Free Lorem Ipsum Generator",
+			"description": "Generate paragraphs of lorem ipsum text with your choice of length. Copy or download the placeholder text. Nothing is uploaded.",
+			"h1": "Free Lorem Ipsum Generator",
+			"sub": "Choose how much placeholder text you need, then copy it.",
+			"options": {
+				"paragraphs": "Paragraphs",
+				"sentences": "Sentences per paragraph",
+				"start": "Start with Lorem ipsum",
+				"generate": "Generate text",
+				"words": "{count} words",
+				"output": "Generated text",
+				"copy": "Copy text",
+				"download": "Download TXT",
+				"copied": "Text copied"
+			},
+			"steps": [
+				{
+					"title": "Pick a length",
+					"line": "Choose paragraphs and sentences."
+				},
+				{
+					"title": "Generate",
+					"line": "Press generate for a fresh block."
+				},
+				{
+					"title": "Copy or download",
+					"line": "Paste it into your design or save a TXT."
+				}
+			],
+			"faqs": [
+				{
+					"q": "What is lorem ipsum?",
+					"a": "Filler text taken from a Latin work by Cicero, used to show a layout before real copy exists."
+				},
+				{
+					"q": "Is the text random?",
+					"a": "Yes. Each press builds new sentences from a classic word list."
+				},
+				{
+					"q": "Can I use it commercially?",
+					"a": "The text itself is public domain filler, so yes."
+				}
+			]
+		},
+		"code-validator": {
+			"name": "Code Validator",
+			"tagline": "Find syntax errors before you paste.",
+			"title": "Free Code Validator",
+			"description": "Check JSON, HTML, CSS, XML, and JavaScript syntax in your browser. See the line and column of the problem. Nothing is uploaded.",
+			"h1": "Free Code Validator",
+			"sub": "Paste code, pick a language, and jump to the broken line.",
+			"options": {
+				"code": "Code",
+				"check": "Check code",
+				"stats": "{lines} lines",
+				"valid": "Looks valid",
+				"invalid": "Found a problem",
+				"empty": "Paste some code first.",
+				"position": "Line {line}, column {column}",
+				"invalidJson": "Invalid JSON. The parser stopped near the spot below.",
+				"unclosed": "Check these tags: {tags}",
+				"language": "Language",
+				"hint": "Syntax only. Your code is never run.",
+				"limits": "HTML checks tag balance, not full validity."
+			},
+			"steps": [
+				{
+					"title": "Paste your code",
+					"line": "Drop in the snippet you want to test."
+				},
+				{
+					"title": "Choose a language",
+					"line": "JSON, HTML, CSS, XML, or JavaScript."
+				},
+				{
+					"title": "Run the check",
+					"line": "Read the result and the error position."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Is my code uploaded?",
+					"a": "No. Everything is parsed in this tab."
+				},
+				{
+					"q": "Does a pass mean my page works?",
+					"a": "No. It only means the syntax looks parseable or balanced."
+				},
+				{
+					"q": "Why does JavaScript pass with a bug?",
+					"a": "The checker compiles the source but never runs it, so runtime errors stay hidden."
+				}
+			]
+		},
+		"calculator": {
+			"name": "Online Calculator",
+			"tagline": "Everyday math with keyboard support.",
+			"title": "Free Online Calculator",
+			"description": "Add, subtract, multiply and divide with percentages and parentheses. History stays in your browser. No uploads, no account.",
+			"h1": "Free Online Calculator",
+			"sub": "Type an expression or use the keypad.",
+			"options": {
+				"expression": "Expression",
+				"clear": "Clear",
+				"history": "History",
+				"clearHistory": "Clear history",
+				"noHistory": "Nothing calculated yet.",
+				"divideByZero": "Cannot divide by zero.",
+				"invalid": "That expression is not valid."
+			},
+			"steps": [
+				{
+					"title": "Type a sum",
+					"line": "Use the keypad or your keyboard."
+				},
+				{
+					"title": "Press equals",
+					"line": "Enter or the equals key shows the result."
+				},
+				{
+					"title": "Check history",
+					"line": "Recent sums stay in this tab."
+				}
+			],
+			"faqs": [
+				{
+					"q": "How are percentages handled?",
+					"a": "200 + 10% gives 220 and 50 * 10% gives 5, like a desk calculator."
+				},
+				{
+					"q": "Is the history saved?",
+					"a": "No. It lives in memory and disappears when you close the tab."
+				},
+				{
+					"q": "Can I use the keyboard?",
+					"a": "Yes. Numbers, operators, Enter, Backspace and Escape all work."
+				}
+			]
+		},
+		"spin-wheel": {
+			"name": "Spin Wheel",
+			"tagline": "Let the wheel pick for you.",
+			"title": "Free Spin Wheel",
+			"description": "Add your options and spin a colorful wheel to pick one at random. Runs in your browser with no sign up and no uploads.",
+			"h1": "Free Spin Wheel",
+			"sub": "Add up to 24 options, pick colors, then spin.",
+			"options": {
+				"wheel": "Prize wheel",
+				"spin": "Spin the wheel",
+				"ready": "Add options, then spin.",
+				"options": "Options",
+				"count": "{count} options added",
+				"needTwo": "Add at least two options.",
+				"colors": "Slice colors",
+				"sliceColor": "Slice {number} color",
+				"centerImage": "Centre image",
+				"uploadImage": "Upload image",
+				"removeImage": "Remove",
+				"imageHint": "Optional logo for the middle. Stays on your device.",
+				"imageType": "Pick an image file.",
+				"imageTooLarge": "Images up to 2 MB.",
+				"imageError": "That image could not be read.",
+				"shuffle": "Shuffle options",
+				"share": "Copy share link",
+				"shareLink": "Share link",
+				"shareCopied": "Share link copied.",
+				"shareManual": "Copy the link below."
+			},
+			"steps": [
+				{
+					"title": "List your options",
+					"line": "One per line, up to 24."
+				},
+				{
+					"title": "Spin",
+					"line": "The wheel slows down and stops on a winner."
+				},
+				{
+					"title": "Read the result",
+					"line": "The chosen option appears below the wheel."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Is the pick fair?",
+					"a": "Yes. The winner comes from the browser crypto generator and every slice has the same chance."
+				},
+				{
+					"q": "Can I save or share the wheel?",
+					"a": "Copy the share link to reopen the same options and colors. A centre image stays on your device and is not part of the link."
+				},
+				{
+					"q": "How many options fit?",
+					"a": "24. Longer lists are cut to keep the labels readable."
+				}
+			]
+		},
+		"average-color": {
+			"name": "Average Color Finder",
+			"tagline": "The one color that sums up an image.",
+			"title": "Free Average Color Finder",
+			"description": "Find the average color of any image in HEX, RGB and HSL. Drop a photo and get the color that represents it. Nothing is uploaded.",
+			"h1": "Free Average Color Finder",
+			"sub": "Drop an image and read its average color.",
+			"options": {
+				"hint": "The average blends every visible pixel. Transparent pixels are skipped so they do not pull the color toward black.",
+				"copy": "Copy HEX",
+				"copied": "Color copied",
+				"transparent": "{count} transparent pixels skipped",
+				"palette": "Dominant colors"
+			},
+			"steps": [
+				{
+					"title": "Drop an image",
+					"line": "PNG, JPG, WebP, AVIF or GIF."
+				},
+				{
+					"title": "Read the color",
+					"line": "HEX, RGB and HSL appear at once."
+				},
+				{
+					"title": "Copy the value",
+					"line": "Paste it into your design tool."
+				}
+			],
+			"faqs": [
+				{
+					"q": "How is the average calculated?",
+					"a": "Every visible pixel is summed and divided by the pixel count, so large areas carry more weight."
+				},
+				{
+					"q": "Are transparent pixels counted?",
+					"a": "No. Fully transparent pixels are skipped and the count is shown."
+				},
+				{
+					"q": "Which format is best for design work?",
+					"a": "HEX fits most tools while HSL is easier for adjusting lightness."
+				}
+			]
+		},
+		"image-color-picker": {
+			"name": "Image Color Picker",
+			"tagline": "Pick any color from a photo.",
+			"title": "Free Image Color Picker",
+			"description": "Click any spot on an image to get its exact color in HEX, RGB and HSL. Keep a history of picks. The image never leaves your browser.",
+			"h1": "Free Image Color Picker",
+			"sub": "Click or drag on the image to sample a color.",
+			"options": {
+				"canvas": "Image",
+				"pickHint": "Click or drag on the image. The last pick stays in the panel.",
+				"history": "Picked colors",
+				"clear": "Clear",
+				"position": "Position",
+				"copy": "Copy HEX",
+				"copied": "Color copied"
+			},
+			"steps": [
+				{
+					"title": "Drop an image",
+					"line": "Any common raster format."
+				},
+				{
+					"title": "Pick a spot",
+					"line": "Click or drag to sample the pixel."
+				},
+				{
+					"title": "Copy the value",
+					"line": "HEX, RGB and HSL are ready."
+				}
+			],
+			"faqs": [
+				{
+					"q": "What color does a click return?",
+					"a": "The exact pixel under the pointer, with no smoothing."
+				},
+				{
+					"q": "Why does the preview resize?",
+					"a": "Large images are scaled down for speed, but the picked pixel still comes from the displayed image."
+				},
+				{
+					"q": "Are my images stored?",
+					"a": "No. They stay in this tab and disappear on reload."
+				}
+			]
+		},
+		"image-metadata": {
+			"name": "Image Metadata Viewer",
+			"tagline": "EXIF and file details, read locally.",
+			"title": "Free Image Metadata Viewer",
+			"description": "Read EXIF data, dimensions, format and file size from any image. See the camera, date and location tags before you share a photo. Nothing is uploaded.",
+			"h1": "Free Image Metadata Viewer",
+			"sub": "Drop an image to inspect its EXIF and file details.",
+			"options": {
+				"file": "File",
+				"type": "Type",
+				"size": "Size",
+				"dimensions": "Dimensions",
+				"modified": "Modified",
+				"exif": "EXIF data",
+				"noExif": "No EXIF data found in this file.",
+				"noPreview": "Preview is not available for this format, but the file details still work.",
+				"hint": "Metadata can reveal the camera, date and GPS location. Check it before posting a photo.",
+				"copy": "Copy as JSON",
+				"copied": "Metadata copied",
+				"download": "Download JSON",
+				"structure": "Container structure",
+				"noStructure": "No container structure is available for this format."
+			},
+			"steps": [
+				{
+					"title": "Drop a photo",
+					"line": "JPG, PNG, WebP or another image."
+				},
+				{
+					"title": "Read the details",
+					"line": "Dimensions, format and EXIF tags."
+				},
+				{
+					"title": "Copy or download",
+					"line": "Save the report as JSON."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Which formats show EXIF?",
+					"a": "JPEG files are parsed in full. Other formats show file details and any tags the reader understands."
+				},
+				{
+					"q": "Can this remove metadata?",
+					"a": "No. It only reads. Use an image editor to strip tags."
+				},
+				{
+					"q": "Is GPS always present?",
+					"a": "No. Only photos taken with location enabled carry GPS tags."
+				}
+			]
+		},
+		"instagram-generator": {
+			"name": "Instagram Post Generator",
+			"tagline": "Mockups for posts, stories and DMs.",
+			"title": "Free Instagram Post Generator",
+			"description": "Create realistic Instagram post, story and DM mockups with your own text, image and avatar. Download a PNG. Nothing is uploaded.",
+			"h1": "Free Instagram Post Generator",
+			"sub": "Build a post, story or DM mockup and download it.",
+			"options": {
+				"post": "Post",
+				"story": "Story",
+				"dm": "DM",
+				"username": "Username",
+				"caption": "Caption",
+				"likes": "likes",
+				"likesLabel": "Likes",
+				"incoming": "Incoming message",
+				"outgoing": "Your reply",
+				"dark": "Dark theme",
+				"image": "Add image",
+				"avatar": "Add avatar",
+				"preview": "Instagram preview",
+				"download": "Download PNG",
+				"downloaded": "Image downloaded",
+				"failed": "Could not create the image.",
+				"imageError": "That image could not be loaded.",
+				"imageHint": "Your image here",
+				"reply": "Reply",
+				"active": "Active now",
+				"message": "Message",
+				"sponsored": "Sponsored",
+				"time": "2 hours ago",
+				"sampleCaption": "Every tool you need. Free, fast, private. Built to run in your browser.",
+				"sampleIncoming": "Send me the link?",
+				"sampleOutgoing": "toolify.bond, everything runs locally."
+			},
+			"steps": [
+				{
+					"title": "Pick a format",
+					"line": "Post, story or DM."
+				},
+				{
+					"title": "Add your details",
+					"line": "Text, image and avatar."
+				},
+				{
+					"title": "Download",
+					"line": "Save the mockup as a PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Is this an official Instagram tool?",
+					"a": "No. It builds an image mockup and is not linked with Instagram."
+				},
+				{
+					"q": "Do my photos get uploaded?",
+					"a": "No. Everything renders on a canvas in this tab."
+				},
+				{
+					"q": "What sizes are used?",
+					"a": "Posts are 1080 by 1350, stories and DMs are 1080 by 1920."
+				}
+			]
+		},
+		"x-post-generator": {
+			"name": "X Post Generator",
+			"tagline": "Mock up posts and profiles for X.",
+			"title": "Free X Post Generator",
+			"description": "Create realistic X post and profile mockups with your text, avatar and banner. Download a PNG. Everything stays in your browser.",
+			"h1": "Free X Post Generator",
+			"sub": "Build a post or profile mockup and download it.",
+			"options": {
+				"post": "Post",
+				"profile": "Profile",
+				"name": "Display name",
+				"handle": "Handle",
+				"text": "Post text",
+				"likes": "Likes",
+				"reposts": "Reposts",
+				"bio": "Bio",
+				"dark": "Dark theme",
+				"image": "Add image",
+				"avatar": "Add avatar",
+				"banner": "Add banner",
+				"preview": "X preview",
+				"follow": "Follow",
+				"download": "Download PNG",
+				"downloaded": "Image downloaded",
+				"failed": "Could not create the image.",
+				"imageError": "That image could not be loaded.",
+				"sampleText": "Every tool you need. Free, fast, private. All of it runs in your browser, so your files never leave your device.",
+				"sampleBio": "Small browser tools that respect your files. No sign up, no uploads."
+			},
+			"steps": [
+				{
+					"title": "Pick a layout",
+					"line": "Post or profile."
+				},
+				{
+					"title": "Add your details",
+					"line": "Name, handle, text and images."
+				},
+				{
+					"title": "Download",
+					"line": "Save the mockup as a PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Is this official X software?",
+					"a": "No. It is an independent mockup maker."
+				},
+				{
+					"q": "Can I use the image anywhere?",
+					"a": "Yes, but label it as a mockup so nobody mistakes it for a real post."
+				},
+				{
+					"q": "Do my images upload?",
+					"a": "No. They render on a canvas in this tab."
+				}
+			]
+		},
+		"messenger-generator": {
+			"name": "Messenger Chat Generator",
+			"tagline": "Fake Messenger conversations in seconds.",
+			"title": "Free Messenger Chat Generator",
+			"description": "Create a realistic Messenger mockup with your contact, avatar and messages. Download a PNG. Nothing leaves your browser.",
+			"h1": "Free Messenger Chat Generator",
+			"sub": "Add a contact and messages, then download the mockup.",
+			"options": {
+				"contact": "Contact name",
+				"dark": "Dark theme",
+				"avatar": "Add avatar",
+				"noAvatar": "No avatar chosen",
+				"messages": "Messages",
+				"add": "Add message",
+				"side": "Side",
+				"incoming": "Incoming",
+				"outgoing": "Outgoing",
+				"message": "Message",
+				"remove": "Remove",
+				"messagePlaceholder": "Message",
+				"preview": "Chat preview",
+				"download": "Download PNG",
+				"downloaded": "Image downloaded",
+				"failed": "Could not create the image.",
+				"imageError": "That image could not be loaded.",
+				"sampleIn": "Hey, did you try that new tool site?",
+				"sampleOut": "Toolify? Yes, everything runs in the browser.",
+				"sampleFollow": "No uploads at all?"
+			},
+			"steps": [
+				{
+					"title": "Set the contact",
+					"line": "Name and optional avatar."
+				},
+				{
+					"title": "Write the messages",
+					"line": "Choose who sends each one."
+				},
+				{
+					"title": "Download",
+					"line": "Save the chat as a PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Is this an official app?",
+					"a": "No. It is an independent mockup maker for Messenger."
+				},
+				{
+					"q": "Do my photos upload?",
+					"a": "No. Everything renders in this tab."
+				},
+				{
+					"q": "Can I remove messages?",
+					"a": "Yes. Each message has a remove button."
+				}
+			]
+		},
+		"whatsapp-generator": {
+			"name": "WhatsApp Chat Generator",
+			"tagline": "Fake WhatsApp conversations in seconds.",
+			"title": "Free WhatsApp Chat Generator",
+			"description": "Create a realistic WhatsApp mockup with your contact, avatar and messages. Download a PNG. Nothing leaves your browser.",
+			"h1": "Free WhatsApp Chat Generator",
+			"sub": "Add a contact and messages, then download the mockup.",
+			"options": {
+				"contact": "Contact name",
+				"dark": "Dark theme",
+				"avatar": "Add avatar",
+				"noAvatar": "No avatar chosen",
+				"messages": "Messages",
+				"add": "Add message",
+				"side": "Side",
+				"incoming": "Incoming",
+				"outgoing": "Outgoing",
+				"message": "Message",
+				"remove": "Remove",
+				"messagePlaceholder": "Message",
+				"preview": "Chat preview",
+				"download": "Download PNG",
+				"downloaded": "Image downloaded",
+				"failed": "Could not create the image.",
+				"imageError": "That image could not be loaded.",
+				"sampleIn": "Hey, did you try that new tool site?",
+				"sampleOut": "Toolify? Yes, everything runs in the browser.",
+				"sampleFollow": "No uploads at all?"
+			},
+			"steps": [
+				{
+					"title": "Set the contact",
+					"line": "Name and optional avatar."
+				},
+				{
+					"title": "Write the messages",
+					"line": "Choose who sends each one."
+				},
+				{
+					"title": "Download",
+					"line": "Save the chat as a PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Is this an official app?",
+					"a": "No. It is an independent mockup maker for WhatsApp."
+				},
+				{
+					"q": "Do my photos upload?",
+					"a": "No. Everything renders in this tab."
+				},
+				{
+					"q": "Can I remove messages?",
+					"a": "Yes. Each message has a remove button."
+				}
+			]
+		},
+		"imessage-generator": {
+			"name": "iMessage Chat Generator",
+			"tagline": "Fake iMessage conversations in seconds.",
+			"title": "Free iMessage Chat Generator",
+			"description": "Create a realistic iMessage mockup with your contact, avatar and messages. Download a PNG. Nothing leaves your browser.",
+			"h1": "Free iMessage Chat Generator",
+			"sub": "Add a contact and messages, then download the mockup.",
+			"options": {
+				"contact": "Contact name",
+				"dark": "Dark theme",
+				"avatar": "Add avatar",
+				"noAvatar": "No avatar chosen",
+				"messages": "Messages",
+				"add": "Add message",
+				"side": "Side",
+				"incoming": "Incoming",
+				"outgoing": "Outgoing",
+				"message": "Message",
+				"remove": "Remove",
+				"messagePlaceholder": "Message",
+				"preview": "Chat preview",
+				"download": "Download PNG",
+				"downloaded": "Image downloaded",
+				"failed": "Could not create the image.",
+				"imageError": "That image could not be loaded.",
+				"sampleIn": "Hey, did you try that new tool site?",
+				"sampleOut": "Toolify? Yes, everything runs in the browser.",
+				"sampleFollow": "No uploads at all?"
+			},
+			"steps": [
+				{
+					"title": "Set the contact",
+					"line": "Name and optional avatar."
+				},
+				{
+					"title": "Write the messages",
+					"line": "Choose who sends each one."
+				},
+				{
+					"title": "Download",
+					"line": "Save the chat as a PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Is this an official app?",
+					"a": "No. It is an independent mockup maker for iMessage."
+				},
+				{
+					"q": "Do my photos upload?",
+					"a": "No. Everything renders in this tab."
+				},
+				{
+					"q": "Can I remove messages?",
+					"a": "Yes. Each message has a remove button."
+				}
+			]
+		},
+		"pdf-viewer": {
+			"name": "PDF Viewer",
+			"tagline": "Open PDFs without uploading them.",
+			"title": "Free Online PDF Viewer",
+			"description": "Open and read PDF files in your browser with page navigation and zoom. The document is rendered on your device and never uploaded.",
+			"h1": "Free Online PDF Viewer",
+			"sub": "Drop a PDF, then move between pages and zoom.",
+			"options": {
+				"close": "Close file",
+				"loading": "Opening the PDF...",
+				"rendering": "Rendering...",
+				"pageCanvas": "PDF page",
+				"pageOf": "Page (of {pages})",
+				"prev": "Previous",
+				"next": "Next",
+				"zoom": "Zoom",
+				"zoomOut": "Zoom out",
+				"zoomIn": "Zoom in",
+				"hint": "Drop a PDF to read it here. Pages render on your device.",
+				"renderError": "That page could not be rendered.",
+				"unreadable": "This PDF could not be opened."
+			},
+			"steps": [
+				{
+					"title": "Drop a PDF",
+					"line": "Up to 100 MB from your device."
+				},
+				{
+					"title": "Move through pages",
+					"line": "Use previous and next or type a page number."
+				},
+				{
+					"title": "Zoom",
+					"line": "Make small print readable."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Is the PDF uploaded?",
+					"a": "No. It is read and rendered inside this tab."
+				},
+				{
+					"q": "Can I select text?",
+					"a": "Not yet. Pages are shown as images, so copying text is not supported."
+				},
+				{
+					"q": "What is the size limit?",
+					"a": "100 MB. Very large files may need more memory than a phone has."
+				}
+			]
+		},
+		"pdf-compressor": {
+			"name": "PDF Compressor",
+			"tagline": "Shrink PDFs with honest results.",
+			"title": "Free PDF Compressor",
+			"description": "Compress a PDF in your browser by rendering pages at low, medium or high quality. See the real size before and after. No uploads.",
+			"h1": "Free PDF Compressor",
+			"sub": "Pick a quality, compress, and compare the actual size.",
+			"options": {
+				"quality": "Quality",
+				"qualityLow": "Low, smallest file",
+				"qualityMedium": "Medium, balanced",
+				"qualityHigh": "High, sharpest",
+				"hint": "Pages are rasterized and re-encoded as JPEG. Text becomes an image, so links and selectable text are lost.",
+				"rasterNote": "If the result is bigger than the original, keep the original.",
+				"compress": "Compress PDF",
+				"progress": "Compression progress",
+				"progressLabel": "Page {done} of {total}",
+				"before": "Before",
+				"after": "After",
+				"pages": "Pages",
+				"smaller": "{percent}% smaller",
+				"larger": "{percent}% larger",
+				"same": "Almost the same size",
+				"keepOriginal": "The compressed file is not smaller. Keep the original.",
+				"download": "Download PDF",
+				"done": "PDF compressed",
+				"failed": "Compression failed."
+			},
+			"steps": [
+				{
+					"title": "Drop a PDF",
+					"line": "Up to 100 MB from your device."
+				},
+				{
+					"title": "Choose quality",
+					"line": "Low saves the most, high keeps detail."
+				},
+				{
+					"title": "Compare and download",
+					"line": "The real before and after sizes are shown."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Does this keep text selectable?",
+					"a": "No. The compressor renders each page to an image, so text and links are flattened."
+				},
+				{
+					"q": "Why is the file sometimes bigger?",
+					"a": "Already optimized PDFs can grow when rebuilt as images. The result page says so and you can keep the original."
+				},
+				{
+					"q": "Is the PDF uploaded?",
+					"a": "No. Rendering and rebuilding happen in this tab."
+				}
+			]
 		}
+	},
+	"share": {
+		"share": "Share",
+		"report": "Report Bug",
+		"title": "Share this tool",
+		"copyLink": "Copy link",
+		"copied": "Link copied",
+		"native": "More apps",
+		"whatsapp": "WhatsApp",
+		"x": "X",
+		"facebook": "Facebook",
+		"linkedin": "LinkedIn",
+		"text": "Try {name} on Toolify. It runs in your browser.",
+		"reportHint": "Tell us what broke and which file you used."
+	},
+	"support": {
+		"title": "Support Toolify",
+		"metaDescription": "Support Toolify with Ko-fi, PayPal, Bitcoin, Ethereum, or Solana. Every tool stays free.",
+		"h1": "Keep Toolify free",
+		"sub": "No accounts, no locked tools. If a tool saved you time, you can leave a tip. It goes straight to hosting, models, and new tools.",
+		"options": {
+			"label": "Choose a way to support",
+			"kofi": "Ko-fi",
+			"paypal": "PayPal",
+			"btc": "Bitcoin",
+			"eth": "Ethereum and EVM",
+			"solana": "Solana"
+		},
+		"kofiTitle": "Buy a coffee",
+		"kofiLine": "Ko-fi opens a secure widget. Nothing on this page touches your files.",
+		"kofiOpen": "Open Ko-fi",
+		"paypalTitle": "Send a tip with PayPal",
+		"paypalLine": "PayPal handles the payment. You do not need a Toolify account.",
+		"paypalOpen": "Open PayPal",
+		"crypto": {
+			"btc": {
+				"title": "Bitcoin"
+			},
+			"eth": {
+				"title": "Ethereum and EVM"
+			},
+			"solana": {
+				"title": "Solana"
+			}
+		},
+		"address": "Address",
+		"notReady": "This address has not been added yet.",
+		"copy": "Copy address",
+		"copied": "Address copied",
+		"copyFailed": "Could not copy the address.",
+		"note": "Tips are optional. Every tool stays free and runs in your browser."
 	}
 }

@@ -1,29 +1,46 @@
 // local notes on indexeddb, never localstorage. the markdown export
 // is pure so the file content stays unit tested.
 import { del, get, set } from "idb-keyval";
+import { htmlToMarkdown } from "./rich-text";
 
 export interface Note {
 	id: string;
+	title?: string;
 	body: string;
+	lineHeight?: number;
 	updatedAt: number;
 }
 
 const INDEX_KEY = "toolify-notes-index";
 
-export function noteTitle(body: string): string {
+export function noteTitle(body: string, fallback = "Empty note"): string {
 	const first = body
 		.split("\n")
-		.map((line) => line.trim())
+		.map((line) => line.replace(/<[^>]+>/g, " ").trim())
 		.find(Boolean);
 	if (!first) {
-		return "Empty note";
+		return fallback;
 	}
 	return first.length > 60 ? `${first.slice(0, 60)}…` : first;
 }
 
-export function exportMarkdown(notes: Note[]): string {
+export function noteDisplayTitle(note: Note, fallback = "Empty note"): string {
+	return (note.title ?? "").trim() || noteTitle(note.body, fallback);
+}
+
+export function exportMarkdown(
+	notes: Note[],
+	fallback = "Empty note",
+): string {
 	return `${notes
-		.map((note) => `# ${noteTitle(note.body)}\n\n${note.body}`)
+		.map(
+			(note) =>
+				`# ${noteDisplayTitle(note, fallback)}\n\n${
+					note.body.includes("<")
+						? htmlToMarkdown(note.body)
+						: note.body
+				}`,
+		)
 		.join("\n\n---\n\n")}\n`;
 }
 

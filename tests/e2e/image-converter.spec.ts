@@ -19,7 +19,7 @@ test("page carries the full tool anatomy", async ({ page }) => {
 		page.getByRole("button", { name: "Convert", exact: true }),
 	).toBeVisible();
 	await expect(
-		page.getByText("Files never leave your browser.").first(),
+		page.getByText("100% Private, files never leave your browser.").first(),
 	).toBeVisible();
 	await expect(page.getByRole("heading", { name: "How to use" })).toBeVisible();
 	await expect(page.getByText("Drop your files")).toBeVisible();

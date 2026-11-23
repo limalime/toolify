@@ -1,20 +1,23 @@
 "use client";
 
 import { Dialog } from "@base-ui/react/dialog";
-import { X } from "lucide-react";
+import { ChevronDown, Heart, X } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { CATEGORIES } from "@/components/layout/categories";
+import type { CategoryNavItem } from "@/components/layout/category-nav";
 import LanguageSwitcher from "@/components/layout/language-switcher";
 import { Link } from "@/i18n/navigation";
 
 // hamburger plus slide-over menu for small screens. hidden on desktop.
 // the trigger icon morphs into a close cross while the menu is open.
-export default function MobileMenu() {
+export default function MobileMenu({
+	categories,
+}: {
+	categories: CategoryNavItem[];
+}) {
 	const [open, setOpen] = useState(false);
 	const t = useTranslations("header");
-	const tc = useTranslations("categories");
 
 	return (
 		<Dialog.Root onOpenChange={setOpen}>
@@ -71,20 +74,50 @@ export default function MobileMenu() {
 						/>
 					</div>
 					<nav aria-label={t("categoriesNav")} className="flex flex-col">
-						{CATEGORIES.map((category) => (
-							<Dialog.Close
-								key={category.href}
-								render={
-									<Link
-										className="flex min-h-11 items-center border-b border-border text-body text-text outline-none hover:text-blue-500 focus-visible:text-blue-500"
-										href={category.href}
-									>
-										{tc(category.key)}
-									</Link>
-								}
-							/>
+						{categories.map((category) => (
+							<details className="group border-b border-border" key={category.key}>
+								<summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 text-body text-text outline-none hover:text-blue-500 focus-visible:text-blue-500 [&::-webkit-details-marker]:hidden">
+									{category.label}
+									<ChevronDown
+										aria-hidden="true"
+										className="size-4 text-text-3 transition-transform duration-150 group-open:rotate-180 motion-reduce:transition-none"
+									/>
+								</summary>
+								<div className="flex flex-col gap-1 pb-3 ps-3">
+									{category.tools.map((tool) => (
+										<Dialog.Close
+											key={tool.slug}
+											render={
+												<Link
+													className="flex min-h-10 items-center rounded-md px-2 text-small text-text-2 outline-none hover:bg-surface-2 hover:text-text focus-visible:bg-surface-2"
+													href={`/${tool.slug}`}
+												>
+													{tool.name}
+												</Link>
+											}
+										/>
+									))}
+									<Dialog.Close
+										render={
+											<Link
+												className="flex min-h-10 items-center px-2 text-small text-blue-500 outline-none hover:underline hover:underline-offset-4 focus-visible:text-blue-400"
+												href={category.href}
+											>
+												{category.label}
+											</Link>
+										}
+									/>
+								</div>
+							</details>
 						))}
 					</nav>
+					<Link
+						className="flex min-h-11 items-center gap-2 border-y border-border text-body text-text outline-none hover:text-blue-500 focus-visible:text-blue-500"
+						href="/support"
+					>
+						<Heart aria-hidden="true" className="size-4 text-blue-500" />
+						{t("tip")}
+					</Link>
 					<div className="mt-auto">
 						<LanguageSwitcher id="mobile-language" />
 					</div>

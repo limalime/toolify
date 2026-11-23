@@ -1,15 +1,24 @@
-import { Search } from "lucide-react";
+import { Heart, Search } from "lucide-react";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { CATEGORIES } from "@/components/layout/categories";
+import CategoryNav from "@/components/layout/category-nav";
 import LanguageSwitcher from "@/components/layout/language-switcher";
 import MobileMenu from "@/components/layout/mobile-menu";
 import ThemeToggle from "@/components/layout/theme-toggle";
 import { Link } from "@/i18n/navigation";
+import { resolveMenuTools } from "@/lib/menu";
 
 export default async function SiteHeader() {
 	const t = await getTranslations("header");
 	const tc = await getTranslations("categories");
+	const tools = await resolveMenuTools();
+	const categories = CATEGORIES.map((category) => ({
+		key: category.key,
+		label: tc(category.key),
+		href: category.href,
+		tools: tools.filter((tool) => tool.category === category.key),
+	}));
 
 	return (
 		<header className="border-b border-border bg-bg">
@@ -36,20 +45,7 @@ export default async function SiteHeader() {
 						width={200}
 					/>
 				</Link>
-				<nav
-					aria-label={t("categoriesNav")}
-					className="hidden items-center gap-5 lg:flex"
-				>
-					{CATEGORIES.map((category) => (
-						<Link
-							className="text-small text-text-2 outline-none hover:text-text hover:underline hover:underline-offset-4 focus-visible:text-blue-500"
-							href={category.href}
-							key={category.href}
-						>
-							{tc(category.key)}
-						</Link>
-					))}
-				</nav>
+				<CategoryNav items={categories} label={t("categoriesNav")} />
 				<div className="ms-auto flex items-center gap-1">
 					<Link
 						aria-label={t("search")}
@@ -58,9 +54,17 @@ export default async function SiteHeader() {
 					>
 						<Search aria-hidden="true" className="size-5" />
 					</Link>
+					<Link
+						aria-label={t("support")}
+						className="inline-flex h-11 items-center gap-1.5 px-2 text-small text-text-2 outline-none hover:text-text focus-visible:border-blue-500"
+						href="/support"
+					>
+						<Heart aria-hidden="true" className="size-5" />
+						<span className="hidden sm:inline">{t("tip")}</span>
+					</Link>
 					<ThemeToggle />
 					<LanguageSwitcher id="site-language" />
-					<MobileMenu />
+					<MobileMenu categories={categories} />
 				</div>
 			</div>
 		</header>

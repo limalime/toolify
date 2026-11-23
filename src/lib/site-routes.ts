@@ -8,6 +8,7 @@ export const STATIC_ROUTES: string[] = [
 	"/contact",
 	"/privacy",
 	"/terms",
+	"/support",
 ];
 
 export function allSitePaths(): string[] {

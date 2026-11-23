@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import AdSlot from "@/components/ads/ad-slot";
+import FeaturedTools from "@/components/landing/featured-tools";
 import ToolMenu from "@/components/landing/tool-menu";
 import { routing } from "@/i18n/routing";
 import { organizationJsonLd, toJsonLd, websiteJsonLd } from "@/lib/jsonld";
@@ -43,10 +45,34 @@ export default async function LandingPage({
 		<div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-16">
 			<script type="application/ld+json">{toJsonLd(website)}</script>
 			<script type="application/ld+json">{toJsonLd(organization)}</script>
-			<section className="flex flex-col gap-3">
-				<h1 className="font-display text-display">{t("heroTitle")}</h1>
-				<p className="max-w-prose text-body text-text-2">{t("heroSub")}</p>
+			<section className="flex flex-col items-center gap-5 text-center">
+				<Image
+					alt=""
+					aria-hidden="true"
+					className="h-auto w-full max-w-56 dark:hidden md:max-w-72"
+					height={1080}
+					priority
+					src="/assets/hero-workbench.svg"
+					width={1080}
+				/>
+				<Image
+					alt=""
+					aria-hidden="true"
+					className="hidden h-auto w-full max-w-56 dark:block md:max-w-72"
+					height={1080}
+					priority
+					src="/assets/hero-workbench-dark.svg"
+					width={1080}
+				/>
+				<h1 className="max-w-4xl font-display text-display">
+					{t("heroTitleLead")}
+					{locale === "ja" || locale === "zh" ? null : " "}
+					<span className="relative inline bg-[linear-gradient(transparent_58%,color-mix(in_oklab,var(--color-blue-500)_28%,transparent)_58%)] box-decoration-clone">
+						{t("heroTitleAccent")}
+					</span>
+				</h1>
 			</section>
+			<FeaturedTools tools={tools} />
 			<ToolMenu
 				copy={{
 					emptyClear: t("emptyClear"),

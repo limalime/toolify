@@ -140,7 +140,7 @@ test("custom 404 renders translated in indonesian", async ({ page }) => {
 	const response = await page.goto("/id/nope-missing-page");
 	expect(response?.status()).toBe(404);
 	await expect(page.getByRole("heading", { level: 1 })).toContainText(
-		"Halaman tidak ditemukan",
+		"Ups, halaman tidak ditemukan",
 	);
 	await expect(page.getByRole("searchbox")).toBeVisible();
 	await expect(

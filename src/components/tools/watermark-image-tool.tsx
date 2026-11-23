@@ -69,6 +69,7 @@ export default function WatermarkImageTool() {
 	const tc = useTranslations("common");
 	const te = useTranslations("errors");
 	const [file, setFile] = useState<File | null>(null);
+	const [sourceUrl, setSourceUrl] = useState<string | null>(null);
 	const [mode, setMode] = useState("text");
 	const [text, setText] = useState("© Toolify");
 	const [fontSize, setFontSize] = useState(48);
@@ -91,6 +92,7 @@ export default function WatermarkImageTool() {
 		urls.current = [];
 		decoded.current = null;
 		setFile(null);
+		setSourceUrl(null);
 		setError(null);
 		setResult(null);
 	};
@@ -101,6 +103,10 @@ export default function WatermarkImageTool() {
 			return;
 		}
 		reset();
+		const previewUrl = URL.createObjectURL(picked);
+		urls.current.push(previewUrl);
+		setSourceUrl(previewUrl);
+		setFile(picked);
 		const extension = picked.name
 			.slice(picked.name.lastIndexOf(".") + 1)
 			.toLowerCase();
@@ -234,6 +240,19 @@ export default function WatermarkImageTool() {
 					hint={tc("dropHint")}
 					onFiles={addFiles}
 				/>
+				{file && sourceUrl ? (
+					<div className="flex flex-col gap-2 rounded-lg border border-border bg-surface p-3">
+						<p className="truncate text-small text-text-2" data-testid="source-name">
+							{file.name}
+						</p>
+						{/* biome-ignore lint/performance/noImgElement: local blob preview, next-image cannot optimize object urls */}
+						<img
+							alt={file.name}
+							className="max-h-64 w-auto self-start rounded-md"
+							src={sourceUrl}
+						/>
+					</div>
+				) : null}
 				{error ? (
 					<p className="text-small text-error" role="alert">
 						{error}

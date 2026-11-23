@@ -452,3 +452,73 @@
 @utility state-transition {
 	@apply transition-[background-color,border-color,color,box-shadow] duration-150 ease-out motion-reduce:transition-none;
 }
+
+/* shared and local note bodies carry sanitized editor html */
+.notes-editor h1,
+.notes-editor h2,
+.notes-editor h3 {
+	font-family: "CalSans", var(--font-inter), system-ui, sans-serif;
+	margin-block: 0.6em 0.3em;
+	line-height: 1.25;
+}
+.notes-editor h1 {
+	font-size: 1.6em;
+}
+.notes-editor h2 {
+	font-size: 1.3em;
+}
+.notes-editor h3 {
+	font-size: 1.12em;
+}
+.notes-editor p {
+	margin-block: 0.4em;
+}
+.notes-editor ul,
+.notes-editor ol {
+	margin-block: 0.5em;
+	padding-inline-start: 1.5em;
+}
+.notes-editor ul {
+	list-style: disc;
+}
+.notes-editor ol {
+	list-style: decimal;
+}
+.notes-editor li {
+	margin-block: 0.2em;
+}
+.notes-editor blockquote {
+	border-inline-start: 3px solid var(--color-blue-500);
+	margin-block: 0.6em;
+	padding-inline-start: 0.9em;
+	color: var(--color-text-2);
+}
+.notes-editor a {
+	color: var(--color-blue-500);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+.notes-editor mark {
+	background: #fde047;
+	color: #0a0e14;
+	border-radius: 2px;
+	padding-inline: 0.1em;
+}
+.notes-editor code {
+	background: var(--color-surface-3);
+	border-radius: 4px;
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 0.92em;
+	padding: 0.1em 0.3em;
+}
+.notes-editor pre {
+	background: var(--color-surface-3);
+	border-radius: 8px;
+	margin-block: 0.6em;
+	overflow-x: auto;
+	padding: 0.8em;
+}
+.notes-editor pre code {
+	background: transparent;
+	padding: 0;
+}

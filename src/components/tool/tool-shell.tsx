@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import AdSlot from "@/components/ads/ad-slot";
 import ToolCard from "@/components/landing/tool-card";
 import type { CategoryKey } from "@/components/layout/categories";
+import ShareBar from "@/components/tool/share-bar";
 import {
 	AccordionHeader,
 	AccordionItem,
@@ -125,6 +126,7 @@ export default async function ToolShell({
 				<h1>{h1}</h1>
 				<p className="max-w-prose text-body text-text-2">{sub}</p>
 			</div>
+			<ShareBar name={toolName} slug={slug} />
 			<div className="flex flex-col gap-4" data-clarity-mask="true">
 				{children}
 			</div>

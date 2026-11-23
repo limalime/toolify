@@ -5,6 +5,7 @@ describe("notes", () => {
 	it("titles from the first line", () => {
 		expect(noteTitle("Hello\nsecond")).toBe("Hello");
 		expect(noteTitle("   \n  ")).toBe("Empty note");
+		expect(noteTitle("   \n  ", "ملاحظة فارغة")).toBe("ملاحظة فارغة");
 		expect(noteTitle("x".repeat(100))).toBe(`${"x".repeat(60)}…`);
 	});
 

@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { downloadBytes } from "./helpers";
+import { downloadBytes, FIXTURES, imageDims, signatureOf } from "./helpers";
 
 test.beforeEach(async ({ page }) => {
 	await page.goto("/ascii-art");
@@ -28,4 +28,25 @@ test("switching fonts changes the banner", async ({ page }) => {
 	const after = (await page.getByTestId("ascii-preview").textContent()) ?? "";
 	expect(after).not.toBe(before);
 	expect(after.length).toBeGreaterThan(0);
+});
+
+test("converts an image to ascii and exports a png", async ({ page }) => {
+	await page.getByRole("tab", { name: "Image" }).click();
+	await page
+		.locator("[data-testid='dropzone'] input[type='file']")
+		.setInputFiles([FIXTURES.photo]);
+	const canvas = page.getByTestId("ascii-image-preview");
+	await expect(canvas).toBeVisible({ timeout: 30000 });
+	const before = await canvas.evaluate((node) => (node as HTMLCanvasElement).toDataURL());
+	await page.getByRole("combobox", { name: "Style" }).click();
+	await page.getByRole("option", { name: "Matrix" }).click();
+	const after = await canvas.evaluate((node) => (node as HTMLCanvasElement).toDataURL());
+	expect(after).not.toBe(before);
+	const { bytes, filename } = await downloadBytes(
+		page,
+		page.getByRole("button", { name: "Download PNG" }),
+	);
+	expect(filename).toBe("photo-ascii.png");
+	expect(signatureOf(bytes)).toBe("png");
+	expect((await imageDims(page, bytes)).width).toBeGreaterThan(0);
 });

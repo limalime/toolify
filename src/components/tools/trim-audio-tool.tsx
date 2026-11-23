@@ -3,6 +3,7 @@
 import * as Comlink from "comlink";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
+import AudioPreview from "@/components/audio/audio-preview";
 import Dropzone from "@/components/primitives/dropzone";
 import { notify } from "@/components/primitives/notify";
 import SmoothButton from "@/components/smoothui/smooth-button";
@@ -225,6 +226,7 @@ export default function TrimAudioTool() {
 					hint={tc("dropHint")}
 					onFiles={addFiles}
 				/>
+				<AudioPreview file={file} label={file?.name ?? ""} />
 				{file && duration > 0 ? (
 					<div className="flex flex-col gap-2">
 						<div

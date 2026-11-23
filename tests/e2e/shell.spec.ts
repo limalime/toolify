@@ -50,7 +50,9 @@ test("desktop shows category links and hides the hamburger", async ({
 		"Finance",
 		"PDF and Utilities",
 	]) {
-		await expect(header.getByRole("link", { name: label })).toBeVisible();
+		await expect(
+			header.getByRole("button", { name: label, exact: true }),
+		).toBeVisible();
 	}
 	await expect(header.getByRole("button", { name: "Open menu" })).toBeHidden();
 });
@@ -79,7 +81,9 @@ test("hamburger opens a slide-over menu that closes", async ({
 	await expect(hiddenTrigger).toHaveAttribute("aria-expanded", "true");
 	const dialog = page.getByRole("dialog", { name: "Menu" });
 	await expect(dialog).toBeVisible();
-	await expect(dialog.getByRole("link", { name: "Finance" })).toBeVisible();
+	await expect(
+		dialog.locator("summary").filter({ hasText: "Finance" }).first(),
+	).toBeVisible();
 	await expect(dialog.getByRole("button", { name: "Language" })).toBeVisible();
 	const overflow = await page.evaluate(
 		() =>
@@ -96,16 +100,20 @@ test("menu links reach every category anchor", async ({ page, isMobile }) => {
 	test.skip(!isMobile, "mobile layout only");
 	await page.getByRole("button", { name: "Open menu" }).click();
 	const dialog = page.getByRole("dialog", { name: "Menu" });
-	for (const href of [
-		"#gambar",
-		"#text",
-		"#video",
-		"#audio",
-		"#lainnya",
-		"#finance",
-		"#pdf-utilities",
-	]) {
+	const groups: Array<[string, string]> = [
+		["Image", "#gambar"],
+		["Text", "#text"],
+		["Video", "#video"],
+		["Audio", "#audio"],
+		["Other", "#lainnya"],
+		["Finance", "#finance"],
+		["PDF and Utilities", "#pdf-utilities"],
+	];
+	for (const [label, href] of groups) {
+		const details = dialog.locator("details").filter({ hasText: label }).first();
+		await details.locator("summary").click();
 		await expect(dialog.locator(`a[href='/${href}']`)).toBeVisible();
+		await details.locator("summary").click();
 	}
 });
 

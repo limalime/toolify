@@ -9,7 +9,9 @@
 		"openMenu": "打开菜单",
 		"search": "搜索工具",
 		"themeToLight": "切换到浅色主题",
-		"themeToDark": "切换到深色主题"
+		"themeToDark": "切换到深色主题",
+		"support": "支持 Toolify",
+		"tip": "打赏"
 	},
 	"categories": {
 		"audio": "音频",
@@ -41,7 +43,7 @@
 		"download": "下载",
 		"downloadAll": "全部下载",
 		"dropHint": "将文件拖到此处或",
-		"filesNeverLeave": "文件永远不会离开您的浏览器。",
+		"filesNeverLeave": "100% 私密，文件永远不会离开您的浏览器。",
 		"generate": "生成",
 		"remove": "删除",
 		"retry": "重试",
@@ -73,7 +75,8 @@
 	"notfound": {
 		"explanation": "该地址不存在，搜索工具或返回首页。",
 		"home": "返回首页",
-		"title": "找不到页面"
+		"title": "糟糕，找不到页面",
+		"artAlt": "一只猫睡在显示404画面的笔记本电脑上"
 	},
 	"about": {
 		"body": [
@@ -204,10 +207,15 @@
 		"searchPlaceholder": "搜索工具，试试 png 转 jpg",
 		"why1line": "所有工具免费且不限量。",
 		"why1title": "永远免费",
-		"why2line": "文件永远不会离开您的浏览器。",
+		"why2line": "100% 私密，文件永远不会离开您的浏览器。",
 		"why2title": "生来私密",
 		"why3line": "打开即用，无需安装。",
-		"why3title": "无需注册"
+		"why3title": "无需注册",
+		"heroTitleLead": "你需要的工具，都在这里。",
+		"heroTitleAccent": "免费、快速、私密。",
+		"featuredTitle": "精选工具",
+		"featuredSub": "本周重新挑选，值得先打开的几款工具。",
+		"featuredLoading": "正在挑选本周工具。"
 	},
 	"tools": {
 		"image-converter": {
@@ -570,43 +578,58 @@
 			"name": "表情包制作",
 			"tagline": "上下配文,一秒经典。",
 			"title": "免费在线表情包制作",
-			"description": "在浏览器中用上下配文制作表情包。实时预览、字号调节、一键下载。文件永不离开您的设备。",
+			"description": "用现成模板或自己的图片在浏览器里做表情包。添加文字和图片图层，拖动摆放位置，下载 PNG。100% 私密，文件从不离开你的浏览器。",
 			"h1": "免费在线表情包制作",
-			"sub": "输入笑点、实时查看、下载表情包。",
+			"sub": "选模板，加文字，拖动摆好，下载。",
 			"options": {
-				"top": "上方文字",
-				"topPlaceholder": "上方配文",
-				"bottom": "下方文字",
-				"bottomPlaceholder": "下方配文",
+				"addText": "添加文字",
+				"addImage": "添加图片",
+				"color": "颜色",
+				"defaultText": "你的文字",
+				"download": "下载表情包",
+				"dragHint": "在画布上拖动任意图层来摆放位置。",
+				"emptyLayers": "还没有图层。添加文字或图片。",
+				"font": "字体",
 				"fontSize": "字号",
-				"download": "下载表情包"
+				"imageError": "无法读取这张图片。",
+				"imageWidth": "图片宽度",
+				"moveDown": "下移",
+				"moveUp": "上移",
+				"needBackground": "请先选择模板或上传图片。",
+				"ownImage": "自己的图片",
+				"removeLayer": "删除图层",
+				"stroke": "描边",
+				"templateN": "模板 {n}",
+				"templates": "模板",
+				"text": "文字",
+				"textLayer": "文字图层"
 			},
 			"steps": [
 				{
-					"title": "添加图片",
-					"line": "拖入表情包底图。"
+					"title": "选择模板",
+					"line": "使用内置图片或上传自己的图片。"
 				},
 				{
-					"title": "填写配文",
-					"line": "输入上下文字并查看预览。"
+					"title": "添加图层",
+					"line": "输入文案，添加贴图，拖动到合适位置。"
 				},
 				{
 					"title": "下载",
-					"line": "将表情包保存为 PNG。"
+					"line": "把完成的表情包保存为 PNG。"
 				}
 			],
 			"faqs": [
 				{
-					"q": "下载什么格式?",
-					"a": "与原图同尺寸的 PNG。"
+					"q": "可以用自己的图片吗?",
+					"a": "可以。上传 PNG、JPG、WebP 或 AVIF 作为背景。"
 				},
 				{
-					"q": "可以只用一句配文吗?",
-					"a": "可以,将另一框留空即可。"
+					"q": "文字可以移动吗?",
+					"a": "在预览上拖动图层，或选中后用方向键移动。"
 				},
 				{
 					"q": "可以用哪些图片?",
-					"a": "请使用您拥有或允许再用的图片。"
+					"a": "请使用自己的图片或允许重复使用的图片。"
 				}
 			]
 		},
@@ -733,40 +756,60 @@
 			"name": "字符画",
 			"tagline": "小字变大横幅。",
 			"title": "免费在线字符画生成",
-			"description": "用 figlet 字体把文字变成字符画横幅。实时预览,可复制可下载。全部在浏览器中运行。",
+			"description": "把文字变成 ASCII 横幅，或把照片变成 ASCII 艺术。支持预设、字符集、对比度、颜色，以及 PNG 或 JPG 导出。一切都在浏览器里运行。",
 			"h1": "免费在线字符画生成",
-			"sub": "输入词语,挑选字体,复制横幅。",
+			"sub": "制作文字横幅，或把图片转成 ASCII。",
 			"options": {
 				"text": "文本",
 				"font": "字体",
-				"needText": "请先输入内容。"
+				"needText": "请先输入内容。",
+				"canvas": "ASCII 预览",
+				"charset": "字符集",
+				"charsetClassic": "经典",
+				"charsetDetailed": "精细",
+				"charsetBlocks": "方块",
+				"preset": "风格",
+				"presetClassic": "经典",
+				"presetMatrix": "矩阵",
+				"presetBlueprint": "蓝图",
+				"presetPaper": "纸张",
+				"color": "颜色",
+				"contrast": "对比度",
+				"width": "宽度",
+				"needImage": "请先添加图片。",
+				"copyText": "复制文本",
+				"downloadPng": "下载 PNG",
+				"downloadJpg": "下载 JPG",
+				"modeText": "文字",
+				"modeImage": "图片",
+				"emptyBanner": "在上方输入文字即可看到横幅。"
 			},
 			"steps": [
 				{
-					"title": "输入文本",
-					"line": "输入想做的词语。"
+					"title": "选择模式",
+					"line": "在文字横幅和图片转换之间切换。"
 				},
 				{
-					"title": "挑选字体",
-					"line": "逐个试到满意为止。"
+					"title": "调整样式",
+					"line": "选择字体或预设，再调整宽度、对比度和颜色。"
 				},
 				{
 					"title": "复制或下载",
-					"line": "复制结果或存为 TXT。"
+					"line": "复制字符，或保存为 PNG 或 JPG。"
 				}
 			],
 			"faqs": [
 				{
-					"q": "为什么有些字怪怪的?",
-					"a": "字体只覆盖基本拉丁字母,其他字符原样输出。"
+					"q": "可以转换图片吗?",
+					"a": "可以。切到图片模式，拖入 PNG、JPG 或 WebP 文件。"
 				},
 				{
-					"q": "长句可以吗?",
-					"a": "短词最好看,长句会拉得很宽。"
+					"q": "为什么有些字母看起来怪?",
+					"a": "字体只覆盖基本拉丁字母。其他字符会原样输出。"
 				},
 				{
-					"q": "能贴到哪里?",
-					"a": "任何等宽字体的输入框。"
+					"q": "图片会被上传吗?",
+					"a": "不会。转换在浏览器里完成，文件从不离开浏览器。"
 				}
 			]
 		},
@@ -1118,40 +1161,45 @@
 			"name": "在线 IDE",
 			"tagline": "只写代码带高亮,不运行。",
 			"title": "免费在线代码编辑器",
-			"description": "在浏览器中编写 HTML、CSS、JavaScript、TypeScript、Rust、Java、C++、Python 等并高亮显示。没有编译器,什么都不运行。复制或下载带走。",
+			"description": "在浏览器里编写或打开代码，支持 HTML、CSS、JavaScript、TypeScript、Rust、Java、C++、Python 等语法高亮。上传文件，用任意文件名下载。没有编译器，代码不会运行。",
 			"h1": "免费在线代码编辑器",
-			"sub": "极简编辑器。选语言,写作,复制,下载。",
+			"sub": "打开文件或从空白开始。不会运行，也不会上传。",
 			"options": {
 				"language": "语言",
 				"placeholder": "在此写代码。不运行,不上传。",
-				"noCompiler": "这里没有编译器。它只高亮,从不运行。"
+				"noCompiler": "这里没有编译器。它只高亮,从不运行。",
+				"upload": "上传文件",
+				"noFile": "未加载文件",
+				"filename": "下载文件名",
+				"fileTooLarge": "该文件超过 2 MB。",
+				"unreadableFile": "无法将该文件作为文本读取。"
 			},
 			"steps": [
 				{
+					"title": "上传或编写",
+					"line": "从代码文件或空白编辑器开始。"
+				},
+				{
 					"title": "选择语言",
-					"line": "定好语法。"
+					"line": "设置高亮，或让上传的文件自动设置。"
 				},
 				{
-					"title": "编写代码",
-					"line": "自由书写。"
-				},
-				{
-					"title": "复制或下载",
-					"line": "带走您的作品。"
+					"title": "下载",
+					"line": "选择文件名并保存你的工作。"
 				}
 			],
 			"faqs": [
 				{
-					"q": "能运行代码吗?",
-					"a": "不能,纯编辑器。"
+					"q": "能运行我的代码吗?",
+					"a": "不能。这里只是编辑器。"
 				},
 				{
-					"q": "有哪些语言?",
-					"a": "HTML、CSS、JS、TS、Rust、Java、C++、Python 等。"
+					"q": "可以打开文件吗?",
+					"a": "可以。上传最大 2 MB 的文本或代码文件。"
 				},
 				{
 					"q": "代码会保存吗?",
-					"a": "不会,走之前请复制或下载。"
+					"a": "不会。离开前请下载。"
 				}
 			]
 		},
@@ -1159,43 +1207,74 @@
 			"name": "在线便签",
 			"tagline": "只在浏览器的私人便签。",
 			"title": "免费在线便签",
-			"description": "编写保存在浏览器 IndexedDB 的便签。边写边自动保存,可导出全部为 Markdown。永不上传,不用 localStorage。",
+			"description": "带标题、富文本、高亮、链接、列表和行距的笔记。自动保存在浏览器中，可导出 Markdown，也可通过链接分享。不会上传任何内容。",
 			"h1": "免费在线便签",
-			"sub": "纯本地。自动保存,可导出,私密。",
+			"sub": "标题、富文本和分享链接。全部本地。",
 			"options": {
 				"new": "新建",
 				"delete": "删除",
 				"confirmDelete": "再点一次删除",
 				"export": "导出全部",
 				"emptyHint": "还没有便签,在上方开始。",
-				"saved": "已保存"
+				"saved": "已保存",
+				"title": "标题",
+				"titlePlaceholder": "无标题笔记",
+				"bold": "粗体",
+				"italic": "斜体",
+				"highlight": "高亮",
+				"bullets": "项目符号列表",
+				"numbers": "编号列表",
+				"alignStart": "起始对齐",
+				"alignCenter": "居中对齐",
+				"alignEnd": "末尾对齐",
+				"link": "插入链接",
+				"linkUrl": "链接地址",
+				"applyLink": "添加链接",
+				"markdown": "Markdown",
+				"editor": "笔记正文",
+				"spacing": "行距",
+				"presets": "行距预设",
+				"saving": "保存中",
+				"share": "分享笔记",
+				"shareReady": "任何拿到此链接的人都能阅读笔记。笔记包含在链接中，不经过服务器。",
+				"shareLink": "分享链接",
+				"copyLink": "复制链接",
+				"linkCopied": "链接已复制",
+				"copiedForInstagram": "笔记已复制。粘贴到 Instagram 即可。",
+				"shareTooLong": "这篇笔记太长，无法放进链接。请导出或直接分享文本。",
+				"sharedLabel": "分享的笔记",
+				"sharedTitle": "分享的笔记",
+				"sharedDescription": "从 Toolify Online Notes 分享的笔记。",
+				"sharedMissing": "此笔记链接不完整或已失效。",
+				"sharedWrite": "写自己的笔记",
+				"emptyNote": "空白笔记"
 			},
 			"steps": [
 				{
-					"title": "新建便签",
-					"line": "创建一条新便签。"
+					"title": "书写",
+					"line": "添加标题并设置正文格式。"
 				},
 				{
-					"title": "自由书写",
-					"line": "每敲一键自动保存。"
+					"title": "美化",
+					"line": "粗体、高亮、列表、链接和行距。"
 				},
 				{
-					"title": "导出全部",
-					"line": "下载全部为 Markdown。"
+					"title": "分享或导出",
+					"line": "复制链接或下载 Markdown。"
 				}
 			],
 			"faqs": [
 				{
-					"q": "存在哪里?",
-					"a": "您浏览器的 IndexedDB。"
+					"q": "笔记保存在哪里？",
+					"a": "浏览器的 IndexedDB。不会上传。"
 				},
 				{
-					"q": "清掉网站数据呢?",
-					"a": "会一起消失,请定期导出。"
+					"q": "分享如何工作？",
+					"a": "笔记打包在链接本身中。服务器上没有副本。"
 				},
 				{
-					"q": "怎么迁移?",
-					"a": "导出后再手动拿回。"
+					"q": "清除网站数据会怎样？",
+					"a": "本地笔记会一起消失。请定期导出。"
 				}
 			]
 		},
@@ -2223,6 +2302,801 @@
 					"a": "不会保存。颜色只在这个页面里，关闭页面就没了，想保留请导出。"
 				}
 			]
+		},
+		"lorem-ipsum": {
+			"name": "Lorem Ipsum 生成器",
+			"tagline": "一键生成占位文本。",
+			"title": "免费 Lorem Ipsum 生成器",
+			"description": "按需要生成长度合适的 lorem ipsum 段落。复制或下载占位文本。不会上传任何内容。",
+			"h1": "免费 Lorem Ipsum 生成器",
+			"sub": "选择需要的占位文本长度，然后复制。",
+			"options": {
+				"paragraphs": "段落数",
+				"sentences": "每段句子数",
+				"start": "以 Lorem ipsum 开头",
+				"generate": "生成文本",
+				"words": "{count} 个词",
+				"output": "生成的文本",
+				"copy": "复制文本",
+				"download": "下载 TXT",
+				"copied": "文本已复制"
+			},
+			"steps": [
+				{
+					"title": "选择长度",
+					"line": "设置段落和句子数量。"
+				},
+				{
+					"title": "生成",
+					"line": "点击生成新的文本。"
+				},
+				{
+					"title": "复制或下载",
+					"line": "粘贴到设计稿或保存 TXT。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "什么是 lorem ipsum？",
+					"a": "源自西塞罗拉丁文的占位文本，用于在正式文案前展示版式。"
+				},
+				{
+					"q": "文本是随机的吗？",
+					"a": "是。每次点击都会用经典词表生成新句子。"
+				},
+				{
+					"q": "可以商用吗？",
+					"a": "文本本身属于公有领域，可以。"
+				}
+			]
+		},
+		"code-validator": {
+			"name": "代码验证器",
+			"tagline": "粘贴前先找出语法错误。",
+			"title": "免费代码验证器",
+			"description": "在浏览器中检查 JSON、HTML、CSS、XML 和 JavaScript 语法。显示出错的行和列。不会上传任何内容。",
+			"h1": "免费代码验证器",
+			"sub": "粘贴代码，选择语言，直接跳到出错的那一行。",
+			"options": {
+				"code": "代码",
+				"check": "检查代码",
+				"stats": "{lines} 行",
+				"valid": "看起来有效",
+				"invalid": "发现问题",
+				"empty": "请先粘贴代码。",
+				"position": "第 {line} 行，第 {column} 列",
+				"invalidJson": "JSON 无效。解析器在下面的位置附近停止了。",
+				"unclosed": "请检查这些标签：{tags}",
+				"language": "语言",
+				"hint": "只检查语法，不会运行你的代码。",
+				"limits": "HTML 只检查标签是否配对，不检查完整有效性。"
+			},
+			"steps": [
+				{
+					"title": "粘贴代码",
+					"line": "放入要测试的片段。"
+				},
+				{
+					"title": "选择语言",
+					"line": "JSON、HTML、CSS、XML 或 JavaScript。"
+				},
+				{
+					"title": "运行检查",
+					"line": "查看结果和错误位置。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "我的代码会被上传吗？",
+					"a": "不会。所有内容都在这个标签页里解析。"
+				},
+				{
+					"q": "通过就代表页面能用吗？",
+					"a": "不。只代表语法可以解析或标签配对正常。"
+				},
+				{
+					"q": "为什么 JavaScript 有 bug 也能通过？",
+					"a": "检查器只编译源码，不执行代码，所以运行时错误不会出现。"
+				}
+			]
+		},
+		"calculator": {
+			"name": "在线计算器",
+			"tagline": "支持键盘的日常计算。",
+			"title": "免费在线计算器",
+			"description": "支持百分比和括号的加减乘除。历史记录只留在浏览器里。无需上传，无需账号。",
+			"h1": "免费在线计算器",
+			"sub": "输入表达式或使用按键。",
+			"options": {
+				"expression": "表达式",
+				"clear": "清除",
+				"history": "历史",
+				"clearHistory": "清除历史",
+				"noHistory": "还没有计算。",
+				"divideByZero": "不能除以零。",
+				"invalid": "这个表达式无效。"
+			},
+			"steps": [
+				{
+					"title": "输入算式",
+					"line": "使用按键或键盘。"
+				},
+				{
+					"title": "按等号",
+					"line": "回车或等号会显示结果。"
+				},
+				{
+					"title": "查看历史",
+					"line": "最近的计算留在当前标签页。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "百分比怎么算？",
+					"a": "200 + 10% 得 220，50 * 10% 得 5，和桌面计算器一样。"
+				},
+				{
+					"q": "历史会保存吗？",
+					"a": "不会。只存在内存里，关闭标签页就消失。"
+				},
+				{
+					"q": "可以用键盘吗？",
+					"a": "可以。数字、运算符、回车、退格和 Esc 都能用。"
+				}
+			]
+		},
+		"spin-wheel": {
+			"name": "转盘",
+			"tagline": "让转盘替你选。",
+			"title": "免费转盘",
+			"description": "添加选项，转动彩色转盘随机选出一个。全部在浏览器里运行，无需注册，不会上传。",
+			"h1": "免费转盘",
+			"sub": "最多添加 24 个选项，选好颜色，然后转动。",
+			"options": {
+				"wheel": "抽奖转盘",
+				"spin": "转动转盘",
+				"ready": "添加选项后转动。",
+				"options": "选项",
+				"count": "已添加 {count} 个选项",
+				"needTwo": "至少添加两个选项。",
+				"colors": "扇区颜色",
+				"sliceColor": "第 {number} 个扇区颜色",
+				"centerImage": "中心图片",
+				"uploadImage": "上传图片",
+				"removeImage": "移除",
+				"imageHint": "可选的中心标志，只留在你的设备上。",
+				"imageType": "请选择图片文件。",
+				"imageTooLarge": "图片最大 2 MB。",
+				"imageError": "无法读取这张图片。",
+				"shuffle": "打乱选项",
+				"share": "复制分享链接",
+				"shareLink": "分享链接",
+				"shareCopied": "分享链接已复制。",
+				"shareManual": "请复制下面的链接。"
+			},
+			"steps": [
+				{
+					"title": "填写选项",
+					"line": "每行一个，最多 24 个。"
+				},
+				{
+					"title": "转动",
+					"line": "转盘减速并停在获胜者上。"
+				},
+				{
+					"title": "查看结果",
+					"line": "选中的选项显示在转盘下方。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "抽取公平吗？",
+					"a": "公平。获胜者来自浏览器加密随机数，每个扇区机会相同。"
+				},
+				{
+					"q": "可以保存或分享转盘吗？",
+					"a": "复制分享链接即可用相同的选项和颜色打开。中心图片只留在你的设备上，不会写进链接。"
+				},
+				{
+					"q": "最多几个选项？",
+					"a": "24 个。更长的列表会被裁剪以保持标签可读。"
+				}
+			]
+		},
+		"average-color": {
+			"name": "平均颜色查找器",
+			"tagline": "用一个颜色概括整张图片。",
+			"title": "免费平均颜色查找器",
+			"description": "用 HEX、RGB 和 HSL 找出图片的平均颜色。拖入照片就能得到代表色。不会上传任何内容。",
+			"h1": "免费平均颜色查找器",
+			"sub": "拖入图片，读取它的平均颜色。",
+			"options": {
+				"hint": "平均值会混合所有可见像素。透明像素会被跳过，避免把颜色拉向黑色。",
+				"copy": "复制 HEX",
+				"copied": "颜色已复制",
+				"transparent": "已跳过 {count} 个透明像素",
+				"palette": "主色调"
+			},
+			"steps": [
+				{
+					"title": "拖入图片",
+					"line": "PNG、JPG、WebP、AVIF 或 GIF。"
+				},
+				{
+					"title": "读取颜色",
+					"line": "HEX、RGB 和 HSL 同时显示。"
+				},
+				{
+					"title": "复制数值",
+					"line": "粘贴到你的设计工具里。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "平均颜色怎么算？",
+					"a": "把所有可见像素相加再除以数量，所以面积大的区域影响更大。"
+				},
+				{
+					"q": "透明像素算吗？",
+					"a": "不算。完全透明的像素会跳过，并显示跳过数量。"
+				},
+				{
+					"q": "设计时用哪种格式？",
+					"a": "HEX 适合大多数工具，HSL 更方便调明暗。"
+				}
+			]
+		},
+		"image-color-picker": {
+			"name": "图片取色器",
+			"tagline": "从照片里取任意颜色。",
+			"title": "免费图片取色器",
+			"description": "点击图片任意位置，获取精确的 HEX、RGB 和 HSL 颜色。保留取色历史。图片不会离开浏览器。",
+			"h1": "免费图片取色器",
+			"sub": "在图片上点击或拖动取色。",
+			"options": {
+				"canvas": "图片",
+				"pickHint": "在图片上点击或拖动。最后一次取色会留在面板里。",
+				"history": "已取颜色",
+				"clear": "清除",
+				"position": "位置",
+				"copy": "复制 HEX",
+				"copied": "颜色已复制"
+			},
+			"steps": [
+				{
+					"title": "拖入图片",
+					"line": "常见位图格式均可。"
+				},
+				{
+					"title": "选择位置",
+					"line": "点击或拖动采样像素。"
+				},
+				{
+					"title": "复制数值",
+					"line": "HEX、RGB 和 HSL 已就绪。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "点击返回什么颜色？",
+					"a": "指针下方的精确像素，不做平滑。"
+				},
+				{
+					"q": "为什么预览会缩放？",
+					"a": "大图会缩小以提升速度，但取色仍来自当前显示的图片。"
+				},
+				{
+					"q": "图片会被保存吗？",
+					"a": "不会。只留在标签页里，刷新即消失。"
+				}
+			]
+		},
+		"image-metadata": {
+			"name": "图片元数据查看器",
+			"tagline": "在本地读取 EXIF 和文件信息。",
+			"title": "免费图片元数据查看器",
+			"description": "读取任意图片的 EXIF 数据、尺寸、格式和文件大小。分享照片前查看相机、日期和位置标签。不会上传任何内容。",
+			"h1": "免费图片元数据查看器",
+			"sub": "拖入图片，查看 EXIF 和文件详情。",
+			"options": {
+				"file": "文件",
+				"type": "类型",
+				"size": "大小",
+				"dimensions": "尺寸",
+				"modified": "修改时间",
+				"exif": "EXIF 数据",
+				"noExif": "这个文件没有 EXIF 数据。",
+				"noPreview": "此格式无法预览，但文件详情仍然可用。",
+				"hint": "元数据可能暴露相机、日期和 GPS 位置。发布照片前先检查。",
+				"copy": "复制为 JSON",
+				"copied": "元数据已复制",
+				"download": "下载 JSON",
+				"structure": "容器结构",
+				"noStructure": "此格式没有可用的容器结构。"
+			},
+			"steps": [
+				{
+					"title": "拖入照片",
+					"line": "JPG、PNG、WebP 或其他图片。"
+				},
+				{
+					"title": "读取详情",
+					"line": "尺寸、格式和 EXIF 标签。"
+				},
+				{
+					"title": "复制或下载",
+					"line": "把报告保存为 JSON。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "哪些格式显示 EXIF？",
+					"a": "JPEG 会完整解析。其他格式显示文件信息以及读取器能识别的标签。"
+				},
+				{
+					"q": "能删除元数据吗？",
+					"a": "不能。这里只读取。请用图片编辑器移除标签。"
+				},
+				{
+					"q": "一定有 GPS 吗？",
+					"a": "不一定。只有开启定位拍摄的照片才带 GPS 标签。"
+				}
+			]
+		},
+		"instagram-generator": {
+			"name": "Instagram 帖子生成器",
+			"tagline": "帖子、快拍和私信样机。",
+			"title": "免费 Instagram 帖子生成器",
+			"description": "用你自己的文字、图片和头像制作逼真的 Instagram 帖子、快拍和私信样机。下载 PNG。不会上传任何内容。",
+			"h1": "免费 Instagram 帖子生成器",
+			"sub": "制作帖子、快拍或私信样机并下载。",
+			"options": {
+				"post": "帖子",
+				"story": "快拍",
+				"dm": "私信",
+				"username": "用户名",
+				"caption": "配文",
+				"likes": "赞",
+				"likesLabel": "点赞数",
+				"incoming": "收到的消息",
+				"outgoing": "你的回复",
+				"dark": "深色主题",
+				"image": "添加图片",
+				"avatar": "添加头像",
+				"preview": "Instagram 预览",
+				"download": "下载 PNG",
+				"downloaded": "图片已下载",
+				"failed": "无法生成图片。",
+				"imageError": "无法加载这张图片。",
+				"imageHint": "你的图片",
+				"reply": "回复",
+				"active": "在线",
+				"message": "消息",
+				"sponsored": "赞助",
+				"time": "2 小时前",
+				"sampleCaption": "你需要的所有工具。免费、快速、私密。全部在浏览器里运行。",
+				"sampleIncoming": "把链接发我？",
+				"sampleOutgoing": "toolify.bond，全部在本地运行。"
+			},
+			"steps": [
+				{
+					"title": "选择格式",
+					"line": "帖子、快拍或私信。"
+				},
+				{
+					"title": "填写内容",
+					"line": "文字、图片和头像。"
+				},
+				{
+					"title": "下载",
+					"line": "把样机保存为 PNG。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "这是 Instagram 官方工具吗？",
+					"a": "不是。它只生成图片样机，与 Instagram 无关。"
+				},
+				{
+					"q": "我的照片会被上传吗？",
+					"a": "不会。全部在这个标签页的画布中渲染。"
+				},
+				{
+					"q": "使用什么尺寸？",
+					"a": "帖子为 1080 x 1350，快拍和私信为 1080 x 1920。"
+				}
+			]
+		},
+		"x-post-generator": {
+			"name": "X 帖子生成器",
+			"tagline": "制作 X 帖子和个人资料样机。",
+			"title": "免费 X 帖子生成器",
+			"description": "用文字、头像和横幅制作逼真的 X 帖子和个人资料样机。下载 PNG。全部留在浏览器里。",
+			"h1": "免费 X 帖子生成器",
+			"sub": "制作帖子或个人资料样机并下载。",
+			"options": {
+				"post": "帖子",
+				"profile": "个人资料",
+				"name": "显示名称",
+				"handle": "用户名",
+				"text": "帖子正文",
+				"likes": "点赞",
+				"reposts": "转发",
+				"bio": "简介",
+				"dark": "深色主题",
+				"image": "添加图片",
+				"avatar": "添加头像",
+				"banner": "添加横幅",
+				"preview": "X 预览",
+				"follow": "关注",
+				"download": "下载 PNG",
+				"downloaded": "图片已下载",
+				"failed": "无法生成图片。",
+				"imageError": "无法加载这张图片。",
+				"sampleText": "你需要的所有工具。免费、快速、私密。全部在浏览器里运行，文件不会离开你的设备。",
+				"sampleBio": "尊重你文件的小型浏览器工具。不用注册，不用上传。"
+			},
+			"steps": [
+				{
+					"title": "选择布局",
+					"line": "帖子或个人资料。"
+				},
+				{
+					"title": "填写内容",
+					"line": "名称、用户名、文字和图片。"
+				},
+				{
+					"title": "下载",
+					"line": "把样机保存为 PNG。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "这是 X 官方软件吗？",
+					"a": "不是。这是独立的样机制作工具。"
+				},
+				{
+					"q": "图片可以用在任何地方吗？",
+					"a": "可以，但请标明是样机，避免被当成真实帖子。"
+				},
+				{
+					"q": "我的图片会上传吗？",
+					"a": "不会。它们在这个标签页的画布中渲染。"
+				}
+			]
+		},
+		"messenger-generator": {
+			"name": "Messenger 聊天生成器",
+			"tagline": "几秒钟制作 Messenger 对话。",
+			"title": "免费 Messenger 聊天生成器",
+			"description": "用联系人、头像和消息制作逼真的 Messenger 样机。下载 PNG。不会离开你的浏览器。",
+			"h1": "免费 Messenger 聊天生成器",
+			"sub": "添加联系人和消息，然后下载样机。",
+			"options": {
+				"contact": "联系人名称",
+				"dark": "深色主题",
+				"avatar": "添加头像",
+				"noAvatar": "未选择头像",
+				"messages": "消息",
+				"add": "添加消息",
+				"side": "方向",
+				"incoming": "收到",
+				"outgoing": "发出",
+				"message": "消息",
+				"remove": "删除",
+				"messagePlaceholder": "消息",
+				"preview": "聊天预览",
+				"download": "下载 PNG",
+				"downloaded": "图片已下载",
+				"failed": "无法生成图片。",
+				"imageError": "无法加载这张图片。",
+				"sampleIn": "你试过那个新的工具网站吗？",
+				"sampleOut": "Toolify？试过，全部在浏览器里运行。",
+				"sampleFollow": "完全不用上传？"
+			},
+			"steps": [
+				{
+					"title": "设置联系人",
+					"line": "名称和可选头像。"
+				},
+				{
+					"title": "填写消息",
+					"line": "选择每条消息由谁发出。"
+				},
+				{
+					"title": "下载",
+					"line": "把聊天保存为 PNG。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "这是官方应用吗？",
+					"a": "不是。这是独立的 Messenger 样机制作工具。"
+				},
+				{
+					"q": "照片会上传吗？",
+					"a": "不会。全部在这个标签页里渲染。"
+				},
+				{
+					"q": "可以删除消息吗？",
+					"a": "可以。每条消息都有删除按钮。"
+				}
+			]
+		},
+		"whatsapp-generator": {
+			"name": "WhatsApp 聊天生成器",
+			"tagline": "几秒钟制作 WhatsApp 对话。",
+			"title": "免费 WhatsApp 聊天生成器",
+			"description": "用联系人、头像和消息制作逼真的 WhatsApp 样机。下载 PNG。不会离开你的浏览器。",
+			"h1": "免费 WhatsApp 聊天生成器",
+			"sub": "添加联系人和消息，然后下载样机。",
+			"options": {
+				"contact": "联系人名称",
+				"dark": "深色主题",
+				"avatar": "添加头像",
+				"noAvatar": "未选择头像",
+				"messages": "消息",
+				"add": "添加消息",
+				"side": "方向",
+				"incoming": "收到",
+				"outgoing": "发出",
+				"message": "消息",
+				"remove": "删除",
+				"messagePlaceholder": "消息",
+				"preview": "聊天预览",
+				"download": "下载 PNG",
+				"downloaded": "图片已下载",
+				"failed": "无法生成图片。",
+				"imageError": "无法加载这张图片。",
+				"sampleIn": "你试过那个新的工具网站吗？",
+				"sampleOut": "Toolify？试过，全部在浏览器里运行。",
+				"sampleFollow": "完全不用上传？"
+			},
+			"steps": [
+				{
+					"title": "设置联系人",
+					"line": "名称和可选头像。"
+				},
+				{
+					"title": "填写消息",
+					"line": "选择每条消息由谁发出。"
+				},
+				{
+					"title": "下载",
+					"line": "把聊天保存为 PNG。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "这是官方应用吗？",
+					"a": "不是。这是独立的 WhatsApp 样机制作工具。"
+				},
+				{
+					"q": "照片会上传吗？",
+					"a": "不会。全部在这个标签页里渲染。"
+				},
+				{
+					"q": "可以删除消息吗？",
+					"a": "可以。每条消息都有删除按钮。"
+				}
+			]
+		},
+		"imessage-generator": {
+			"name": "iMessage 聊天生成器",
+			"tagline": "几秒钟制作 iMessage 对话。",
+			"title": "免费 iMessage 聊天生成器",
+			"description": "用联系人、头像和消息制作逼真的 iMessage 样机。下载 PNG。不会离开你的浏览器。",
+			"h1": "免费 iMessage 聊天生成器",
+			"sub": "添加联系人和消息，然后下载样机。",
+			"options": {
+				"contact": "联系人名称",
+				"dark": "深色主题",
+				"avatar": "添加头像",
+				"noAvatar": "未选择头像",
+				"messages": "消息",
+				"add": "添加消息",
+				"side": "方向",
+				"incoming": "收到",
+				"outgoing": "发出",
+				"message": "消息",
+				"remove": "删除",
+				"messagePlaceholder": "消息",
+				"preview": "聊天预览",
+				"download": "下载 PNG",
+				"downloaded": "图片已下载",
+				"failed": "无法生成图片。",
+				"imageError": "无法加载这张图片。",
+				"sampleIn": "你试过那个新的工具网站吗？",
+				"sampleOut": "Toolify？试过，全部在浏览器里运行。",
+				"sampleFollow": "完全不用上传？"
+			},
+			"steps": [
+				{
+					"title": "设置联系人",
+					"line": "名称和可选头像。"
+				},
+				{
+					"title": "填写消息",
+					"line": "选择每条消息由谁发出。"
+				},
+				{
+					"title": "下载",
+					"line": "把聊天保存为 PNG。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "这是官方应用吗？",
+					"a": "不是。这是独立的 iMessage 样机制作工具。"
+				},
+				{
+					"q": "照片会上传吗？",
+					"a": "不会。全部在这个标签页里渲染。"
+				},
+				{
+					"q": "可以删除消息吗？",
+					"a": "可以。每条消息都有删除按钮。"
+				}
+			]
+		},
+		"pdf-viewer": {
+			"name": "PDF 查看器",
+			"tagline": "无需上传就能打开 PDF。",
+			"title": "免费在线 PDF 查看器",
+			"description": "在浏览器中打开并阅读 PDF，支持翻页和缩放。文档在你的设备上渲染，从不上传。",
+			"h1": "免费在线 PDF 查看器",
+			"sub": "拖入 PDF，然后翻页和缩放。",
+			"options": {
+				"close": "关闭文件",
+				"loading": "正在打开 PDF...",
+				"rendering": "正在渲染...",
+				"pageCanvas": "PDF 页面",
+				"pageOf": "页码（共 {pages} 页）",
+				"prev": "上一页",
+				"next": "下一页",
+				"zoom": "缩放",
+				"zoomOut": "缩小",
+				"zoomIn": "放大",
+				"hint": "拖入 PDF 即可在这里阅读。页面在你的设备上渲染。",
+				"renderError": "无法渲染这一页。",
+				"unreadable": "无法打开这个 PDF。"
+			},
+			"steps": [
+				{
+					"title": "拖入 PDF",
+					"line": "从设备选择，最大 100 MB。"
+				},
+				{
+					"title": "翻页",
+					"line": "使用上一页下一页或输入页码。"
+				},
+				{
+					"title": "缩放",
+					"line": "让小字更清楚。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "PDF 会被上传吗？",
+					"a": "不会。它在这个标签页里读取和渲染。"
+				},
+				{
+					"q": "可以选择文字吗？",
+					"a": "暂时不能。页面以图片显示，所以不支持复制文字。"
+				},
+				{
+					"q": "大小限制是多少？",
+					"a": "100 MB。超大文件可能需要手机没有的内存。"
+				}
+			]
+		},
+		"pdf-compressor": {
+			"name": "PDF 压缩器",
+			"tagline": "如实显示结果的 PDF 压缩。",
+			"title": "免费 PDF 压缩器",
+			"description": "在浏览器中按低、中、高质量渲染页面来压缩 PDF。查看压缩前后的真实大小。不会上传。",
+			"h1": "免费 PDF 压缩器",
+			"sub": "选择质量，压缩，然后比较真实大小。",
+			"options": {
+				"quality": "质量",
+				"qualityLow": "低，文件最小",
+				"qualityMedium": "中，均衡",
+				"qualityHigh": "高，最清晰",
+				"hint": "页面会被栅格化并重新编码为 JPEG。文字变成图片，所以链接和可选文字会丢失。",
+				"rasterNote": "如果结果比原文件更大，请保留原文件。",
+				"compress": "压缩 PDF",
+				"progress": "压缩进度",
+				"progressLabel": "第 {done} 页，共 {total} 页",
+				"before": "压缩前",
+				"after": "压缩后",
+				"pages": "页数",
+				"smaller": "小了 {percent}%",
+				"larger": "大了 {percent}%",
+				"same": "大小几乎相同",
+				"keepOriginal": "压缩后的文件没有变小。请保留原文件。",
+				"download": "下载 PDF",
+				"done": "PDF 已压缩",
+				"failed": "压缩失败。"
+			},
+			"steps": [
+				{
+					"title": "拖入 PDF",
+					"line": "从设备选择，最大 100 MB。"
+				},
+				{
+					"title": "选择质量",
+					"line": "低质量最省空间，高质量保留细节。"
+				},
+				{
+					"title": "比较并下载",
+					"line": "显示真实的压缩前后大小。"
+				}
+			],
+			"faqs": [
+				{
+					"q": "文字还能选择吗？",
+					"a": "不能。压缩器把每页渲染成图片，文字和链接会被压平。"
+				},
+				{
+					"q": "为什么有时会变大？",
+					"a": "已经优化过的 PDF 重建为图片后可能变大。结果页会说明，你可以保留原文件。"
+				},
+				{
+					"q": "PDF 会被上传吗？",
+					"a": "不会。渲染和重建都在这个标签页里完成。"
+				}
+			]
 		}
+	},
+	"share": {
+		"share": "分享",
+		"report": "报告问题",
+		"title": "分享这个工具",
+		"copyLink": "复制链接",
+		"copied": "链接已复制",
+		"native": "更多应用",
+		"whatsapp": "WhatsApp",
+		"x": "X",
+		"facebook": "Facebook",
+		"linkedin": "LinkedIn",
+		"text": "试试 Toolify 的{name}，全部在浏览器中运行。",
+		"reportHint": "告诉我们哪里出了问题，以及你用了什么文件。"
+	},
+	"support": {
+		"title": "支持 Toolify",
+		"metaDescription": "通过 Ko-fi、PayPal、Bitcoin、Ethereum 或 Solana 支持 Toolify。所有工具继续免费。",
+		"h1": "让 Toolify 保持免费",
+		"sub": "没有账号，没有锁定的工具。如果某个工具帮你节省了时间，可以留下一点打赏。它会用于托管、模型和新工具。",
+		"options": {
+			"label": "选择支持方式",
+			"kofi": "Ko-fi",
+			"paypal": "PayPal",
+			"btc": "Bitcoin",
+			"eth": "Ethereum 和 EVM",
+			"solana": "Solana"
+		},
+		"kofiTitle": "请一杯咖啡",
+		"kofiLine": "Ko-fi 会打开安全的小组件。此页面不会接触你的文件。",
+		"kofiOpen": "打开 Ko-fi",
+		"paypalTitle": "通过 PayPal 打赏",
+		"paypalLine": "付款由 PayPal 处理。你不需要 Toolify 账号。",
+		"paypalOpen": "打开 PayPal",
+		"crypto": {
+			"btc": {
+				"title": "Bitcoin"
+			},
+			"eth": {
+				"title": "Ethereum 和 EVM"
+			},
+			"solana": {
+				"title": "Solana"
+			}
+		},
+		"address": "地址",
+		"notReady": "此地址尚未添加。",
+		"copy": "复制地址",
+		"copied": "地址已复制",
+		"copyFailed": "无法复制地址。",
+		"note": "打赏完全自愿。所有工具继续免费，并在浏览器中运行。"
 	}
 }

@@ -34,3 +34,13 @@ test("stamps an image mark", async ({ page }) => {
 	const { bytes } = await downloadBytes(page, download);
 	expect(signatureOf(bytes)).toBe("png");
 });
+
+test("shows the file name and preview before applying", async ({ page }) => {
+	await expect(page.getByTestId("source-name")).toHaveText("photo.png");
+	await expect(
+		page.locator("img[alt='photo.png']").first(),
+	).toBeVisible();
+	await expect(
+		page.getByRole("button", { name: "Download" }),
+	).toHaveCount(0);
+});

@@ -16,37 +16,37 @@ const LOCALES: Array<{
 		code: "id",
 		path: "/id",
 		footerAbout: "Tentang",
-		heroTitle: "Semua alat yang Anda butuhkan. Gratis, cepat, privat.",
+		heroTitle: "Semua alat yang kamu butuhkan. Gratis, cepat, privat.",
 	},
 	{
 		code: "es",
 		path: "/es",
 		footerAbout: "Acerca de",
-		heroTitle: "Cada herramienta que necesitas. Gratis, rápida, privada.",
+		heroTitle: "Todas las herramientas que necesitas. Gratis, rápidas, privadas.",
 	},
 	{
 		code: "ja",
 		path: "/ja",
 		footerAbout: "Toolifyについて",
-		heroTitle: "必要なツールが全部ある。無料、高速、プライベート。",
+		heroTitle: "必要なツールが、すべてここに。無料、高速、プライベート。",
 	},
 	{
 		code: "zh",
 		path: "/zh",
 		footerAbout: "关于",
-		heroTitle: "你需要的工具全都有，免费、快速、私密。",
+		heroTitle: "你需要的工具，都在这里。免费、快速、私密。",
 	},
 	{
 		code: "fr",
 		path: "/fr",
 		footerAbout: "À propos",
-		heroTitle: "Chaque outil qu'il te faut. Gratuit, rapide, privé.",
+		heroTitle: "Tous les outils dont tu as besoin. Gratuits, rapides, privés.",
 	},
 	{
 		code: "ar",
 		path: "/ar",
 		footerAbout: "حول",
-		heroTitle: "كل أداة تحتاجها. مجاني وسريع وخاص.",
+		heroTitle: "كل الأدوات التي تحتاجها. مجانية وسريعة وخاصة.",
 	},
 ];
 
@@ -89,6 +89,7 @@ test("switcher navigates between locales live", async ({ page }) => {
 	await page.locator("[role='menu']").locator("a[href='/id']").click();
 	await expect(page).toHaveURL(/\/id\/?$/);
 	await expect(page.locator("html")).toHaveAttribute("lang", "id");
+	await page.waitForLoadState("networkidle");
 
 	await page.locator("header").getByRole("button", { name: "Bahasa" }).click();
 	await page.locator("[role='menu']").locator("a[href='/']").click();

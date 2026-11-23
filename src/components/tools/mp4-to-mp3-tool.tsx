@@ -3,6 +3,7 @@
 import * as Comlink from "comlink";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
+import AudioPreview from "@/components/audio/audio-preview";
 import Dropzone from "@/components/primitives/dropzone";
 import { notify } from "@/components/primitives/notify";
 import Field, { FieldLabel } from "@/components/smoothui/field";
@@ -142,6 +143,7 @@ export default function Mp4ToMp3Tool() {
 					hint={tc("dropHint")}
 					onFiles={addFiles}
 				/>
+				<AudioPreview file={file} label={file?.name ?? ""} />
 				{error ? (
 					<p className="text-small text-error" role="alert">
 						{error}

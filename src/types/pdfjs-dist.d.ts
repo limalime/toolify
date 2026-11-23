@@ -12,8 +12,13 @@ declare module "pdfjs-dist/build/pdf.mjs" {
 			viewport: PdfViewport;
 		}): { promise: Promise<void> };
 	}
+	export interface PdfDocument {
+		numPages: number;
+		getPage(index: number): Promise<PdfPage>;
+		destroy(): Promise<void>;
+	}
 	export interface PdfLoadingTask {
-		promise: Promise<{ getPage(index: number): Promise<PdfPage> }>;
+		promise: Promise<PdfDocument>;
 		destroy(): Promise<void>;
 	}
 	export function getDocument(source: { data: Uint8Array }): PdfLoadingTask;

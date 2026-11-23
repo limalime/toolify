@@ -20,7 +20,18 @@ import { notify } from "@/components/primitives/notify";
 import Field, { FieldControl, FieldLabel } from "@/components/smoothui/field";
 import Select from "@/components/smoothui/select";
 import SmoothButton from "@/components/smoothui/smooth-button";
-import { inputClass, selectTriggerClass } from "@/lib/control-classes";
+import {
+	TabsIndicator,
+	TabsList,
+	TabsRoot,
+	TabsTab,
+} from "@/components/smoothui/tabs";
+import AsciiImageTool from "@/components/tools/ascii-image-tool";
+import {
+	inputClass,
+	selectTriggerClass,
+	tabActiveClass,
+} from "@/lib/control-classes";
 import { downloadBytes } from "@/lib/images/download";
 import { copyText } from "@/lib/text/clipboard";
 
@@ -40,7 +51,7 @@ const FONTS: Array<{ name: string; data: string }> = [
 	{ name: "3-D", data: ThreeD },
 ];
 
-export default function AsciiArtTool() {
+function AsciiTextTool() {
 	const t = useTranslations("tools.ascii-art");
 	const tc = useTranslations("common");
 	const [text, setText] = useState("");
@@ -103,10 +114,18 @@ export default function AsciiArtTool() {
 					<pre
 						className="overflow-x-auto rounded-lg border border-border bg-surface p-5 font-mono text-small leading-snug"
 						data-testid="ascii-preview"
+						dir="ltr"
 					>
 						{art}
 					</pre>
-				) : null}
+				) : (
+					<p
+						className="rounded-lg border border-dashed border-border bg-surface p-5 text-small text-text-2"
+						data-testid="ascii-empty"
+					>
+						{t("options.emptyBanner")}
+					</p>
+				)}
 			</div>
 			<div className="flex h-fit flex-col gap-4 rounded-lg border border-border bg-surface p-5 md:p-6">
 				<Field>
@@ -125,17 +144,45 @@ export default function AsciiArtTool() {
 				<div className="flex gap-2">
 					<SmoothButton
 						className="w-full"
+						disabled={!art}
 						onClick={copy}
 						size="lg"
 						variant="secondary"
 					>
 						{tc("copy")}
 					</SmoothButton>
-					<SmoothButton className="w-full" onClick={download} size="lg">
+					<SmoothButton
+						className="w-full"
+						disabled={!art}
+						onClick={download}
+						size="lg"
+					>
 						{tc("download")}
 					</SmoothButton>
 				</div>
 			</div>
+		</div>
+	);
+}
+
+export default function AsciiArtTool() {
+	const t = useTranslations("tools.ascii-art");
+	const [mode, setMode] = useState("text");
+
+	return (
+		<div className="flex flex-col gap-6">
+			<TabsRoot onValueChange={setMode} value={mode}>
+				<TabsList variant="segment">
+					<TabsTab className={tabActiveClass} value="text">
+						{t("options.modeText")}
+					</TabsTab>
+					<TabsTab className={tabActiveClass} value="image">
+						{t("options.modeImage")}
+					</TabsTab>
+					<TabsIndicator />
+				</TabsList>
+			</TabsRoot>
+			{mode === "image" ? <AsciiImageTool /> : <AsciiTextTool />}
 		</div>
 	);
 }

@@ -3,6 +3,7 @@
 import * as Comlink from "comlink";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
+import AudioPreview from "@/components/audio/audio-preview";
 import Dropzone from "@/components/primitives/dropzone";
 import { notify } from "@/components/primitives/notify";
 import Field, { FieldLabel } from "@/components/smoothui/field";
@@ -207,6 +208,15 @@ export default function JoinAudioTool() {
 								</li>
 							))}
 						</ol>
+						<div className="grid gap-2 md:grid-cols-2">
+							{tracks.map((track) => (
+								<AudioPreview
+									file={track.file}
+									key={track.id}
+									label={track.file.name}
+								/>
+							))}
+						</div>
 					</div>
 				) : null}
 				{error ? (

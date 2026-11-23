@@ -9,7 +9,9 @@
 		"openMenu": "Buka menu",
 		"search": "Cari alat",
 		"themeToLight": "Ganti ke tema terang",
-		"themeToDark": "Ganti ke tema gelap"
+		"themeToDark": "Ganti ke tema gelap",
+		"support": "Dukung Toolify",
+		"tip": "Tip"
 	},
 	"categories": {
 		"audio": "Audio",
@@ -41,7 +43,7 @@
 		"download": "Unduh",
 		"downloadAll": "Unduh semua",
 		"dropHint": "Taruh file di sini atau",
-		"filesNeverLeave": "File tidak pernah meninggalkan browser Anda.",
+		"filesNeverLeave": "100% Privat, file tidak pernah meninggalkan browser Anda.",
 		"generate": "Buat",
 		"remove": "Hapus",
 		"retry": "Coba lagi",
@@ -73,7 +75,8 @@
 	"notfound": {
 		"explanation": "Alamat itu tidak ada. Cari alat atau kembali ke beranda.",
 		"home": "Kembali ke beranda",
-		"title": "Halaman tidak ditemukan"
+		"title": "Ups, halaman tidak ditemukan",
+		"artAlt": "Kucing tidur di laptop yang menampilkan layar 404"
 	},
 	"about": {
 		"body": [
@@ -204,10 +207,15 @@
 		"searchPlaceholder": "Cari alat, coba png ke jpg",
 		"why1line": "Semua alat gratis tanpa batas.",
 		"why1title": "Gratis selamanya",
-		"why2line": "File tidak pernah meninggalkan browser Anda.",
+		"why2line": "100% Privat, file tidak pernah meninggalkan browser Anda.",
 		"why2title": "Privat sejak awal",
 		"why3line": "Buka alat dan langsung pakai. Tanpa instal.",
-		"why3title": "Tanpa daftar"
+		"why3title": "Tanpa daftar",
+		"heroTitleLead": "Semua alat yang kamu butuhkan.",
+		"heroTitleAccent": "Gratis, cepat, privat.",
+		"featuredTitle": "Alat Unggulan",
+		"featuredSub": "Beberapa alat yang layak dibuka lebih dulu, dipilih baru minggu ini.",
+		"featuredLoading": "Memilih alat minggu ini."
 	},
 	"tools": {
 		"image-converter": {
@@ -570,43 +578,58 @@
 			"name": "Pembuat Meme",
 			"tagline": "Teks atas, teks bawah, langsung klasik.",
 			"title": "Pembuat Meme Online Gratis",
-			"description": "Buat meme di browser dengan teks atas dan bawah. Pratinjau langsung, kontrol ukuran font, sekali unduh. File tidak pernah meninggalkan perangkat Anda.",
+			"description": "Buat meme di browser dengan template siap pakai atau gambar sendiri. Tambah lapisan teks dan gambar, seret posisinya, unduh PNG. 100% privat, file tidak pernah meninggalkan browser Anda.",
 			"h1": "Pembuat Meme Online Gratis",
-			"sub": "Ketik leluconnya, lihat langsung, unduh memenya.",
+			"sub": "Pilih template, tulis teks, atur posisinya, unduh.",
 			"options": {
-				"top": "Teks atas",
-				"topPlaceholder": "Keterangan atas",
-				"bottom": "Teks bawah",
-				"bottomPlaceholder": "Keterangan bawah",
+				"addText": "Tambah teks",
+				"addImage": "Tambah gambar",
+				"color": "Warna",
+				"defaultText": "Teks Anda",
+				"download": "Unduh meme",
+				"dragHint": "Seret lapisan mana pun di kanvas untuk mengatur posisinya.",
+				"emptyLayers": "Belum ada lapisan. Tambah teks atau gambar.",
+				"font": "Font",
 				"fontSize": "Ukuran font",
-				"download": "Unduh meme"
+				"imageError": "Gambar itu tidak bisa dibaca.",
+				"imageWidth": "Lebar gambar",
+				"moveDown": "Turunkan",
+				"moveUp": "Naikkan",
+				"needBackground": "Pilih template atau unggah gambar dulu.",
+				"ownImage": "Gambar sendiri",
+				"removeLayer": "Hapus lapisan",
+				"stroke": "Garis luar",
+				"templateN": "Template {n}",
+				"templates": "Template",
+				"text": "Teks",
+				"textLayer": "Lapisan teks"
 			},
 			"steps": [
 				{
-					"title": "Tambahkan gambar",
-					"line": "Jatuhkan templat meme."
+					"title": "Pilih template",
+					"line": "Pakai gambar bawaan atau unggah gambar sendiri."
 				},
 				{
-					"title": "Tulis keterangan",
-					"line": "Ketik teks atas dan bawah, lihat pratinjaunya."
+					"title": "Tambah lapisan",
+					"line": "Tulis keterangan, tambah stiker, seret ke posisi yang pas."
 				},
 				{
 					"title": "Unduh",
-					"line": "Simpan meme sebagai PNG."
+					"line": "Simpan meme jadi sebagai PNG."
 				}
 			],
 			"faqs": [
 				{
-					"q": "Format apa yang diunduh?",
-					"a": "PNG dalam ukuran gambar asli."
+					"q": "Bisa pakai gambar sendiri?",
+					"a": "Bisa. Unggah PNG, JPG, WebP, atau AVIF sebagai latar."
 				},
 				{
-					"q": "Bisakah hanya satu keterangan?",
-					"a": "Bisa, kosongkan salah satu kotak."
+					"q": "Bisa menggeser teks?",
+					"a": "Seret lapisan di pratinjau, atau pilih lalu geser dengan tombol panah."
 				},
 				{
-					"q": "Gambar siapa yang boleh jadi meme?",
-					"a": "Gunakan gambar milik Anda atau yang boleh dipakai ulang."
+					"q": "Gambar siapa yang boleh dipakai?",
+					"a": "Pakai gambar milik Anda atau yang mengizinkan penggunaan ulang."
 				}
 			]
 		},
@@ -733,40 +756,60 @@
 			"name": "Seni ASCII",
 			"tagline": "Spanduk teks besar dari teks kecil.",
 			"title": "Pembuat Seni ASCII Online Gratis",
-			"description": "Ubah teks menjadi spanduk seni ASCII dengan font figlet. Pratinjau langsung, salin atau unduh hasilnya. Semua berjalan di browser.",
+			"description": "Ubah teks jadi banner ASCII atau ubah foto jadi seni ASCII. Preset, set karakter, kontras, warna, dan ekspor PNG atau JPG. Semuanya berjalan di browser Anda.",
 			"h1": "Pembuat Seni ASCII Online Gratis",
-			"sub": "Ketik kata, pilih font, salin spanduknya.",
+			"sub": "Buat banner teks atau ubah gambar jadi ASCII.",
 			"options": {
 				"text": "Teks",
 				"font": "Font",
-				"needText": "Ketik sesuatu dulu."
+				"needText": "Ketik sesuatu dulu.",
+				"canvas": "Pratinjau ASCII",
+				"charset": "Set karakter",
+				"charsetClassic": "Klasik",
+				"charsetDetailed": "Detail",
+				"charsetBlocks": "Blok",
+				"preset": "Gaya",
+				"presetClassic": "Klasik",
+				"presetMatrix": "Matrix",
+				"presetBlueprint": "Blueprint",
+				"presetPaper": "Kertas",
+				"color": "Warna",
+				"contrast": "Kontras",
+				"width": "Lebar",
+				"needImage": "Tambahkan gambar dulu.",
+				"copyText": "Salin teks",
+				"downloadPng": "Unduh PNG",
+				"downloadJpg": "Unduh JPG",
+				"modeText": "Teks",
+				"modeImage": "Gambar",
+				"emptyBanner": "Ketik kata di atas untuk melihat banner."
 			},
 			"steps": [
 				{
-					"title": "Ketik teks",
-					"line": "Tulis kata yang ingin dibuat."
+					"title": "Pilih mode",
+					"line": "Beralih antara banner teks dan konversi gambar."
 				},
 				{
-					"title": "Pilih font",
-					"line": "Coba font sampai cocok."
+					"title": "Atur gaya",
+					"line": "Pilih font atau preset, lalu sesuaikan lebar, kontras, dan warna."
 				},
 				{
 					"title": "Salin atau unduh",
-					"line": "Salin hasilnya atau simpan sebagai TXT."
+					"line": "Salin karakternya atau simpan sebagai PNG atau JPG."
 				}
 			],
 			"faqs": [
 				{
-					"q": "Mengapa sebagian huruf aneh?",
-					"a": "Font mencakup huruf latin dasar. Karakter lain tampil apa adanya."
+					"q": "Bisa mengubah gambar?",
+					"a": "Bisa. Pilih mode Gambar lalu masukkan file PNG, JPG, atau WebP."
 				},
 				{
-					"q": "Bisakah kalimat panjang?",
-					"a": "Kata pendek terlihat terbaik. Kalimat panjang melebar."
+					"q": "Kenapa beberapa huruf terlihat aneh?",
+					"a": "Font hanya mencakup latin dasar. Karakter lain diteruskan apa adanya."
 				},
 				{
-					"q": "Di mana bisa ditempel?",
-					"a": "Di mana saja yang memakai font monospace."
+					"q": "Apakah gambar diunggah?",
+					"a": "Tidak. Konversi berjalan di browser dan file tidak pernah meninggalkannya."
 				}
 			]
 		},
@@ -1118,40 +1161,45 @@
 			"name": "IDE Online",
 			"tagline": "Tulis kode dengan highlight, tanpa compiler.",
 			"title": "Editor Kode Online Gratis",
-			"description": "Tulis kode di browser dengan highlight sintaks untuk HTML, CSS, JavaScript, TypeScript, Rust, Java, C++, Python, dan lainnya. Tanpa compiler, tidak ada yang dijalankan. Salin atau unduh pekerjaan Anda.",
+			"description": "Tulis atau buka kode di browser dengan penyorotan sintaks untuk HTML, CSS, JavaScript, TypeScript, Rust, Java, C++, Python, dan lainnya. Unggah file, unduh dengan nama apa pun. Tanpa kompilator, tidak ada yang dijalankan.",
 			"h1": "Editor Kode Online Gratis",
-			"sub": "Editor minimal. Pilih bahasa, tulis, salin, unduh.",
+			"sub": "Buka file atau mulai kosong. Tidak ada yang berjalan atau diunggah.",
 			"options": {
 				"language": "Bahasa",
 				"placeholder": "Tulis kode di sini. Tidak ada yang dijalankan, tidak ada yang diunggah.",
-				"noCompiler": "Tidak ada compiler di sini. Ini editor: mewarnai, tidak menjalankan."
+				"noCompiler": "Tidak ada compiler di sini. Ini editor: mewarnai, tidak menjalankan.",
+				"upload": "Unggah file",
+				"noFile": "Belum ada file",
+				"filename": "Nama file unduhan",
+				"fileTooLarge": "File itu lebih besar dari 2 MB.",
+				"unreadableFile": "File itu tidak bisa dibaca sebagai teks."
 			},
 			"steps": [
 				{
+					"title": "Unggah atau tulis",
+					"line": "Mulai dari file kode atau editor kosong."
+				},
+				{
 					"title": "Pilih bahasa",
-					"line": "Tentukan bahasa sintaks."
+					"line": "Atur penyorotan, atau biarkan unggahan yang mengaturnya."
 				},
 				{
-					"title": "Tulis kode",
-					"line": "Tulis bebas."
-				},
-				{
-					"title": "Salin atau unduh",
-					"line": "Simpan pekerjaan Anda."
+					"title": "Unduh",
+					"line": "Pilih nama file dan simpan pekerjaan Anda."
 				}
 			],
 			"faqs": [
 				{
-					"q": "Bisakah menjalankan kode?",
-					"a": "Tidak. Ini editor saja."
+					"q": "Bisa menjalankan kode?",
+					"a": "Tidak. Ini hanya editor."
 				},
 				{
-					"q": "Bahasa apa saja?",
-					"a": "HTML, CSS, JS, TS, Rust, Java, C++, Python, dan lainnya."
+					"q": "Bisa membuka file?",
+					"a": "Bisa. Unggah file teks atau kode hingga 2 MB."
 				},
 				{
-					"q": "Apakah kode disimpan?",
-					"a": "Tidak. Salin atau unduh sebelum pergi."
+					"q": "Apakah kode saya disimpan?",
+					"a": "Tidak. Unduh sebelum Anda pergi."
 				}
 			]
 		},
@@ -1159,43 +1207,74 @@
 			"name": "Catatan Online",
 			"tagline": "Catatan pribadi di browser Anda.",
 			"title": "Catatan Online Gratis",
-			"description": "Tulis catatan yang tetap di browser memakai IndexedDB. Tersimpan otomatis saat mengetik, ekspor semua sebagai Markdown. Tidak diunggah, bukan localStorage.",
+			"description": "Tulis catatan dengan judul, teks kaya, sorotan, tautan, daftar dan jarak baris. Tersimpan otomatis di browser, bisa diekspor sebagai Markdown dan dibagikan lewat tautan. Tidak ada yang diunggah.",
 			"h1": "Catatan Online Gratis",
-			"sub": "Lokal saja. Tersimpan otomatis, bisa diekspor, privat.",
+			"sub": "Judul, teks kaya dan tautan berbagi. Semua lokal.",
 			"options": {
 				"new": "Catatan baru",
 				"delete": "Hapus",
 				"confirmDelete": "Klik lagi untuk hapus",
 				"export": "Ekspor semua",
 				"emptyHint": "Belum ada catatan. Mulai di atas.",
-				"saved": "Tersimpan"
+				"saved": "Tersimpan",
+				"title": "Judul",
+				"titlePlaceholder": "Catatan tanpa judul",
+				"bold": "Tebal",
+				"italic": "Miring",
+				"highlight": "Sorot",
+				"bullets": "Daftar butir",
+				"numbers": "Daftar nomor",
+				"alignStart": "Rata awal",
+				"alignCenter": "Rata tengah",
+				"alignEnd": "Rata akhir",
+				"link": "Sisipkan tautan",
+				"linkUrl": "Alamat tautan",
+				"applyLink": "Tambah tautan",
+				"markdown": "Markdown",
+				"editor": "Isi catatan",
+				"spacing": "Jarak baris",
+				"presets": "Preset jarak",
+				"saving": "Menyimpan",
+				"share": "Bagikan catatan",
+				"shareReady": "Siapa pun dengan tautan ini bisa membaca catatan. Catatan ikut di dalam tautan, bukan lewat server.",
+				"shareLink": "Tautan berbagi",
+				"copyLink": "Salin tautan",
+				"linkCopied": "Tautan disalin",
+				"copiedForInstagram": "Catatan disalin. Tempel di Instagram.",
+				"shareTooLong": "Catatan ini terlalu panjang untuk tautan. Ekspor atau bagikan teksnya saja.",
+				"sharedLabel": "Catatan dibagikan",
+				"sharedTitle": "Catatan dibagikan",
+				"sharedDescription": "Catatan yang dibagikan dari Toolify Online Notes.",
+				"sharedMissing": "Tautan catatan ini tidak lengkap atau sudah usang.",
+				"sharedWrite": "Tulis catatan sendiri",
+				"emptyNote": "Catatan kosong"
 			},
 			"steps": [
 				{
-					"title": "Mulai catatan",
-					"line": "Buat catatan baru."
+					"title": "Tulis",
+					"line": "Tambahkan judul dan format isinya."
 				},
 				{
-					"title": "Tulis bebas",
-					"line": "Tersimpan otomatis tiap ketikan."
+					"title": "Atur gaya",
+					"line": "Tebal, sorot, daftar, tautan dan jarak."
 				},
 				{
-					"title": "Ekspor semua",
-					"line": "Unduh semua sebagai Markdown."
+					"title": "Bagikan atau ekspor",
+					"line": "Salin tautan atau unduh Markdown."
 				}
 			],
 			"faqs": [
 				{
 					"q": "Di mana catatan disimpan?",
-					"a": "Di IndexedDB browser Anda."
+					"a": "Di IndexedDB browser. Tidak ada yang diunggah."
 				},
 				{
-					"q": "Bagaimana jika data situs dihapus?",
-					"a": "Catatan ikut hilang. Ekspor berkala."
+					"q": "Bagaimana berbagi bekerja?",
+					"a": "Catatan dikemas ke dalam tautan. Tidak ada salinan di server."
 				},
 				{
-					"q": "Bagaimana memindahkan catatan?",
-					"a": "Ekspor lalu impor manual."
+					"q": "Kalau data situs dibersihkan?",
+					"a": "Catatan lokal ikut hilang. Ekspor rutin."
 				}
 			]
 		},
@@ -2223,6 +2302,801 @@
 					"a": "Tidak disimpan. Warna hanya ada di halaman ini sampai kamu menutupnya, jadi ekspor jika ingin menyimpannya."
 				}
 			]
+		},
+		"lorem-ipsum": {
+			"name": "Generator Lorem Ipsum",
+			"tagline": "Teks placeholder sekali klik.",
+			"title": "Generator Lorem Ipsum Gratis",
+			"description": "Buat paragraf teks lorem ipsum sesuai panjang yang kamu mau. Salin atau unduh teks placeholder. Tidak ada yang diunggah.",
+			"h1": "Generator Lorem Ipsum Gratis",
+			"sub": "Pilih berapa banyak teks placeholder, lalu salin.",
+			"options": {
+				"paragraphs": "Paragraf",
+				"sentences": "Kalimat per paragraf",
+				"start": "Mulai dengan Lorem ipsum",
+				"generate": "Buat teks",
+				"words": "{count} kata",
+				"output": "Teks hasil",
+				"copy": "Salin teks",
+				"download": "Unduh TXT",
+				"copied": "Teks disalin"
+			},
+			"steps": [
+				{
+					"title": "Pilih panjang",
+					"line": "Tentukan paragraf dan kalimat."
+				},
+				{
+					"title": "Buat",
+					"line": "Tekan buat untuk blok baru."
+				},
+				{
+					"title": "Salin atau unduh",
+					"line": "Tempel ke desain atau simpan TXT."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apa itu lorem ipsum?",
+					"a": "Teks pengisi dari karya Latin Cicero untuk melihat tata letak sebelum naskah asli siap."
+				},
+				{
+					"q": "Apakah teksnya acak?",
+					"a": "Ya. Setiap tekan membuat kalimat baru dari daftar kata klasik."
+				},
+				{
+					"q": "Boleh dipakai komersial?",
+					"a": "Teks pengisinya domain publik, jadi boleh."
+				}
+			]
+		},
+		"code-validator": {
+			"name": "Validator Kode",
+			"tagline": "Temukan kesalahan sintaks sebelum ditempel.",
+			"title": "Validator Kode Gratis",
+			"description": "Periksa sintaks JSON, HTML, CSS, XML, dan JavaScript di browser. Lihat baris dan kolom masalahnya. Tidak ada yang diunggah.",
+			"h1": "Validator Kode Gratis",
+			"sub": "Tempel kode, pilih bahasa, dan lompat ke baris yang rusak.",
+			"options": {
+				"code": "Kode",
+				"check": "Periksa kode",
+				"stats": "{lines} baris",
+				"valid": "Terlihat valid",
+				"invalid": "Ada masalah",
+				"empty": "Tempel kode dulu.",
+				"position": "Baris {line}, kolom {column}",
+				"invalidJson": "JSON tidak valid. Parser berhenti di dekat posisi berikut.",
+				"unclosed": "Periksa tag ini: {tags}",
+				"language": "Bahasa",
+				"hint": "Hanya sintaks. Kodemu tidak dijalankan.",
+				"limits": "Pemeriksaan HTML hanya keseimbangan tag, bukan validitas penuh."
+			},
+			"steps": [
+				{
+					"title": "Tempel kode",
+					"line": "Masukkan potongan yang ingin diuji."
+				},
+				{
+					"title": "Pilih bahasa",
+					"line": "JSON, HTML, CSS, XML, atau JavaScript."
+				},
+				{
+					"title": "Jalankan pemeriksaan",
+					"line": "Baca hasil dan posisi kesalahannya."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah kode saya diunggah?",
+					"a": "Tidak. Semua diperiksa di tab ini."
+				},
+				{
+					"q": "Kalau lolos, berarti halaman saya jalan?",
+					"a": "Belum tentu. Hanya berarti sintaksnya bisa dibaca atau seimbang."
+				},
+				{
+					"q": "Kenapa JavaScript lolos padahal ada bug?",
+					"a": "Pemeriksa hanya mengompilasi sumber, tidak menjalankannya, jadi error saat jalan tidak terlihat."
+				}
+			]
+		},
+		"calculator": {
+			"name": "Kalkulator Online",
+			"tagline": "Hitung sehari-hari dengan dukungan keyboard.",
+			"title": "Kalkulator Online Gratis",
+			"description": "Tambah, kurang, kali dan bagi dengan persen serta tanda kurung. Riwayat tetap di browser. Tanpa unggah, tanpa akun.",
+			"h1": "Kalkulator Online Gratis",
+			"sub": "Ketik ekspresi atau pakai tombol.",
+			"options": {
+				"expression": "Ekspresi",
+				"clear": "Hapus",
+				"history": "Riwayat",
+				"clearHistory": "Hapus riwayat",
+				"noHistory": "Belum ada hitungan.",
+				"divideByZero": "Tidak bisa membagi dengan nol.",
+				"invalid": "Ekspresi itu tidak valid."
+			},
+			"steps": [
+				{
+					"title": "Ketik hitungan",
+					"line": "Pakai tombol atau keyboard."
+				},
+				{
+					"title": "Tekan sama dengan",
+					"line": "Enter atau tombol sama dengan menampilkan hasil."
+				},
+				{
+					"title": "Cek riwayat",
+					"line": "Hitungan terakhir tetap di tab ini."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Bagaimana persen dihitung?",
+					"a": "200 + 10% menghasilkan 220 dan 50 * 10% menghasilkan 5, seperti kalkulator meja."
+				},
+				{
+					"q": "Apakah riwayat disimpan?",
+					"a": "Tidak. Riwayat ada di memori dan hilang saat tab ditutup."
+				},
+				{
+					"q": "Bisa pakai keyboard?",
+					"a": "Bisa. Angka, operator, Enter, Backspace dan Escape berfungsi."
+				}
+			]
+		},
+		"spin-wheel": {
+			"name": "Roda Putar",
+			"tagline": "Biarkan roda yang memilih.",
+			"title": "Roda Putar Gratis",
+			"description": "Tambahkan pilihanmu dan putar roda warna-warni untuk memilih satu secara acak. Berjalan di browser tanpa daftar dan tanpa unggah.",
+			"h1": "Roda Putar Gratis",
+			"sub": "Tambahkan hingga 24 pilihan, atur warna, lalu putar.",
+			"options": {
+				"wheel": "Roda hadiah",
+				"spin": "Putar roda",
+				"ready": "Tambahkan pilihan, lalu putar.",
+				"options": "Pilihan",
+				"count": "{count} pilihan ditambahkan",
+				"needTwo": "Tambahkan minimal dua pilihan.",
+				"colors": "Warna irisan",
+				"sliceColor": "Warna irisan {number}",
+				"centerImage": "Gambar tengah",
+				"uploadImage": "Unggah gambar",
+				"removeImage": "Hapus",
+				"imageHint": "Logo opsional untuk bagian tengah. Tetap di perangkatmu.",
+				"imageType": "Pilih file gambar.",
+				"imageTooLarge": "Gambar maksimal 2 MB.",
+				"imageError": "Gambar itu tidak bisa dibaca.",
+				"shuffle": "Acak pilihan",
+				"share": "Salin tautan bagikan",
+				"shareLink": "Tautan bagikan",
+				"shareCopied": "Tautan bagikan disalin.",
+				"shareManual": "Salin tautan di bawah."
+			},
+			"steps": [
+				{
+					"title": "Tulis pilihan",
+					"line": "Satu per baris, maksimal 24."
+				},
+				{
+					"title": "Putar",
+					"line": "Roda melambat dan berhenti di pemenang."
+				},
+				{
+					"title": "Baca hasil",
+					"line": "Pilihan terpilih muncul di bawah roda."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah pemilihannya adil?",
+					"a": "Ya. Pemenang berasal dari generator kripto browser dan setiap irisan punya peluang sama."
+				},
+				{
+					"q": "Bisa simpan atau bagikan roda?",
+					"a": "Salin tautan bagikan untuk membuka pilihan dan warna yang sama. Gambar tengah tetap di perangkatmu dan tidak ikut di tautan."
+				},
+				{
+					"q": "Berapa pilihan yang muat?",
+					"a": "24. Daftar lebih panjang dipotong agar label tetap terbaca."
+				}
+			]
+		},
+		"average-color": {
+			"name": "Pencari Warna Rata-rata",
+			"tagline": "Satu warna yang mewakili gambar.",
+			"title": "Pencari Warna Rata-rata Gratis",
+			"description": "Temukan warna rata-rata gambar dalam HEX, RGB dan HSL. Jatuhkan foto dan dapatkan warna yang mewakilinya. Tidak ada yang diunggah.",
+			"h1": "Pencari Warna Rata-rata Gratis",
+			"sub": "Jatuhkan gambar dan baca warna rata-ratanya.",
+			"options": {
+				"hint": "Rata-rata mencampur semua piksel terlihat. Piksel transparan dilewati agar warna tidak tertarik ke hitam.",
+				"copy": "Salin HEX",
+				"copied": "Warna disalin",
+				"transparent": "{count} piksel transparan dilewati",
+				"palette": "Warna dominan"
+			},
+			"steps": [
+				{
+					"title": "Jatuhkan gambar",
+					"line": "PNG, JPG, WebP, AVIF atau GIF."
+				},
+				{
+					"title": "Baca warnanya",
+					"line": "HEX, RGB dan HSL langsung muncul."
+				},
+				{
+					"title": "Salin nilainya",
+					"line": "Tempel ke aplikasi desainmu."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Bagaimana rata-ratanya dihitung?",
+					"a": "Semua piksel terlihat dijumlahkan lalu dibagi jumlah piksel, jadi area besar lebih berpengaruh."
+				},
+				{
+					"q": "Apakah piksel transparan dihitung?",
+					"a": "Tidak. Piksel yang sepenuhnya transparan dilewati dan jumlahnya ditampilkan."
+				},
+				{
+					"q": "Format mana yang cocok untuk desain?",
+					"a": "HEX cocok untuk banyak aplikasi, HSL lebih mudah untuk mengatur terang gelap."
+				}
+			]
+		},
+		"image-color-picker": {
+			"name": "Pengambil Warna Gambar",
+			"tagline": "Ambil warna apa pun dari foto.",
+			"title": "Pengambil Warna Gambar Gratis",
+			"description": "Klik titik mana pun pada gambar untuk mendapat warna tepatnya dalam HEX, RGB dan HSL. Simpan riwayat pilihan. Gambar tidak pernah meninggalkan browser.",
+			"h1": "Pengambil Warna Gambar Gratis",
+			"sub": "Klik atau geser pada gambar untuk mengambil warna.",
+			"options": {
+				"canvas": "Gambar",
+				"pickHint": "Klik atau geser pada gambar. Pilihan terakhir tetap di panel.",
+				"history": "Warna diambil",
+				"clear": "Hapus",
+				"position": "Posisi",
+				"copy": "Salin HEX",
+				"copied": "Warna disalin"
+			},
+			"steps": [
+				{
+					"title": "Jatuhkan gambar",
+					"line": "Format raster umum."
+				},
+				{
+					"title": "Pilih titik",
+					"line": "Klik atau geser untuk mengambil piksel."
+				},
+				{
+					"title": "Salin nilainya",
+					"line": "HEX, RGB dan HSL siap."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Warna apa yang didapat saat klik?",
+					"a": "Piksel tepat di bawah kursor, tanpa penghalusan."
+				},
+				{
+					"q": "Kenapa pratinjau mengecil?",
+					"a": "Gambar besar diperkecil agar cepat, tetapi piksel tetap diambil dari gambar yang ditampilkan."
+				},
+				{
+					"q": "Apakah gambar disimpan?",
+					"a": "Tidak. Tetap di tab ini dan hilang saat dimuat ulang."
+				}
+			]
+		},
+		"image-metadata": {
+			"name": "Penampil Metadata Gambar",
+			"tagline": "EXIF dan detail file, dibaca lokal.",
+			"title": "Penampil Metadata Gambar Gratis",
+			"description": "Baca data EXIF, dimensi, format dan ukuran file dari gambar apa pun. Lihat tag kamera, tanggal dan lokasi sebelum berbagi foto. Tidak ada yang diunggah.",
+			"h1": "Penampil Metadata Gambar Gratis",
+			"sub": "Jatuhkan gambar untuk memeriksa EXIF dan detail filenya.",
+			"options": {
+				"file": "File",
+				"type": "Tipe",
+				"size": "Ukuran",
+				"dimensions": "Dimensi",
+				"modified": "Diubah",
+				"exif": "Data EXIF",
+				"noExif": "Tidak ada data EXIF di file ini.",
+				"noPreview": "Pratinjau tidak tersedia untuk format ini, tetapi detail file tetap bisa dibaca.",
+				"hint": "Metadata bisa membocorkan kamera, tanggal dan lokasi GPS. Periksa sebelum memposting foto.",
+				"copy": "Salin sebagai JSON",
+				"copied": "Metadata disalin",
+				"download": "Unduh JSON",
+				"structure": "Struktur kontainer",
+				"noStructure": "Struktur kontainer tidak tersedia untuk format ini."
+			},
+			"steps": [
+				{
+					"title": "Jatuhkan foto",
+					"line": "JPG, PNG, WebP atau gambar lain."
+				},
+				{
+					"title": "Baca detailnya",
+					"line": "Dimensi, format dan tag EXIF."
+				},
+				{
+					"title": "Salin atau unduh",
+					"line": "Simpan laporan sebagai JSON."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Format mana yang menampilkan EXIF?",
+					"a": "File JPEG dibaca penuh. Format lain menampilkan detail file dan tag yang dikenali pembaca."
+				},
+				{
+					"q": "Bisa menghapus metadata?",
+					"a": "Tidak. Ini hanya membaca. Pakai editor gambar untuk menghapus tag."
+				},
+				{
+					"q": "Apakah GPS selalu ada?",
+					"a": "Tidak. Hanya foto dengan lokasi aktif yang membawa tag GPS."
+				}
+			]
+		},
+		"instagram-generator": {
+			"name": "Generator Postingan Instagram",
+			"tagline": "Mockup untuk post, story dan DM.",
+			"title": "Generator Postingan Instagram Gratis",
+			"description": "Buat mockup postingan, story dan DM Instagram yang realistis dengan teks, gambar dan avatar sendiri. Unduh PNG. Tidak ada yang diunggah.",
+			"h1": "Generator Postingan Instagram Gratis",
+			"sub": "Buat mockup post, story atau DM lalu unduh.",
+			"options": {
+				"post": "Postingan",
+				"story": "Story",
+				"dm": "DM",
+				"username": "Nama pengguna",
+				"caption": "Keterangan",
+				"likes": "suka",
+				"likesLabel": "Suka",
+				"incoming": "Pesan masuk",
+				"outgoing": "Balasanmu",
+				"dark": "Tema gelap",
+				"image": "Tambah gambar",
+				"avatar": "Tambah avatar",
+				"preview": "Pratinjau Instagram",
+				"download": "Unduh PNG",
+				"downloaded": "Gambar diunduh",
+				"failed": "Gagal membuat gambar.",
+				"imageError": "Gambar itu tidak bisa dimuat.",
+				"imageHint": "Gambarmu di sini",
+				"reply": "Balas",
+				"active": "Aktif sekarang",
+				"message": "Pesan",
+				"sponsored": "Bersponsor",
+				"time": "2 jam lalu",
+				"sampleCaption": "Semua alat yang kamu butuh. Gratis, cepat, privat. Semuanya berjalan di browser.",
+				"sampleIncoming": "Kirim tautannya?",
+				"sampleOutgoing": "toolify.bond, semuanya berjalan lokal."
+			},
+			"steps": [
+				{
+					"title": "Pilih format",
+					"line": "Postingan, story atau DM."
+				},
+				{
+					"title": "Isi detail",
+					"line": "Teks, gambar dan avatar."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan mockup sebagai PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah ini alat resmi Instagram?",
+					"a": "Tidak. Ini membuat mockup gambar dan tidak terhubung dengan Instagram."
+				},
+				{
+					"q": "Apakah fotoku diunggah?",
+					"a": "Tidak. Semua digambar di kanvas dalam tab ini."
+				},
+				{
+					"q": "Ukuran apa yang dipakai?",
+					"a": "Postingan 1080 x 1350, story dan DM 1080 x 1920."
+				}
+			]
+		},
+		"x-post-generator": {
+			"name": "Generator Postingan X",
+			"tagline": "Mockup postingan dan profil X.",
+			"title": "Generator Postingan X Gratis",
+			"description": "Buat mockup postingan dan profil X yang realistis dengan teks, avatar dan banner sendiri. Unduh PNG. Semua tetap di browser.",
+			"h1": "Generator Postingan X Gratis",
+			"sub": "Buat mockup postingan atau profil lalu unduh.",
+			"options": {
+				"post": "Postingan",
+				"profile": "Profil",
+				"name": "Nama tampilan",
+				"handle": "Nama pengguna",
+				"text": "Teks postingan",
+				"likes": "Suka",
+				"reposts": "Repost",
+				"bio": "Bio",
+				"dark": "Tema gelap",
+				"image": "Tambah gambar",
+				"avatar": "Tambah avatar",
+				"banner": "Tambah banner",
+				"preview": "Pratinjau X",
+				"follow": "Ikuti",
+				"download": "Unduh PNG",
+				"downloaded": "Gambar diunduh",
+				"failed": "Gagal membuat gambar.",
+				"imageError": "Gambar itu tidak bisa dimuat.",
+				"sampleText": "Semua alat yang kamu butuh. Gratis, cepat, privat. Semuanya berjalan di browser, jadi file tidak pernah meninggalkan perangkatmu.",
+				"sampleBio": "Alat kecil di browser yang menghargai filemu. Tanpa daftar, tanpa unggah."
+			},
+			"steps": [
+				{
+					"title": "Pilih tata letak",
+					"line": "Postingan atau profil."
+				},
+				{
+					"title": "Isi detail",
+					"line": "Nama, handle, teks dan gambar."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan mockup sebagai PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah ini software resmi X?",
+					"a": "Tidak. Ini pembuat mockup independen."
+				},
+				{
+					"q": "Boleh dipakai di mana saja?",
+					"a": "Boleh, tetapi beri label mockup agar tidak disangka postingan asli."
+				},
+				{
+					"q": "Apakah gambarku diunggah?",
+					"a": "Tidak. Digambar di kanvas dalam tab ini."
+				}
+			]
+		},
+		"messenger-generator": {
+			"name": "Generator Obrolan Messenger",
+			"tagline": "Obrolan Messenger palsu dalam hitungan detik.",
+			"title": "Generator Obrolan Messenger Gratis",
+			"description": "Buat mockup Messenger yang realistis dengan kontak, avatar dan pesan sendiri. Unduh PNG. Tidak ada yang keluar dari browser.",
+			"h1": "Generator Obrolan Messenger Gratis",
+			"sub": "Tambahkan kontak dan pesan, lalu unduh mockupnya.",
+			"options": {
+				"contact": "Nama kontak",
+				"dark": "Tema gelap",
+				"avatar": "Tambah avatar",
+				"noAvatar": "Belum ada avatar",
+				"messages": "Pesan",
+				"add": "Tambah pesan",
+				"side": "Sisi",
+				"incoming": "Masuk",
+				"outgoing": "Keluar",
+				"message": "Pesan",
+				"remove": "Hapus",
+				"messagePlaceholder": "Pesan",
+				"preview": "Pratinjau obrolan",
+				"download": "Unduh PNG",
+				"downloaded": "Gambar diunduh",
+				"failed": "Gagal membuat gambar.",
+				"imageError": "Gambar itu tidak bisa dimuat.",
+				"sampleIn": "Eh, sudah coba situs alat yang baru itu?",
+				"sampleOut": "Toolify? Iya, semuanya berjalan di browser.",
+				"sampleFollow": "Tidak ada unggahan sama sekali?"
+			},
+			"steps": [
+				{
+					"title": "Atur kontak",
+					"line": "Nama dan avatar opsional."
+				},
+				{
+					"title": "Tulis pesan",
+					"line": "Pilih siapa yang mengirim."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan obrolan sebagai PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah ini aplikasi resmi?",
+					"a": "Tidak. Ini pembuat mockup independen untuk Messenger."
+				},
+				{
+					"q": "Apakah fotoku diunggah?",
+					"a": "Tidak. Semua digambar di tab ini."
+				},
+				{
+					"q": "Bisa hapus pesan?",
+					"a": "Bisa. Setiap pesan punya tombol hapus."
+				}
+			]
+		},
+		"whatsapp-generator": {
+			"name": "Generator Obrolan WhatsApp",
+			"tagline": "Obrolan WhatsApp palsu dalam hitungan detik.",
+			"title": "Generator Obrolan WhatsApp Gratis",
+			"description": "Buat mockup WhatsApp yang realistis dengan kontak, avatar dan pesan sendiri. Unduh PNG. Tidak ada yang keluar dari browser.",
+			"h1": "Generator Obrolan WhatsApp Gratis",
+			"sub": "Tambahkan kontak dan pesan, lalu unduh mockupnya.",
+			"options": {
+				"contact": "Nama kontak",
+				"dark": "Tema gelap",
+				"avatar": "Tambah avatar",
+				"noAvatar": "Belum ada avatar",
+				"messages": "Pesan",
+				"add": "Tambah pesan",
+				"side": "Sisi",
+				"incoming": "Masuk",
+				"outgoing": "Keluar",
+				"message": "Pesan",
+				"remove": "Hapus",
+				"messagePlaceholder": "Pesan",
+				"preview": "Pratinjau obrolan",
+				"download": "Unduh PNG",
+				"downloaded": "Gambar diunduh",
+				"failed": "Gagal membuat gambar.",
+				"imageError": "Gambar itu tidak bisa dimuat.",
+				"sampleIn": "Eh, sudah coba situs alat yang baru itu?",
+				"sampleOut": "Toolify? Iya, semuanya berjalan di browser.",
+				"sampleFollow": "Tidak ada unggahan sama sekali?"
+			},
+			"steps": [
+				{
+					"title": "Atur kontak",
+					"line": "Nama dan avatar opsional."
+				},
+				{
+					"title": "Tulis pesan",
+					"line": "Pilih siapa yang mengirim."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan obrolan sebagai PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah ini aplikasi resmi?",
+					"a": "Tidak. Ini pembuat mockup independen untuk WhatsApp."
+				},
+				{
+					"q": "Apakah fotoku diunggah?",
+					"a": "Tidak. Semua digambar di tab ini."
+				},
+				{
+					"q": "Bisa hapus pesan?",
+					"a": "Bisa. Setiap pesan punya tombol hapus."
+				}
+			]
+		},
+		"imessage-generator": {
+			"name": "Generator Obrolan iMessage",
+			"tagline": "Obrolan iMessage palsu dalam hitungan detik.",
+			"title": "Generator Obrolan iMessage Gratis",
+			"description": "Buat mockup iMessage yang realistis dengan kontak, avatar dan pesan sendiri. Unduh PNG. Tidak ada yang keluar dari browser.",
+			"h1": "Generator Obrolan iMessage Gratis",
+			"sub": "Tambahkan kontak dan pesan, lalu unduh mockupnya.",
+			"options": {
+				"contact": "Nama kontak",
+				"dark": "Tema gelap",
+				"avatar": "Tambah avatar",
+				"noAvatar": "Belum ada avatar",
+				"messages": "Pesan",
+				"add": "Tambah pesan",
+				"side": "Sisi",
+				"incoming": "Masuk",
+				"outgoing": "Keluar",
+				"message": "Pesan",
+				"remove": "Hapus",
+				"messagePlaceholder": "Pesan",
+				"preview": "Pratinjau obrolan",
+				"download": "Unduh PNG",
+				"downloaded": "Gambar diunduh",
+				"failed": "Gagal membuat gambar.",
+				"imageError": "Gambar itu tidak bisa dimuat.",
+				"sampleIn": "Eh, sudah coba situs alat yang baru itu?",
+				"sampleOut": "Toolify? Iya, semuanya berjalan di browser.",
+				"sampleFollow": "Tidak ada unggahan sama sekali?"
+			},
+			"steps": [
+				{
+					"title": "Atur kontak",
+					"line": "Nama dan avatar opsional."
+				},
+				{
+					"title": "Tulis pesan",
+					"line": "Pilih siapa yang mengirim."
+				},
+				{
+					"title": "Unduh",
+					"line": "Simpan obrolan sebagai PNG."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah ini aplikasi resmi?",
+					"a": "Tidak. Ini pembuat mockup independen untuk iMessage."
+				},
+				{
+					"q": "Apakah fotoku diunggah?",
+					"a": "Tidak. Semua digambar di tab ini."
+				},
+				{
+					"q": "Bisa hapus pesan?",
+					"a": "Bisa. Setiap pesan punya tombol hapus."
+				}
+			]
+		},
+		"pdf-viewer": {
+			"name": "Penampil PDF",
+			"tagline": "Buka PDF tanpa mengunggahnya.",
+			"title": "Penampil PDF Online Gratis",
+			"description": "Buka dan baca file PDF di browser dengan navigasi halaman dan zoom. Dokumen dirender di perangkatmu dan tidak pernah diunggah.",
+			"h1": "Penampil PDF Online Gratis",
+			"sub": "Jatuhkan PDF, lalu pindah halaman dan zoom.",
+			"options": {
+				"close": "Tutup file",
+				"loading": "Membuka PDF...",
+				"rendering": "Merender...",
+				"pageCanvas": "Halaman PDF",
+				"pageOf": "Halaman (dari {pages})",
+				"prev": "Sebelumnya",
+				"next": "Berikutnya",
+				"zoom": "Zoom",
+				"zoomOut": "Perkecil",
+				"zoomIn": "Perbesar",
+				"hint": "Jatuhkan PDF untuk membacanya di sini. Halaman dirender di perangkatmu.",
+				"renderError": "Halaman itu gagal dirender.",
+				"unreadable": "PDF ini tidak bisa dibuka."
+			},
+			"steps": [
+				{
+					"title": "Jatuhkan PDF",
+					"line": "Hingga 100 MB dari perangkatmu."
+				},
+				{
+					"title": "Pindah halaman",
+					"line": "Pakai sebelumnya dan berikutnya atau ketik nomor."
+				},
+				{
+					"title": "Zoom",
+					"line": "Buat tulisan kecil lebih terbaca."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah PDF diunggah?",
+					"a": "Tidak. Dibaca dan dirender di dalam tab ini."
+				},
+				{
+					"q": "Bisa memilih teks?",
+					"a": "Belum. Halaman ditampilkan sebagai gambar, jadi salin teks belum didukung."
+				},
+				{
+					"q": "Berapa batas ukurannya?",
+					"a": "100 MB. File sangat besar mungkin butuh memori lebih dari yang dimiliki ponsel."
+				}
+			]
+		},
+		"pdf-compressor": {
+			"name": "Kompresor PDF",
+			"tagline": "Perkecil PDF dengan hasil jujur.",
+			"title": "Kompresor PDF Gratis",
+			"description": "Kompres PDF di browser dengan merender halaman pada kualitas rendah, sedang atau tinggi. Lihat ukuran nyata sebelum dan sesudah. Tanpa unggah.",
+			"h1": "Kompresor PDF Gratis",
+			"sub": "Pilih kualitas, kompres, dan bandingkan ukuran aslinya.",
+			"options": {
+				"quality": "Kualitas",
+				"qualityLow": "Rendah, file terkecil",
+				"qualityMedium": "Sedang, seimbang",
+				"qualityHigh": "Tinggi, paling tajam",
+				"hint": "Halaman dirasterisasi dan dikodekan ulang sebagai JPEG. Teks menjadi gambar, jadi tautan dan teks yang bisa dipilih hilang.",
+				"rasterNote": "Jika hasilnya lebih besar dari aslinya, simpan file asli.",
+				"compress": "Kompres PDF",
+				"progress": "Progres kompresi",
+				"progressLabel": "Halaman {done} dari {total}",
+				"before": "Sebelum",
+				"after": "Sesudah",
+				"pages": "Halaman",
+				"smaller": "{percent}% lebih kecil",
+				"larger": "{percent}% lebih besar",
+				"same": "Hampir sama besar",
+				"keepOriginal": "File hasil kompresi tidak lebih kecil. Simpan yang asli.",
+				"download": "Unduh PDF",
+				"done": "PDF dikompres",
+				"failed": "Kompresi gagal."
+			},
+			"steps": [
+				{
+					"title": "Jatuhkan PDF",
+					"line": "Hingga 100 MB dari perangkatmu."
+				},
+				{
+					"title": "Pilih kualitas",
+					"line": "Rendah paling hemat, tinggi menjaga detail."
+				},
+				{
+					"title": "Bandingkan dan unduh",
+					"line": "Ukuran sebelum dan sesudah ditampilkan apa adanya."
+				}
+			],
+			"faqs": [
+				{
+					"q": "Apakah teks tetap bisa dipilih?",
+					"a": "Tidak. Kompresor merender setiap halaman menjadi gambar, jadi teks dan tautan diratakan."
+				},
+				{
+					"q": "Kenapa kadang file jadi lebih besar?",
+					"a": "PDF yang sudah optimal bisa membesar saat dibangun ulang sebagai gambar. Hasilnya diberi tahu dan kamu bisa simpan yang asli."
+				},
+				{
+					"q": "Apakah PDF diunggah?",
+					"a": "Tidak. Render dan pembangunan ulang terjadi di tab ini."
+				}
+			]
 		}
+	},
+	"share": {
+		"share": "Bagikan",
+		"report": "Laporkan Bug",
+		"title": "Bagikan alat ini",
+		"copyLink": "Salin tautan",
+		"copied": "Tautan disalin",
+		"native": "Aplikasi lain",
+		"whatsapp": "WhatsApp",
+		"x": "X",
+		"facebook": "Facebook",
+		"linkedin": "LinkedIn",
+		"text": "Coba {name} di Toolify. Semua berjalan di browser.",
+		"reportHint": "Beri tahu kami apa yang rusak dan file yang kamu pakai."
+	},
+	"support": {
+		"title": "Dukung Toolify",
+		"metaDescription": "Dukung Toolify lewat Ko-fi, PayPal, Bitcoin, Ethereum, atau Solana. Semua alat tetap gratis.",
+		"h1": "Bantu Toolify tetap gratis",
+		"sub": "Tanpa akun, tanpa alat terkunci. Kalau sebuah alat menghemat waktumu, kamu bisa memberi tip. Semuanya untuk hosting, model, dan alat baru.",
+		"options": {
+			"label": "Pilih cara mendukung",
+			"kofi": "Ko-fi",
+			"paypal": "PayPal",
+			"btc": "Bitcoin",
+			"eth": "Ethereum dan EVM",
+			"solana": "Solana"
+		},
+		"kofiTitle": "Traktir kopi",
+		"kofiLine": "Ko-fi membuka widget aman. Halaman ini tidak menyentuh filemu.",
+		"kofiOpen": "Buka Ko-fi",
+		"paypalTitle": "Kirim tip lewat PayPal",
+		"paypalLine": "PayPal menangani pembayaran. Kamu tidak perlu akun Toolify.",
+		"paypalOpen": "Buka PayPal",
+		"crypto": {
+			"btc": {
+				"title": "Bitcoin"
+			},
+			"eth": {
+				"title": "Ethereum dan EVM"
+			},
+			"solana": {
+				"title": "Solana"
+			}
+		},
+		"address": "Alamat",
+		"notReady": "Alamat ini belum ditambahkan.",
+		"copy": "Salin alamat",
+		"copied": "Alamat disalin",
+		"copyFailed": "Alamat tidak bisa disalin.",
+		"note": "Tip bersifat opsional. Semua alat tetap gratis dan berjalan di browser."
 	}
 }
