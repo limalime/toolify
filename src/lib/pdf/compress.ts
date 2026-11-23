@@ -34,16 +34,3 @@ export function sizeVerdict(original: number, output: number): SizeVerdict {
 		label: delta > 0 ? "smaller" : "larger",
 	};
 }
-
-export function pageSizeAt(
-	scaledWidth: number,
-	scaledHeight: number,
-): {
-	width: number;
-	height: number;
-} {
-	return {
-		width: Math.max(1, Math.round(scaledWidth)),
-		height: Math.max(1, Math.round(scaledHeight)),
-	};
-}

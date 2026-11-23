@@ -104,7 +104,10 @@ function cleanElement(element: HTMLElement): void {
 // strips scripts, event handlers, iframes and unsafe urls. the note body
 // is saved and shared as html, so every read goes through this first.
 export function sanitizeNoteHtml(html: string): string {
-	const doc = new DOMParser().parseFromString(`<body>${html}</body>`, "text/html");
+	const doc = new DOMParser().parseFromString(
+		`<body>${html}</body>`,
+		"text/html",
+	);
 	cleanElement(doc.body);
 	return doc.body.innerHTML;
 }
@@ -168,7 +171,9 @@ export function markdownToHtml(markdown: string): string {
 				list = next;
 				blocks.push(`<${next}>`);
 			}
-			blocks.push(`<li>${inlineMarkdown((bullet ?? numbered)?.[1] ?? "")}</li>`);
+			blocks.push(
+				`<li>${inlineMarkdown((bullet ?? numbered)?.[1] ?? "")}</li>`,
+			);
 			continue;
 		}
 		if (line.startsWith("> ")) {
@@ -312,14 +317,4 @@ export function decodeNote(hash: string): SharedNotePayload | null {
 	} catch {
 		return null;
 	}
-}
-
-export function noteSlug(title: string): string {
-	const base = title
-		.toLowerCase()
-		.normalize("NFKD")
-		.replace(/[^a-z0-9]+/g, "-")
-		.replace(/^-|-$/g, "")
-		.slice(0, 40);
-	return base || "note";
 }

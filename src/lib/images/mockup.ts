@@ -61,8 +61,10 @@ export function drawParagraph(
 		align?: CanvasTextAlign;
 	},
 ): number {
-	const lines = wrapLines(text, options.maxWidth, (value) =>
-		context.measureText(value).width,
+	const lines = wrapLines(
+		text,
+		options.maxWidth,
+		(value) => context.measureText(value).width,
 	);
 	// the mockups are fixed app screenshots, so start means left even when
 	// the page around them runs right to left.
@@ -115,7 +117,7 @@ export function drawCover(
 
 export function drawAvatar(
 	context: CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D,
-	image: CanvasImageSource & { width: number; height: number } | null,
+	image: (CanvasImageSource & { width: number; height: number }) | null,
 	x: number,
 	y: number,
 	size: number,
@@ -147,23 +149,13 @@ export function drawAvatar(
 		context.font = `600 ${size * 0.4}px system-ui, sans-serif`;
 		context.textAlign = "center";
 		context.textBaseline = "middle";
-		context.fillText(fallback.slice(0, 1).toUpperCase(), x + size / 2, y + size / 2);
+		context.fillText(
+			fallback.slice(0, 1).toUpperCase(),
+			x + size / 2,
+			y + size / 2,
+		);
 	}
 	context.restore();
-}
-
-export function formatClock(date: Date): string {
-	return `${String(date.getHours()).padStart(2, "0")}:${String(
-		date.getMinutes(),
-	).padStart(2, "0")}`;
-}
-
-export function mockTimestamp(): string {
-	const now = new Date();
-	return new Intl.DateTimeFormat("en", {
-		hour: "numeric",
-		minute: "2-digit",
-	}).format(now);
 }
 
 export const MOCKUP_FONTS = {

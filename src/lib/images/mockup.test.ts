@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { PDF_DPI_CAP, pageSizeAt, sizeVerdict } from "../pdf/compress";
+import { PDF_DPI_CAP, sizeVerdict } from "../pdf/compress";
 import { formatCount, wrapLines } from "./mockup";
 
 describe("mockup helpers", () => {
@@ -39,10 +39,5 @@ describe("pdf compression helpers", () => {
 		expect(sizeVerdict(1000, 1300).label).toBe("larger");
 		expect(sizeVerdict(1000, 1002).label).toBe("same");
 		expect(sizeVerdict(0, 100).label).toBe("same");
-	});
-
-	it("rounds page sizes to whole pixels", () => {
-		expect(pageSizeAt(612.4, 792.6)).toEqual({ width: 612, height: 793 });
-		expect(pageSizeAt(0, 0)).toEqual({ width: 1, height: 1 });
 	});
 });

@@ -75,7 +75,10 @@ export default function MobileMenu({
 					</div>
 					<nav aria-label={t("categoriesNav")} className="flex flex-col">
 						{categories.map((category) => (
-							<details className="group border-b border-border" key={category.key}>
+							<details
+								className="group border-b border-border"
+								key={category.key}
+							>
 								<summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 text-body text-text outline-none hover:text-blue-500 focus-visible:text-blue-500 [&::-webkit-details-marker]:hidden">
 									{category.label}
 									<ChevronDown
@@ -87,6 +90,7 @@ export default function MobileMenu({
 									{category.tools.map((tool) => (
 										<Dialog.Close
 											key={tool.slug}
+											nativeButton={false}
 											render={
 												<Link
 													className="flex min-h-10 items-center rounded-md px-2 text-small text-text-2 outline-none hover:bg-surface-2 hover:text-text focus-visible:bg-surface-2"
@@ -98,6 +102,7 @@ export default function MobileMenu({
 										/>
 									))}
 									<Dialog.Close
+										nativeButton={false}
 										render={
 											<Link
 												className="flex min-h-10 items-center px-2 text-small text-blue-500 outline-none hover:underline hover:underline-offset-4 focus-visible:text-blue-400"

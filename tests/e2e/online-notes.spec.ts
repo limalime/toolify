@@ -42,10 +42,44 @@ test("shares a note through a self contained link", async ({ page }) => {
 	expect(link).toContain("/online-notes/");
 	const path = new URL(link).pathname;
 	await page.goto(path);
-	await expect(page.getByRole("heading", { name: "Shared plan" })).toBeVisible();
+	await expect(
+		page.getByRole("heading", { name: "Shared plan" }),
+	).toBeVisible();
 	await expect(page.getByText("Ship it on Friday.")).toBeVisible();
 	await expect(
 		page.getByRole("link", { name: "Write your own note" }),
+	).toBeVisible();
+});
+
+test("shared note arrives server rendered without a hydration error", async ({
+	page,
+}) => {
+	const errors: string[] = [];
+	page.on("console", (message) => {
+		if (message.type() === "error") {
+			errors.push(message.text());
+		}
+	});
+	page.on("pageerror", (error) => errors.push(String(error)));
+	await page.getByRole("button", { name: "New note" }).click();
+	await page.getByLabel("Title").fill("Server rendered");
+	await page.getByTestId("notes-editor").fill("No mismatch here.");
+	await page.getByRole("button", { name: "Share note" }).click();
+	const link = await page.getByLabel("Share link").inputValue();
+	await page.goto(new URL(link).pathname);
+	await expect(
+		page.getByRole("heading", { level: 1, name: "Server rendered" }),
+	).toBeVisible();
+	expect(errors.filter((text) => /hydrat/i.test(text))).toEqual([]);
+});
+
+test("an incomplete share link explains the problem", async ({ page }) => {
+	await page.goto("/online-notes/not-a-note");
+	await expect(
+		page.getByRole("heading", { level: 1, name: "Shared note" }),
+	).toBeVisible();
+	await expect(
+		page.getByText("This note link is incomplete or out of date."),
 	).toBeVisible();
 });
 
