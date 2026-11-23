@@ -621,9 +621,9 @@
 				"ownImage": "Gambar sendiri",
 				"removeLayer": "Hapus lapisan",
 				"stroke": "Garis luar",
-			"outlineColor": "Warna garis luar",
-			"outlineSize": "Ukuran garis luar",
-			"resize": "Ubah ukuran lapisan",
+				"outlineColor": "Warna garis luar",
+				"outlineSize": "Ukuran garis luar",
+				"resize": "Ubah ukuran lapisan",
 				"templateN": "Template {n}",
 				"templates": "Template",
 				"text": "Teks",
@@ -3026,7 +3026,7 @@
 			"name": "Kompresor PDF",
 			"tagline": "Perkecil PDF dengan hasil jujur.",
 			"title": "Kompresor PDF Gratis",
-			"description": "Kompres PDF di browser dengan merender halaman pada kualitas rendah, sedang atau tinggi. Lihat ukuran nyata sebelum dan sesudah. Tanpa unggah.",
+			"description": "Kompres PDF di browser dengan mengodekan ulang gambar pada kualitas rendah, sedang atau tinggi. Teks tetap bisa dipilih, tautan tetap berfungsi dan tidak ada yang diunggah. Lihat ukuran nyata sebelum dan sesudah.",
 			"h1": "Kompresor PDF Gratis",
 			"sub": "Pilih kualitas, kompres, dan bandingkan ukuran aslinya.",
 			"options": {
@@ -3034,21 +3034,24 @@
 				"qualityLow": "Rendah, file terkecil",
 				"qualityMedium": "Sedang, seimbang",
 				"qualityHigh": "Tinggi, paling tajam",
-				"hint": "Halaman dirasterisasi dan dikodekan ulang sebagai JPEG. Teks menjadi gambar, jadi tautan dan teks yang bisa dipilih hilang.",
-				"rasterNote": "Jika hasilnya lebih besar dari aslinya, simpan file asli.",
+				"hint": "Gambar di dalam PDF dikodekan ulang sesuai kualitas yang dipilih. Teks tetap bisa dipilih dan tautan tetap berfungsi.",
+				"rasterNote": "File yang sudah optimal dikembalikan tanpa perubahan.",
 				"compress": "Kompres PDF",
 				"progress": "Progres kompresi",
-				"progressLabel": "Halaman {done} dari {total}",
+				"progressLabel": "Gambar {done} dari {total}",
 				"before": "Sebelum",
 				"after": "Sesudah",
 				"pages": "Halaman",
+				"images": "Gambar",
+				"imageCount": "{replaced} dari {images} dikodekan ulang",
 				"smaller": "{percent}% lebih kecil",
 				"larger": "{percent}% lebih besar",
 				"same": "Hampir sama besar",
-				"keepOriginal": "File hasil kompresi tidak lebih kecil. Simpan yang asli.",
 				"download": "Unduh PDF",
 				"done": "PDF dikompres",
-				"failed": "Kompresi gagal."
+				"failed": "Kompresi gagal.",
+				"noImages": "PDF ini tidak punya gambar untuk diperkecil. File asli dikembalikan tanpa perubahan.",
+				"noGain": "PDF ini tidak bisa mengecil pada tingkat ini. File asli dikembalikan tanpa perubahan. Coba kualitas lebih rendah."
 			},
 			"steps": [
 				{
@@ -3067,15 +3070,15 @@
 			"faqs": [
 				{
 					"q": "Apakah teks tetap bisa dipilih?",
-					"a": "Tidak. Kompresor merender setiap halaman menjadi gambar, jadi teks dan tautan diratakan."
+					"a": "Ya. Hanya gambar di dalam PDF yang dikodekan ulang, jadi teks, tautan dan struktur halaman tetap utuh."
 				},
 				{
-					"q": "Kenapa kadang file jadi lebih besar?",
-					"a": "PDF yang sudah optimal bisa membesar saat dibangun ulang sebagai gambar. Hasilnya diberi tahu dan kamu bisa simpan yang asli."
+					"q": "Kenapa file kadang tidak mengecil?",
+					"a": "Gambar yang sudah optimal dibiarkan apa adanya, jadi sebagian file tidak bisa mengecil. Hasilnya menunjukkan ukuran nyata, dan file yang tidak bisa mengecil dikembalikan tanpa perubahan."
 				},
 				{
 					"q": "Apakah PDF diunggah?",
-					"a": "Tidak. Render dan pembangunan ulang terjadi di tab ini."
+					"a": "Tidak. Dekode gambar dan pembangunan ulang terjadi di tab ini."
 				}
 			]
 		}

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { PDF_DPI_CAP, pageSizeAt, sizeVerdict } from "../pdf/compress";
 import { formatCount, wrapLines } from "./mockup";
-import { pageSizeAt, PDF_QUALITY_SCALE, sizeVerdict } from "../pdf/compress";
 
 describe("mockup helpers", () => {
 	it("wraps words by measured width", () => {
@@ -25,9 +25,9 @@ describe("mockup helpers", () => {
 });
 
 describe("pdf compression helpers", () => {
-	it("maps quality to render scale and jpeg quality", () => {
-		expect(PDF_QUALITY_SCALE.low).toBeLessThan(PDF_QUALITY_SCALE.medium);
-		expect(PDF_QUALITY_SCALE.medium).toBeLessThan(PDF_QUALITY_SCALE.high);
+	it("maps quality to a dpi cap", () => {
+		expect(PDF_DPI_CAP.low).toBeLessThan(PDF_DPI_CAP.medium);
+		expect(PDF_DPI_CAP.medium).toBeLessThan(PDF_DPI_CAP.high);
 	});
 
 	it("reports honest size verdicts", () => {

@@ -29,9 +29,17 @@ export default function PdfCompressorTool() {
 	const [file, setFile] = useState<File | null>(null);
 	const [quality, setQuality] = useState<PdfQuality>("medium");
 	const [running, setRunning] = useState(false);
-	const [progress, setProgress] = useState<{ done: number; total: number } | null>(null);
+	const [progress, setProgress] = useState<{
+		done: number;
+		total: number;
+	} | null>(null);
 	const [error, setError] = useState<string | null>(null);
-	const [result, setResult] = useState<{ bytes: Uint8Array; pages: number } | null>(null);
+	const [result, setResult] = useState<{
+		bytes: Uint8Array;
+		pages: number;
+		images: number;
+		replaced: number;
+	} | null>(null);
 
 	const compress = async () => {
 		if (!file || running) {
@@ -47,16 +55,23 @@ export default function PdfCompressorTool() {
 				await file.arrayBuffer(),
 				quality,
 				Comlink.proxy((done: number, total: number) =>
-					setProgress({ done, total }),
+					setProgress(total > 0 ? { done, total } : null),
 				),
 			);
 			if (!response.ok) {
+				console.error(
+					"[pdf-compressor] failed",
+					response.detail ?? response.code,
+				);
 				setError(t("options.failed"));
 				return;
 			}
 			setResult(response.value);
-			notify.success(t("options.done"));
-		} catch {
+			if (response.value.replaced > 0) {
+				notify.success(t("options.done"));
+			}
+		} catch (unknown) {
+			console.error("[pdf-compressor] failed", unknown);
 			setError(t("options.failed"));
 		} finally {
 			setRunning(false);
@@ -64,7 +79,8 @@ export default function PdfCompressorTool() {
 		}
 	};
 
-	const verdict = result && file ? sizeVerdict(file.size, result.bytes.byteLength) : null;
+	const verdict =
+		result && file ? sizeVerdict(file.size, result.bytes.byteLength) : null;
 
 	return (
 		<div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
@@ -90,7 +106,10 @@ export default function PdfCompressorTool() {
 				/>
 				{file ? (
 					<div className="flex items-center gap-3 rounded-lg border border-border bg-surface p-3">
-						<FileText aria-hidden="true" className="size-6 shrink-0 text-blue-500" />
+						<FileText
+							aria-hidden="true"
+							className="size-6 shrink-0 text-blue-500"
+						/>
 						<div className="flex min-w-0 flex-1 flex-col">
 							<span className="truncate text-small text-text">{file.name}</span>
 							<span className="text-caption text-text-3">
@@ -100,7 +119,11 @@ export default function PdfCompressorTool() {
 					</div>
 				) : null}
 				{error ? (
-					<p className="text-small text-error" role="alert">
+					<p
+						className="text-small text-error"
+						data-testid="pdf-compressor-error"
+						role="alert"
+					>
 						{error}
 					</p>
 				) : null}
@@ -120,11 +143,16 @@ export default function PdfCompressorTool() {
 					</div>
 				) : null}
 				{result && file && verdict ? (
-					<div className="flex flex-col gap-3 rounded-lg border border-border bg-surface p-5" data-testid="compress-result">
+					<div
+						className="flex flex-col gap-3 rounded-lg border border-border bg-surface p-5"
+						data-testid="compress-result"
+					>
 						<dl className="grid gap-2 text-small">
 							<div className="flex justify-between gap-3">
 								<dt className="text-text-3">{t("options.before")}</dt>
-								<dd className="font-mono text-text">{formatBytes(file.size)}</dd>
+								<dd className="font-mono text-text">
+									{formatBytes(file.size)}
+								</dd>
 							</div>
 							<div className="flex justify-between gap-3">
 								<dt className="text-text-3">{t("options.after")}</dt>
@@ -136,10 +164,21 @@ export default function PdfCompressorTool() {
 								<dt className="text-text-3">{t("options.pages")}</dt>
 								<dd className="font-mono text-text">{result.pages}</dd>
 							</div>
+							<div className="flex justify-between gap-3">
+								<dt className="text-text-3">{t("options.images")}</dt>
+								<dd className="font-mono text-text">
+									{t("options.imageCount", {
+										replaced: result.replaced,
+										images: result.images,
+									})}
+								</dd>
+							</div>
 						</dl>
 						<p
 							className={
-								verdict.label === "smaller" ? "text-small text-success" : "text-small text-warn"
+								verdict.label === "smaller"
+									? "text-small text-success"
+									: "text-small text-warn"
 							}
 						>
 							{verdict.label === "smaller"
@@ -149,7 +188,11 @@ export default function PdfCompressorTool() {
 									: t("options.same")}
 						</p>
 						{verdict.label !== "smaller" ? (
-							<p className="text-caption text-text-3">{t("options.keepOriginal")}</p>
+							<p className="text-caption text-text-3">
+								{result.images === 0
+									? t("options.noImages")
+									: t("options.noGain")}
+							</p>
 						) : null}
 						<SmoothButton
 							onClick={() =>
@@ -182,7 +225,9 @@ export default function PdfCompressorTool() {
 							setResult(null);
 						}}
 						options={QUALITIES.map((entry) => ({
-							label: t(`options.quality${entry[0]?.toUpperCase()}${entry.slice(1)}`),
+							label: t(
+								`options.quality${entry[0]?.toUpperCase()}${entry.slice(1)}`,
+							),
 							value: entry,
 						}))}
 						value={quality}

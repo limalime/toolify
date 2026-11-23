@@ -1,9 +1,9 @@
 export type PdfQuality = "low" | "medium" | "high";
 
-export const PDF_QUALITY_SCALE: Record<PdfQuality, number> = {
-	low: 0.9,
-	medium: 1.4,
-	high: 2,
+export const PDF_DPI_CAP: Record<PdfQuality, number> = {
+	low: 72,
+	medium: 120,
+	high: 200,
 };
 
 export const PDF_QUALITY_JPEG: Record<PdfQuality, number> = {
@@ -35,7 +35,10 @@ export function sizeVerdict(original: number, output: number): SizeVerdict {
 	};
 }
 
-export function pageSizeAt(scaledWidth: number, scaledHeight: number): {
+export function pageSizeAt(
+	scaledWidth: number,
+	scaledHeight: number,
+): {
 	width: number;
 	height: number;
 } {

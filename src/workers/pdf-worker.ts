@@ -1,11 +1,7 @@
 import * as Comlink from "comlink";
 import { zipSync } from "fflate";
-import { PDFDocument } from "pdf-lib";
-import {
-	PDF_QUALITY_JPEG,
-	PDF_QUALITY_SCALE,
-	type PdfQuality,
-} from "@/lib/pdf/compress";
+import type { PdfQuality } from "@/lib/pdf/compress";
+import { compressPdfImages, type ImageCodec } from "@/lib/pdf/compress-images";
 import {
 	mergePdfs,
 	PdfError,
@@ -13,10 +9,10 @@ import {
 	splitPdf,
 } from "@/lib/pdf/merge-split";
 
-export type PdfCode = "empty" | "unreadable" | "range" | "failed";
+export type PdfCode = "empty" | "unreadable" | "range" | "failed" | "cancelled";
 
-// pdf.js resolves its runtime assets against document.baseURI. a worker has no
-// document, so give it the one property it reads and its fetch path works.
+// pdf.js resolves runtime assets against document.baseURI. a worker has no
+// document, so keep the one property it reads available.
 const scope = globalThis as typeof globalThis & {
 	document?: { baseURI: string };
 };
@@ -24,13 +20,105 @@ scope.document ??= { baseURI: self.location.href } as Document;
 
 export type PdfResult<T> =
 	| { ok: true; value: T }
-	| { ok: false; code: PdfCode };
+	| { ok: false; code: PdfCode; detail?: string };
 
-function fail(unknown: unknown): { ok: false; code: PdfCode } {
+function fail(unknown: unknown): { ok: false; code: PdfCode; detail: string } {
+	const detail =
+		unknown instanceof Error
+			? `${unknown.name}: ${unknown.message}`
+			: String(unknown);
 	if (unknown instanceof PdfError) {
-		return { ok: false, code: unknown.code };
+		return { ok: false, code: unknown.code, detail };
 	}
-	return { ok: false, code: "failed" };
+	return { ok: false, code: "failed", detail };
+}
+
+function cancelled(): { ok: false; code: "cancelled"; detail: string } {
+	return { ok: false, code: "cancelled", detail: "render cancelled" };
+}
+
+function isRenderCancelled(unknown: unknown): boolean {
+	return (
+		typeof unknown === "object" &&
+		unknown !== null &&
+		"name" in unknown &&
+		(unknown as { name?: string }).name === "RenderingCancelledException"
+	);
+}
+
+// pdf.js draws inline images and soft masks through a canvas factory. the
+// browser build defaults to document.createElement, which does not exist in a
+// worker, so hand it an OffscreenCanvas factory instead.
+class WorkerCanvasFactory {
+	create(width: number, height: number) {
+		const canvas = new OffscreenCanvas(
+			Math.max(1, Math.floor(width)),
+			Math.max(1, Math.floor(height)),
+		);
+		const context = canvas.getContext("2d", { willReadFrequently: true });
+		if (!context) {
+			throw new Error("2d context unavailable");
+		}
+		return { canvas, context };
+	}
+
+	reset(entry: { canvas: OffscreenCanvas }, width: number, height: number) {
+		entry.canvas.width = Math.max(1, Math.floor(width));
+		entry.canvas.height = Math.max(1, Math.floor(height));
+	}
+
+	getNoAlphaContext(canvas: OffscreenCanvas) {
+		return canvas.getContext("2d", {
+			alpha: false,
+			willReadFrequently: true,
+		});
+	}
+
+	destroy(entry: {
+		canvas: OffscreenCanvas | null;
+		context: OffscreenCanvasRenderingContext2D | null;
+	}) {
+		const canvas = entry.canvas;
+		if (canvas) {
+			canvas.width = 0;
+			canvas.height = 0;
+		}
+		entry.canvas = null;
+		entry.context = null;
+	}
+}
+
+// svg filter based effects need a DOM, so mirror pdf.js's own node factory
+// and report no filter. text, images and shapes still draw normally.
+class WorkerFilterFactory {
+	addFilter() {
+		return "none";
+	}
+	addHCMFilter() {
+		return "none";
+	}
+	addAlphaFilter() {
+		return "none";
+	}
+	addLuminosityFilter() {
+		return "none";
+	}
+	addKnockoutFilter() {
+		return "none";
+	}
+	addHighlightHCMFilter() {
+		return "none";
+	}
+	addSelectionHCMFilter() {
+		return "none";
+	}
+	addSelectionFilter() {
+		return "none";
+	}
+	createSelectionStyle() {
+		return null;
+	}
+	destroy() {}
 }
 
 async function loadPdfjs() {
@@ -42,8 +130,8 @@ async function loadPdfjs() {
 // fonts, cmaps, wasm image decoders and colour profiles are served from
 // public/pdfjs, without them pdf.js draws tofu text and refuses to decode
 // jbig2 and jpeg2000 scans. sync-pdfjs-assets.mjs keeps this folder current.
-// pdf.js resolves these against document.baseURI, which does not exist inside
-// our worker, so hand it absolute urls.
+// pdf.js resolves these against document.baseURI. workers have no real
+// document, so hand it absolute urls instead of relying on the shim above.
 const origin = self.location.origin;
 const documentOptions = {
 	cMapUrl: `${origin}/pdfjs/cmaps/`,
@@ -58,6 +146,8 @@ const documentOptions = {
 	useSystemFonts: false,
 	// FontFace has no document to attach to inside this worker
 	disableFontFace: true,
+	CanvasFactory: WorkerCanvasFactory,
+	FilterFactory: WorkerFilterFactory,
 };
 
 // a huge page at a high zoom can exceed the largest canvas the browser will
@@ -68,6 +158,132 @@ const MAX_EDGE = 4096;
 let viewer: Awaited<
 	ReturnType<Awaited<ReturnType<typeof loadPdfjs>>["getDocument"]>["promise"]
 > | null = null;
+let viewerTask: ReturnType<
+	Awaited<ReturnType<typeof loadPdfjs>>["getDocument"]
+> | null = null;
+
+type RenderTask = { cancel: () => void; promise: Promise<void> };
+
+let activeRender: RenderTask | null = null;
+let renderRequest = 0;
+let renderQueue: Promise<unknown> = Promise.resolve();
+
+async function stopRenders() {
+	renderRequest += 1;
+	activeRender?.cancel();
+	activeRender = null;
+	await renderQueue.catch(() => undefined);
+}
+
+async function renderCurrentPage(
+	pageNumber: number,
+	scale: number,
+	request: number,
+): Promise<PdfResult<{ bitmap: ImageBitmap; width: number; height: number }>> {
+	if (!viewer) {
+		return fail(new Error("no document"));
+	}
+	const page = await viewer.getPage(
+		Math.max(1, Math.min(viewer.numPages, pageNumber)),
+	);
+	if (request !== renderRequest) {
+		return cancelled();
+	}
+	const base = page.getViewport({ scale: 1 });
+	const limit = MAX_EDGE / Math.max(base.width, base.height);
+	const viewport = page.getViewport({ scale: Math.min(scale, limit) });
+	const canvas = new OffscreenCanvas(
+		Math.max(1, Math.floor(viewport.width)),
+		Math.max(1, Math.floor(viewport.height)),
+	);
+	const context = canvas.getContext("2d");
+	if (!context) {
+		return fail(new Error("canvas unavailable"));
+	}
+	let task: RenderTask | null = null;
+	try {
+		task = page.render({ canvasContext: context, viewport }) as RenderTask;
+		activeRender = task;
+		await task.promise;
+	} catch (unknown) {
+		if (isRenderCancelled(unknown)) {
+			return cancelled();
+		}
+		throw unknown;
+	} finally {
+		if (activeRender === task) {
+			activeRender = null;
+		}
+	}
+	if (request !== renderRequest) {
+		return cancelled();
+	}
+	const bitmap = canvas.transferToImageBitmap();
+	return Comlink.transfer(
+		{
+			ok: true,
+			value: { bitmap, width: canvas.width, height: canvas.height },
+		},
+		[bitmap],
+	);
+}
+
+async function transcodeJpeg(
+	bytes: Uint8Array,
+	width: number,
+	height: number,
+	quality: number,
+): Promise<Uint8Array | null> {
+	const buffer = bytes.slice().buffer as ArrayBuffer;
+	const bitmap = await createImageBitmap(
+		new Blob([buffer], { type: "image/jpeg" }),
+	);
+	try {
+		const canvas = new OffscreenCanvas(width, height);
+		const context = canvas.getContext("2d");
+		if (!context) {
+			return null;
+		}
+		context.drawImage(bitmap, 0, 0, width, height);
+		const blob = await canvas.convertToBlob({
+			type: "image/jpeg",
+			quality,
+		});
+		return new Uint8Array(await blob.arrayBuffer());
+	} finally {
+		bitmap.close();
+	}
+}
+
+async function encodeRgba(
+	rgba: Uint8Array,
+	width: number,
+	height: number,
+	targetWidth: number,
+	targetHeight: number,
+	quality: number,
+): Promise<Uint8Array | null> {
+	const source = new OffscreenCanvas(width, height);
+	const sourceContext = source.getContext("2d");
+	if (!sourceContext) {
+		return null;
+	}
+	sourceContext.putImageData(
+		new ImageData(new Uint8ClampedArray(rgba), width, height),
+		0,
+		0,
+	);
+	const target = new OffscreenCanvas(targetWidth, targetHeight);
+	const context = target.getContext("2d");
+	if (!context) {
+		return null;
+	}
+	context.drawImage(source, 0, 0, targetWidth, targetHeight);
+	const blob = await target.convertToBlob({ type: "image/jpeg", quality });
+	return new Uint8Array(await blob.arrayBuffer());
+}
+
+const imageCodec: ImageCodec = { transcodeJpeg, encodeRgba };
 
 const api = {
 	ping: () => true,
@@ -129,66 +345,62 @@ const api = {
 		bytes: ArrayBuffer,
 	): Promise<PdfResult<{ pages: number }>> => {
 		try {
+			await stopRenders();
 			const pdfjs = await loadPdfjs();
-			if (viewer) {
-				await viewer.destroy();
-				viewer = null;
+			if (viewerTask) {
+				await viewerTask.destroy();
 			}
+			viewer = null;
+			viewerTask = null;
 			const task = pdfjs.getDocument({
 				...documentOptions,
 				data: new Uint8Array(bytes),
 			});
+			viewerTask = task;
 			viewer = await task.promise;
 			return { ok: true, value: { pages: viewer.numPages } };
 		} catch (unknown) {
 			viewer = null;
+			viewerTask = null;
 			return fail(unknown);
 		}
 	},
 
-	renderPage: async (
+	renderPage: (
 		pageNumber: number,
 		scale: number,
 	): Promise<
 		PdfResult<{ bitmap: ImageBitmap; width: number; height: number }>
 	> => {
-		try {
-			if (!viewer) {
-				return { ok: false, code: "unreadable" };
+		const request = ++renderRequest;
+		const job = renderQueue.then(async () => {
+			if (request !== renderRequest) {
+				return cancelled();
 			}
-			const page = await viewer.getPage(
-				Math.max(1, Math.min(viewer.numPages, pageNumber)),
-			);
-			const base = page.getViewport({ scale: 1 });
-			const limit = MAX_EDGE / Math.max(base.width, base.height);
-			const viewport = page.getViewport({ scale: Math.min(scale, limit) });
-			const canvas = new OffscreenCanvas(
-				Math.max(1, Math.floor(viewport.width)),
-				Math.max(1, Math.floor(viewport.height)),
-			);
-			const context = canvas.getContext("2d");
-			if (!context) {
-				return { ok: false, code: "failed" };
-			}
-			await page.render({ canvasContext: context, viewport }).promise;
-			const bitmap = canvas.transferToImageBitmap();
-			return Comlink.transfer(
-				{
-					ok: true,
-					value: { bitmap, width: canvas.width, height: canvas.height },
-				},
-				[bitmap],
-			);
-		} catch (unknown) {
-			return fail(unknown);
-		}
+			return renderCurrentPage(pageNumber, scale, request);
+		});
+		renderQueue = job.then(
+			() => undefined,
+			() => undefined,
+		);
+		return job;
+	},
+
+	cancelRender: async (): Promise<boolean> => {
+		renderRequest += 1;
+		const task = activeRender;
+		activeRender = null;
+		task?.cancel();
+		return task !== null;
 	},
 
 	closePdf: async (): Promise<boolean> => {
-		if (viewer) {
-			await viewer.destroy();
-			viewer = null;
+		await stopRenders();
+		if (viewerTask) {
+			await viewerTask.destroy();
 		}
+		viewer = null;
+		viewerTask = null;
 		return true;
 	},
 
@@ -196,48 +408,23 @@ const api = {
 		bytes: ArrayBuffer,
 		quality: PdfQuality,
 		onProgress?: (done: number, total: number) => void,
-	): Promise<PdfResult<{ bytes: Uint8Array; pages: number }>> => {
+	): Promise<
+		PdfResult<{
+			bytes: Uint8Array;
+			pages: number;
+			images: number;
+			replaced: number;
+		}>
+	> => {
 		try {
-			const pdfjs = await loadPdfjs();
-			const task = pdfjs.getDocument({
-				...documentOptions,
-				data: new Uint8Array(bytes),
+			const value = await compressPdfImages(new Uint8Array(bytes), {
+				quality,
+				codec: imageCodec,
+				onProgress: (done, total) => onProgress?.(done, total),
 			});
-			const source = await task.promise;
-			const output = await PDFDocument.create();
-			const scale = PDF_QUALITY_SCALE[quality] ?? 1.4;
-			const jpegQuality = PDF_QUALITY_JPEG[quality] ?? 0.72;
-			for (let index = 1; index <= source.numPages; index += 1) {
-				const page = await source.getPage(index);
-				const box = page.getViewport({ scale: 1 });
-				const viewport = page.getViewport({ scale });
-				const canvas = new OffscreenCanvas(
-					Math.max(1, Math.floor(viewport.width)),
-					Math.max(1, Math.floor(viewport.height)),
-				);
-				const context = canvas.getContext("2d");
-				if (!context) {
-					throw new Error("canvas unavailable");
-				}
-				await page.render({ canvasContext: context, viewport }).promise;
-				const blob = await canvas.convertToBlob({
-					type: "image/jpeg",
-					quality: jpegQuality,
-				});
-				const embedded = await output.embedJpg(await blob.arrayBuffer());
-				const target = output.addPage([box.width, box.height]);
-				target.drawImage(embedded, {
-					x: 0,
-					y: 0,
-					width: box.width,
-					height: box.height,
-				});
-				onProgress?.(index, source.numPages);
-			}
-			const saved = await output.save();
-			await task.destroy();
-			return { ok: true, value: { bytes: saved, pages: source.numPages } };
+			return { ok: true, value };
 		} catch (unknown) {
+			console.error("pdf compress failed", unknown);
 			return fail(unknown);
 		}
 	},

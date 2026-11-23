@@ -621,9 +621,9 @@
 				"ownImage": "Image perso",
 				"removeLayer": "Supprimer le calque",
 				"stroke": "Contour",
-			"outlineColor": "Couleur du contour",
-			"outlineSize": "Épaisseur du contour",
-			"resize": "Redimensionner le calque",
+				"outlineColor": "Couleur du contour",
+				"outlineSize": "Épaisseur du contour",
+				"resize": "Redimensionner le calque",
 				"templateN": "Modèle {n}",
 				"templates": "Modèles",
 				"text": "Texte",
@@ -3026,7 +3026,7 @@
 			"name": "Compresseur PDF",
 			"tagline": "Réduis des PDF avec des résultats honnêtes.",
 			"title": "Compresseur PDF Gratuit",
-			"description": "Compresse un PDF dans ton navigateur en rendant les pages en qualité basse, moyenne ou haute. Vois la taille réelle avant et après. Aucun envoi.",
+			"description": "Compresse un PDF dans ton navigateur en réencodant ses images en qualité basse, moyenne ou haute. Le texte reste sélectionnable, les liens fonctionnent et rien n est envoyé. Vois la taille réelle avant et après.",
 			"h1": "Compresseur PDF Gratuit",
 			"sub": "Choisis une qualité, compresse et compare la taille réelle.",
 			"options": {
@@ -3034,21 +3034,24 @@
 				"qualityLow": "Basse, fichier le plus petit",
 				"qualityMedium": "Moyenne, équilibrée",
 				"qualityHigh": "Haute, plus nette",
-				"hint": "Les pages sont rasterisées et réencodées en JPEG. Le texte devient une image, donc les liens et le texte sélectionnable disparaissent.",
-				"rasterNote": "Si le résultat est plus gros que l original, garde l original.",
+				"hint": "Les images intégrées sont réencodées à la qualité choisie. Le texte reste sélectionnable et les liens fonctionnent.",
+				"rasterNote": "Les fichiers déjà optimisés sont renvoyés tels quels.",
 				"compress": "Compresser le PDF",
 				"progress": "Progression",
-				"progressLabel": "Page {done} sur {total}",
+				"progressLabel": "Image {done} sur {total}",
 				"before": "Avant",
 				"after": "Après",
 				"pages": "Pages",
+				"images": "Images",
+				"imageCount": "{replaced} sur {images} réencodées",
 				"smaller": "{percent}% plus petit",
 				"larger": "{percent}% plus gros",
 				"same": "Presque la même taille",
-				"keepOriginal": "Le fichier compressé n est pas plus petit. Garde l original.",
 				"download": "Télécharger le PDF",
 				"done": "PDF compressé",
-				"failed": "La compression a échoué."
+				"failed": "La compression a échoué.",
+				"noImages": "Ce PDF n a pas d images à compresser. Le fichier original est renvoyé tel quel.",
+				"noGain": "Ce PDF ne peut pas rétrécir à ce niveau. L original est renvoyé tel quel. Essaie une qualité plus basse."
 			},
 			"steps": [
 				{
@@ -3067,15 +3070,15 @@
 			"faqs": [
 				{
 					"q": "Le texte reste-t-il sélectionnable ?",
-					"a": "Non. Le compresseur rend chaque page en image, donc le texte et les liens sont aplatis."
+					"a": "Oui. Seules les images intégrées sont réencodées, donc le texte, les liens et la structure des pages restent intacts."
 				},
 				{
-					"q": "Pourquoi le fichier grossit parfois ?",
-					"a": "Un PDF déjà optimisé peut grossir en étant reconstruit en images. Le résultat le dit et tu peux garder l original."
+					"q": "Pourquoi le fichier ne rétrécit-il parfois pas ?",
+					"a": "Les images déjà optimisées restent intactes, donc certains fichiers ne peuvent pas rétrécir. Le résultat affiche la taille réelle et un fichier qui ne peut pas rétrécir est renvoyé tel quel."
 				},
 				{
 					"q": "Le PDF est-il envoyé ?",
-					"a": "Non. Le rendu et la reconstruction se font dans cet onglet."
+					"a": "Non. Le décodage et la reconstruction des images se font dans cet onglet."
 				}
 			]
 		}

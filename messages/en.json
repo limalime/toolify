@@ -621,9 +621,9 @@
 				"ownImage": "Own image",
 				"removeLayer": "Remove layer",
 				"stroke": "Outline",
-			"outlineColor": "Outline color",
-			"outlineSize": "Outline size",
-			"resize": "Resize layer",
+				"outlineColor": "Outline color",
+				"outlineSize": "Outline size",
+				"resize": "Resize layer",
 				"templateN": "Template {n}",
 				"templates": "Templates",
 				"text": "Text",
@@ -3026,7 +3026,7 @@
 			"name": "PDF Compressor",
 			"tagline": "Shrink PDFs with honest results.",
 			"title": "Free PDF Compressor",
-			"description": "Compress a PDF in your browser by rendering pages at low, medium or high quality. See the real size before and after. No uploads.",
+			"description": "Compress a PDF in your browser by re-encoding its images at low, medium or high quality. Text stays selectable, links keep working and nothing is uploaded. See the real size before and after.",
 			"h1": "Free PDF Compressor",
 			"sub": "Pick a quality, compress, and compare the actual size.",
 			"options": {
@@ -3034,21 +3034,24 @@
 				"qualityLow": "Low, smallest file",
 				"qualityMedium": "Medium, balanced",
 				"qualityHigh": "High, sharpest",
-				"hint": "Pages are rasterized and re-encoded as JPEG. Text becomes an image, so links and selectable text are lost.",
-				"rasterNote": "If the result is bigger than the original, keep the original.",
+				"hint": "Embedded images are re-encoded at the selected quality. Text stays selectable and links keep working.",
+				"rasterNote": "Files that are already optimized are returned unchanged.",
 				"compress": "Compress PDF",
 				"progress": "Compression progress",
-				"progressLabel": "Page {done} of {total}",
+				"progressLabel": "Image {done} of {total}",
 				"before": "Before",
 				"after": "After",
 				"pages": "Pages",
+				"images": "Images",
+				"imageCount": "{replaced} of {images} re-encoded",
 				"smaller": "{percent}% smaller",
 				"larger": "{percent}% larger",
 				"same": "Almost the same size",
-				"keepOriginal": "The compressed file is not smaller. Keep the original.",
 				"download": "Download PDF",
 				"done": "PDF compressed",
-				"failed": "Compression failed."
+				"failed": "Compression failed.",
+				"noImages": "This PDF has no embedded images to shrink. The original is returned unchanged.",
+				"noGain": "This PDF cannot shrink at this level. The original is returned unchanged. Try a lower quality."
 			},
 			"steps": [
 				{
@@ -3067,15 +3070,15 @@
 			"faqs": [
 				{
 					"q": "Does this keep text selectable?",
-					"a": "No. The compressor renders each page to an image, so text and links are flattened."
+					"a": "Yes. Only embedded images are re-encoded, so text, links and the page structure stay intact."
 				},
 				{
-					"q": "Why is the file sometimes bigger?",
-					"a": "Already optimized PDFs can grow when rebuilt as images. The result page says so and you can keep the original."
+					"q": "Why does the file sometimes not shrink?",
+					"a": "Images that are already optimized are left untouched, so some files cannot shrink. The result shows the real size, and a file that cannot shrink is returned unchanged."
 				},
 				{
 					"q": "Is the PDF uploaded?",
-					"a": "No. Rendering and rebuilding happen in this tab."
+					"a": "No. Image decoding and rebuilding happen in this tab."
 				}
 			]
 		}

@@ -621,9 +621,9 @@
 				"ownImage": "Imagen propia",
 				"removeLayer": "Quitar capa",
 				"stroke": "Contorno",
-			"outlineColor": "Color del contorno",
-			"outlineSize": "Grosor del contorno",
-			"resize": "Cambiar tamaño de la capa",
+				"outlineColor": "Color del contorno",
+				"outlineSize": "Grosor del contorno",
+				"resize": "Cambiar tamaño de la capa",
 				"templateN": "Plantilla {n}",
 				"templates": "Plantillas",
 				"text": "Texto",
@@ -3026,7 +3026,7 @@
 			"name": "Compresor de PDF",
 			"tagline": "Reduce PDFs con resultados honestos.",
 			"title": "Compresor de PDF Gratis",
-			"description": "Comprime un PDF en tu navegador renderizando páginas en calidad baja, media o alta. Mira el tamaño real antes y después. Sin subidas.",
+			"description": "Comprime un PDF en tu navegador recodificando sus imágenes en calidad baja, media o alta. El texto sigue siendo seleccionable, los enlaces funcionan y nada se sube. Mira el tamaño real antes y después.",
 			"h1": "Compresor de PDF Gratis",
 			"sub": "Elige calidad, comprime y compara el tamaño real.",
 			"options": {
@@ -3034,21 +3034,24 @@
 				"qualityLow": "Baja, archivo más pequeño",
 				"qualityMedium": "Media, equilibrada",
 				"qualityHigh": "Alta, más nítida",
-				"hint": "Las páginas se rasterizan y recodifican como JPEG. El texto se vuelve imagen, así que se pierden enlaces y texto seleccionable.",
-				"rasterNote": "Si el resultado es más grande que el original, quédate con el original.",
+				"hint": "Las imágenes incrustadas se recodifican con la calidad elegida. El texto sigue siendo seleccionable y los enlaces funcionan.",
+				"rasterNote": "Los archivos ya optimizados se devuelven sin cambios.",
 				"compress": "Comprimir PDF",
 				"progress": "Progreso de compresión",
-				"progressLabel": "Página {done} de {total}",
+				"progressLabel": "Imagen {done} de {total}",
 				"before": "Antes",
 				"after": "Después",
 				"pages": "Páginas",
+				"images": "Imágenes",
+				"imageCount": "{replaced} de {images} recodificadas",
 				"smaller": "{percent}% más pequeño",
 				"larger": "{percent}% más grande",
 				"same": "Casi el mismo tamaño",
-				"keepOriginal": "El archivo comprimido no es más pequeño. Conserva el original.",
 				"download": "Descargar PDF",
 				"done": "PDF comprimido",
-				"failed": "La compresión falló."
+				"failed": "La compresión falló.",
+				"noImages": "Este PDF no tiene imágenes que comprimir. Se devuelve el original sin cambios.",
+				"noGain": "Este PDF no se puede reducir con este nivel. Se devuelve el original sin cambios. Prueba una calidad más baja."
 			},
 			"steps": [
 				{
@@ -3067,15 +3070,15 @@
 			"faqs": [
 				{
 					"q": "¿El texto sigue siendo seleccionable?",
-					"a": "No. El compresor convierte cada página en imagen, así que el texto y los enlaces se aplanan."
+					"a": "Sí. Solo se recodifican las imágenes incrustadas, así que el texto, los enlaces y la estructura de la página se mantienen."
 				},
 				{
-					"q": "¿Por qué a veces pesa más?",
-					"a": "Los PDF ya optimizados pueden crecer al reconstruirse como imágenes. La página de resultado lo dice y puedes quedarte con el original."
+					"q": "¿Por qué a veces el archivo no se reduce?",
+					"a": "Las imágenes ya optimizadas se dejan intactas, así que algunos archivos no pueden reducirse. El resultado muestra el tamaño real y un archivo que no puede reducirse se devuelve sin cambios."
 				},
 				{
 					"q": "¿Se sube el PDF?",
-					"a": "No. El render y la reconstrucción ocurren en esta pestaña."
+					"a": "No. La decodificación y la reconstrucción ocurren en esta pestaña."
 				}
 			]
 		}

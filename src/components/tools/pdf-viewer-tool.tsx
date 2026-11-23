@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight, Minus, Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Dropzone from "@/components/primitives/dropzone";
 import Field, { FieldControl, FieldLabel } from "@/components/smoothui/field";
 import SmoothButton from "@/components/smoothui/smooth-button";
@@ -21,63 +21,142 @@ export default function PdfViewerTool() {
 	const [scale, setScale] = useState(1.1);
 	const [loading, setLoading] = useState(false);
 	const [rendering, setRendering] = useState(false);
+	const [renderedPage, setRenderedPage] = useState<number | null>(null);
 	const [error, setError] = useState<string | null>(null);
 	const canvas = useRef<HTMLCanvasElement>(null);
-	const token = useRef(0);
+	const generation = useRef(0);
+	const queue = useRef<Promise<void>>(Promise.resolve());
 
-	const render = async (number: number, zoom: number) => {
-		const current = token.current + 1;
-		token.current = current;
+	const clearCanvas = useCallback(() => {
+		const target = canvas.current;
+		if (target) {
+			target.width = 0;
+			target.height = 0;
+		}
+	}, []);
+
+	const resetViewer = useCallback(() => {
+		generation.current += 1;
+		setRendering(false);
+		setRenderedPage(null);
+		clearCanvas();
+		pdfWorker()
+			.then((worker) => worker.cancelRender())
+			.catch(() => undefined);
+	}, [clearCanvas]);
+
+	useEffect(() => {
+		if (pages <= 0) {
+			return;
+		}
+		const request = ++generation.current;
+		let cancelled = false;
+		setError(null);
+		setRenderedPage(null);
 		setRendering(true);
-		try {
-			const worker = await pdfWorker();
-			const result = await worker.renderPage(number, zoom);
-			if (token.current !== current) {
+		clearCanvas();
+
+		const run = async () => {
+			if (cancelled || generation.current !== request) {
 				return;
 			}
-			if (!result.ok) {
-				setError(t("options.renderError"));
-				return;
-			}
-			const target = canvas.current;
-			const context = target?.getContext("2d");
-			if (target && context) {
+			try {
+				const worker = await pdfWorker();
+				if (cancelled || generation.current !== request) {
+					return;
+				}
+				// drop any render still drawing into the old canvas
+				await worker.cancelRender();
+				if (cancelled || generation.current !== request) {
+					return;
+				}
+				const result = await worker.renderPage(page, scale);
+				if (cancelled || generation.current !== request) {
+					return;
+				}
+				if (!result.ok) {
+					if (result.code !== "cancelled") {
+						console.error(
+							"[pdf-viewer] render failed",
+							result.detail ?? result.code,
+						);
+						setError(t("options.renderError"));
+					}
+					return;
+				}
+				const target = canvas.current;
+				if (!target) {
+					return;
+				}
 				target.width = result.value.width;
 				target.height = result.value.height;
+				const context = target.getContext("2d");
+				if (!context) {
+					setError(t("options.renderError"));
+					return;
+				}
 				context.drawImage(result.value.bitmap, 0, 0);
+				result.value.bitmap.close();
+				setRenderedPage(page);
+			} catch (unknown) {
+				if (!cancelled && generation.current === request) {
+					console.error("[pdf-viewer] render failed", unknown);
+					setError(t("options.renderError"));
+				}
 			}
-			result.value.bitmap.close();
-		} catch {
-			if (token.current === current) {
-				setError(t("options.renderError"));
-			}
-		} finally {
-			if (token.current === current) {
+		};
+
+		queue.current = queue.current.then(run, run).finally(() => {
+			if (!cancelled && generation.current === request) {
 				setRendering(false);
 			}
-		}
-	};
+		});
 
-	// biome-ignore lint/correctness/useExhaustiveDependencies: render is recreated each render, page and scale drive it
-	useEffect(() => {
-		if (pages > 0 && canvas.current) {
-			render(page, scale);
-		}
-	}, [page, scale, pages]);
+		return () => {
+			cancelled = true;
+			pdfWorker()
+				.then((worker) => worker.cancelRender())
+				.catch(() => undefined);
+		};
+	}, [page, scale, pages, t, clearCanvas]);
 
 	useEffect(() => {
 		return () => {
+			generation.current += 1;
 			pdfWorker()
 				.then((worker) => worker.closePdf())
 				.catch(() => undefined);
 		};
 	}, []);
 
+	const goToPage = (next: number) => {
+		const clamped = Math.max(1, Math.min(pages, next));
+		if (clamped === page) {
+			return;
+		}
+		clearCanvas();
+		setRenderedPage(null);
+		setError(null);
+		setPage(clamped);
+	};
+
+	const zoomTo = (next: number) => {
+		const clamped = Math.max(0.5, Math.min(3, next));
+		if (clamped === scale) {
+			return;
+		}
+		clearCanvas();
+		setRenderedPage(null);
+		setError(null);
+		setScale(clamped);
+	};
+
 	const open = async (files: File[]) => {
 		const [picked] = files;
 		if (!picked) {
 			return;
 		}
+		resetViewer();
 		setError(null);
 		if (picked.size > MAX_PDF_BYTES) {
 			setError(te("tooLarge", { limit: formatBytes(MAX_PDF_BYTES) }));
@@ -90,6 +169,7 @@ export default function PdfViewerTool() {
 			const worker = await pdfWorker();
 			const result = await worker.openPdf(await picked.arrayBuffer());
 			if (!result.ok) {
+				console.error("[pdf-viewer] open failed", result.detail ?? result.code);
 				setError(t("options.unreadable"));
 				setFile(null);
 				return;
@@ -97,12 +177,24 @@ export default function PdfViewerTool() {
 			setPages(result.value.pages);
 			setPage(1);
 			setScale(1.1);
-		} catch {
+		} catch (unknown) {
+			console.error("[pdf-viewer] open failed", unknown);
 			setError(t("options.unreadable"));
 			setFile(null);
 		} finally {
 			setLoading(false);
 		}
+	};
+
+	const close = () => {
+		resetViewer();
+		setFile(null);
+		setPages(0);
+		setPage(1);
+		setError(null);
+		pdfWorker()
+			.then((worker) => worker.closePdf())
+			.catch(() => undefined);
 	};
 
 	return (
@@ -123,14 +215,7 @@ export default function PdfViewerTool() {
 						</p>
 						<div className="flex items-center gap-2">
 							<SmoothButton asChild size="sm" variant="secondary">
-								<button
-									onClick={() => {
-										setFile(null);
-										setPages(0);
-										pdfWorker().then((worker) => worker.closePdf());
-									}}
-									type="button"
-								>
+								<button onClick={close} type="button">
 									{t("options.close")}
 								</button>
 							</SmoothButton>
@@ -138,7 +223,11 @@ export default function PdfViewerTool() {
 					</div>
 				)}
 				{error ? (
-					<p className="text-small text-error" role="alert">
+					<p
+						className="text-small text-error"
+						data-testid="pdf-viewer-error"
+						role="alert"
+					>
 						{error}
 					</p>
 				) : null}
@@ -155,6 +244,7 @@ export default function PdfViewerTool() {
 						<canvas
 							aria-label={t("options.pageCanvas")}
 							className="h-auto max-w-full rounded-sm bg-white shadow-modal"
+							data-rendered-page={renderedPage ?? undefined}
 							data-testid="pdf-page"
 							ref={canvas}
 						/>
@@ -178,7 +268,7 @@ export default function PdfViewerTool() {
 								onChange={(event) => {
 									const next = Number(event.target.value);
 									if (Number.isFinite(next)) {
-										setPage(Math.max(1, Math.min(pages, next)));
+										goToPage(next);
 									}
 								}}
 								type="number"
@@ -189,7 +279,7 @@ export default function PdfViewerTool() {
 							<SmoothButton
 								className="w-full"
 								disabled={page <= 1 || rendering}
-								onClick={() => setPage((current) => Math.max(1, current - 1))}
+								onClick={() => goToPage(page - 1)}
 								size="sm"
 								variant="secondary"
 							>
@@ -199,9 +289,7 @@ export default function PdfViewerTool() {
 							<SmoothButton
 								className="w-full"
 								disabled={page >= pages || rendering}
-								onClick={() =>
-									setPage((current) => Math.min(pages, current + 1))
-								}
+								onClick={() => goToPage(page + 1)}
 								size="sm"
 								variant="secondary"
 							>
@@ -218,9 +306,7 @@ export default function PdfViewerTool() {
 									aria-label={t("options.zoomOut")}
 									className="inline-flex size-9 cursor-pointer items-center justify-center rounded-md border border-border text-text outline-none hover:bg-surface-2"
 									disabled={scale <= 0.5}
-									onClick={() =>
-										setScale((current) => Math.max(0.5, current - 0.2))
-									}
+									onClick={() => zoomTo(scale - 0.2)}
 									type="button"
 								>
 									<Minus aria-hidden="true" className="size-4" />
@@ -232,9 +318,7 @@ export default function PdfViewerTool() {
 									aria-label={t("options.zoomIn")}
 									className="inline-flex size-9 cursor-pointer items-center justify-center rounded-md border border-border text-text outline-none hover:bg-surface-2"
 									disabled={scale >= 3}
-									onClick={() =>
-										setScale((current) => Math.min(3, current + 0.2))
-									}
+									onClick={() => zoomTo(scale + 0.2)}
 									type="button"
 								>
 									<Plus aria-hidden="true" className="size-4" />
