@@ -1,6 +1,8 @@
 # Toolify
 
-Toolify is a collection of free online tools for images, text, video, audio, finance, PDFs, and everyday utilities. Every tool runs fully in the browser, so files never leave the device.
+<img src="https://bucket.toolify.bond/images/wordmark.png" alt="logo" width="700px" height="200px">
+
+[Toolify](https://toolify.bond) is a collection of free online tools for images, text, video, audio, finance, PDFs, and everyday utilities. Every tool runs fully in the browser, so files never leave the device.
 
 The site is a Next.js App Router app hosted on Cloudflare Workers through the OpenNext adapter.
 
