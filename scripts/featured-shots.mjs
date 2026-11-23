@@ -72,9 +72,9 @@ await shot("meme-generator", {
 		const stage = page.getByTestId("meme-preview");
 		await stage.scrollIntoViewIfNeeded();
 		await stage.waitFor();
-		const dragLayer = async (index, toY) => {
+		const dragLayer = async (text, toY) => {
 			const box = await stage.boundingBox();
-			const layer = stage.locator("button").nth(index);
+			const layer = stage.getByRole("button", { name: text, exact: true });
 			const layerBox = await layer.boundingBox();
 			if (!box || !layerBox) {
 				throw new Error("no meme stage");
@@ -93,11 +93,11 @@ await shot("meme-generator", {
 		await page.getByRole("button", { name: "Add text" }).click();
 		await page.getByLabel("Text", { exact: true }).fill("WHEN THE TOOL");
 		await stage.scrollIntoViewIfNeeded();
-		await dragLayer(0, 0.16);
+		await dragLayer("WHEN THE TOOL", 0.16);
 		await page.getByRole("button", { name: "Add text" }).click();
 		await page.getByLabel("Text", { exact: true }).fill("JUST WORKS");
 		await stage.scrollIntoViewIfNeeded();
-		await dragLayer(1, 0.84);
+		await dragLayer("JUST WORKS", 0.84);
 		await page.getByTestId("meme-preview").waitFor();
 	},
 });
