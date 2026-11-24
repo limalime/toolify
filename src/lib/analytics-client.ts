@@ -42,6 +42,10 @@ let clarityLoaded = false;
 let clarityStopped = false;
 let routeDisabled = false;
 let settled = false;
+// gtag sends its own page_view for the page the tag boots on. that hit is
+// the landing page view, so the client counts only the pages after it.
+let bootViewPending = false;
+let lastViewed: string | null = null;
 const completed = new Set<string>();
 const pending = new Map<string, string>();
 
@@ -105,7 +109,12 @@ function loadTags() {
 				`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID)}`,
 			);
 			window.gtag?.("js", new Date());
-			window.gtag?.("config", GA_ID, { send_page_view: false });
+			// the tag sends one page_view for the page it boots on and no
+			// config flag suppresses that hit. let it own the hard load and
+			// have the client count only the hops after it, so every page
+			// is measured exactly once.
+			window.gtag?.("config", GA_ID);
+			bootViewPending = true;
 		}
 		if (CLARITY_ID) {
 			ensureClarity();
@@ -168,6 +177,9 @@ export function syncAnalyticsRoute(pathname: string) {
 		return;
 	}
 	if (routeDisabled) {
+		// analytics is off here, so the next allowed page is a fresh view
+		// even if it is the page the visitor came from.
+		lastViewed = null;
 		if (clarityLoaded) {
 			window.clarity?.("stop");
 			clarityStopped = true;
@@ -191,12 +203,20 @@ export function trackPageView(pathname: string) {
 		return;
 	}
 	const locale = localeFromPath(pathname);
-	window.gtag?.("event", "page_view", {
-		page_language: locale,
-		page_location: window.location.href,
-		page_path: pathname,
-		page_title: document.title,
-	});
+	// the tag already reported the page it booted on. a view for that same
+	// page here would count the landing page twice.
+	const isBootPage = bootViewPending && lastViewed === null;
+	if (isBootPage) {
+		bootViewPending = false;
+	} else if (lastViewed !== pathname) {
+		window.gtag?.("event", "page_view", {
+			page_language: locale,
+			page_location: window.location.href,
+			page_path: pathname,
+			page_title: document.title,
+		});
+	}
+	lastViewed = pathname;
 	const slug = toolSlugFromPath(pathname);
 	if (slug && !isAnalyticsDisabled(slug)) {
 		window.gtag?.("event", "tool_open", {

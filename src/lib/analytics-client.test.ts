@@ -50,12 +50,39 @@ describe("analytics client", () => {
 			document.querySelector("script[src*='googletagmanager']"),
 		).not.toBeNull();
 		expect(document.querySelector("script[src*='clarity.ms']")).not.toBeNull();
-		expect(names()).toEqual(["page_view", "tool_open"]);
+		// the tag reports the page it boots on itself, so the client only
+		// adds the tool open here. a manual view would double count.
+		expect(names()).toEqual(["tool_open"]);
 		const open = entries().find((entry) => entry[1] === "tool_open");
 		expect(open?.[2]).toEqual({
 			page_language: "en",
 			tool: "image-converter",
 		});
+	});
+
+	it("counts each page once across boot and client navigation", async () => {
+		const client = await loadClient();
+		client.syncAnalyticsRoute("/image-converter");
+		client.applyConsent("granted");
+		client.trackPageView("/image-converter");
+		// the tag owns the landing page view, so nothing here
+		expect(names()).toEqual(["tool_open"]);
+
+		client.syncAnalyticsRoute("/case-converter");
+		client.trackPageView("/case-converter");
+		expect(names()).toEqual(["tool_open", "page_view", "tool_open"]);
+		const view = entries().find(
+			(entry) => entry[0] === "event" && entry[1] === "page_view",
+		);
+		expect(view?.[2]).toMatchObject({
+			page_language: "en",
+			page_path: "/case-converter",
+		});
+
+		// going back is a real view again, the boot page already counted
+		client.syncAnalyticsRoute("/image-converter");
+		client.trackPageView("/image-converter");
+		expect(names().filter((name) => name === "page_view")).toHaveLength(2);
 	});
 
 	it("queues gtag calls in the shape gtag.js drains", async () => {
@@ -117,7 +144,28 @@ describe("analytics client", () => {
 		expect(names()).toEqual([]);
 
 		client.trackPageView("/unit-converter");
-		expect(names()).toEqual(["page_view", "tool_open", "tool_complete"]);
+		expect(names()).toEqual(["tool_open", "tool_complete"]);
+	});
+
+	it("counts again after a mnemonic page interrupts the trail", async () => {
+		const client = await loadClient();
+		client.syncAnalyticsRoute("/unit-converter");
+		client.applyConsent("granted");
+		client.trackPageView("/unit-converter");
+		client.syncAnalyticsRoute("/mnemonic-generator");
+		client.trackPageView("/mnemonic-generator");
+		client.syncAnalyticsRoute("/unit-converter");
+		client.trackPageView("/unit-converter");
+		expect(names().filter((name) => name === "page_view")).toHaveLength(1);
+	});
+
+	it("ignores a repeat view for the page already counted", async () => {
+		const client = await loadClient();
+		client.syncAnalyticsRoute("/unit-converter");
+		client.applyConsent("granted");
+		client.trackPageView("/unit-converter");
+		client.trackPageView("/unit-converter");
+		expect(names().filter((name) => name === "page_view")).toHaveLength(0);
 	});
 
 	it("ignores completion on a mnemonic page", async () => {

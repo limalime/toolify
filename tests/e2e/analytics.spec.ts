@@ -51,6 +51,25 @@ test("eea banner blocks every analytics request until accepted", async ({
 	await expect
 		.poll(() => page.locator("script[src*='clarity.ms']").count())
 		.toBe(1);
+	// the tag now owns the landing view, so a config for the measurement id
+	// is what proves analytics started. the page view itself comes from
+	// gtag.js and a stubbed tag never sends one.
+	const configIds = await page.evaluate(() => {
+		const layer = (window as { dataLayer?: unknown[] }).dataLayer ?? [];
+		return layer
+			.map((entry) => entry as unknown[])
+			.filter((entry) => entry[0] === "config")
+			.map((entry) => String(entry[1]));
+	});
+	expect(configIds.some((id) => id.startsWith("G-"))).toBe(true);
+
+	await page.evaluate(() => {
+		document
+			.querySelector('a[href="/unit-converter"]')
+			?.dispatchEvent(
+				new MouseEvent("click", { bubbles: true, cancelable: true, button: 0 }),
+			);
+	});
 	await expect.poll(() => eventNames(page)).toContain("page_view");
 
 	await page.reload();
@@ -108,6 +127,40 @@ test("visitors outside the eea get analytics without a banner", async ({
 		const keys = Object.keys((event.params ?? {}) as Record<string, unknown>);
 		expect(keys.sort()).toEqual(["page_language", "tool"]);
 	}
+});
+
+test("a client hop counts one page view per page", async ({ page }) => {
+	await stubAnalytics(page, "US");
+	await page.goto("/unit-converter");
+	await expect
+		.poll(() => page.locator("script[src*='googletagmanager']").count())
+		.toBe(1);
+	const countViews = () =>
+		eventNames(page).then(
+			(names) => names.filter((name) => name === "page_view").length,
+		);
+	// the tag owns the landing view, so the client adds none of its own.
+	expect(await countViews()).toBe(0);
+
+	await page.evaluate(() => {
+		document
+			.querySelector('a[href="/case-converter"]')
+			?.dispatchEvent(
+				new MouseEvent("click", { bubbles: true, cancelable: true, button: 0 }),
+			);
+	});
+	await expect.poll(() => page.url()).toContain("/case-converter");
+	await expect.poll(countViews).toBe(1);
+
+	await page.evaluate(() => {
+		document
+			.querySelector('a[href="/image-converter"]')
+			?.dispatchEvent(
+				new MouseEvent("click", { bubbles: true, cancelable: true, button: 0 }),
+			);
+	});
+	await expect.poll(() => page.url()).toContain("/image-converter");
+	await expect.poll(countViews).toBe(2);
 });
 
 test("copy actions count as a completed tool", async ({ page }) => {
