@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
 	checkVideoFile,
+	classifyFailure,
 	classifyVideoError,
-	shouldRetryWithSingleThread,
+	FfmpegEngineError,
+	shouldRetryOnSingleThread,
 	videoFormat,
 } from "./limits";
 
@@ -64,7 +66,9 @@ describe("video error classes", () => {
 		expect(classifyVideoError(new Error("Cannot enlarge memory array"))).toBe(
 			"memory",
 		);
-		expect(shouldRetryWithSingleThread(new Error("out of memory"))).toBe(true);
+		expect(shouldRetryOnSingleThread("mt", new Error("out of memory"))).toBe(
+			true,
+		);
 	});
 
 	it("spots decode failures and skips the retry", () => {
@@ -74,18 +78,42 @@ describe("video error classes", () => {
 			),
 		).toBe("unsupported");
 		expect(
-			shouldRetryWithSingleThread(
+			shouldRetryOnSingleThread(
+				"mt",
 				new Error("ffmpeg failed with code 1: Invalid data found"),
 			),
 		).toBe(false);
 	});
 
-	it("treats a bare engine failure as retryable", () => {
-		expect(classifyVideoError(new Error("ffmpeg failed with code 1"))).toBe(
-			"unknown",
+	it("only retries away from the threaded core", () => {
+		expect(shouldRetryOnSingleThread("st", new Error("out of memory"))).toBe(
+			false,
 		);
-		expect(shouldRetryWithSingleThread(new Error("worker terminated"))).toBe(
-			true,
+		// an unknown job failure is not a memory failure
+		expect(
+			shouldRetryOnSingleThread("mt", new Error("ffmpeg failed with code 1")),
+		).toBe(false);
+		// a core that never started is retried whatever the message says
+		expect(
+			shouldRetryOnSingleThread(
+				"mt",
+				new FfmpegEngineError("ffmpeg core failed to load"),
+			),
+		).toBe(true);
+	});
+
+	it("never blames the file when the engine could not start", () => {
+		const offline = new FfmpegEngineError("ffmpeg core failed to load", {
+			message: "Failed to fetch",
+		});
+		expect(classifyFailure(offline)).toBe("engine");
+		// a core that died allocating still says memory, not network
+		const starved = new FfmpegEngineError("ffmpeg core failed to load", {
+			message: "Cannot enlarge memory arrays",
+		});
+		expect(classifyFailure(starved)).toBe("memory");
+		expect(classifyFailure(new Error("Cannot enlarge memory arrays"))).toBe(
+			"memory",
 		);
 	});
 });

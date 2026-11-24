@@ -54,7 +54,7 @@
 		"coreMt": "Mesin multi-thread",
 		"coreSt": "Mesin kompatibilitas (single-thread)",
 		"loadingVideoEngine": "Memuat mesin video…",
-		"engineFailed": "Gagal memuat mesin video. Periksa koneksi lalu coba lagi.",
+		"engineFailed": "Gagal memuat mesin. Periksa koneksi lalu coba lagi.",
 		"loadingAudioEngine": "Memuat mesin audio…",
 		"colorPicker": {
 			"placeholder": "Pilih warna",
@@ -218,7 +218,7 @@
 		"unreadableFile": "File tidak bisa dibaca. Mungkin rusak. Coba file lain.",
 		"unsupportedFormat": "Berkas {format} itu bukan video yang bisa dibaca alat ini. Coba MP4, MOV, WebM, atau 3GP.",
 		"unsupportedCodec": "Mesin video tidak bisa mendekode berkas {format} ini. Coba MP4 (H.264).",
-		"outOfMemory": "Video ini terlalu besar untuk memori perangkat ini. Coba klip lebih pendek atau resolusi lebih kecil.",
+		"outOfMemory": "Mesin media kehabisan memori. File kamu tidak bermasalah. Jalankan lagi dan mesin mulai dari awal.",
 		"needDuration": "Durasi video tidak bisa dibaca. Beralih ke mode kualitas atau coba berkas MP4.",
 		"unsupported": "Hanya file PNG, JPG, WEBP, dan AVIF yang bisa di sini."
 	},

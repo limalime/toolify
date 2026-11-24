@@ -54,7 +54,7 @@
 		"coreMt": "Multi-threaded engine",
 		"coreSt": "Compatibility engine (single-threaded)",
 		"loadingVideoEngine": "Loading video engine…",
-		"engineFailed": "Could not load the video engine. Check your connection and retry.",
+		"engineFailed": "Could not load the engine. Check your connection and retry.",
 		"loadingAudioEngine": "Loading audio engine…",
 		"colorPicker": {
 			"placeholder": "Select color",
@@ -218,7 +218,7 @@
 		"unreadableFile": "Could not read this file. It may be corrupted. Try another file.",
 		"unsupportedFormat": "That {format} file is not a video this tool can read. Try MP4, MOV, WebM, or 3GP.",
 		"unsupportedCodec": "The video engine could not decode this {format} file. Try MP4 with H.264.",
-		"outOfMemory": "This video is too large for this device's memory. Try a shorter clip or a smaller resolution.",
+		"outOfMemory": "The media engine ran out of memory. Your file is fine. Run it again and the engine starts fresh.",
 		"needDuration": "Could not read the video duration. Switch to quality mode or try an MP4 file.",
 		"unsupported": "Only PNG, JPG, WEBP, and AVIF files work here."
 	},

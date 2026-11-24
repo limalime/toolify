@@ -1,6 +1,5 @@
 "use client";
 
-import * as Comlink from "comlink";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import AudioPreview from "@/components/audio/audio-preview";
@@ -17,12 +16,9 @@ import {
 	type AudioFormat,
 	audioTrimArgs,
 } from "@/lib/video/audio";
-import { ffmpegLoaded } from "@/lib/video/ffmpeg-client";
-import {
-	type FfmpegCore,
-	MAX_VIDEO_BYTES,
-	threadCount,
-} from "@/lib/video/ffmpeg-core";
+import { runFfmpegJob } from "@/lib/video/ffmpeg-client";
+import { type FfmpegCore, MAX_VIDEO_BYTES } from "@/lib/video/ffmpeg-core";
+import { classifyFailure } from "@/lib/video/limits";
 import { peaksFromSamples } from "@/lib/video/peaks";
 import { AUDIO_ACCEPT, formatDuration, probeAudio } from "@/lib/video/probe";
 
@@ -90,11 +86,15 @@ export default function TrimAudioTool() {
 		// redraws on every render, peaks and range live in refs and state.
 	});
 
-	const reset = () => {
+	const clearUrls = () => {
 		for (const url of urls.current) {
 			URL.revokeObjectURL(url);
 		}
 		urls.current = [];
+	};
+
+	const reset = () => {
+		clearUrls();
 		peaks.current = [];
 		setFile(null);
 		setError(null);
@@ -148,7 +148,6 @@ export default function TrimAudioTool() {
 			setLoading(false);
 		}
 	};
-
 	const fractionAt = (clientX: number): number | null => {
 		const box = frame.current?.getBoundingClientRect();
 		if (!box || box.width === 0) {
@@ -173,30 +172,19 @@ export default function TrimAudioTool() {
 		setRunning(true);
 		setError(null);
 		setResult(null);
+		clearUrls();
 		setProgress(null);
 		try {
-			let loaded: Awaited<ReturnType<typeof ffmpegLoaded>>;
-			try {
-				loaded = await ffmpegLoaded();
-			} catch {
-				setError(tc("engineFailed"));
-				return;
-			}
-			const { worker, core: used } = loaded;
-			setCore(used);
-			const threads =
-				used === "mt"
-					? threadCount(globalThis.navigator?.hardwareConcurrency ?? 4)
-					: 1;
 			const output = `out.${format.current}`;
-			const [out] = await worker.runFfmpeg(
-				audioTrimArgs(startSec, endSec - startSec, format.current, threads),
+			const job = await runFfmpegJob(
+				(threads) =>
+					audioTrimArgs(startSec, endSec - startSec, format.current, threads),
 				[{ name: "in.audio", data: await file.arrayBuffer() }],
 				[output],
-				Comlink.proxy((ratio: number) => {
-					setProgress(Math.round(ratio * 100));
-				}),
+				(ratio) => setProgress(Math.round(ratio * 100)),
 			);
+			setCore(job.core);
+			const [out] = job.outputs;
 			if (!out) {
 				throw new Error("no output");
 			}
@@ -209,7 +197,14 @@ export default function TrimAudioTool() {
 			if (process.env.NODE_ENV !== "production") {
 				console.error(unknown);
 			}
-			setError(te("unreadableFile"));
+			const kind = classifyFailure(unknown);
+			setError(
+				kind === "engine"
+					? tc("engineFailed")
+					: kind === "memory"
+						? te("outOfMemory")
+						: te("unreadableFile"),
+			);
 		} finally {
 			setRunning(false);
 			setProgress(null);

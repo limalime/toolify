@@ -54,7 +54,7 @@
 		"coreMt": "マルチスレッド版",
 		"coreSt": "互換版(シングルスレッド)",
 		"loadingVideoEngine": "動画エンジンを読み込み中…",
-		"engineFailed": "動画エンジンを読めません。接続を見て再試行してください。",
+		"engineFailed": "エンジンを読み込めません。接続を確認して再試行してください。",
 		"loadingAudioEngine": "音声エンジンを読み込み中…",
 		"colorPicker": {
 			"placeholder": "色を選択",
@@ -218,7 +218,7 @@
 		"unreadableFile": "このファイルを読み取れませんでした。破損している可能性があります。別のファイルをお試しください。",
 		"unsupportedFormat": "この {format} ファイルはこのツールで読める動画ではありません。MP4、MOV、WebM、3GP をお試しください。",
 		"unsupportedCodec": "動画エンジンがこの {format} ファイルをデコードできませんでした。MP4（H.264）をお試しください。",
-		"outOfMemory": "この動画はこの端末のメモリには大きすぎます。短いクリップか低い解像度をお試しください。",
+		"outOfMemory": "メディアエンジンのメモリが不足しました。ファイルに問題はありません。もう一度実行するとエンジンが新しく起動します。",
 		"needDuration": "動画の長さを読み取れませんでした。品質モードに切り替えるか、MP4 ファイルをお試しください。",
 		"unsupported": "ここではPNG、JPG、WEBP、AVIFのみ対応。"
 	},

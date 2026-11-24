@@ -13,11 +13,11 @@ import { formatBytes } from "@/lib/format";
 import { downloadBytes } from "@/lib/images/download";
 import { stemOf } from "@/lib/images/formats";
 import { convertArgs, type VideoContainer } from "@/lib/video/commands";
-import { runFfmpegWithFallback } from "@/lib/video/ffmpeg-client";
+import { runFfmpegJob } from "@/lib/video/ffmpeg-client";
 import type { FfmpegCore } from "@/lib/video/ffmpeg-core";
 import {
 	checkVideoFile,
-	classifyVideoError,
+	classifyFailure,
 	videoFormat,
 } from "@/lib/video/limits";
 import { VIDEO_ACCEPT } from "@/lib/video/probe";
@@ -48,11 +48,15 @@ export default function VideoConverterTool() {
 	const [result, setResult] = useState<Result | null>(null);
 	const urls = useRef<string[]>([]);
 
-	const reset = () => {
+	const clearUrls = () => {
 		for (const url of urls.current) {
 			URL.revokeObjectURL(url);
 		}
 		urls.current = [];
+	};
+
+	const reset = () => {
+		clearUrls();
 		setFile(null);
 		setError(null);
 		setResult(null);
@@ -90,9 +94,10 @@ export default function VideoConverterTool() {
 		setRunning(true);
 		setError(null);
 		setResult(null);
+		clearUrls();
 		setProgress(null);
 		try {
-			const job = await runFfmpegWithFallback(
+			const job = await runFfmpegJob(
 				(threads) => convertArgs(format, threads),
 				[{ name: "in.mp4", data: await file.arrayBuffer() }],
 				[`out.${format}`],
@@ -113,7 +118,7 @@ export default function VideoConverterTool() {
 			if (process.env.NODE_ENV !== "production") {
 				console.error(unknown);
 			}
-			const kind = classifyVideoError(unknown);
+			const kind = classifyFailure(unknown);
 			setError(
 				kind === "memory"
 					? te("outOfMemory")

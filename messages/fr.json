@@ -54,7 +54,7 @@
 		"coreMt": "Moteur multithread",
 		"coreSt": "Moteur de compatibilité (monothread)",
 		"loadingVideoEngine": "Chargement du moteur vidéo…",
-		"engineFailed": "Moteur vidéo injoignable. Vérifiez la connexion et réessayez.",
+		"engineFailed": "Moteur injoignable. Vérifie la connexion et réessaie.",
 		"loadingAudioEngine": "Chargement du moteur audio…",
 		"colorPicker": {
 			"placeholder": "Choisir une couleur",
@@ -218,7 +218,7 @@
 		"unreadableFile": "Impossible de lire ce fichier. Il est peut-être corrompu. Essaie un autre fichier.",
 		"unsupportedFormat": "Ce fichier {format} n'est pas une vidéo que cet outil peut lire. Essaie MP4, MOV, WebM ou 3GP.",
 		"unsupportedCodec": "Le moteur vidéo n'a pas pu décoder ce fichier {format}. Essaie MP4 (H.264).",
-		"outOfMemory": "Cette vidéo est trop volumineuse pour la mémoire de cet appareil. Essaie un clip plus court ou une résolution inférieure.",
+		"outOfMemory": "Le moteur multimédia a manqué de mémoire. Ton fichier est intact. Relance et le moteur repart de zéro.",
 		"needDuration": "Impossible de lire la durée de la vidéo. Passe en mode qualité ou essaie un fichier MP4.",
 		"unsupported": "Ici seuls PNG, JPG, WEBP et AVIF passent."
 	},

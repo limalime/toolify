@@ -67,13 +67,12 @@ test("takes a large 1080p phone clip without a size lie", async ({ page }) => {
 	const status = page.getByTestId("video-job-status");
 	await expect(status).toBeVisible();
 	await expect
-		.poll(
-			async () => Number(await status.getAttribute("data-max-progress")),
-			{ timeout: 300000 },
-		)
+		.poll(async () => Number(await status.getAttribute("data-max-progress")), {
+			timeout: 300000,
+		})
 		.toBeGreaterThan(0);
 	expect(
-		await page.getByText("This video is too large for this device").count(),
+		await page.getByText("The media engine ran out of memory").count(),
 	).toBe(0);
 	expect(await page.getByText("Something went wrong").count()).toBe(0);
 });
@@ -125,4 +124,65 @@ test("converts a phone mov to mp3", async ({ page }) => {
 	const probe = await mediaProbe(page, bytes, "audio/mpeg");
 	expect(probe.duration).toBeGreaterThan(2);
 	expect(probe.duration).toBeLessThan(4);
+});
+
+test("converts the same clip twice without a reload", async ({
+	page,
+	isMobile,
+}) => {
+	test.skip(!isMobile, "phone viewport only");
+	// a worker per job is what gives each conversion a clean wasm heap.
+	// count the blob workers the page starts, then require one more per
+	// round. the hook has to be installed before a document runs, and
+	// beforeEach already navigated, so the goto below reloads once.
+	await page.addInitScript(() => {
+		const harness = { blobWorkers: 0 };
+		(window as unknown as { __ffmpegHarness: typeof harness }).__ffmpegHarness =
+			harness;
+		const OriginalWorker = window.Worker;
+		window.Worker = class extends OriginalWorker {
+			constructor(url: string | URL, options?: WorkerOptions) {
+				super(url, options);
+				if (String(url).startsWith("blob:")) {
+					harness.blobWorkers += 1;
+				}
+			}
+		} as typeof Worker;
+	});
+	await page.goto("/video-converter");
+	await expect(page.getByRole("heading", { level: 1 })).toContainText(
+		"Free Online Video Converter",
+	);
+	expect(await page.evaluate(() => globalThis.crossOriginIsolated)).toBe(true);
+	await page
+		.locator("[data-testid='dropzone'] input[type='file']")
+		.setInputFiles([PHONE_FIXTURES.repeat]);
+
+	const convert = page.getByRole("button", { name: "Convert video" });
+	const download = page.getByRole("button", { name: "Download" });
+	const workers = () =>
+		page.evaluate(
+			() =>
+				(
+					window as unknown as {
+						__ffmpegHarness: { blobWorkers: number };
+					}
+				).__ffmpegHarness.blobWorkers,
+		);
+	const baseline = await workers();
+
+	for (const round of [1, 2]) {
+		await convert.click();
+		await expect(download).toBeHidden();
+		await expect(download).toBeVisible({ timeout: 300000 });
+		await expect(
+			page.getByText("The media engine ran out of memory"),
+		).toHaveCount(0);
+		// the previous job's worker is gone and this job got its own. a
+		// conversion that reused the old heap is exactly the old bug.
+		expect(await workers()).toBe(baseline + round);
+		const { bytes, filename } = await downloadBytes(page, download);
+		expect(filename).toMatch(/\.mp4$/);
+		expect(signatureOf(bytes)).toBe("mp4");
+	}
 });

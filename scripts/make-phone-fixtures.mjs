@@ -1,6 +1,7 @@
-// Builds the phone-shaped video fixtures the video specs need. These are
-// gitignored because one of them is tens of megabytes. Requires ffmpeg on
-// PATH, specs skip themselves when the files are absent.
+// Builds the phone-shaped video fixtures the video specs need. Most are
+// gitignored because one of them is tens of megabytes, so specs skip
+// themselves when those files are absent. The small repeat clip ships in
+// the repo because it is tens of kilobytes. Requires ffmpeg on PATH.
 
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, statSync } from "node:fs";
@@ -12,19 +13,26 @@ const dir = join(here, "..", "tests", "fixtures", "generated");
 mkdirSync(dir, { recursive: true });
 
 function run(args) {
-	execFileSync("ffmpeg", ["-hide_banner", "-loglevel", "error", "-y", ...args], {
-		stdio: "inherit",
-	});
+	execFileSync(
+		"ffmpeg",
+		["-hide_banner", "-loglevel", "error", "-y", ...args],
+		{
+			stdio: "inherit",
+		},
+	);
 }
 
-function make(name, args) {
-	const path = join(dir, name);
+function makeAt(path, args) {
 	if (existsSync(path)) {
-		console.log("have", name, statSync(path).size);
+		console.log("have", path, statSync(path).size);
 		return;
 	}
 	run(args.concat(path));
-	console.log("wrote", name, statSync(path).size);
+	console.log("wrote", path, statSync(path).size);
+}
+
+function make(name, args) {
+	makeAt(join(dir, name), args);
 }
 
 try {
@@ -102,6 +110,36 @@ make("phone-1080p.mp4", [
 	"aac",
 	"-b:a",
 	"96k",
+	"-movflags",
+	"+faststart",
+]);
+
+// the clip the repeat conversion spec uses. small enough to commit, and
+// the same shape as the report that started this test: 256x300 h264,
+// just over two seconds.
+makeAt(join(here, "..", "tests", "fixtures", "phone-repeat.mp4"), [
+	"-f",
+	"lavfi",
+	"-i",
+	"testsrc2=size=256x300:rate=24:duration=2.29",
+	"-f",
+	"lavfi",
+	"-i",
+	"sine=frequency=330:duration=2.29",
+	"-c:v",
+	"libx264",
+	"-profile:v",
+	"baseline",
+	"-level",
+	"3.0",
+	"-pix_fmt",
+	"yuv420p",
+	"-b:v",
+	"90k",
+	"-c:a",
+	"aac",
+	"-b:a",
+	"48k",
 	"-movflags",
 	"+faststart",
 ]);

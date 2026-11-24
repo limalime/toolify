@@ -1,6 +1,5 @@
 "use client";
 
-import * as Comlink from "comlink";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 import AudioPreview from "@/components/audio/audio-preview";
@@ -20,12 +19,9 @@ import {
 	type AudioFormat,
 	audioConvertArgs,
 } from "@/lib/video/audio";
-import { ffmpegLoaded } from "@/lib/video/ffmpeg-client";
-import {
-	type FfmpegCore,
-	MAX_VIDEO_BYTES,
-	threadCount,
-} from "@/lib/video/ffmpeg-core";
+import { runFfmpegJob } from "@/lib/video/ffmpeg-client";
+import { type FfmpegCore, MAX_VIDEO_BYTES } from "@/lib/video/ffmpeg-core";
+import { classifyFailure } from "@/lib/video/limits";
 import { AUDIO_ACCEPT, probeAudio, type VideoMeta } from "@/lib/video/probe";
 
 interface Result {
@@ -50,11 +46,15 @@ export default function AudioConverterTool() {
 	const meta = useRef<VideoMeta | null>(null);
 	const urls = useRef<string[]>([]);
 
-	const reset = () => {
+	const clearUrls = () => {
 		for (const url of urls.current) {
 			URL.revokeObjectURL(url);
 		}
 		urls.current = [];
+	};
+
+	const reset = () => {
+		clearUrls();
 		meta.current = null;
 		setFile(null);
 		setError(null);
@@ -94,29 +94,17 @@ export default function AudioConverterTool() {
 		setRunning(true);
 		setError(null);
 		setResult(null);
+		clearUrls();
 		setProgress(null);
 		try {
-			let loaded: Awaited<ReturnType<typeof ffmpegLoaded>>;
-			try {
-				loaded = await ffmpegLoaded();
-			} catch {
-				setError(tc("engineFailed"));
-				return;
-			}
-			const { worker, core: used } = loaded;
-			setCore(used);
-			const threads =
-				used === "mt"
-					? threadCount(globalThis.navigator?.hardwareConcurrency ?? 4)
-					: 1;
-			const [out] = await worker.runFfmpeg(
-				audioConvertArgs(format, threads),
+			const job = await runFfmpegJob(
+				(threads) => audioConvertArgs(format, threads),
 				[{ name: "in.audio", data: await file.arrayBuffer() }],
 				[`out.${format}`],
-				Comlink.proxy((ratio: number) => {
-					setProgress(Math.round(ratio * 100));
-				}),
+				(ratio) => setProgress(Math.round(ratio * 100)),
 			);
+			setCore(job.core);
+			const [out] = job.outputs;
 			if (!out) {
 				throw new Error("no output");
 			}
@@ -129,7 +117,14 @@ export default function AudioConverterTool() {
 			if (process.env.NODE_ENV !== "production") {
 				console.error(unknown);
 			}
-			setError(te("unreadableFile"));
+			const kind = classifyFailure(unknown);
+			setError(
+				kind === "engine"
+					? tc("engineFailed")
+					: kind === "memory"
+						? te("outOfMemory")
+						: te("unreadableFile"),
+			);
 		} finally {
 			setRunning(false);
 			setProgress(null);

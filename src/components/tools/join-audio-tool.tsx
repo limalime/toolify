@@ -1,6 +1,5 @@
 "use client";
 
-import * as Comlink from "comlink";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 import AudioPreview from "@/components/audio/audio-preview";
@@ -15,12 +14,9 @@ import { formatBytes } from "@/lib/format";
 import { downloadBytes } from "@/lib/images/download";
 import { cn } from "@/lib/utils";
 import { audioJoinArgs } from "@/lib/video/audio";
-import { ffmpegLoaded } from "@/lib/video/ffmpeg-client";
-import {
-	type FfmpegCore,
-	MAX_VIDEO_BYTES,
-	threadCount,
-} from "@/lib/video/ffmpeg-core";
+import { runFfmpegJob } from "@/lib/video/ffmpeg-client";
+import { type FfmpegCore, MAX_VIDEO_BYTES } from "@/lib/video/ffmpeg-core";
+import { classifyFailure } from "@/lib/video/limits";
 import { AUDIO_ACCEPT } from "@/lib/video/probe";
 
 const MAX_JOIN_FILES = 10;
@@ -52,11 +48,15 @@ export default function JoinAudioTool() {
 	const counter = useRef(0);
 	const dragging = useRef<string | null>(null);
 
-	const reset = () => {
+	const clearUrls = () => {
 		for (const url of urls.current) {
 			URL.revokeObjectURL(url);
 		}
 		urls.current = [];
+	};
+
+	const reset = () => {
+		clearUrls();
 		setError(null);
 		setResult(null);
 		setProgress(null);
@@ -105,37 +105,30 @@ export default function JoinAudioTool() {
 		setRunning(true);
 		setError(null);
 		setResult(null);
+		clearUrls();
 		setProgress(null);
 		try {
-			let loaded: Awaited<ReturnType<typeof ffmpegLoaded>>;
-			try {
-				loaded = await ffmpegLoaded();
-			} catch {
-				setError(tc("engineFailed"));
-				return;
-			}
-			const { worker, core: used } = loaded;
-			setCore(used);
-			const threads =
-				used === "mt"
-					? threadCount(globalThis.navigator?.hardwareConcurrency ?? 4)
-					: 1;
-			const inputs = [];
+			const inputData = [];
 			for (const [index, track] of tracks.entries()) {
-				inputs.push({
+				inputData.push({
 					name: `in${index}.audio`,
 					data: await track.file.arrayBuffer(),
 				});
 			}
 			const outputName = format === "wav" ? "out.wav" : "out.mp3";
-			const [out] = await worker.runFfmpeg(
-				audioJoinArgs(tracks.length, threads, format === "wav" ? "wav" : "mp3"),
-				inputs,
+			const job = await runFfmpegJob(
+				(threads) =>
+					audioJoinArgs(
+						tracks.length,
+						threads,
+						format === "wav" ? "wav" : "mp3",
+					),
+				inputData,
 				[outputName],
-				Comlink.proxy((ratio: number) => {
-					setProgress(Math.round(ratio * 100));
-				}),
+				(ratio) => setProgress(Math.round(ratio * 100)),
 			);
+			setCore(job.core);
+			const [out] = job.outputs;
 			if (!out) {
 				throw new Error("no output");
 			}
@@ -148,7 +141,14 @@ export default function JoinAudioTool() {
 			if (process.env.NODE_ENV !== "production") {
 				console.error(unknown);
 			}
-			setError(te("unreadableFile"));
+			const kind = classifyFailure(unknown);
+			setError(
+				kind === "engine"
+					? tc("engineFailed")
+					: kind === "memory"
+						? te("outOfMemory")
+						: te("unreadableFile"),
+			);
 		} finally {
 			setRunning(false);
 			setProgress(null);

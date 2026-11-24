@@ -54,7 +54,7 @@
 		"coreMt": "多线程引擎",
 		"coreSt": "兼容引擎(单线程)",
 		"loadingVideoEngine": "正在加载视频引擎…",
-		"engineFailed": "视频引擎加载失败,请检查网络后重试。",
+		"engineFailed": "引擎加载失败，请检查网络后重试。",
 		"loadingAudioEngine": "正在加载音频引擎…",
 		"colorPicker": {
 			"placeholder": "选择颜色",
@@ -218,7 +218,7 @@
 		"unreadableFile": "无法读取此文件，可能已损坏，请换一个文件试试。",
 		"unsupportedFormat": "这个 {format} 文件不是此工具能读取的视频。请尝试 MP4、MOV、WebM 或 3GP。",
 		"unsupportedCodec": "视频引擎无法解码这个 {format} 文件。请尝试 MP4（H.264）。",
-		"outOfMemory": "这个视频对此设备的内存来说太大。请尝试更短的片段或更低的分辨率。",
+		"outOfMemory": "媒体引擎内存不足。文件本身没有问题。再次运行会重新启动引擎。",
 		"needDuration": "无法读取视频时长。请切换到质量模式或尝试 MP4 文件。",
 		"unsupported": "这里只支持PNG、JPG、WEBP和AVIF。"
 	},
