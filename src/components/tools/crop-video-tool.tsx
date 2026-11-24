@@ -1,6 +1,5 @@
 "use client";
 
-import * as Comlink from "comlink";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 import Dropzone from "@/components/primitives/dropzone";
@@ -14,13 +13,18 @@ import { downloadBytes } from "@/lib/images/download";
 import { stemOf } from "@/lib/images/formats";
 import { cn } from "@/lib/utils";
 import { aspectCropBox, type CropBox, cropArgs } from "@/lib/video/commands";
-import { ffmpegLoaded } from "@/lib/video/ffmpeg-client";
+import { runFfmpegWithFallback } from "@/lib/video/ffmpeg-client";
+import type { FfmpegCore } from "@/lib/video/ffmpeg-core";
 import {
-	type FfmpegCore,
-	MAX_VIDEO_BYTES,
-	threadCount,
-} from "@/lib/video/ffmpeg-core";
-import { probeVideo, VIDEO_ACCEPT, type VideoMeta } from "@/lib/video/probe";
+	checkVideoFile,
+	classifyVideoError,
+	videoFormat,
+} from "@/lib/video/limits";
+import {
+	probeVideoOrMeta,
+	VIDEO_ACCEPT,
+	type VideoMeta,
+} from "@/lib/video/probe";
 
 const PRESETS: Array<{ key: string; ratio: number | null }> = [
 	{ key: "16:9", ratio: 16 / 9 },
@@ -73,17 +77,24 @@ export default function CropVideoTool() {
 			return;
 		}
 		reset();
-		if (picked.size > MAX_VIDEO_BYTES) {
+		const check = checkVideoFile(picked);
+		if (!check.ok) {
 			setFile(picked);
-			setError(te("tooLarge", { limit: formatBytes(MAX_VIDEO_BYTES) }));
+			setError(
+				check.kind === "size"
+					? te("tooLarge", { limit: formatBytes(check.limit) })
+					: te("unsupportedFormat", { format: check.format }),
+			);
 			return;
 		}
 		setFile(picked);
 		setLoading(true);
 		try {
-			meta.current = await probeVideo(picked);
+			// cropping needs the true frame size. the browser preview
+			// fails on mov and hevc, so the engine reads those.
+			meta.current = await probeVideoOrMeta(picked);
 		} catch {
-			setError(te("unreadableFile"));
+			setError(te("unsupportedCodec", { format: videoFormat(picked) }));
 		} finally {
 			setLoading(false);
 		}
@@ -138,27 +149,14 @@ export default function CropVideoTool() {
 		setResult(null);
 		setProgress(null);
 		try {
-			let loaded: Awaited<ReturnType<typeof ffmpegLoaded>>;
-			try {
-				loaded = await ffmpegLoaded();
-			} catch {
-				setError(tc("engineFailed"));
-				return;
-			}
-			const { worker, core: used } = loaded;
-			setCore(used);
-			const threads =
-				used === "mt"
-					? threadCount(globalThis.navigator?.hardwareConcurrency ?? 4)
-					: 1;
-			const [out] = await worker.runFfmpeg(
-				cropArgs(box, threads),
+			const job = await runFfmpegWithFallback(
+				(threads) => cropArgs(box, threads),
 				[{ name: "in.mp4", data: await file.arrayBuffer() }],
 				["out.mp4"],
-				Comlink.proxy((ratio: number) => {
-					setProgress(Math.round(ratio * 100));
-				}),
+				(ratio) => setProgress(Math.round(ratio * 100)),
 			);
+			setCore(job.core);
+			const [out] = job.outputs;
 			if (!out) {
 				throw new Error("no output");
 			}
@@ -178,7 +176,14 @@ export default function CropVideoTool() {
 			if (process.env.NODE_ENV !== "production") {
 				console.error(unknown);
 			}
-			setError(te("unreadableFile"));
+			const kind = classifyVideoError(unknown);
+			setError(
+				kind === "memory"
+					? te("outOfMemory")
+					: kind === "unsupported"
+						? te("unsupportedCodec", { format: videoFormat(file) })
+						: tc("engineFailed"),
+			);
 		} finally {
 			setRunning(false);
 			setProgress(null);

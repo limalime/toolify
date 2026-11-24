@@ -58,3 +58,6 @@ r2-upload/
 
 # rust build cache
 vtracer/target/
+
+# generated phone video fixtures (large, rebuild with npm run fixtures:phone)
+/tests/fixtures/generated/

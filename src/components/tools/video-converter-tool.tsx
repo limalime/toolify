@@ -1,6 +1,5 @@
 "use client";
 
-import * as Comlink from "comlink";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 import Dropzone from "@/components/primitives/dropzone";
@@ -14,13 +13,14 @@ import { formatBytes } from "@/lib/format";
 import { downloadBytes } from "@/lib/images/download";
 import { stemOf } from "@/lib/images/formats";
 import { convertArgs, type VideoContainer } from "@/lib/video/commands";
-import { ffmpegLoaded } from "@/lib/video/ffmpeg-client";
+import { runFfmpegWithFallback } from "@/lib/video/ffmpeg-client";
+import type { FfmpegCore } from "@/lib/video/ffmpeg-core";
 import {
-	type FfmpegCore,
-	MAX_VIDEO_BYTES,
-	threadCount,
-} from "@/lib/video/ffmpeg-core";
-import { probeVideo, VIDEO_ACCEPT, type VideoMeta } from "@/lib/video/probe";
+	checkVideoFile,
+	classifyVideoError,
+	videoFormat,
+} from "@/lib/video/limits";
+import { VIDEO_ACCEPT } from "@/lib/video/probe";
 
 const CONTAINERS: Array<{ id: VideoContainer; mime: string }> = [
 	{ id: "mp4", mime: "video/mp4" },
@@ -41,13 +41,11 @@ export default function VideoConverterTool() {
 	const te = useTranslations("errors");
 	const [file, setFile] = useState<File | null>(null);
 	const [format, setFormat] = useState<VideoContainer>("mp4");
-	const [loading, setLoading] = useState(false);
 	const [running, setRunning] = useState(false);
 	const [progress, setProgress] = useState<number | null>(null);
 	const [core, setCore] = useState<FfmpegCore | null>(null);
 	const [error, setError] = useState<string | null>(null);
 	const [result, setResult] = useState<Result | null>(null);
-	const meta = useRef<VideoMeta | null>(null);
 	const urls = useRef<string[]>([]);
 
 	const reset = () => {
@@ -55,37 +53,35 @@ export default function VideoConverterTool() {
 			URL.revokeObjectURL(url);
 		}
 		urls.current = [];
-		meta.current = null;
 		setFile(null);
 		setError(null);
 		setResult(null);
 		setProgress(null);
 	};
 
+	// the converter never needs browser metadata. ffmpeg decodes mov,
+	// hevc, and 3gp even when the preview element cannot.
 	const addFiles = async (files: File[]) => {
 		const [picked] = files;
 		if (!picked) {
 			return;
 		}
 		reset();
-		if (picked.size > MAX_VIDEO_BYTES) {
+		const check = checkVideoFile(picked);
+		if (!check.ok) {
 			setFile(picked);
-			setError(te("tooLarge", { limit: formatBytes(MAX_VIDEO_BYTES) }));
+			setError(
+				check.kind === "size"
+					? te("tooLarge", { limit: formatBytes(check.limit) })
+					: te("unsupportedFormat", { format: check.format }),
+			);
 			return;
 		}
 		setFile(picked);
-		setLoading(true);
-		try {
-			meta.current = await probeVideo(picked);
-		} catch {
-			setError(te("unreadableFile"));
-		} finally {
-			setLoading(false);
-		}
 	};
 
 	const apply = async () => {
-		if (!file || !meta.current || running || loading) {
+		if (!file || running) {
 			if (!file) {
 				notify.warning(tc("needFiles"));
 			}
@@ -96,27 +92,14 @@ export default function VideoConverterTool() {
 		setResult(null);
 		setProgress(null);
 		try {
-			let loaded: Awaited<ReturnType<typeof ffmpegLoaded>>;
-			try {
-				loaded = await ffmpegLoaded();
-			} catch {
-				setError(tc("engineFailed"));
-				return;
-			}
-			const { worker, core: used } = loaded;
-			setCore(used);
-			const threads =
-				used === "mt"
-					? threadCount(globalThis.navigator?.hardwareConcurrency ?? 4)
-					: 1;
-			const [out] = await worker.runFfmpeg(
-				convertArgs(format, threads),
+			const job = await runFfmpegWithFallback(
+				(threads) => convertArgs(format, threads),
 				[{ name: "in.mp4", data: await file.arrayBuffer() }],
 				[`out.${format}`],
-				Comlink.proxy((ratio: number) => {
-					setProgress(Math.round(ratio * 100));
-				}),
+				(ratio) => setProgress(Math.round(ratio * 100)),
 			);
+			setCore(job.core);
+			const [out] = job.outputs;
 			if (!out) {
 				throw new Error("no output");
 			}
@@ -130,7 +113,14 @@ export default function VideoConverterTool() {
 			if (process.env.NODE_ENV !== "production") {
 				console.error(unknown);
 			}
-			setError(te("unreadableFile"));
+			const kind = classifyVideoError(unknown);
+			setError(
+				kind === "memory"
+					? te("outOfMemory")
+					: kind === "unsupported"
+						? te("unsupportedCodec", { format: videoFormat(file) })
+						: tc("engineFailed"),
+			);
 		} finally {
 			setRunning(false);
 			setProgress(null);
@@ -143,7 +133,7 @@ export default function VideoConverterTool() {
 				<Dropzone
 					accept={VIDEO_ACCEPT}
 					browseLabel={tc("browse")}
-					disabled={running || loading}
+					disabled={running}
 					hint={tc("dropHint")}
 					onFiles={addFiles}
 				/>
@@ -191,7 +181,7 @@ export default function VideoConverterTool() {
 				</Field>
 				<SmoothButton
 					className="w-full"
-					disabled={running || loading}
+					disabled={running}
 					loading={running}
 					onClick={apply}
 					size="lg"

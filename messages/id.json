@@ -216,6 +216,10 @@
 		"generic": "Terjadi kesalahan. Coba lagi.",
 		"tooLarge": "File ini terlalu besar. Batasnya {limit}.",
 		"unreadableFile": "File tidak bisa dibaca. Mungkin rusak. Coba file lain.",
+		"unsupportedFormat": "Berkas {format} itu bukan video yang bisa dibaca alat ini. Coba MP4, MOV, WebM, atau 3GP.",
+		"unsupportedCodec": "Mesin video tidak bisa mendekode berkas {format} ini. Coba MP4 (H.264).",
+		"outOfMemory": "Video ini terlalu besar untuk memori perangkat ini. Coba klip lebih pendek atau resolusi lebih kecil.",
+		"needDuration": "Durasi video tidak bisa dibaca. Beralih ke mode kualitas atau coba berkas MP4.",
 		"unsupported": "Hanya file PNG, JPG, WEBP, dan AVIF yang bisa di sini."
 	},
 	"landing": {
@@ -2691,8 +2695,8 @@
 				"dark": "Tema gelap",
 				"image": "Tambah gambar",
 				"avatar": "Tambah avatar",
-				"recipientAvatar": "Avatar penerima",
-				"replierAvatar": "Avatar pengirim",
+				"avatar1": "Avatar 1",
+				"avatar2": "Avatar 2",
 				"preview": "Pratinjau Instagram",
 				"download": "Unduh PNG",
 				"downloaded": "Gambar diunduh",

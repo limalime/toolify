@@ -2,8 +2,8 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { useTheme } from "@/components/layout/theme-provider";
 
 // sun and moon toggle. renders a same-size placeholder until mounted so
 // the server html matches and the navbar never shifts.

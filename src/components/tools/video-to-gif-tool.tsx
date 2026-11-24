@@ -1,6 +1,5 @@
 "use client";
 
-import * as Comlink from "comlink";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 import Dropzone from "@/components/primitives/dropzone";
@@ -14,13 +13,18 @@ import { formatBytes } from "@/lib/format";
 import { downloadBytes } from "@/lib/images/download";
 import { stemOf } from "@/lib/images/formats";
 import { gifArgs } from "@/lib/video/commands";
-import { ffmpegLoaded } from "@/lib/video/ffmpeg-client";
+import { runFfmpegWithFallback } from "@/lib/video/ffmpeg-client";
+import type { FfmpegCore } from "@/lib/video/ffmpeg-core";
 import {
-	type FfmpegCore,
-	MAX_VIDEO_BYTES,
-	threadCount,
-} from "@/lib/video/ffmpeg-core";
-import { probeVideo, VIDEO_ACCEPT, type VideoMeta } from "@/lib/video/probe";
+	checkVideoFile,
+	classifyVideoError,
+	videoFormat,
+} from "@/lib/video/limits";
+import {
+	probeVideoOrMeta,
+	VIDEO_ACCEPT,
+	type VideoMeta,
+} from "@/lib/video/probe";
 
 const FPS_CHOICES = [10, 15, 24];
 const WIDTH_CHOICES = [320, 480, 640];
@@ -66,22 +70,27 @@ export default function VideoToGifTool() {
 			return;
 		}
 		reset();
-		if (picked.size > MAX_VIDEO_BYTES) {
+		const check = checkVideoFile(picked);
+		if (!check.ok) {
 			setFile(picked);
-			setError(te("tooLarge", { limit: formatBytes(MAX_VIDEO_BYTES) }));
+			setError(
+				check.kind === "size"
+					? te("tooLarge", { limit: formatBytes(check.limit) })
+					: te("unsupportedFormat", { format: check.format }),
+			);
 			return;
 		}
 		setFile(picked);
 		setLoading(true);
 		try {
-			const probed = await probeVideo(picked);
+			const probed = await probeVideoOrMeta(picked);
 			if (probed.durationSec > MAX_GIF_SECONDS) {
 				setError(t("options.limitNote"));
 				return;
 			}
 			meta.current = probed;
 		} catch {
-			setError(te("unreadableFile"));
+			setError(te("unsupportedCodec", { format: videoFormat(picked) }));
 		} finally {
 			setLoading(false);
 		}
@@ -99,27 +108,14 @@ export default function VideoToGifTool() {
 		setResult(null);
 		setProgress(null);
 		try {
-			let loaded: Awaited<ReturnType<typeof ffmpegLoaded>>;
-			try {
-				loaded = await ffmpegLoaded();
-			} catch {
-				setError(tc("engineFailed"));
-				return;
-			}
-			const { worker, core: used } = loaded;
-			setCore(used);
-			const threads =
-				used === "mt"
-					? threadCount(globalThis.navigator?.hardwareConcurrency ?? 4)
-					: 1;
-			const [out] = await worker.runFfmpeg(
-				gifArgs(Number(fps), Number(width), threads),
+			const job = await runFfmpegWithFallback(
+				(threads) => gifArgs(Number(fps), Number(width), threads),
 				[{ name: "in.mp4", data: await file.arrayBuffer() }],
 				["out.gif"],
-				Comlink.proxy((ratio: number) => {
-					setProgress(Math.round(ratio * 100));
-				}),
+				(ratio) => setProgress(Math.round(ratio * 100)),
 			);
+			setCore(job.core);
+			const [out] = job.outputs;
 			if (!out) {
 				throw new Error("no output");
 			}
@@ -133,7 +129,14 @@ export default function VideoToGifTool() {
 			if (process.env.NODE_ENV !== "production") {
 				console.error(unknown);
 			}
-			setError(te("unreadableFile"));
+			const kind = classifyVideoError(unknown);
+			setError(
+				kind === "memory"
+					? te("outOfMemory")
+					: kind === "unsupported"
+						? te("unsupportedCodec", { format: videoFormat(file) })
+						: tc("engineFailed"),
+			);
 		} finally {
 			setRunning(false);
 			setProgress(null);

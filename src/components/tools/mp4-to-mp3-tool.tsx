@@ -1,6 +1,5 @@
 "use client";
 
-import * as Comlink from "comlink";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 import AudioPreview from "@/components/audio/audio-preview";
@@ -15,13 +14,14 @@ import { formatBytes } from "@/lib/format";
 import { downloadBytes } from "@/lib/images/download";
 import { stemOf } from "@/lib/images/formats";
 import { mp3Args } from "@/lib/video/commands";
-import { ffmpegLoaded } from "@/lib/video/ffmpeg-client";
+import { runFfmpegWithFallback } from "@/lib/video/ffmpeg-client";
+import type { FfmpegCore } from "@/lib/video/ffmpeg-core";
 import {
-	type FfmpegCore,
-	MAX_VIDEO_BYTES,
-	threadCount,
-} from "@/lib/video/ffmpeg-core";
-import { probeVideo, VIDEO_ACCEPT, type VideoMeta } from "@/lib/video/probe";
+	checkVideoFile,
+	classifyVideoError,
+	videoFormat,
+} from "@/lib/video/limits";
+import { VIDEO_ACCEPT } from "@/lib/video/probe";
 
 const BITRATES = [128, 192, 256, 320];
 
@@ -37,13 +37,11 @@ export default function Mp4ToMp3Tool() {
 	const te = useTranslations("errors");
 	const [file, setFile] = useState<File | null>(null);
 	const [bitrate, setBitrate] = useState("192");
-	const [loading, setLoading] = useState(false);
 	const [running, setRunning] = useState(false);
 	const [progress, setProgress] = useState<number | null>(null);
 	const [core, setCore] = useState<FfmpegCore | null>(null);
 	const [error, setError] = useState<string | null>(null);
 	const [result, setResult] = useState<Result | null>(null);
-	const meta = useRef<VideoMeta | null>(null);
 	const urls = useRef<string[]>([]);
 
 	const reset = () => {
@@ -51,37 +49,35 @@ export default function Mp4ToMp3Tool() {
 			URL.revokeObjectURL(url);
 		}
 		urls.current = [];
-		meta.current = null;
 		setFile(null);
 		setError(null);
 		setResult(null);
 		setProgress(null);
 	};
 
+	// audio extraction needs no browser preview, so mov and 3gp files
+	// go straight to the engine.
 	const addFiles = async (files: File[]) => {
 		const [picked] = files;
 		if (!picked) {
 			return;
 		}
 		reset();
-		if (picked.size > MAX_VIDEO_BYTES) {
+		const check = checkVideoFile(picked);
+		if (!check.ok) {
 			setFile(picked);
-			setError(te("tooLarge", { limit: formatBytes(MAX_VIDEO_BYTES) }));
+			setError(
+				check.kind === "size"
+					? te("tooLarge", { limit: formatBytes(check.limit) })
+					: te("unsupportedFormat", { format: check.format }),
+			);
 			return;
 		}
 		setFile(picked);
-		setLoading(true);
-		try {
-			meta.current = await probeVideo(picked);
-		} catch {
-			setError(te("unreadableFile"));
-		} finally {
-			setLoading(false);
-		}
 	};
 
 	const apply = async () => {
-		if (!file || !meta.current || running || loading) {
+		if (!file || running) {
 			if (!file) {
 				notify.warning(tc("needFiles"));
 			}
@@ -92,27 +88,14 @@ export default function Mp4ToMp3Tool() {
 		setResult(null);
 		setProgress(null);
 		try {
-			let loaded: Awaited<ReturnType<typeof ffmpegLoaded>>;
-			try {
-				loaded = await ffmpegLoaded();
-			} catch {
-				setError(tc("engineFailed"));
-				return;
-			}
-			const { worker, core: used } = loaded;
-			setCore(used);
-			const threads =
-				used === "mt"
-					? threadCount(globalThis.navigator?.hardwareConcurrency ?? 4)
-					: 1;
-			const [out] = await worker.runFfmpeg(
-				mp3Args(Number(bitrate), threads),
+			const job = await runFfmpegWithFallback(
+				(threads) => mp3Args(Number(bitrate), threads),
 				[{ name: "in.mp4", data: await file.arrayBuffer() }],
 				["out.mp3"],
-				Comlink.proxy((ratio: number) => {
-					setProgress(Math.round(ratio * 100));
-				}),
+				(ratio) => setProgress(Math.round(ratio * 100)),
 			);
+			setCore(job.core);
+			const [out] = job.outputs;
 			if (!out) {
 				throw new Error("no output");
 			}
@@ -126,7 +109,14 @@ export default function Mp4ToMp3Tool() {
 			if (process.env.NODE_ENV !== "production") {
 				console.error(unknown);
 			}
-			setError(te("unreadableFile"));
+			const kind = classifyVideoError(unknown);
+			setError(
+				kind === "memory"
+					? te("outOfMemory")
+					: kind === "unsupported"
+						? te("unsupportedCodec", { format: videoFormat(file) })
+						: tc("engineFailed"),
+			);
 		} finally {
 			setRunning(false);
 			setProgress(null);
@@ -139,7 +129,7 @@ export default function Mp4ToMp3Tool() {
 				<Dropzone
 					accept={VIDEO_ACCEPT}
 					browseLabel={tc("browse")}
-					disabled={running || loading}
+					disabled={running}
 					hint={tc("dropHint")}
 					onFiles={addFiles}
 				/>
@@ -186,7 +176,7 @@ export default function Mp4ToMp3Tool() {
 				</Field>
 				<SmoothButton
 					className="w-full"
-					disabled={running || loading}
+					disabled={running}
 					loading={running}
 					onClick={apply}
 					size="lg"

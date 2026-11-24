@@ -1,7 +1,12 @@
 import * as Comlink from "comlink";
 import { FFMPEG_WORKER_IMPL_URL } from "@/lib/r2";
-import { type FfmpegCore, selectCore } from "@/lib/video/ffmpeg-core";
-import type { api } from "@/workers/ffmpeg-worker";
+import {
+	type FfmpegCore,
+	selectCore,
+	threadCount,
+} from "@/lib/video/ffmpeg-core";
+import { shouldRetryWithSingleThread } from "@/lib/video/limits";
+import type { api, FfmpegInput, FfmpegOutput } from "@/workers/ffmpeg-worker";
 
 export type FfmpegWorker = Comlink.Remote<typeof api>;
 
@@ -76,10 +81,56 @@ export async function ffmpegLoaded(): Promise<{
 		});
 	}
 	const worker = await proxy;
-	const core = detectCore();
+	let core = detectCore();
 	if (readyCore !== core) {
-		await worker.loadFfmpeg(core);
-		readyCore = core;
+		try {
+			await worker.loadFfmpeg(core);
+			readyCore = core;
+		} catch (error) {
+			// some phones report isolation and then fail to start the
+			// threaded core. the single thread core still converts.
+			if (core !== "mt") {
+				throw error;
+			}
+			await worker.loadFfmpeg("st");
+			readyCore = "st";
+			core = "st";
+		}
 	}
-	return { worker, core };
+	return { worker, core: readyCore ?? core };
+}
+
+// one job with a single thread retry. a phone that cannot hold the
+// threaded core still gets a result, and the caller reports which ran.
+export async function runFfmpegWithFallback(
+	buildArgs: (threads: number) => string[],
+	inputs: FfmpegInput[],
+	outputs: string[],
+	onProgress?: (ratio: number) => void,
+): Promise<{ outputs: FfmpegOutput[]; core: FfmpegCore }> {
+	const first = await ffmpegLoaded();
+	const execute = (worker: FfmpegWorker, core: FfmpegCore) =>
+		worker.runFfmpeg(
+			buildArgs(
+				core === "mt"
+					? threadCount(globalThis.navigator?.hardwareConcurrency ?? 4)
+					: 1,
+			),
+			inputs,
+			outputs,
+			onProgress ? Comlink.proxy(onProgress) : undefined,
+		);
+	try {
+		return {
+			outputs: await execute(first.worker, first.core),
+			core: first.core,
+		};
+	} catch (error) {
+		if (first.core !== "mt" || !shouldRetryWithSingleThread(error)) {
+			throw error;
+		}
+		await first.worker.loadFfmpeg("st");
+		readyCore = "st";
+		return { outputs: await execute(first.worker, "st"), core: "st" };
+	}
 }

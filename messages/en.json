@@ -216,6 +216,10 @@
 		"generic": "Something went wrong. Try again.",
 		"tooLarge": "This file is too big. The limit is {limit}.",
 		"unreadableFile": "Could not read this file. It may be corrupted. Try another file.",
+		"unsupportedFormat": "That {format} file is not a video this tool can read. Try MP4, MOV, WebM, or 3GP.",
+		"unsupportedCodec": "The video engine could not decode this {format} file. Try MP4 with H.264.",
+		"outOfMemory": "This video is too large for this device's memory. Try a shorter clip or a smaller resolution.",
+		"needDuration": "Could not read the video duration. Switch to quality mode or try an MP4 file.",
 		"unsupported": "Only PNG, JPG, WEBP, and AVIF files work here."
 	},
 	"landing": {
@@ -2691,8 +2695,8 @@
 				"dark": "Dark theme",
 				"image": "Add image",
 				"avatar": "Add avatar",
-				"recipientAvatar": "Recipient avatar",
-				"replierAvatar": "Replier avatar",
+				"avatar1": "Avatar 1",
+				"avatar2": "Avatar 2",
 				"preview": "Instagram preview",
 				"download": "Download PNG",
 				"downloaded": "Image downloaded",

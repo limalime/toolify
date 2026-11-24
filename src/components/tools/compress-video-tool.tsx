@@ -1,6 +1,5 @@
 "use client";
 
-import * as Comlink from "comlink";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 import Dropzone from "@/components/primitives/dropzone";
@@ -25,13 +24,18 @@ import {
 	compressSizeArgs,
 	targetVideoBitrateKbps,
 } from "@/lib/video/commands";
-import { ffmpegLoaded } from "@/lib/video/ffmpeg-client";
+import { runFfmpegWithFallback } from "@/lib/video/ffmpeg-client";
+import type { FfmpegCore } from "@/lib/video/ffmpeg-core";
 import {
-	type FfmpegCore,
-	MAX_VIDEO_BYTES,
-	threadCount,
-} from "@/lib/video/ffmpeg-core";
-import { probeVideo, VIDEO_ACCEPT, type VideoMeta } from "@/lib/video/probe";
+	checkVideoFile,
+	classifyVideoError,
+	videoFormat,
+} from "@/lib/video/limits";
+import {
+	probeVideoOrMeta,
+	VIDEO_ACCEPT,
+	type VideoMeta,
+} from "@/lib/video/probe";
 
 interface Result {
 	bytes: ArrayBuffer;
@@ -78,24 +82,31 @@ export default function CompressVideoTool() {
 			return;
 		}
 		reset();
-		if (picked.size > MAX_VIDEO_BYTES) {
+		const check = checkVideoFile(picked);
+		if (!check.ok) {
 			setFile(picked);
-			setError(te("tooLarge", { limit: formatBytes(MAX_VIDEO_BYTES) }));
+			setError(
+				check.kind === "size"
+					? te("tooLarge", { limit: formatBytes(check.limit) })
+					: te("unsupportedFormat", { format: check.format }),
+			);
 			return;
 		}
 		setFile(picked);
 		setLoading(true);
 		try {
-			meta.current = await probeVideo(picked);
+			// quality mode works without metadata. only the target size
+			// mode needs the duration, so a failed probe is not fatal.
+			meta.current = await probeVideoOrMeta(picked);
 		} catch {
-			setError(te("unreadableFile"));
+			meta.current = null;
 		} finally {
 			setLoading(false);
 		}
 	};
 
 	const apply = async () => {
-		if (!file || !meta.current || running || loading) {
+		if (!file || running || loading) {
 			if (!file) {
 				notify.warning(tc("needFiles"));
 			}
@@ -108,13 +119,14 @@ export default function CompressVideoTool() {
 				setTargetError(t("options.targetInvalid"));
 				return;
 			}
+			const duration = meta.current?.durationSec;
+			if (!duration) {
+				setTargetError(te("needDuration"));
+				return;
+			}
 			setTargetError(null);
 			try {
-				targetBitrate = targetVideoBitrateKbps(
-					targetBytes,
-					meta.current.durationSec,
-					128,
-				);
+				targetBitrate = targetVideoBitrateKbps(targetBytes, duration, 128);
 			} catch {
 				setTargetError(t("options.targetInvalid"));
 				return;
@@ -125,31 +137,17 @@ export default function CompressVideoTool() {
 		setResult(null);
 		setProgress(null);
 		try {
-			let loaded: Awaited<ReturnType<typeof ffmpegLoaded>>;
-			try {
-				loaded = await ffmpegLoaded();
-			} catch {
-				setError(tc("engineFailed"));
-				return;
-			}
-			const { worker, core: used } = loaded;
-			setCore(used);
-			const threads =
-				used === "mt"
-					? threadCount(globalThis.navigator?.hardwareConcurrency ?? 4)
-					: 1;
-			const args =
-				mode === "size"
-					? compressSizeArgs(targetBitrate, threads)
-					: compressQualityArgs(crf, threads);
-			const [out] = await worker.runFfmpeg(
-				args,
+			const job = await runFfmpegWithFallback(
+				(threads) =>
+					mode === "size"
+						? compressSizeArgs(targetBitrate, threads)
+						: compressQualityArgs(crf, threads),
 				[{ name: "in.mp4", data: await file.arrayBuffer() }],
 				["out.mp4"],
-				Comlink.proxy((ratio: number) => {
-					setProgress(Math.round(ratio * 100));
-				}),
+				(ratio) => setProgress(Math.round(ratio * 100)),
 			);
+			setCore(job.core);
+			const [out] = job.outputs;
 			if (!out) {
 				throw new Error("no output");
 			}
@@ -169,7 +167,14 @@ export default function CompressVideoTool() {
 			if (process.env.NODE_ENV !== "production") {
 				console.error(unknown);
 			}
-			setError(te("unreadableFile"));
+			const kind = classifyVideoError(unknown);
+			setError(
+				kind === "memory"
+					? te("outOfMemory")
+					: kind === "unsupported"
+						? te("unsupportedCodec", { format: videoFormat(file) })
+						: tc("engineFailed"),
+			);
 		} finally {
 			setRunning(false);
 			setProgress(null);

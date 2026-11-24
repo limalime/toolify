@@ -95,6 +95,7 @@ export default function MobileMenu({
 												<Link
 													className="flex min-h-10 items-center rounded-md px-2 text-small text-text-2 outline-none hover:bg-surface-2 hover:text-text focus-visible:bg-surface-2"
 													href={`/${tool.slug}`}
+													prefetch={false}
 												>
 													{tool.name}
 												</Link>

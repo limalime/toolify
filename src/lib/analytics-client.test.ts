@@ -58,6 +58,17 @@ describe("analytics client", () => {
 		});
 	});
 
+	it("queues gtag calls in the shape gtag.js drains", async () => {
+		const client = await loadClient();
+		client.applyConsent("denied");
+		const entry = window.dataLayer?.[0];
+		// gtag.js reads the legacy arguments object. an array here is
+		// accepted by the queue and then silently dropped.
+		expect(Array.isArray(entry)).toBe(false);
+		expect(Object.prototype.toString.call(entry)).toBe("[object Arguments]");
+		expect((entry as unknown[])[0]).toBe("consent");
+	});
+
 	it("keeps scripts away when consent is denied", async () => {
 		const client = await loadClient();
 		client.syncAnalyticsRoute("/image-converter");

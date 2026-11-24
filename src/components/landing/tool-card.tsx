@@ -48,6 +48,7 @@ export default function ToolCard({ tool }: { tool: ToolCardData }) {
 			className={CARD_CLASS}
 			data-tool-card={tool.slug}
 			href={`/${tool.slug}`}
+			prefetch={false}
 		>
 			{content}
 		</Link>

@@ -117,6 +117,7 @@ export default function CategoryNav({
 											href={`/${tool.slug}`}
 											key={tool.slug}
 											onClick={() => setOpen(null)}
+											prefetch={false}
 										>
 											<ToolIcon
 												className="mt-0.5 size-4 shrink-0 text-blue-500"

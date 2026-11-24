@@ -51,8 +51,10 @@ function ensureGtag() {
 	}
 	window.dataLayer = window.dataLayer ?? [];
 	if (!window.gtag) {
-		window.gtag = (...args: unknown[]) => {
-			window.dataLayer?.push(args);
+		// gtag.js drains the legacy arguments object only. a plain array
+		// is accepted by the queue and then silently dropped.
+		window.gtag = function gtag() {
+			window.dataLayer?.push(arguments);
 		};
 	}
 }

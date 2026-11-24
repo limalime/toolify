@@ -216,6 +216,10 @@
 		"generic": "出错了，请重试。",
 		"tooLarge": "文件太大，上限为{limit}。",
 		"unreadableFile": "无法读取此文件，可能已损坏，请换一个文件试试。",
+		"unsupportedFormat": "这个 {format} 文件不是此工具能读取的视频。请尝试 MP4、MOV、WebM 或 3GP。",
+		"unsupportedCodec": "视频引擎无法解码这个 {format} 文件。请尝试 MP4（H.264）。",
+		"outOfMemory": "这个视频对此设备的内存来说太大。请尝试更短的片段或更低的分辨率。",
+		"needDuration": "无法读取视频时长。请切换到质量模式或尝试 MP4 文件。",
 		"unsupported": "这里只支持PNG、JPG、WEBP和AVIF。"
 	},
 	"landing": {
@@ -2691,8 +2695,8 @@
 				"dark": "深色主题",
 				"image": "添加图片",
 				"avatar": "添加头像",
-				"recipientAvatar": "收件人头像",
-				"replierAvatar": "发送者头像",
+				"avatar1": "头像 1",
+				"avatar2": "头像 2",
 				"preview": "Instagram 预览",
 				"download": "下载 PNG",
 				"downloaded": "图片已下载",

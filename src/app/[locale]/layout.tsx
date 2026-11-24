@@ -4,14 +4,15 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import "../globals.css";
-import { ThemeProvider } from "next-themes";
 import ConsentProvider from "@/components/analytics/consent-provider";
 import SiteFooter from "@/components/layout/site-footer";
 import SiteHeader from "@/components/layout/site-header";
+import { ThemeProvider } from "@/components/layout/theme-provider";
 import AppToaster from "@/components/primitives/toaster";
 import { routing } from "@/i18n/routing";
 import { LOCALES } from "@/lib/locales";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { THEME_SCRIPT } from "@/lib/theme-script";
 
 const inter = Inter({
 	subsets: ["latin", "latin-ext"],
@@ -81,15 +82,13 @@ export default async function LocaleLayout({
 			dir={dir}
 			lang={locale}
 			suppressHydrationWarning
-			className={inter.variable}
+			className={`dark ${inter.variable}`}
 		>
 			<body className="flex min-h-screen flex-col antialiased">
+				{/* biome-ignore lint/security/noDangerouslySetInnerHtml: static constant, no user input */}
+				<script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
 				<NextIntlClientProvider>
-					<ThemeProvider
-						attribute="class"
-						defaultTheme="dark"
-						enableSystem={false}
-					>
+					<ThemeProvider>
 						<SiteHeader />
 						<main className="flex-1">{children}</main>
 						<SiteFooter />

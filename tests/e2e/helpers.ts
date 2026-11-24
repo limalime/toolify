@@ -209,6 +209,12 @@ export async function imageAlphaStats(
 	}, Array.from(bytes));
 }
 
+export const PHONE_FIXTURES = {
+	hevc: "tests/fixtures/generated/phone-hevc.mov",
+	h263: "tests/fixtures/generated/phone-h263.3gp",
+	large: "tests/fixtures/generated/phone-1080p.mp4",
+};
+
 // proves a media file actually plays, reporting duration and picture size.
 export async function mediaProbe(
 	page: Page,

@@ -216,6 +216,10 @@
 		"generic": "Algo salió mal. Inténtalo de nuevo.",
 		"tooLarge": "Este archivo es muy grande. El límite es {limit}.",
 		"unreadableFile": "No se pudo leer este archivo. Puede estar dañado. Prueba con otro.",
+		"unsupportedFormat": "Ese archivo {format} no es un vídeo que esta herramienta pueda leer. Prueba con MP4, MOV, WebM o 3GP.",
+		"unsupportedCodec": "El motor de vídeo no pudo decodificar este archivo {format}. Prueba con MP4 (H.264).",
+		"outOfMemory": "Este vídeo es demasiado grande para la memoria de este dispositivo. Prueba con un clip más corto o una resolución menor.",
+		"needDuration": "No se pudo leer la duración del vídeo. Cambia al modo de calidad o prueba con un archivo MP4.",
 		"unsupported": "Aquí solo funcionan PNG, JPG, WEBP y AVIF."
 	},
 	"landing": {
@@ -2691,8 +2695,8 @@
 				"dark": "Tema oscuro",
 				"image": "Añadir imagen",
 				"avatar": "Añadir avatar",
-				"recipientAvatar": "Avatar del destinatario",
-				"replierAvatar": "Avatar del remitente",
+				"avatar1": "Avatar 1",
+				"avatar2": "Avatar 2",
 				"preview": "Vista de Instagram",
 				"download": "Descargar PNG",
 				"downloaded": "Imagen descargada",

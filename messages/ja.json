@@ -216,6 +216,10 @@
 		"generic": "問題が発生しました。もう一度お試しください。",
 		"tooLarge": "このファイルは大きすぎます。上限は{limit}です。",
 		"unreadableFile": "このファイルを読み取れませんでした。破損している可能性があります。別のファイルをお試しください。",
+		"unsupportedFormat": "この {format} ファイルはこのツールで読める動画ではありません。MP4、MOV、WebM、3GP をお試しください。",
+		"unsupportedCodec": "動画エンジンがこの {format} ファイルをデコードできませんでした。MP4（H.264）をお試しください。",
+		"outOfMemory": "この動画はこの端末のメモリには大きすぎます。短いクリップか低い解像度をお試しください。",
+		"needDuration": "動画の長さを読み取れませんでした。品質モードに切り替えるか、MP4 ファイルをお試しください。",
 		"unsupported": "ここではPNG、JPG、WEBP、AVIFのみ対応。"
 	},
 	"landing": {
@@ -2691,8 +2695,8 @@
 				"dark": "ダークテーマ",
 				"image": "画像を追加",
 				"avatar": "アバターを追加",
-				"recipientAvatar": "受信者のアバター",
-				"replierAvatar": "送信者のアバター",
+				"avatar1": "アバター1",
+				"avatar2": "アバター2",
 				"preview": "Instagramプレビュー",
 				"download": "PNGをダウンロード",
 				"downloaded": "画像を保存しました",

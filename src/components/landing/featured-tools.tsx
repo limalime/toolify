@@ -130,6 +130,7 @@ export default function FeaturedTools({ tools }: { tools: MenuTool[] }) {
 								data-featured-tool={pick.slug}
 								href={`/${pick.slug}`}
 								key={pick.slug}
+								prefetch={false}
 							>
 								<Card className="h-full gap-0 rounded-none bg-transparent py-0 ring-0">
 									<CardContent className="flex flex-col gap-3 px-0">

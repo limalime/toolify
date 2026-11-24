@@ -37,7 +37,9 @@ export default function SharedNoteView() {
 				<h1 className="font-display text-h2">{t("options.sharedTitle")}</h1>
 				<p className="text-body text-text-2">{t("options.sharedMissing")}</p>
 				<SmoothButton asChild variant="candy">
-					<Link href="/online-notes">{t("options.sharedWrite")}</Link>
+					<Link href="/online-notes" prefetch={false}>
+						{t("options.sharedWrite")}
+					</Link>
 				</SmoothButton>
 			</div>
 		);
@@ -75,7 +77,7 @@ export default function SharedNoteView() {
 					{t("options.copyLink")}
 				</SmoothButton>
 				<SmoothButton asChild size="sm" variant="secondary">
-					<Link href="/online-notes">
+					<Link href="/online-notes" prefetch={false}>
 						<PenLine aria-hidden="true" className="size-4" />
 						{t("options.sharedWrite")}
 					</Link>

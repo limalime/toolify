@@ -240,13 +240,15 @@ export default function InstagramGeneratorTool() {
 			);
 			const outHeight = outLines.length * 54 + 64;
 			let cursorY = inY + inHeight + 60;
-			const photoWidth = 620;
-			const photoHeight = 440;
-			const photoX = 1080 - 40 - photoWidth;
-			context.save();
-			roundRect(context, photoX, cursorY, photoWidth, photoHeight, 44);
-			context.clip();
+			// the photo message only exists when a photo was added. an
+			// empty upload leaves no placeholder in the export.
 			if (image.current) {
+				const photoWidth = 620;
+				const photoHeight = 440;
+				const photoX = 1080 - 40 - photoWidth;
+				context.save();
+				roundRect(context, photoX, cursorY, photoWidth, photoHeight, 44);
+				context.clip();
 				drawCover(
 					context,
 					image.current,
@@ -255,21 +257,9 @@ export default function InstagramGeneratorTool() {
 					photoWidth,
 					photoHeight,
 				);
-			} else {
-				const gradient = context.createLinearGradient(
-					photoX,
-					cursorY,
-					photoX + photoWidth,
-					cursorY + photoHeight,
-				);
-				gradient.addColorStop(0, "#7b2ff7");
-				gradient.addColorStop(1, "#f107a3");
-				context.fillStyle = gradient;
-				context.fillRect(photoX, cursorY, photoWidth, photoHeight);
-				imageIcon(context, 520, cursorY + 196, 76, "rgba(255,255,255,0.9)");
+				context.restore();
+				cursorY += photoHeight + 34;
 			}
-			context.restore();
-			cursorY += photoHeight + 34;
 			const outX = 1080 - 40 - bubbleWidth;
 			const gradient = context.createLinearGradient(
 				outX,
@@ -656,9 +646,7 @@ export default function InstagramGeneratorTool() {
 
 				<input
 					accept=".png,.jpg,.jpeg,.webp"
-					aria-label={t(
-						mode === "dm" ? "options.recipientAvatar" : "options.avatar",
-					)}
+					aria-label={t(mode === "dm" ? "options.avatar1" : "options.avatar")}
 					className="sr-only"
 					onChange={(event) => {
 						const picked = event.target.files?.[0];
@@ -673,7 +661,7 @@ export default function InstagramGeneratorTool() {
 				{avatarBName || mode === "dm" ? (
 					<input
 						accept=".png,.jpg,.jpeg,.webp"
-						aria-label={t("options.replierAvatar")}
+						aria-label={t("options.avatar2")}
 						className="sr-only"
 						onChange={(event) => {
 							const picked = event.target.files?.[0];
@@ -693,8 +681,7 @@ export default function InstagramGeneratorTool() {
 						variant="secondary"
 					>
 						<ImagePlus aria-hidden="true" className="size-4" />
-						{avatarName ??
-							t(mode === "dm" ? "options.recipientAvatar" : "options.avatar")}
+						{avatarName ?? t(mode === "dm" ? "options.avatar1" : "options.avatar")}
 					</SmoothButton>
 					{mode === "dm" ? (
 						<SmoothButton
@@ -703,7 +690,7 @@ export default function InstagramGeneratorTool() {
 							variant="secondary"
 						>
 							<ImagePlus aria-hidden="true" className="size-4" />
-							{avatarBName ?? t("options.replierAvatar")}
+							{avatarBName ?? t("options.avatar2")}
 						</SmoothButton>
 					) : null}
 				</div>
